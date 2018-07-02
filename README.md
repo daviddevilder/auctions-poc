@@ -1,4 +1,4 @@
-# Going Gone v2
+# Auctions POC
 
 ## Run the app
 
