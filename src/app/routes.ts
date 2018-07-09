@@ -1,25 +1,20 @@
-import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import {Routes} from '@angular/router';
+import {HomeComponent} from './home/home.component';
+import {AppComponent} from "./app.component";
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
-  },
-  {
-    path: 'home',
-    component: HomeComponent,
-    // children: [
-    //   {
-    //     path: '',
-    //     pathMatch: 'full',
-    //     component: DashboardComponent
-    //   }
-    // ]
-  },
-  {
-    path: '**',
-    redirectTo: '/error/notfound',
+    component: AppComponent,
+    children: [
+      {
+        path: '',
+        component: HomeComponent
+      },
+      {
+        path: '**',
+        redirectTo: '/error/notfound',
+      }
+    ]
   }
 ];

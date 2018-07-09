@@ -16,7 +16,7 @@ h1 {
     padding: 8px;
 }
 
-.tokenList, .portfolioList {
-    width: 50%;
+.auctionList {
+    width: 100%;
     float: left;
 }

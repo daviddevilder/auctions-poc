@@ -1,9 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Tokens = require("./Tokens");
-var Portfolios = require("./Portfolios");
+var Auctions = require("./Auctions");
 var router = require('express').Router();
 module.exports = router;
-router.use('/tokens', Tokens);
-router.use('/portfolios', Portfolios);
+router.use('/auctions', Auctions);
 //# sourceMappingURL=API.js.map

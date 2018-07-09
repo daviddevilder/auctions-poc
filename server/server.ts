@@ -2,7 +2,7 @@ import * as API from './routes/API';
 import {Request, Response} from 'express';
 import * as mongoose from 'mongoose';
 
-mongoose.connect('mongodb://localhost/going-gone');
+mongoose.connect('mongodb://localhost');
 
 const bodyParser = require('body-parser'),
     express = require('express'),
