@@ -37,7 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var ClubManager_1 = require("../modules/ClubManager");
-var AuctionManager_1 = require("../modules/AuctionManager");
+var LotManager_1 = require("../modules/LotManager");
 var router = require('express').Router();
 module.exports = router;
 router.get('/', function (request, response) { return __awaiter(_this, void 0, void 0, function () {
@@ -64,11 +64,11 @@ router.get('/:clubId', function (request, response) { return __awaiter(_this, vo
         }
     });
 }); });
-router.get('/:clubId/auctions', function (request, response) { return __awaiter(_this, void 0, void 0, function () {
+router.get('/:clubId/lots', function (request, response) { return __awaiter(_this, void 0, void 0, function () {
     var result;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4, AuctionManager_1.AuctionManager.GetAuctionsForClub(request.params.clubId)];
+            case 0: return [4, LotManager_1.LotManager.GetLotsForClub(request.params.clubId)];
             case 1:
                 result = _a.sent();
                 response.send(result);

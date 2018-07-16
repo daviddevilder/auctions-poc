@@ -1,14 +1,14 @@
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {TestBed} from '@angular/core/testing';
-import {AuctionService} from './auction.service';
+import {LotService} from './lot.service';
 
-describe('AuctionService', () => {
+describe('LotService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [HttpClientTestingModule],
-            providers: [AuctionService]
+            providers: [LotService]
         });
-        this.clubService = TestBed.get(AuctionService);
+        this.lotService = TestBed.get(LotService);
         this.httpMock = TestBed.get(HttpTestingController);
     });
 
@@ -17,17 +17,17 @@ describe('AuctionService', () => {
     });
 
     it('should be created', () => {
-        expect(this.clubService).toBeTruthy();
+        expect(this.lotService).toBeTruthy();
     });
 
-    describe('LoadClubs', () => {
+    describe('LoadLots', () => {
         beforeEach(() => {
-            this.expectedUrl = 'http://localhost:3000/api/clubs';
+            this.expectedUrl = 'http://localhost:3000/api/club/dummyClub/lots';
             this.mockResponseBody = {'some': 'thing'};
         });
 
         it('should call the endpoint with the expected url', () => {
-            this.clubService.LoadClubs().subscribe();
+            this.lotService.LoadLots().subscribe();
 
             const actualRequest = this.httpMock.expectOne(this.expectedUrl);
             actualRequest.flush(this.mockResponseBody);
@@ -37,7 +37,7 @@ describe('AuctionService', () => {
         });
 
         it('should return the response body', () => {
-            this.clubService.LoadClubs()
+            this.lotService.LoadLots()
                 .subscribe(data => {
                     expect(data).toEqual(this.mockResponseBody);
                 });

@@ -1,6 +1,6 @@
 import {Request, Response} from 'express';
 import {ClubManager} from '../modules/ClubManager';
-import {AuctionManager} from '../modules/AuctionManager';
+import {LotManager} from '../modules/LotManager';
 
 const router = require('express').Router();
 module.exports = router;
@@ -15,7 +15,7 @@ router.get('/:clubId', async (request: Request, response: Response) => {
     response.send(result);
 });
 
-router.get('/:clubId/auctions', async (request: Request, response: Response) => {
-    const result = await AuctionManager.GetAuctionsForClub(request.params.clubId);
+router.get('/:clubId/lots', async (request: Request, response: Response) => {
+    const result = await LotManager.GetLotsForClub(request.params.clubId);
     response.send(result);
 });

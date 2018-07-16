@@ -9,16 +9,20 @@ import {HomeComponent} from './home/home.component';
 import {ClubListComponent} from './club-list/club-list.component';
 import {ClubService} from './services/club.service';
 import {ClubComponent} from './club/club.component';
-import {AuctionListComponent} from './auction-list/auction-list.component';
-import {AuctionService} from './services/auction.service';
+import {LotListComponent} from './lot-list/lot-list.component';
+import {LotService} from './services/lot.service';
+import {HeaderComponent} from './header/header.component';
+import {ClubLotsComponent} from './club-lots/club-lots.component';
 
 @NgModule({
     declarations: [
         AppComponent,
+        HeaderComponent,
         ClubListComponent,
         HomeComponent,
         ClubComponent,
-        AuctionListComponent
+        LotListComponent,
+        ClubLotsComponent
     ],
     imports: [
         BrowserModule,
@@ -27,7 +31,7 @@ import {AuctionService} from './services/auction.service';
         ReactiveFormsModule,
         AppRoutingModule
     ],
-    providers: [AuctionService, ClubService],
+    providers: [LotService, ClubService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

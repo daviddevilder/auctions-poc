@@ -26,10 +26,10 @@ export namespace ClubManager {
         // });
 
         return new Promise((resolve: (result) => void, reject: (error: Error) => void) => {
-            ClubModel.find({}, function (err, auctions) {
+            ClubModel.find({}, function (err, clubs) {
                 try {
                     const results: Club[] = [];
-                    auctions.forEach(function (club) {
+                    clubs.forEach(function (club) {
                         results.push(new Club(club.clubId, club.title));
                     });
 

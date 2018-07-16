@@ -1,7 +1,7 @@
 import {Document, Schema, Model, model} from 'mongoose';
-import {IAuction} from '../../../common/models/IAuction';
+import {ILot} from '../../../common/models/ILot';
 
-export interface IAuctionModel extends IAuction, Document {
+export interface ILotModel extends ILot, Document {
     clubId: string;
     title: string;
     imageUri: string;
@@ -12,7 +12,7 @@ export interface IAuctionModel extends IAuction, Document {
     tags: string[];
 }
 
-export const AuctionSchema: Schema = new Schema({
+export const LotSchema: Schema = new Schema({
     clubId: String,
     title: String,
     imageUri: String,
@@ -25,4 +25,4 @@ export const AuctionSchema: Schema = new Schema({
     }]
 });
 
-export const AuctionModel: Model<IAuctionModel> = model<IAuctionModel>('Auction', AuctionSchema);
+export const LotModel: Model<ILotModel> = model<ILotModel>('Lot', LotSchema);

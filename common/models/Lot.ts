@@ -1,4 +1,4 @@
-export class Auction {
+export class Lot {
 
     constructor(public clubId: string,
                 public title: string,

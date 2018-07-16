@@ -1,19 +1,19 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Auction} from '../../../common/models/Auction';
+import {Lot} from '../../../common/models/Lot';
 
 @Injectable()
-export class AuctionService {
+export class LotService {
 
   private readonly host: string = 'http://localhost:3000';
-  public Auctions: Auction[] = [];
+  public Lots: Lot[] = [];
 
   constructor(private http: HttpClient) {
   }
 
-  public LoadAuctions(clubId: String): Observable<any> {
-    const url = this.host + '/api/clubs/' + clubId + '/auctions';
+  public LoadLots(clubId: String): Observable<any> {
+    const url = this.host + '/api/clubs/' + clubId + '/lots';
     return this.http.get(url);
   }
 }

@@ -7,7 +7,6 @@ import {Club} from '../../../common/models/Club';
 export class ClubService {
 
   private readonly host: string = 'http://localhost:3000';
-  public Clubs: Club[] = [];
 
   constructor(private http: HttpClient) {
   }

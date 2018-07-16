@@ -8,7 +8,7 @@ h2 {
     border-radius: 10px;
 }
 
-.auctionContainer {
+.lotContainer {
     margin: 10px auto;
     background-color: white;
     width: 300px;
@@ -17,14 +17,14 @@ h2 {
     text-align: center;
 }
 
-.auctionContainer .name {
+.lotContainer .name {
     font-weight: bold;
 }
 
-.auctionContainer .price {
+.lotContainer .price {
     font-weight: bold;
 }
 
-.auctionContainer img {
+.lotContainer img {
     width: 300px;
 }

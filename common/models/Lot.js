@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Auction = (function () {
-    function Auction(clubId, title, imageUri, providedBy, reservePrice, currentBid, currentBidderId, tags) {
+var Lot = (function () {
+    function Lot(clubId, title, imageUri, providedBy, reservePrice, currentBid, currentBidderId, tags) {
         this.clubId = clubId;
         this.title = title;
         this.imageUri = imageUri;
@@ -11,7 +11,7 @@ var Auction = (function () {
         this.currentBidderId = currentBidderId;
         this.tags = tags;
     }
-    return Auction;
+    return Lot;
 }());
-exports.Auction = Auction;
-//# sourceMappingURL=Auction.js.map
+exports.Lot = Lot;
+//# sourceMappingURL=Lot.js.map

@@ -34,43 +34,21 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
-var Club_1 = require("../../common/models/Club");
-var Club_2 = require("../../src/app/schemas/Club");
-var ClubManager;
-(function (ClubManager) {
-    function GetClubs() {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2, new Promise(function (resolve, reject) {
-                        Club_2.ClubModel.find({}, function (err, clubs) {
-                            try {
-                                var results_1 = [];
-                                clubs.forEach(function (club) {
-                                    results_1.push(new Club_1.Club(club.clubId, club.title));
-                                });
-                                resolve(results_1);
-                            }
-                            catch (error) {
-                                reject(error);
-                            }
-                        });
-                    })];
-            });
-        });
-    }
-    ClubManager.GetClubs = GetClubs;
-    function GetClubById(clubId) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2, new Promise(function (resolve, reject) {
-                        Club_2.ClubModel.findOne({ clubId: clubId }, function (err, club) {
-                            resolve(new Club_1.Club(club.clubId, club.title));
-                        });
-                    })];
-            });
-        });
-    }
-    ClubManager.GetClubById = GetClubById;
-})(ClubManager = exports.ClubManager || (exports.ClubManager = {}));
-//# sourceMappingURL=ClubManager.js.map
+var LotManager_1 = require("../modules/LotManager");
+var router = require('express').Router();
+module.exports = router;
+router.get('/', function (request, response) { return __awaiter(_this, void 0, void 0, function () {
+    var result;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4, LotManager_1.LotManager.GetLots()];
+            case 1:
+                result = _a.sent();
+                response.send(result);
+                return [2];
+        }
+    });
+}); });
+//# sourceMappingURL=Lots.js.map

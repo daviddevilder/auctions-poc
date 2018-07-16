@@ -1,4 +1,4 @@
-export interface IAuction {
+export interface ILot {
     clubId?: string;
     title?: string;
     imageUri?: string;

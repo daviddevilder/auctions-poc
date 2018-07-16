@@ -9,7 +9,9 @@
     z-index: -1;
 }
 
-#logo {
+.title {
     margin: 50px auto;
     text-align: center;
+    font-size: 60px;
+    color: white;
 }

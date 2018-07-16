@@ -2,15 +2,15 @@ import {TestBed, async} from '@angular/core/testing';
 import {AppComponent} from './app.component';
 import {HttpClient, HttpHandler} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {AuctionService} from "./services/auction.service";
-import {AuctionListComponent} from "./auction-list/auction-list.component";
+import {LotService} from "./services/lot.service";
+import {LotListComponent} from "./lot-list/lot-list.component";
 import {RouterTestingModule} from '@angular/router/testing';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            providers: [AuctionService, HttpClient, HttpHandler],
-            declarations: [AppComponent, AuctionListComponent],
+            providers: [LotService, HttpClient, HttpHandler],
+            declarations: [AppComponent, LotListComponent],
             imports: [FormsModule, ReactiveFormsModule, RouterTestingModule]
         }).compileComponents();
     }));
