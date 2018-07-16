@@ -107,18 +107,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
-/* harmony import */ var _club_list_club_list_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./club-list/club-list.component */ "./src/app/club-list/club-list.component.ts");
-/* harmony import */ var _services_club_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./services/club.service */ "./src/app/services/club.service.ts");
-/* harmony import */ var _club_club_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./club/club.component */ "./src/app/club/club.component.ts");
-/* harmony import */ var _lot_list_lot_list_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./lot-list/lot-list.component */ "./src/app/lot-list/lot-list.component.ts");
-/* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./services/lot.service */ "./src/app/services/lot.service.ts");
-/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
-/* harmony import */ var _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./club-lots/club-lots.component */ "./src/app/club-lots/club-lots.component.ts");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _material_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./material.module */ "./src/app/material.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _club_list_club_list_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./club-list/club-list.component */ "./src/app/club-list/club-list.component.ts");
+/* harmony import */ var _services_club_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./services/club.service */ "./src/app/services/club.service.ts");
+/* harmony import */ var _club_club_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./club/club.component */ "./src/app/club/club.component.ts");
+/* harmony import */ var _lot_list_lot_list_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./lot-list/lot-list.component */ "./src/app/lot-list/lot-list.component.ts");
+/* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/lot.service */ "./src/app/services/lot.service.ts");
+/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
+/* harmony import */ var _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./club-lots/club-lots.component */ "./src/app/club-lots/club-lots.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -139,29 +140,30 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
-                _header_header_component__WEBPACK_IMPORTED_MODULE_12__["HeaderComponent"],
-                _club_list_club_list_component__WEBPACK_IMPORTED_MODULE_7__["ClubListComponent"],
-                _home_home_component__WEBPACK_IMPORTED_MODULE_6__["HomeComponent"],
-                _club_club_component__WEBPACK_IMPORTED_MODULE_9__["ClubComponent"],
-                _lot_list_lot_list_component__WEBPACK_IMPORTED_MODULE_10__["LotListComponent"],
-                _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_13__["ClubLotsComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
+                _header_header_component__WEBPACK_IMPORTED_MODULE_13__["HeaderComponent"],
+                _club_list_club_list_component__WEBPACK_IMPORTED_MODULE_8__["ClubListComponent"],
+                _home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"],
+                _club_club_component__WEBPACK_IMPORTED_MODULE_10__["ClubComponent"],
+                _lot_list_lot_list_component__WEBPACK_IMPORTED_MODULE_11__["LotListComponent"],
+                _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_14__["ClubLotsComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"]
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__["BrowserAnimationsModule"],
+                _material_module__WEBPACK_IMPORTED_MODULE_3__["CustomMaterialModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"]
             ],
-            providers: [_services_lot_service__WEBPACK_IMPORTED_MODULE_11__["LotService"], _services_club_service__WEBPACK_IMPORTED_MODULE_8__["ClubService"]],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
+            providers: [_services_lot_service__WEBPACK_IMPORTED_MODULE_12__["LotService"], _services_club_service__WEBPACK_IMPORTED_MODULE_9__["ClubService"]],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -324,7 +326,7 @@ var ClubLotsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".background {\n    background: url('background.jpg') no-repeat center center fixed;\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\nh1 {\n    text-align: center;\n    color: white;\n    margin: 10px auto;\n    padding: 8px;\n}\n\n.clubList {\n    width: 100%;\n    float: left;\n}"
+module.exports = ".background {\n    background: url('background.jpg') no-repeat center center fixed;\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\nh1 {\n    text-align: center;\n    color: white;\n    margin: 10px auto;\n    padding: 8px;\n}\n\n.lotList {\n    width: 100%;\n    float: left;\n}\n\n.lotsButtonContainer {\n    margin: 10px auto;\n    text-align: center;\n}\n\n.lotsButton {\n    color: white;\n}"
 
 /***/ }),
 
@@ -335,7 +337,7 @@ module.exports = ".background {\n    background: url('background.jpg') no-repeat
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background\"></div>\n\n<h1>\n  {{ title }}\n</h1>\n\n<div class=\"clubList\">\n  <app-lot-list clubId=\"{{clubId}}\"></app-lot-list>\n\n  <button routerLink=\"/club/{{clubId}}/lots\">View all auction items</button>\n</div>"
+module.exports = "<div class=\"background\"></div>\n\n<h1>\n  {{ title }}\n</h1>\n\n<div class=\"lotList\">\n  <app-lot-list clubId=\"{{clubId}}\"></app-lot-list>\n</div>\n\n<div class=\"lotsButtonContainer\">\n  <button mat-raised-button color=\"primary\" class=\"lotsButton\" routerLink=\"/club/{{clubId}}/lots\">\n    View all auction items\n  </button>\n</div>\n"
 
 /***/ }),
 
@@ -587,6 +589,44 @@ var LotListComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_services_lot_service__WEBPACK_IMPORTED_MODULE_1__["LotService"]])
     ], LotListComponent);
     return LotListComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/material.module.ts":
+/*!************************************!*\
+  !*** ./src/app/material.module.ts ***!
+  \************************************/
+/*! exports provided: CustomMaterialModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomMaterialModule", function() { return CustomMaterialModule; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var CustomMaterialModule = /** @class */ (function () {
+    function CustomMaterialModule() {
+    }
+    CustomMaterialModule = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
+            imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatButtonModule"]],
+            exports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatButtonModule"]],
+        })
+    ], CustomMaterialModule);
+    return CustomMaterialModule;
 }());
 
 

@@ -4,8 +4,12 @@
   {{ title }}
 </h1>
 
-<div class="clubList">
+<div class="lotList">
   <app-lot-list clubId="{{clubId}}"></app-lot-list>
+</div>
 
-  <button routerLink="/club/{{clubId}}/lots">View all auction items</button>
+<div class="lotsButtonContainer">
+  <button mat-raised-button color="primary" class="lotsButton" routerLink="/club/{{clubId}}/lots">
+    View all auction items
+  </button>
 </div>
