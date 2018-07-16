@@ -1,8 +1,8 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {AuctionListComponent} from './auction-list.component';
-import {of} from "rxjs";
-import {Auction} from "../../../common/models/Auction";
-import {AuctionService} from "../services/auction.service";
+import {of} from 'rxjs';
+import {Auction} from '../../../common/models/Auction';
+import {AuctionService} from '../services/auction.service';
 
 describe('AuctionListComponent', () => {
     let component: AuctionListComponent;
@@ -10,8 +10,8 @@ describe('AuctionListComponent', () => {
 
     beforeEach(() => {
         const mockAuctionService = jasmine.createSpyObj('AuctionService', ['LoadAuctions']);
-        mockAuctionService.LoadAuctions.and.returnValue(of([new Auction(123, "dummyTitle", "dummyImageUri",
-                                                        "dummyProvidedBy", 10000, 12000, 456, ["tag1", "tag2"])]));
+        mockAuctionService.LoadAuctions.and.returnValue(of([new Auction('dummyClubId', 'dummyTitle', 'dummyImageUri',
+                                                        'dummyProvidedBy', 10000, 12000, 456, ['tag1', 'tag2'])]));
 
         TestBed.configureTestingModule({
             declarations: [AuctionListComponent],
@@ -36,11 +36,11 @@ describe('AuctionListComponent', () => {
 describe('AuctionListComponentClass', () => {
 
     describe('ngOnInit', () => {
-        it('should call AuctionService.LoadAuctions', () => {
+        it('should call AuctionService.LoadClubs', () => {
             const mockAuctionService = jasmine.createSpyObj('AuctionService', ['LoadAuctions']);
             const component = new AuctionListComponent(mockAuctionService);
-            mockAuctionService.LoadAuctions.and.returnValue(of([new Auction(123, "dummyTitle", "dummyImageUri",
-                "dummyProvidedBy", 10000, 12000, 456, ["tag1", "tag2"])]));
+            mockAuctionService.LoadClubs.and.returnValue(of([new Auction('dummyClubId', 'dummyTitle', 'dummyImageUri',
+                'dummyProvidedBy', 10000, 12000, 456, ['tag1', 'tag2'])]));
 
             component.ngOnInit();
 
@@ -51,14 +51,14 @@ describe('AuctionListComponentClass', () => {
             const mockAuctionService = jasmine.createSpyObj('AuctionService', ['LoadAuctions']);
             const component = new AuctionListComponent(mockAuctionService);
             const mockAuctions = [
-                new Auction(123, "dummyTitle1", "dummyImageUri",
-                    "dummyProvidedBy", 10000, 12000, 456, ["tag1", "tag2"]),
-                new Auction(123, "dummyTitle2", "dummyImageUri",
-                    "dummyProvidedBy", 10000, 12000, 456, ["tag1", "tag2"]),
-                new Auction(123, "dummyTitle3", "dummyImageUri",
-                    "dummyProvidedBy", 10000, 12000, 456, ["tag1", "tag2"]),
-                new Auction(123, "dummyTitle4", "dummyImageUri",
-                    "dummyProvidedBy", 10000, 12000, 456, ["tag1", "tag2"])
+                new Auction('dummyClubId1', 'dummyTitle1', 'dummyImageUri',
+                    'dummyProvidedBy', 10000, 12000, 456, ['tag1', 'tag2']),
+                new Auction('dummyClubId2', 'dummyTitle2', 'dummyImageUri',
+                    'dummyProvidedBy', 10000, 12000, 456, ['tag1', 'tag2']),
+                new Auction('dummyClubId3', 'dummyTitle3', 'dummyImageUri',
+                    'dummyProvidedBy', 10000, 12000, 456, ['tag1', 'tag2']),
+                new Auction('dummyClubId4', 'dummyTitle4', 'dummyImageUri',
+                    'dummyProvidedBy', 10000, 12000, 456, ['tag1', 'tag2'])
             ];
             mockAuctionService.LoadAuctions.and.returnValue(of(mockAuctions));
 

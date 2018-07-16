@@ -109,17 +109,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _auction_list_auction_list_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./auction-list/auction-list.component */ "./src/app/auction-list/auction-list.component.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _services_auction_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./services/auction.service */ "./src/app/services/auction.service.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _club_list_club_list_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./club-list/club-list.component */ "./src/app/club-list/club-list.component.ts");
+/* harmony import */ var _services_club_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./services/club.service */ "./src/app/services/club.service.ts");
+/* harmony import */ var _club_club_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./club/club.component */ "./src/app/club/club.component.ts");
+/* harmony import */ var _auction_list_auction_list_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./auction-list/auction-list.component */ "./src/app/auction-list/auction-list.component.ts");
+/* harmony import */ var _services_auction_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./services/auction.service */ "./src/app/services/auction.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
 
 
 
@@ -136,17 +142,19 @@ var AppModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
-                _home_home_component__WEBPACK_IMPORTED_MODULE_8__["HomeComponent"],
-                _auction_list_auction_list_component__WEBPACK_IMPORTED_MODULE_4__["AuctionListComponent"]
+                _club_list_club_list_component__WEBPACK_IMPORTED_MODULE_7__["ClubListComponent"],
+                _home_home_component__WEBPACK_IMPORTED_MODULE_6__["HomeComponent"],
+                _club_club_component__WEBPACK_IMPORTED_MODULE_9__["ClubComponent"],
+                _auction_list_auction_list_component__WEBPACK_IMPORTED_MODULE_10__["AuctionListComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_7__["AppRoutingModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"]
             ],
-            providers: [_services_auction_service__WEBPACK_IMPORTED_MODULE_6__["AuctionService"]],
+            providers: [_services_auction_service__WEBPACK_IMPORTED_MODULE_11__["AuctionService"], _services_club_service__WEBPACK_IMPORTED_MODULE_8__["ClubService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
         })
     ], AppModule);
@@ -164,7 +172,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "h2 {\n    text-align: center;\n    color: white;\n    margin: 10px 30px;\n    padding: 8px;\n    background-color: #333;\n    opacity: 0.9;\n    border-radius: 10px;\n}\n\n.tokenContainer {\n    margin: 10px auto;\n    background-color: white;\n    width: 300px;\n    padding: 5px;\n    border-radius: 12px;\n    text-align: center;\n}\n\n.tokenContainer .name {\n    font-weight: bold;\n}\n\n.tokenContainer .price {\n    font-weight: bold;\n}\n\n.tokenContainer img {\n    width: 300px;\n}"
+module.exports = "h2 {\n    text-align: center;\n    color: white;\n    margin: 10px 30px;\n    padding: 8px;\n    background-color: #333;\n    opacity: 0.9;\n    border-radius: 10px;\n}\n\n.auctionContainer {\n    margin: 10px auto;\n    background-color: white;\n    width: 300px;\n    padding: 5px;\n    border-radius: 12px;\n    text-align: center;\n}\n\n.auctionContainer .name {\n    font-weight: bold;\n}\n\n.auctionContainer .price {\n    font-weight: bold;\n}\n\n.auctionContainer img {\n    width: 300px;\n}"
 
 /***/ }),
 
@@ -175,7 +183,7 @@ module.exports = "h2 {\n    text-align: center;\n    color: white;\n    margin: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>\n  Top 10 Auctions\n</h2>\n\n<div class=\"tokenContainer\" *ngFor=\"let auction of Auctions\">\n  <div class=\"name\">{{auction.title}}</div>\n  <div>\n    <img src=\"{{auction.imageUri}}\"/>\n  </div>\n  <div class=\"price\">Reserve: {{auction.reservePrice | currency}}</div>\n</div>\n"
+module.exports = "<h2>\n  Top 10 Auctions\n</h2>\n\n<div class=\"auctionContainer\" *ngFor=\"let auction of Auctions\">\n  <div class=\"name\">{{auction.title}}</div>\n  <div>\n    <img src=\"{{auction.imageUri}}\"/>\n  </div>\n  <div class=\"price\">Reserve: {{auction.reservePrice | currency}}</div>\n</div>\n"
 
 /***/ }),
 
@@ -209,9 +217,13 @@ var AuctionListComponent = /** @class */ (function () {
     }
     AuctionListComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.auctionService.LoadAuctions()
+        this.auctionService.LoadAuctions(this.clubId)
             .subscribe(function (auctions) { return _this.Auctions = auctions; });
     };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], AuctionListComponent.prototype, "clubId", void 0);
     AuctionListComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-auction-list',
@@ -227,6 +239,152 @@ var AuctionListComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/club-list/club-list.component.css":
+/*!***************************************************!*\
+  !*** ./src/app/club-list/club-list.component.css ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "h2 {\n    text-align: center;\n    color: white;\n    margin: 10px 30px;\n    padding: 8px;\n    background-color: #333;\n    opacity: 0.9;\n    border-radius: 10px;\n}\n\n.clubContainer {\n    margin: 10px auto;\n    background-color: white;\n    width: 300px;\n    padding: 5px;\n    border-radius: 12px;\n    text-align: center;\n}\n\n.clubContainer .title {\n    font-weight: bold;\n}"
+
+/***/ }),
+
+/***/ "./src/app/club-list/club-list.component.html":
+/*!****************************************************!*\
+  !*** ./src/app/club-list/club-list.component.html ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h2>\n  Our Partners\n</h2>\n\n<div class=\"clubContainer\" *ngFor=\"let club of Clubs\">\n  <div class=\"title\">\n    <a routerLink=\"/club/{{club.clubId}}\">{{club.title}}</a>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/club-list/club-list.component.ts":
+/*!**************************************************!*\
+  !*** ./src/app/club-list/club-list.component.ts ***!
+  \**************************************************/
+/*! exports provided: ClubListComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClubListComponent", function() { return ClubListComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_club_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/club.service */ "./src/app/services/club.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var ClubListComponent = /** @class */ (function () {
+    function ClubListComponent(clubService) {
+        this.clubService = clubService;
+        this.Clubs = [];
+    }
+    ClubListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.clubService.LoadClubs()
+            .subscribe(function (clubs) { return _this.Clubs = clubs; });
+    };
+    ClubListComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-club-list',
+            template: __webpack_require__(/*! ./club-list.component.html */ "./src/app/club-list/club-list.component.html"),
+            styles: [__webpack_require__(/*! ./club-list.component.css */ "./src/app/club-list/club-list.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_club_service__WEBPACK_IMPORTED_MODULE_1__["ClubService"]])
+    ], ClubListComponent);
+    return ClubListComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/club/club.component.css":
+/*!*****************************************!*\
+  !*** ./src/app/club/club.component.css ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".background {\n    background: url('background.jpg') no-repeat center center fixed;\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\nh1 {\n    text-align: center;\n    color: white;\n    margin: 10px auto;\n    padding: 8px;\n}\n\n.auctionList {\n    width: 100%;\n    float: left;\n}"
+
+/***/ }),
+
+/***/ "./src/app/club/club.component.html":
+/*!******************************************!*\
+  !*** ./src/app/club/club.component.html ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"background\"></div>\n\n<h1>\n  {{ title }}\n</h1>\n\n<div class=\"clubList\">\n  <app-auction-list clubId=\"{{clubId}}\"></app-auction-list>\n</div>\n\n"
+
+/***/ }),
+
+/***/ "./src/app/club/club.component.ts":
+/*!****************************************!*\
+  !*** ./src/app/club/club.component.ts ***!
+  \****************************************/
+/*! exports provided: ClubComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClubComponent", function() { return ClubComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_club_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/club.service */ "./src/app/services/club.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var ClubComponent = /** @class */ (function () {
+    function ClubComponent(clubService, route) {
+        var _this = this;
+        this.clubService = clubService;
+        this.route = route;
+        this.title = '';
+        this.clubId = '';
+        this.route.params.subscribe(function (params) {
+            _this.clubId = params.clubId;
+            clubService.LoadClubById(params.clubId).subscribe(function (club) {
+                _this.title = club.title;
+            });
+        });
+    }
+    ClubComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-club',
+            template: __webpack_require__(/*! ./club.component.html */ "./src/app/club/club.component.html"),
+            styles: [__webpack_require__(/*! ./club.component.css */ "./src/app/club/club.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_club_service__WEBPACK_IMPORTED_MODULE_2__["ClubService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
+    ], ClubComponent);
+    return ClubComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/home/home.component.css":
 /*!*****************************************!*\
   !*** ./src/app/home/home.component.css ***!
@@ -234,7 +392,7 @@ var AuctionListComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".background {\n    background: url('background.jpg') no-repeat center center fixed;\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\nh1 {\n    text-align: center;\n    color: white;\n    margin: 10px auto;\n    padding: 8px;\n}\n\n.auctionList {\n    width: 100%;\n    float: left;\n}"
+module.exports = ".background {\n    background: url('background.jpg') no-repeat center center fixed;\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\n#logo {\n    margin: 50px auto;\n    text-align: center;\n}"
 
 /***/ }),
 
@@ -245,7 +403,7 @@ module.exports = ".background {\n    background: url('background.jpg') no-repeat
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background\"></div>\n\n<h1>\n  {{ title }}\n</h1>\n\n<div class=\"auctionList\">\n  <app-auction-list></app-auction-list>\n</div>\n\n"
+module.exports = "<div class=\"background\"></div>\n\n<div id=\"logo\">\n\n  <img src=\"../../assets/images/gg_small_logo.png\"/>\n\n</div>\n\n<app-club-list></app-club-list>"
 
 /***/ }),
 
@@ -266,17 +424,22 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 
 var HomeComponent = /** @class */ (function () {
     function HomeComponent() {
-        this.title = 'Going Gone';
     }
+    HomeComponent.prototype.ngOnInit = function () {
+    };
     HomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'home',
+            selector: 'app-home',
             template: __webpack_require__(/*! ./home.component.html */ "./src/app/home/home.component.html"),
             styles: [__webpack_require__(/*! ./home.component.css */ "./src/app/home/home.component.css")]
-        })
+        }),
+        __metadata("design:paramtypes", [])
     ], HomeComponent);
     return HomeComponent;
 }());
@@ -295,8 +458,10 @@ var HomeComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "routes", function() { return routes; });
-/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _club_club_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./club/club.component */ "./src/app/club/club.component.ts");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+
 
 
 var routes = [
@@ -306,11 +471,14 @@ var routes = [
         children: [
             {
                 path: '',
-                component: _home_home_component__WEBPACK_IMPORTED_MODULE_0__["HomeComponent"]
+                component: _home_home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"]
+            }, {
+                path: 'club/:clubId',
+                component: _club_club_component__WEBPACK_IMPORTED_MODULE_0__["ClubComponent"]
             },
             {
                 path: '**',
-                redirectTo: '/error/notfound',
+                redirectTo: '/',
             }
         ]
     }
@@ -345,11 +513,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var AuctionService = /** @class */ (function () {
     function AuctionService(http) {
         this.http = http;
-        this.host = "http://localhost:3000";
+        this.host = 'http://localhost:3000';
         this.Auctions = [];
     }
-    AuctionService.prototype.LoadAuctions = function () {
-        var url = this.host + "/api/auctions";
+    AuctionService.prototype.LoadAuctions = function (clubId) {
+        var url = this.host + '/api/clubs/' + clubId + '/auctions';
         return this.http.get(url);
     };
     AuctionService = __decorate([
@@ -357,6 +525,54 @@ var AuctionService = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], AuctionService);
     return AuctionService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/club.service.ts":
+/*!******************************************!*\
+  !*** ./src/app/services/club.service.ts ***!
+  \******************************************/
+/*! exports provided: ClubService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClubService", function() { return ClubService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var ClubService = /** @class */ (function () {
+    function ClubService(http) {
+        this.http = http;
+        this.host = 'http://localhost:3000';
+        this.Clubs = [];
+    }
+    ClubService.prototype.LoadClubs = function () {
+        var url = this.host + '/api/clubs';
+        return this.http.get(url);
+    };
+    ClubService.prototype.LoadClubById = function (slug) {
+        var url = this.host + '/api/clubs/' + slug;
+        return this.http.get(url);
+    };
+    ClubService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], ClubService);
+    return ClubService;
 }());
 
 
@@ -423,7 +639,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/daviddevilder/auctions-poc/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/david/auctions-poc/src/main.ts */"./src/main.ts");
 
 
 /***/ })

@@ -1,6 +1,6 @@
 export class Auction {
 
-    constructor(public clubId: number,
+    constructor(public clubId: string,
                 public title: string,
                 public imageUri: string,
                 public providedBy: string,

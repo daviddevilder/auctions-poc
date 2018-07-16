@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose_1 = require("mongoose");
 exports.AuctionSchema = new mongoose_1.Schema({
-    clubId: Number,
+    clubId: String,
     title: String,
     imageUri: String,
     providedBy: String,
@@ -13,5 +13,5 @@ exports.AuctionSchema = new mongoose_1.Schema({
             type: String
         }]
 });
-exports.AuctionModel = mongoose_1.model("Auction", exports.AuctionSchema);
+exports.AuctionModel = mongoose_1.model('Auction', exports.AuctionSchema);
 //# sourceMappingURL=Auction.js.map

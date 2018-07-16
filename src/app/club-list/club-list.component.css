@@ -8,7 +8,7 @@ h2 {
     border-radius: 10px;
 }
 
-.auctionContainer {
+.clubContainer {
     margin: 10px auto;
     background-color: white;
     width: 300px;
@@ -17,14 +17,6 @@ h2 {
     text-align: center;
 }
 
-.auctionContainer .name {
+.clubContainer .title {
     font-weight: bold;
-}
-
-.auctionContainer .price {
-    font-weight: bold;
-}
-
-.auctionContainer img {
-    width: 300px;
 }

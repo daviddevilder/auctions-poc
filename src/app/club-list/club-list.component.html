@@ -1,0 +1,9 @@
+<h2>
+  Our Partners
+</h2>
+
+<div class="clubContainer" *ngFor="let club of Clubs">
+  <div class="title">
+    <a routerLink="/club/{{club.clubId}}">{{club.title}}</a>
+  </div>
+</div>

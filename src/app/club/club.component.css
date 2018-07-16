@@ -9,7 +9,14 @@
     z-index: -1;
 }
 
-#logo {
-    margin: 50px auto;
+h1 {
     text-align: center;
+    color: white;
+    margin: 10px auto;
+    padding: 8px;
+}
+
+.auctionList {
+    width: 100%;
+    float: left;
 }

@@ -1,14 +1,14 @@
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {TestBed} from '@angular/core/testing';
-import {AuctionService} from './auction.service';
+import {ClubService} from './club.service';
 
-describe('AuctionService', () => {
+describe('ClubService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [HttpClientTestingModule],
-            providers: [AuctionService]
+            providers: [ClubService]
         });
-        this.clubService = TestBed.get(AuctionService);
+        this.clubService = TestBed.get(ClubService);
         this.httpMock = TestBed.get(HttpTestingController);
     });
 
@@ -22,7 +22,7 @@ describe('AuctionService', () => {
 
     describe('LoadClubs', () => {
         beforeEach(() => {
-            this.expectedUrl = 'http://localhost:3000/api/clubs';
+            this.expectedUrl = 'http://localhost:3000/api/auctions';
             this.mockResponseBody = {'some': 'thing'};
         });
 

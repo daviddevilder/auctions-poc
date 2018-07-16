@@ -35,19 +35,19 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var Auction_1 = require("../../src/app/schemas/Auction");
-var Auction_2 = require("../../common/models/Auction");
-var AuctionManager;
-(function (AuctionManager) {
-    function GetAuctions() {
+var Club_1 = require("../../common/models/Club");
+var Club_2 = require("../../src/app/schemas/Club");
+var ClubManager;
+(function (ClubManager) {
+    function GetClubs() {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2, new Promise(function (resolve, reject) {
-                        Auction_1.AuctionModel.find({}, function (err, auctions) {
+                        Club_2.ClubModel.find({}, function (err, auctions) {
                             try {
                                 var results_1 = [];
-                                auctions.forEach(function (auction) {
-                                    results_1.push(new Auction_2.Auction(auction.clubId, auction.title, auction.imageUri, auction.providedBy, auction.reservePrice, auction.currentBid, auction.currentBidderId, auction.tags));
+                                auctions.forEach(function (club) {
+                                    results_1.push(new Club_1.Club(club.clubId, club.title));
                                 });
                                 resolve(results_1);
                             }
@@ -59,27 +59,18 @@ var AuctionManager;
             });
         });
     }
-    AuctionManager.GetAuctions = GetAuctions;
-    function GetAuctionsForClub(clubId) {
+    ClubManager.GetClubs = GetClubs;
+    function GetClubById(clubId) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2, new Promise(function (resolve, reject) {
-                        Auction_1.AuctionModel.find({ clubId: clubId }, function (err, auctions) {
-                            try {
-                                var results_2 = [];
-                                auctions.forEach(function (auction) {
-                                    results_2.push(new Auction_2.Auction(auction.clubId, auction.title, auction.imageUri, auction.providedBy, auction.reservePrice, auction.currentBid, auction.currentBidderId, auction.tags));
-                                });
-                                resolve(results_2);
-                            }
-                            catch (error) {
-                                reject(error);
-                            }
+                        Club_2.ClubModel.findOne({ clubId: clubId }, function (err, club) {
+                            resolve(new Club_1.Club(club.clubId, club.title));
                         });
                     })];
             });
         });
     }
-    AuctionManager.GetAuctionsForClub = GetAuctionsForClub;
-})(AuctionManager = exports.AuctionManager || (exports.AuctionManager = {}));
-//# sourceMappingURL=AuctionManager.js.map
+    ClubManager.GetClubById = GetClubById;
+})(ClubManager = exports.ClubManager || (exports.ClubManager = {}));
+//# sourceMappingURL=ClubManager.js.map

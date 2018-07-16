@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {Auction} from "../../../common/models/Auction";
-import {AuctionService} from "../services/auction.service";
+import {Component, Input, OnInit} from '@angular/core';
+import {Auction} from '../../../common/models/Auction';
+import {AuctionService} from '../services/auction.service';
 
 @Component({
     selector: 'app-auction-list',
@@ -8,13 +8,13 @@ import {AuctionService} from "../services/auction.service";
     styleUrls: ['auction-list.component.css']
 })
 export class AuctionListComponent implements OnInit {
-
+    @Input() clubId: string;
     public Auctions: Auction[] = [];
 
     constructor(private auctionService: AuctionService) {}
 
     ngOnInit() {
-        this.auctionService.LoadAuctions()
+        this.auctionService.LoadAuctions(this.clubId)
             .subscribe((auctions: Auction[]) => this.Auctions = auctions);
     }
 

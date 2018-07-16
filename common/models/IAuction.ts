@@ -1,5 +1,5 @@
 export interface IAuction {
-    clubId?: number;
+    clubId?: string;
     title?: string;
     imageUri?: string;
     providedBy?: string;

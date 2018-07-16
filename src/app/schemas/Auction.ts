@@ -1,8 +1,8 @@
-import {Document, Schema, Model, model} from "mongoose";
-import {IAuction} from "../../../common/models/IAuction";
+import {Document, Schema, Model, model} from 'mongoose';
+import {IAuction} from '../../../common/models/IAuction';
 
 export interface IAuctionModel extends IAuction, Document {
-    clubId: number;
+    clubId: string;
     title: string;
     imageUri: string;
     providedBy: string;
@@ -12,8 +12,8 @@ export interface IAuctionModel extends IAuction, Document {
     tags: string[];
 }
 
-export var AuctionSchema: Schema = new Schema({
-    clubId: Number,
+export const AuctionSchema: Schema = new Schema({
+    clubId: String,
     title: String,
     imageUri: String,
     providedBy: String,
@@ -25,4 +25,4 @@ export var AuctionSchema: Schema = new Schema({
     }]
 });
 
-export const AuctionModel: Model<IAuctionModel> = model<IAuctionModel>("Auction", AuctionSchema);
+export const AuctionModel: Model<IAuctionModel> = model<IAuctionModel>('Auction', AuctionSchema);

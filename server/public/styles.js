@@ -539,7 +539,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/daviddevilder/auctions-poc/src/styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! /Users/david/auctions-poc/src/styles.css */"./src/styles.css");
 
 
 /***/ })
