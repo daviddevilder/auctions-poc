@@ -4,6 +4,10 @@
   {{ title }} - All Auction Lots
 </h1>
 
-<div class="clubList">
+<div class="nav">
+  <app-auction-nav clubId="{{clubId}}"></app-auction-nav>
+</div>
+
+<div class="lots">
   <app-lot-list clubId="{{clubId}}"></app-lot-list>
 </div>

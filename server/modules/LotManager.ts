@@ -37,7 +37,7 @@ export namespace LotManager {
         });
     }
 
-    export async function GetLotsForClub(clubId: String): Promise<Lot[]> {
+    export async function GetAllLotsForClub(clubId: String): Promise<Lot[]> {
 
         return new Promise((resolve: (result) => void, reject: (error: Error) => void) => {
             LotModel.find({clubId: clubId}, function (err, lots) {
@@ -50,6 +50,41 @@ export namespace LotManager {
                     });
 
                     resolve(results);
+                } catch (error) {
+                    reject(error);
+                }
+            });
+        });
+    }
+
+    export async function GetLotsForClub(clubId: String, tag: String): Promise<Lot[]> {
+
+        return new Promise((resolve: (result) => void, reject: (error: Error) => void) => {
+            LotModel.find({clubId: clubId, tags: tag}, function (err, lots) {
+                try {
+                    const results: Lot[] = [];
+                    lots.forEach(function (lot) {
+                        results.push(new Lot(lot.clubId, lot.title, lot.imageUri, lot.providedBy,
+                            lot.reservePrice, lot.currentBid, lot.currentBidderId,
+                            lot.tags));
+                    });
+
+                    resolve(results);
+                } catch (error) {
+                    reject(error);
+                }
+            });
+        });
+    }
+
+    export async function GetTagsForClub(clubId: String): Promise<Lot[]> {
+
+        return new Promise((resolve: (result) => void, reject: (error: Error) => void) => {
+            LotModel
+                .find({clubId: clubId})
+                .distinct('tags', function (err, tags) {
+                try {
+                    resolve(tags);
                 } catch (error) {
                     reject(error);
                 }

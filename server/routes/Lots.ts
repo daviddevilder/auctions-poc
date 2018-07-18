@@ -8,3 +8,4 @@ router.get('/', async (request: Request, response: Response) => {
     const result = await LotManager.GetLots();
     response.send(result);
 });
+

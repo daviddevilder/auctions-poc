@@ -68,7 +68,31 @@ router.get('/:clubId/lots', function (request, response) { return __awaiter(_thi
     var result;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4, LotManager_1.LotManager.GetLotsForClub(request.params.clubId)];
+            case 0: return [4, LotManager_1.LotManager.GetAllLotsForClub(request.params.clubId)];
+            case 1:
+                result = _a.sent();
+                response.send(result);
+                return [2];
+        }
+    });
+}); });
+router.get('/:clubId/lots/:tag', function (request, response) { return __awaiter(_this, void 0, void 0, function () {
+    var result;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4, LotManager_1.LotManager.GetLotsForClub(request.params.clubId, request.params.tag)];
+            case 1:
+                result = _a.sent();
+                response.send(result);
+                return [2];
+        }
+    });
+}); });
+router.get('/:clubId/tags', function (request, response) { return __awaiter(_this, void 0, void 0, function () {
+    var result;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4, LotManager_1.LotManager.GetTagsForClub(request.params.clubId)];
             case 1:
                 result = _a.sent();
                 response.send(result);

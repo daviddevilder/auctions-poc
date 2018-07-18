@@ -60,7 +60,7 @@ var LotManager;
         });
     }
     LotManager.GetLots = GetLots;
-    function GetLotsForClub(clubId) {
+    function GetAllLotsForClub(clubId) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2, new Promise(function (resolve, reject) {
@@ -80,6 +80,48 @@ var LotManager;
             });
         });
     }
+    LotManager.GetAllLotsForClub = GetAllLotsForClub;
+    function GetLotsForClub(clubId, tag) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                console.log(tag);
+                return [2, new Promise(function (resolve, reject) {
+                        Lot_1.LotModel.find({ clubId: clubId, tags: tag }, function (err, lots) {
+                            try {
+                                var results_3 = [];
+                                lots.forEach(function (lot) {
+                                    results_3.push(new Lot_2.Lot(lot.clubId, lot.title, lot.imageUri, lot.providedBy, lot.reservePrice, lot.currentBid, lot.currentBidderId, lot.tags));
+                                });
+                                console.log(results_3);
+                                resolve(results_3);
+                            }
+                            catch (error) {
+                                reject(error);
+                            }
+                        });
+                    })];
+            });
+        });
+    }
     LotManager.GetLotsForClub = GetLotsForClub;
+    function GetTagsForClub(clubId) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2, new Promise(function (resolve, reject) {
+                        Lot_1.LotModel
+                            .find({ clubId: clubId })
+                            .distinct('tags', function (err, tags) {
+                            try {
+                                resolve(tags);
+                            }
+                            catch (error) {
+                                reject(error);
+                            }
+                        });
+                    })];
+            });
+        });
+    }
+    LotManager.GetTagsForClub = GetTagsForClub;
 })(LotManager = exports.LotManager || (exports.LotManager = {}));
 //# sourceMappingURL=LotManager.js.map

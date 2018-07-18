@@ -1,0 +1,24 @@
+div.auctionNav {
+    width: 200px;
+    height: 100%;
+    background-color: #333333;
+    color: white;
+    overflow-x: hidden;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    margin: 8px auto;
+}
+
+ul.menuItemList {
+    padding:0;
+    margin:0;
+}
+
+ul.menuItemList li {
+    list-style-type: none;
+    padding: 8px 20px;
+    background-color: #CCC;
+    border: 1px solid;
+    margin-bottom: 1px;
+}

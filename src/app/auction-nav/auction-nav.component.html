@@ -1,0 +1,23 @@
+<div class="auctionNav">
+
+  <ul class="menuItemList">
+
+    <li>
+      <div>
+        <a routerLink="/club/{{clubId}}/lots">
+          All
+        </a>
+      </div>
+    </li>
+
+    <li *ngFor="let tag of tags">
+      <div>
+        <a routerLink="/club/{{clubId}}/lots" [queryParams]="{filter: tag}">
+          {{tag}}
+        </a>
+      </div>
+    </li>
+
+  </ul>
+
+</div>

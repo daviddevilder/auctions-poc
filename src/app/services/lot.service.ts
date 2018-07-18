@@ -6,14 +6,24 @@ import {Lot} from '../../../common/models/Lot';
 @Injectable()
 export class LotService {
 
-  private readonly host: string = 'http://localhost:3000';
-  public Lots: Lot[] = [];
+    private readonly host: string = 'http://localhost:3000';
+    public Lots: Lot[] = [];
 
-  constructor(private http: HttpClient) {
-  }
+    constructor(private http: HttpClient) {
+    }
 
-  public LoadLots(clubId: String): Observable<any> {
-    const url = this.host + '/api/clubs/' + clubId + '/lots';
-    return this.http.get(url);
-  }
+    public LoadTags(clubId: String): Observable<any> {
+        const url = this.host + '/api/clubs/' + clubId + '/tags';
+        return this.http.get(url);
+    }
+
+    public LoadLots(clubId: String): Observable<any> {
+        const url = this.host + '/api/clubs/' + clubId + '/lots';
+        return this.http.get(url);
+    }
+
+    public LoadLotsForTag(clubId: String, tag: String): Observable<any> {
+        const url = this.host + '/api/clubs/' + clubId + '/lots/' + tag;
+        return this.http.get(url);
+    }
 }

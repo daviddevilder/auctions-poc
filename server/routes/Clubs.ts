@@ -16,6 +16,16 @@ router.get('/:clubId', async (request: Request, response: Response) => {
 });
 
 router.get('/:clubId/lots', async (request: Request, response: Response) => {
-    const result = await LotManager.GetLotsForClub(request.params.clubId);
+    const result = await LotManager.GetAllLotsForClub(request.params.clubId);
+    response.send(result);
+});
+
+router.get('/:clubId/lots/:tag', async (request: Request, response: Response) => {
+    const result = await LotManager.GetLotsForClub(request.params.clubId, request.params.tag);
+    response.send(result);
+});
+
+router.get('/:clubId/tags', async (request: Request, response: Response) => {
+    const result = await LotManager.GetTagsForClub(request.params.clubId);
     response.send(result);
 });
