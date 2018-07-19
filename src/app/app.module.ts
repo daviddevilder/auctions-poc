@@ -15,6 +15,7 @@ import {LotService} from './services/lot.service';
 import {HeaderComponent} from './header/header.component';
 import {ClubLotsComponent} from './club-lots/club-lots.component';
 import {AuctionNavComponent} from './auction-nav/auction-nav.component';
+import {LotDetailsComponent} from './lot-details/lot-details.component';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import {AuctionNavComponent} from './auction-nav/auction-nav.component';
         ClubListComponent,
         HomeComponent,
         ClubComponent,
+        LotDetailsComponent,
         LotListComponent,
         ClubLotsComponent,
         AuctionNavComponent

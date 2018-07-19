@@ -47,7 +47,7 @@ var LotManager;
                             try {
                                 var results_1 = [];
                                 lots.forEach(function (lot) {
-                                    results_1.push(new Lot_2.Lot(lot.clubId, lot.title, lot.imageUri, lot.providedBy, lot.reservePrice, lot.currentBid, lot.currentBidderId, lot.tags));
+                                    results_1.push(new Lot_2.Lot(lot.lotId, lot.clubId, lot.title, lot.imageUri, lot.providedBy, lot.reservePrice, lot.currentBid, lot.currentBidderId, lot.tags));
                                 });
                                 resolve(results_1);
                             }
@@ -68,7 +68,7 @@ var LotManager;
                             try {
                                 var results_2 = [];
                                 lots.forEach(function (lot) {
-                                    results_2.push(new Lot_2.Lot(lot.clubId, lot.title, lot.imageUri, lot.providedBy, lot.reservePrice, lot.currentBid, lot.currentBidderId, lot.tags));
+                                    results_2.push(new Lot_2.Lot(lot.lotId, lot.clubId, lot.title, lot.imageUri, lot.providedBy, lot.reservePrice, lot.currentBid, lot.currentBidderId, lot.tags));
                                 });
                                 resolve(results_2);
                             }
@@ -84,15 +84,13 @@ var LotManager;
     function GetLotsForClub(clubId, tag) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                console.log(tag);
                 return [2, new Promise(function (resolve, reject) {
                         Lot_1.LotModel.find({ clubId: clubId, tags: tag }, function (err, lots) {
                             try {
                                 var results_3 = [];
                                 lots.forEach(function (lot) {
-                                    results_3.push(new Lot_2.Lot(lot.clubId, lot.title, lot.imageUri, lot.providedBy, lot.reservePrice, lot.currentBid, lot.currentBidderId, lot.tags));
+                                    results_3.push(new Lot_2.Lot(lot.lotId, lot.clubId, lot.title, lot.imageUri, lot.providedBy, lot.reservePrice, lot.currentBid, lot.currentBidderId, lot.tags));
                                 });
-                                console.log(results_3);
                                 resolve(results_3);
                             }
                             catch (error) {
@@ -123,5 +121,22 @@ var LotManager;
         });
     }
     LotManager.GetTagsForClub = GetTagsForClub;
+    function GetLotById(lotId) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2, new Promise(function (resolve, reject) {
+                        Lot_1.LotModel.findOne({ lotId: lotId }, function (err, lot) {
+                            try {
+                                resolve(new Lot_2.Lot(lot.lotId, lot.clubId, lot.title, lot.imageUri, lot.providedBy, lot.reservePrice, lot.currentBid, lot.currentBidderId, lot.tags));
+                            }
+                            catch (error) {
+                                reject(error);
+                            }
+                        });
+                    })];
+            });
+        });
+    }
+    LotManager.GetLotById = GetLotById;
 })(LotManager = exports.LotManager || (exports.LotManager = {}));
 //# sourceMappingURL=LotManager.js.map

@@ -2,6 +2,7 @@ import {Document, Schema, Model, model} from 'mongoose';
 import {ILot} from '../../../common/models/ILot';
 
 export interface ILotModel extends ILot, Document {
+    lotId: string;
     clubId: string;
     title: string;
     imageUri: string;
@@ -13,6 +14,7 @@ export interface ILotModel extends ILot, Document {
 }
 
 export const LotSchema: Schema = new Schema({
+    lotId: String,
     clubId: String,
     title: String,
     imageUri: String,

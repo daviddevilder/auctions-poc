@@ -1,7 +1,22 @@
-<div class="lotContainer" *ngFor="let lot of Lots">
-  <div class="name">{{lot.title}}</div>
-  <div>
-    <img src="{{lot.imageUri}}"/>
-  </div>
-  <div class="price">Reserve: {{lot.reservePrice | currency}}</div>
+<div class="content">
+    <div class="float_center">
+        <div class="lotContainer child" *ngFor="let lot of Lots">
+
+            <div class="name">{{lot.title}}</div>
+
+            <div>
+                <img src="{{lot.imageUri}}"/>
+            </div>
+
+            <div class="price">Reserve: {{lot.reservePrice | currency}}</div>
+
+            <div class="lotsButtonContainer">
+                <button mat-raised-button color="primary" class="viewButton"
+                        routerLink="/club/{{clubId}}/lot/{{lot.lotId}}">
+                    View
+                </button>
+            </div>
+
+        </div>
+    </div>
 </div>

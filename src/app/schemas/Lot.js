@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose_1 = require("mongoose");
 exports.LotSchema = new mongoose_1.Schema({
+    lotId: String,
     clubId: String,
     title: String,
     imageUri: String,

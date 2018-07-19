@@ -1,5 +1,56 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"],{
 
+/***/ "./common/models/Club.ts":
+/*!*******************************!*\
+  !*** ./common/models/Club.ts ***!
+  \*******************************/
+/*! exports provided: Club */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Club", function() { return Club; });
+var Club = /** @class */ (function () {
+    function Club(clubId, title) {
+        this.clubId = clubId;
+        this.title = title;
+    }
+    return Club;
+}());
+
+
+
+/***/ }),
+
+/***/ "./common/models/Lot.ts":
+/*!******************************!*\
+  !*** ./common/models/Lot.ts ***!
+  \******************************/
+/*! exports provided: Lot */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Lot", function() { return Lot; });
+var Lot = /** @class */ (function () {
+    function Lot(lotId, clubId, title, imageUri, providedBy, reservePrice, currentBid, currentBidderId, tags) {
+        this.lotId = lotId;
+        this.clubId = clubId;
+        this.title = title;
+        this.imageUri = imageUri;
+        this.providedBy = providedBy;
+        this.reservePrice = reservePrice;
+        this.currentBid = currentBid;
+        this.currentBidderId = currentBidderId;
+        this.tags = tags;
+    }
+    return Lot;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/$$_lazy_route_resource lazy recursive":
 /*!**********************************************************!*\
   !*** ./src/$$_lazy_route_resource lazy namespace object ***!
@@ -121,12 +172,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
 /* harmony import */ var _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./club-lots/club-lots.component */ "./src/app/club-lots/club-lots.component.ts");
 /* harmony import */ var _auction_nav_auction_nav_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./auction-nav/auction-nav.component */ "./src/app/auction-nav/auction-nav.component.ts");
+/* harmony import */ var _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./lot-details/lot-details.component */ "./src/app/lot-details/lot-details.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -154,6 +207,7 @@ var AppModule = /** @class */ (function () {
                 _club_list_club_list_component__WEBPACK_IMPORTED_MODULE_8__["ClubListComponent"],
                 _home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"],
                 _club_club_component__WEBPACK_IMPORTED_MODULE_10__["ClubComponent"],
+                _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_16__["LotDetailsComponent"],
                 _lot_list_lot_list_component__WEBPACK_IMPORTED_MODULE_11__["LotListComponent"],
                 _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_14__["ClubLotsComponent"],
                 _auction_nav_auction_nav_component__WEBPACK_IMPORTED_MODULE_15__["AuctionNavComponent"]
@@ -603,6 +657,95 @@ var HomeComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/lot-details/lot-details.component.css":
+/*!*******************************************************!*\
+  !*** ./src/app/lot-details/lot-details.component.css ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".background {\n    background: url('background.jpg') no-repeat center center fixed;\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\n.content {\n    color: white;\n    text-align: center;\n}\n\nh1 {\n    margin: 10px auto;\n    padding: 8px;\n}"
+
+/***/ }),
+
+/***/ "./src/app/lot-details/lot-details.component.html":
+/*!********************************************************!*\
+  !*** ./src/app/lot-details/lot-details.component.html ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"background\"></div>\n\n<div class=\"content\">\n  <h1>\n    {{ lot.title }}\n  </h1>\n\n  <h2>\n    provided by {{lot.providedBy}}\n  </h2>\n\n  <div>\n    <div>\n      Reserve: £{{lot.reservePrice}}\n    </div>\n    <div>\n      Estimate: TODO\n    </div>\n  </div>\n\n  <div>\n    <label>My bid (minimum £TBD)*</label>\n    <input type=\"number\" placeholder=\"£TBD\"/>\n    <button>Place Bid</button>\n  </div>\n\n  <div>\n    <img src=\"{{lot.imageUri}}\"/>\n  </div>\n\n  <div>\n    Details TBC\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/lot-details/lot-details.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/lot-details/lot-details.component.ts ***!
+  \******************************************************/
+/*! exports provided: LotDetailsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LotDetailsComponent", function() { return LotDetailsComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_club_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/club.service */ "./src/app/services/club.service.ts");
+/* harmony import */ var _common_models_Club__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/models/Club */ "./common/models/Club.ts");
+/* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/lot.service */ "./src/app/services/lot.service.ts");
+/* harmony import */ var _common_models_Lot__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../common/models/Lot */ "./common/models/Lot.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var LotDetailsComponent = /** @class */ (function () {
+    function LotDetailsComponent(clubService, lotService, route) {
+        var _this = this;
+        this.clubService = clubService;
+        this.lotService = lotService;
+        this.route = route;
+        this.lotId = '';
+        this.clubId = '';
+        this.lot = new _common_models_Lot__WEBPACK_IMPORTED_MODULE_5__["Lot"]('', '', '', '', '', 0, 0, 0, []);
+        this.club = new _common_models_Club__WEBPACK_IMPORTED_MODULE_3__["Club"]('', '');
+        this.route.params.subscribe(function (params) {
+            _this.clubId = params.clubId;
+            _this.lotId = params.lotId;
+            lotService.LoadLot(params.lotId).subscribe(function (lot) {
+                _this.lot = lot;
+            });
+            clubService.LoadClubById(params.clubId).subscribe(function (club) {
+                _this.club = club;
+            });
+        });
+    }
+    LotDetailsComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-lot-details',
+            template: __webpack_require__(/*! ./lot-details.component.html */ "./src/app/lot-details/lot-details.component.html"),
+            styles: [__webpack_require__(/*! ./lot-details.component.css */ "./src/app/lot-details/lot-details.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_club_service__WEBPACK_IMPORTED_MODULE_2__["ClubService"], _services_lot_service__WEBPACK_IMPORTED_MODULE_4__["LotService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
+    ], LotDetailsComponent);
+    return LotDetailsComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/lot-list/lot-list.component.css":
 /*!*************************************************!*\
   !*** ./src/app/lot-list/lot-list.component.css ***!
@@ -610,7 +753,7 @@ var HomeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".lotContainer {\n    margin: 10px auto;\n    background-color: white;\n    width: 300px;\n    padding: 5px;\n    border-radius: 12px;\n    text-align: center;\n}\n\n.lotContainer .name {\n    font-weight: bold;\n}\n\n.lotContainer .price {\n    font-weight: bold;\n}\n\n.lotContainer img {\n    width: 300px;\n}"
+module.exports = ".lotContainer {\n    background-color: white;\n    padding: 5px;\n    border-radius: 12px;\n    text-align: center;\n    float: left;\n    height: 400px;\n    width: 300px;\n    margin: 10px 20px;\n}\n\n.lotContainer .name {\n    font-weight: bold;\n    margin: 10px auto;\n}\n\n.lotContainer .price {\n    font-weight: bold;\n    margin: 10px auto;\n}\n\n.lotContainer img {\n    width: 300px;\n}\n\n.viewButtonContainer {\n    margin: 10px auto;\n    text-align: center;\n}\n\n.viewButton {\n    color: white;\n    font-size: 20px;\n}"
 
 /***/ }),
 
@@ -621,7 +764,7 @@ module.exports = ".lotContainer {\n    margin: 10px auto;\n    background-color:
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"lotContainer\" *ngFor=\"let lot of Lots\">\n  <div class=\"name\">{{lot.title}}</div>\n  <div>\n    <img src=\"{{lot.imageUri}}\"/>\n  </div>\n  <div class=\"price\">Reserve: {{lot.reservePrice | currency}}</div>\n</div>"
+module.exports = "<div class=\"content\">\n    <div class=\"float_center\">\n        <div class=\"lotContainer child\" *ngFor=\"let lot of Lots\">\n\n            <div class=\"name\">{{lot.title}}</div>\n\n            <div>\n                <img src=\"{{lot.imageUri}}\"/>\n            </div>\n\n            <div class=\"price\">Reserve: {{lot.reservePrice | currency}}</div>\n\n            <div class=\"lotsButtonContainer\">\n                <button mat-raised-button color=\"primary\" class=\"viewButton\"\n                        routerLink=\"/club/{{clubId}}/lot/{{lot.lotId}}\">\n                    View\n                </button>\n            </div>\n\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -739,6 +882,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _club_club_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./club/club.component */ "./src/app/club/club.component.ts");
 /* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
 /* harmony import */ var _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./club-lots/club-lots.component */ "./src/app/club-lots/club-lots.component.ts");
+/* harmony import */ var _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lot-details/lot-details.component */ "./src/app/lot-details/lot-details.component.ts");
+
 
 
 
@@ -747,6 +892,7 @@ var routes = [
     { path: 'club/:clubId', component: _club_club_component__WEBPACK_IMPORTED_MODULE_0__["ClubComponent"] },
     { path: 'club/:clubId/lots', component: _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_2__["ClubLotsComponent"] },
     { path: 'club/:clubId/lots/:activeTag', component: _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_2__["ClubLotsComponent"] },
+    { path: 'club/:clubId/lot/:lotId', component: _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_3__["LotDetailsComponent"] },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: '**', component: _home_home_component__WEBPACK_IMPORTED_MODULE_1__["HomeComponent"] }
 ];
@@ -840,6 +986,10 @@ var LotService = /** @class */ (function () {
     };
     LotService.prototype.LoadLotsForTag = function (clubId, tag) {
         var url = this.host + '/api/clubs/' + clubId + '/lots/' + tag;
+        return this.http.get(url);
+    };
+    LotService.prototype.LoadLot = function (lotId) {
+        var url = this.host + '/api/lots/' + lotId;
         return this.http.get(url);
     };
     LotService = __decorate([

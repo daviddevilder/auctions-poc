@@ -26,4 +26,9 @@ export class LotService {
         const url = this.host + '/api/clubs/' + clubId + '/lots/' + tag;
         return this.http.get(url);
     }
+
+    public LoadLot(lotId: String): Observable<any> {
+        const url = this.host + '/api/lots/' + lotId;
+        return this.http.get(url);
+    }
 }

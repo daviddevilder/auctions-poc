@@ -1,20 +1,34 @@
 .lotContainer {
-    margin: 10px auto;
     background-color: white;
-    width: 300px;
     padding: 5px;
     border-radius: 12px;
     text-align: center;
+    float: left;
+    height: 400px;
+    width: 300px;
+    margin: 10px 20px;
 }
 
 .lotContainer .name {
     font-weight: bold;
+    margin: 10px auto;
 }
 
 .lotContainer .price {
     font-weight: bold;
+    margin: 10px auto;
 }
 
 .lotContainer img {
     width: 300px;
+}
+
+.viewButtonContainer {
+    margin: 10px auto;
+    text-align: center;
+}
+
+.viewButton {
+    color: white;
+    font-size: 20px;
 }

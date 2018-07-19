@@ -1,4 +1,5 @@
 export interface ILot {
+    lotId?: string;
     clubId?: string;
     title?: string;
     imageUri?: string;
