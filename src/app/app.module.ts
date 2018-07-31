@@ -16,6 +16,8 @@ import {HeaderComponent} from './header/header.component';
 import {ClubLotsComponent} from './club-lots/club-lots.component';
 import {AuctionNavComponent} from './auction-nav/auction-nav.component';
 import {LotDetailsComponent} from './lot-details/lot-details.component';
+import {BidDialogComponent} from './bid-dialog/bid-dialog.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -27,11 +29,15 @@ import {LotDetailsComponent} from './lot-details/lot-details.component';
         LotDetailsComponent,
         LotListComponent,
         ClubLotsComponent,
-        AuctionNavComponent
+        AuctionNavComponent,
+        BidDialogComponent
     ],
+    entryComponents: [BidDialogComponent],
     imports: [
         BrowserModule,
         HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
         BrowserAnimationsModule,
         CustomMaterialModule,
         AppRoutingModule

@@ -1,15 +1,41 @@
 <div class="background"></div>
 
-<h1>
-  {{ title }}
-</h1>
+<div class="headerSection">
+    <div class="clubLogo">
+        <img src="{{club.logoUrl}}"/>
+    </div>
+
+    <h1>
+        {{ title }}
+    </h1>
+
+    <h2>
+        Player Sponsorship Sealed Bid Auction
+    </h2>
+</div>
 
 <div class="lotList">
-  <app-lot-list clubId="{{clubId}}"></app-lot-list>
+    <app-lot-list clubId="{{clubId}}"></app-lot-list>
 </div>
 
 <div class="lotsButtonContainer">
-  <button mat-raised-button color="primary" class="lotsButton" routerLink="/club/{{clubId}}/lots">
-    View all auction items
-  </button>
+    <button mat-raised-button color="primary" class="lotsButton" routerLink="/club/{{clubId}}/lots">
+        View all auction items
+    </button>
+</div>
+
+<div class="clubDetailsContainer">
+    <div class="clubDetailsCard">
+        <div class="contactContainer">
+            <label>Contact</label>
+            <div>{{club.contactEmail}}</div>
+        </div>
+
+        <div class="websiteContainer">
+            <label>Website</label>
+            <a href="{{club.websiteUrl}}" target="_blank">
+                {{club.websiteUrl}}
+            </a>
+        </div>
+    </div>
 </div>

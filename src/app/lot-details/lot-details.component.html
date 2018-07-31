@@ -1,34 +1,41 @@
 <div class="background"></div>
 
 <div class="content">
-  <h1>
-    {{ lot.title }}
-  </h1>
+    <h1>
+        {{ lot.title }}
+    </h1>
 
-  <h2>
-    provided by {{lot.providedBy}}
-  </h2>
+    <h2>
+        provided by {{lot.providedBy}}
+    </h2>
 
-  <div>
-    <div>
-      Reserve: £{{lot.reservePrice}}
+    <div class="lotBiddingContainer">
+        <div class="bidDetailsContainer">
+            <div>
+                <div>
+                    Reserve: £{{lot.reservePrice}}
+                </div>
+                <div>
+                    Estimate: £{{lot.estimate}}
+                </div>
+            </div>
+        </div>
+
+        <div class="bidDetailsContainer">
+            <div>
+                <label>My bid (minimum £{{lot.reservePrice}})*</label>
+                <input [(ngModel)]="amount" type="number" placeholder="{{lot.reservePrice}}"/>
+                <button mat-raised-button color="primary" class="bidButton"
+                        (click)="openBidPopup()">
+                    Place Bid
+                </button>
+            </div>
+        </div>
     </div>
-    <div>
-      Estimate: TODO
+
+    <div class="lotImageContainer">
+        <img src="{{lot.imageUri}}"/>
     </div>
-  </div>
 
-  <div>
-    <label>My bid (minimum £TBD)*</label>
-    <input type="number" placeholder="£TBD"/>
-    <button>Place Bid</button>
-  </div>
-
-  <div>
-    <img src="{{lot.imageUri}}"/>
-  </div>
-
-  <div>
-    Details TBC
-  </div>
+    <div class="lotDescriptionContainer" [innerHTML]="lot.description"></div>
 </div>

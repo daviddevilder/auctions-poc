@@ -9,14 +9,22 @@ h2 {
 }
 
 .clubContainer {
-    margin: 10px auto;
+    margin: 10px 30px;
     background-color: white;
-    width: 300px;
+    width: 150px;
     padding: 5px;
     border-radius: 12px;
     text-align: center;
+    float: left;
 }
 
 .clubContainer .title {
     font-weight: bold;
+}
+.clubContainer .title a {
+    display: block;
+}
+
+.clubContainer .clubLogo {
+    height: 70px;
 }

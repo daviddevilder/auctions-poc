@@ -1,5 +1,5 @@
 .background {
-    background: url('../../assets/images/background.jpg') no-repeat center center fixed;
+    background-color: rgb(238, 238, 238);
     background-size: cover;
     position: fixed;
     top: 0;
@@ -10,11 +10,38 @@
 }
 
 .content {
-    color: white;
+    color: black;
     text-align: center;
 }
 
 h1 {
     margin: 10px auto;
     padding: 8px;
+}
+
+.lotBiddingContainer {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.bidDetailsContainer {
+    background: white;
+    color: black;
+    display: inline-grid;
+    margin: 10px;
+    padding: 10px;
+    width: 360px;
+    height: 100px;
+}
+
+.lotImageContainer {
+    display: inline-block;
+}
+.lotImageContainer img {
+    width: 400px;
+}
+
+.lotDescriptionContainer {
+    width: 400px;
+    display: inline-block;
 }

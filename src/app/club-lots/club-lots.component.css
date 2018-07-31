@@ -1,5 +1,5 @@
 .background {
-    background: url('../../assets/images/background.jpg') no-repeat center center fixed;
+    background-color: rgb(238, 238, 238);
     background-size: cover;
     position: fixed;
     top: 0;

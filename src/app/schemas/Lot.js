@@ -5,13 +5,18 @@ exports.LotSchema = new mongoose_1.Schema({
     lotId: String,
     clubId: String,
     title: String,
+    description: String,
     imageUri: String,
     providedBy: String,
     reservePrice: Number,
-    currentBid: Number,
-    currentBidderId: Number,
-    tags: [{
-            type: String
+    estimate: Number,
+    tags: [String],
+    orderNumber: Number,
+    isFeatured: Number,
+    bids: [{
+            createdAt: String,
+            bidderId: String,
+            value: Number
         }]
 });
 exports.LotModel = mongoose_1.model('Lot', exports.LotSchema);

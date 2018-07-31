@@ -12,11 +12,14 @@ export class ClubComponent {
     public title: String = '';
     public clubId: String = '';
 
+    public club: Club = new Club('', '', '', '', '', '');
+
     constructor(private clubService: ClubService, private route: ActivatedRoute) {
         this.route.params.subscribe( params => {
             this.clubId = params.clubId;
             clubService.LoadClubById(params.clubId).subscribe((club: Club) => {
                 this.title = club.title;
+                this.club = club;
             });
         });
     }

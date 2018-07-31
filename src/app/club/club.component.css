@@ -1,5 +1,5 @@
 .background {
-    background: url('../../assets/images/background.jpg') no-repeat center center fixed;
+    background-color: rgb(238, 238, 238);
     background-size: cover;
     position: fixed;
     top: 0;
@@ -12,8 +12,29 @@
 h1 {
     text-align: center;
     color: white;
-    margin: 10px auto;
-    padding: 8px;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+h2 {
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.headerSection {
+    height: 300px;
+    background-color: rgb(0, 43, 136);
+}
+
+.clubLogo {
+    height: 160px;
+    text-align: center;
+    padding-top: 20px;
+}
+.clubLogo img {
+    height: 160px;
 }
 
 .lotList {
@@ -28,4 +49,28 @@ h1 {
 
 .lotsButton {
     color: white;
+}
+
+.clubDetailsContainer {
+    margin: 0 auto;
+    width: 400px;
+}
+
+.clubDetailsCard {
+    background: white;
+    color: black;
+    display: inline-grid;
+    margin: 10px;
+    padding: 10px;
+    width: 360px;
+    height: 100px;
+    text-align: center;
+}
+
+.contactContainer {
+
+}
+
+.websiteContainer {
+
 }

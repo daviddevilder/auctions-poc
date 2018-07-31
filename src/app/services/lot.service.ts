@@ -31,4 +31,13 @@ export class LotService {
         const url = this.host + '/api/lots/' + lotId;
         return this.http.get(url);
     }
+
+    public PlaceBid(lotId: String, bidderId: String, amount: Number): Observable<any> {
+        const url = this.host + '/api/lots/' + lotId + '/bid';
+        const body = {
+            bidderId: bidderId,
+            value: amount
+        };
+        return this.http.post(url, body);
+    }
 }

@@ -5,25 +5,33 @@ export interface ILotModel extends ILot, Document {
     lotId: string;
     clubId: string;
     title: string;
+    description: string;
     imageUri: string;
     providedBy: string;
     reservePrice: number;
-    currentBid: number;
-    currentBidderId: number;
+    estimate: number;
     tags: string[];
+    orderNumber: number;
+    isFeatured: number;
+    bids: object[];
 }
 
 export const LotSchema: Schema = new Schema({
     lotId: String,
     clubId: String,
     title: String,
+    description: String,
     imageUri: String,
     providedBy: String,
     reservePrice: Number,
-    currentBid: Number,
-    currentBidderId: Number,
-    tags: [{
-            type: String
+    estimate: Number,
+    tags: [String],
+    orderNumber: Number,
+    isFeatured: Number,
+    bids: [{
+        createdAt: String,
+        bidderId: String,
+        value: Number
     }]
 });
 

@@ -6,9 +6,12 @@ export namespace ClubManager {
     export async function GetClubs(): Promise<Club[]> {
 
         // ClubModel.create({
-        //     clubId: 123,
+        //     clubId: 'buryfc',
         //     title: 'Bury FC',
-        //     slug: 'buryfc'
+        //     logoUrl: '/assets/clubs/buryfc.png',
+        //     websiteUrl: 'http://www.buryfc.com',
+        //     contactEmail: 'matt@buryfc.com',
+        //     contactPhone: '07708138955'
         // }, function (err) {
         //     if (err) {
         //         console.log(err);
@@ -16,9 +19,12 @@ export namespace ClubManager {
         // });
         //
         // ClubModel.create({
-        //     clubId: 124,
+        //     clubId: 'chelseafc',
         //     title: 'Chelsea FC',
-        //     slug: 'chelseafc'
+        //     logoUrl: '/assets/clubs/chelseafc.png',
+        //     websiteUrl: 'http://www.chelseafc.com',
+        //     contactEmail: 'matt@chelseafc.com',
+        //     contactPhone: '077842951039'
         // }, function (err) {
         //     if (err) {
         //         console.log(err);
@@ -30,7 +36,8 @@ export namespace ClubManager {
                 try {
                     const results: Club[] = [];
                     clubs.forEach(function (club) {
-                        results.push(new Club(club.clubId, club.title));
+                        results.push(
+                            new Club(club.clubId, club.title, club.logoUrl, club.websiteUrl, club.contactEmail, club.contactPhone));
                     });
 
                     resolve(results);
@@ -44,7 +51,8 @@ export namespace ClubManager {
     export async function GetClubById(clubId: String): Promise<Club> {
         return new Promise((resolve: (result) => void, reject: (error: Error) => void) => {
             ClubModel.findOne({clubId: clubId}, function (err, club: Club) {
-                resolve(new Club(club.clubId, club.title));
+                resolve(
+                    new Club(club.clubId, club.title, club.logoUrl, club.websiteUrl, club.contactEmail, club.contactPhone));
             });
         });
     }

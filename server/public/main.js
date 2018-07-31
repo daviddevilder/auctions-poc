@@ -11,9 +11,13 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Club", function() { return Club; });
 var Club = /** @class */ (function () {
-    function Club(clubId, title) {
+    function Club(clubId, title, logoUrl, websiteUrl, contactEmail, contactPhone) {
         this.clubId = clubId;
         this.title = title;
+        this.logoUrl = logoUrl;
+        this.websiteUrl = websiteUrl;
+        this.contactEmail = contactEmail;
+        this.contactPhone = contactPhone;
     }
     return Club;
 }());
@@ -33,16 +37,19 @@ var Club = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Lot", function() { return Lot; });
 var Lot = /** @class */ (function () {
-    function Lot(lotId, clubId, title, imageUri, providedBy, reservePrice, currentBid, currentBidderId, tags) {
+    function Lot(lotId, clubId, title, description, imageUri, providedBy, reservePrice, estimate, tags, orderNumbder, isFeatured, bids) {
         this.lotId = lotId;
         this.clubId = clubId;
         this.title = title;
+        this.description = description;
         this.imageUri = imageUri;
         this.providedBy = providedBy;
         this.reservePrice = reservePrice;
-        this.currentBid = currentBid;
-        this.currentBidderId = currentBidderId;
+        this.estimate = estimate;
         this.tags = tags;
+        this.orderNumbder = orderNumbder;
+        this.isFeatured = isFeatured;
+        this.bids = bids;
     }
     return Lot;
 }());
@@ -173,12 +180,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./club-lots/club-lots.component */ "./src/app/club-lots/club-lots.component.ts");
 /* harmony import */ var _auction_nav_auction_nav_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./auction-nav/auction-nav.component */ "./src/app/auction-nav/auction-nav.component.ts");
 /* harmony import */ var _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./lot-details/lot-details.component */ "./src/app/lot-details/lot-details.component.ts");
+/* harmony import */ var _bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./bid-dialog/bid-dialog.component */ "./src/app/bid-dialog/bid-dialog.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -210,11 +221,15 @@ var AppModule = /** @class */ (function () {
                 _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_16__["LotDetailsComponent"],
                 _lot_list_lot_list_component__WEBPACK_IMPORTED_MODULE_11__["LotListComponent"],
                 _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_14__["ClubLotsComponent"],
-                _auction_nav_auction_nav_component__WEBPACK_IMPORTED_MODULE_15__["AuctionNavComponent"]
+                _auction_nav_auction_nav_component__WEBPACK_IMPORTED_MODULE_15__["AuctionNavComponent"],
+                _bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_17__["BidDialogComponent"]
             ],
+            entryComponents: [_bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_17__["BidDialogComponent"]],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_18__["FormsModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_18__["ReactiveFormsModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__["BrowserAnimationsModule"],
                 _material_module__WEBPACK_IMPORTED_MODULE_3__["CustomMaterialModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"]
@@ -305,6 +320,88 @@ var AuctionNavComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/bid-dialog/bid-dialog.component.css":
+/*!*****************************************************!*\
+  !*** ./src/app/bid-dialog/bid-dialog.component.css ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/bid-dialog/bid-dialog.component.html":
+/*!******************************************************!*\
+  !*** ./src/app/bid-dialog/bid-dialog.component.html ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n    <h2 mat-dialog-title>Confirm your bid</h2>\n    <hr>\n\n    <form #bidForm=\"ngForm\">\n        <mat-dialog-content>\n            In order to confirm your bid, please enter your details below.\n            <br>\n            <br>\n\n            <div class=\"form-group\">\n                <label for=\"email\">Email Address*</label>\n                <input type=\"email\" class=\"form-control\" [(ngModel)]=\"emailAddress\" id=\"email\" name=\"email\" #email=\"ngModel\" required/>\n            </div>\n\n            <div *ngIf=\"email.invalid && (email.dirty || email.touched)\">\n                <div *ngIf=\"email.errors.required\">\n                    Email Address is required\n                </div>\n            </div>\n\n            <div class=\"form-group\">\n                <label for=\"amount\">My Bid</label>\n                <input type=\"text\" class=\"form-control\" id=\"amount\" value=\"£{{data.amount}}\" readonly>\n            </div>\n        </mat-dialog-content>\n        <hr>\n        <mat-dialog-actions>\n            <button mat-raised-button (click)=\"onCloseCancel()\">CANCEL</button>&nbsp;\n            <button mat-raised-button color=\"primary\" type=\"submit\" (click)=\"onCloseConfirm()\" [disabled]=\"!bidForm.valid\">CONFIRM BID</button>\n        </mat-dialog-actions>\n    </form>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/bid-dialog/bid-dialog.component.ts":
+/*!****************************************************!*\
+  !*** ./src/app/bid-dialog/bid-dialog.component.ts ***!
+  \****************************************************/
+/*! exports provided: BidDialogComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BidDialogComponent", function() { return BidDialogComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/lot.service */ "./src/app/services/lot.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+
+
+
+var BidDialogComponent = /** @class */ (function () {
+    function BidDialogComponent(thisDialogRef, data, lotService) {
+        this.thisDialogRef = thisDialogRef;
+        this.data = data;
+        this.lotService = lotService;
+    }
+    BidDialogComponent.prototype.ngOnInit = function () {
+    };
+    BidDialogComponent.prototype.onCloseConfirm = function () {
+        this.lotService.PlaceBid(this.data.lotId, this.emailAddress, this.data.amount);
+        this.thisDialogRef.close(true);
+    };
+    BidDialogComponent.prototype.onCloseCancel = function () {
+        this.thisDialogRef.close(false);
+    };
+    BidDialogComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-bid-dialog',
+            template: __webpack_require__(/*! ./bid-dialog.component.html */ "./src/app/bid-dialog/bid-dialog.component.html"),
+            styles: [__webpack_require__(/*! ./bid-dialog.component.css */ "./src/app/bid-dialog/bid-dialog.component.css")]
+        }),
+        __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MAT_DIALOG_DATA"])),
+        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"], Object, _services_lot_service__WEBPACK_IMPORTED_MODULE_2__["LotService"]])
+    ], BidDialogComponent);
+    return BidDialogComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/club-list/club-list.component.css":
 /*!***************************************************!*\
   !*** ./src/app/club-list/club-list.component.css ***!
@@ -312,7 +409,7 @@ var AuctionNavComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "h2 {\n    text-align: center;\n    color: white;\n    margin: 10px 30px;\n    padding: 8px;\n    background-color: #333;\n    opacity: 0.9;\n    border-radius: 10px;\n}\n\n.clubContainer {\n    margin: 10px auto;\n    background-color: white;\n    width: 300px;\n    padding: 5px;\n    border-radius: 12px;\n    text-align: center;\n}\n\n.clubContainer .title {\n    font-weight: bold;\n}"
+module.exports = "h2 {\n    text-align: center;\n    color: white;\n    margin: 10px 30px;\n    padding: 8px;\n    background-color: #333;\n    opacity: 0.9;\n    border-radius: 10px;\n}\n\n.clubContainer {\n    margin: 10px 30px;\n    background-color: white;\n    width: 150px;\n    padding: 5px;\n    border-radius: 12px;\n    text-align: center;\n    float: left;\n}\n\n.clubContainer .title {\n    font-weight: bold;\n}\n\n.clubContainer .title a {\n    display: block;\n}\n\n.clubContainer .clubLogo {\n    height: 70px;\n}"
 
 /***/ }),
 
@@ -323,7 +420,7 @@ module.exports = "h2 {\n    text-align: center;\n    color: white;\n    margin: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>\n  Our Partners\n</h2>\n\n<div class=\"clubContainer\" *ngFor=\"let club of Clubs\">\n  <div class=\"title\">\n    <a routerLink=\"/club/{{club.clubId}}\">{{club.title}}</a>\n  </div>\n</div>\n"
+module.exports = "<h2>\n  Our Partners\n</h2>\n\n<div class=\"clubContainer\" *ngFor=\"let club of Clubs\">\n  <img class=\"clubLogo\" src=\"{{club.logoUrl}}\"/>\n  <div class=\"title\">\n    <a routerLink=\"/club/{{club.clubId}}\">{{club.title}}</a>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -382,7 +479,7 @@ var ClubListComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".background {\n    background: url('background.jpg') no-repeat center center fixed;\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\nh1 {\n    text-align: center;\n    color: white;\n    margin: 0 0 0 200px;\n    padding: 8px;\n    background-color: #333;\n    opacity: 0.9;\n    border-radius: 10px;\n    width: auto;\n}\n\n.nav {\n    height: 100%;\n}\n\n.lots {\n    margin-left: 200px;\n}"
+module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\nh1 {\n    text-align: center;\n    color: white;\n    margin: 0 0 0 200px;\n    padding: 8px;\n    background-color: #333;\n    opacity: 0.9;\n    border-radius: 10px;\n    width: auto;\n}\n\n.nav {\n    height: 100%;\n}\n\n.lots {\n    margin-left: 200px;\n}"
 
 /***/ }),
 
@@ -462,7 +559,7 @@ var ClubLotsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".background {\n    background: url('background.jpg') no-repeat center center fixed;\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\nh1 {\n    text-align: center;\n    color: white;\n    margin: 10px auto;\n    padding: 8px;\n}\n\n.lotList {\n    width: 100%;\n    float: left;\n}\n\n.lotsButtonContainer {\n    margin: 10px auto;\n    text-align: center;\n}\n\n.lotsButton {\n    color: white;\n}"
+module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\nh1 {\n    text-align: center;\n    color: white;\n    font-size: 24px;\n    font-weight: normal;\n}\n\nh2 {\n    text-align: center;\n    color: white;\n    font-size: 16px;\n    font-weight: normal;\n}\n\n.headerSection {\n    height: 300px;\n    background-color: rgb(0, 43, 136);\n}\n\n.clubLogo {\n    height: 160px;\n    text-align: center;\n    padding-top: 20px;\n}\n\n.clubLogo img {\n    height: 160px;\n}\n\n.lotList {\n    width: 100%;\n    float: left;\n}\n\n.lotsButtonContainer {\n    margin: 10px auto;\n    text-align: center;\n}\n\n.lotsButton {\n    color: white;\n}\n\n.clubDetailsContainer {\n    margin: 0 auto;\n    width: 400px;\n}\n\n.clubDetailsCard {\n    background: white;\n    color: black;\n    display: -ms-inline-grid;\n    display: inline-grid;\n    margin: 10px;\n    padding: 10px;\n    width: 360px;\n    height: 100px;\n    text-align: center;\n}\n\n.contactContainer {\n\n}\n\n.websiteContainer {\n\n}"
 
 /***/ }),
 
@@ -473,7 +570,7 @@ module.exports = ".background {\n    background: url('background.jpg') no-repeat
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background\"></div>\n\n<h1>\n  {{ title }}\n</h1>\n\n<div class=\"lotList\">\n  <app-lot-list clubId=\"{{clubId}}\"></app-lot-list>\n</div>\n\n<div class=\"lotsButtonContainer\">\n  <button mat-raised-button color=\"primary\" class=\"lotsButton\" routerLink=\"/club/{{clubId}}/lots\">\n    View all auction items\n  </button>\n</div>\n"
+module.exports = "<div class=\"background\"></div>\n\n<div class=\"headerSection\">\n    <div class=\"clubLogo\">\n        <img src=\"{{club.logoUrl}}\"/>\n    </div>\n\n    <h1>\n        {{ title }}\n    </h1>\n\n    <h2>\n        Player Sponsorship Sealed Bid Auction\n    </h2>\n</div>\n\n<div class=\"lotList\">\n    <app-lot-list clubId=\"{{clubId}}\"></app-lot-list>\n</div>\n\n<div class=\"lotsButtonContainer\">\n    <button mat-raised-button color=\"primary\" class=\"lotsButton\" routerLink=\"/club/{{clubId}}/lots\">\n        View all auction items\n    </button>\n</div>\n\n<div class=\"clubDetailsContainer\">\n    <div class=\"clubDetailsCard\">\n        <div class=\"contactContainer\">\n            <label>Contact</label>\n            <div>{{club.contactEmail}}</div>\n        </div>\n\n        <div class=\"websiteContainer\">\n            <label>Website</label>\n            <a href=\"{{club.websiteUrl}}\" target=\"_blank\">\n                {{club.websiteUrl}}\n            </a>\n        </div>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -490,6 +587,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _services_club_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/club.service */ "./src/app/services/club.service.ts");
+/* harmony import */ var _common_models_Club__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/models/Club */ "./common/models/Club.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -502,6 +600,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var ClubComponent = /** @class */ (function () {
     function ClubComponent(clubService, route) {
         var _this = this;
@@ -509,10 +608,12 @@ var ClubComponent = /** @class */ (function () {
         this.route = route;
         this.title = '';
         this.clubId = '';
+        this.club = new _common_models_Club__WEBPACK_IMPORTED_MODULE_3__["Club"]('', '', '', '', '', '');
         this.route.params.subscribe(function (params) {
             _this.clubId = params.clubId;
             clubService.LoadClubById(params.clubId).subscribe(function (club) {
                 _this.title = club.title;
+                _this.club = club;
             });
         });
     }
@@ -538,7 +639,7 @@ var ClubComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".header {\n    height: 50px;\n}"
+module.exports = ".header {\n    height: 50px;\n    background-color: #0FBAAD;\n}\n\n.header img {\n    margin: 6px 20px;\n}"
 
 /***/ }),
 
@@ -601,7 +702,7 @@ var HeaderComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".background {\n    background: url('background.jpg') no-repeat center center fixed;\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\n.title {\n    margin: 50px auto;\n    text-align: center;\n    font-size: 60px;\n    color: white;\n}"
+module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\n.title {\n    margin: 50px auto;\n    text-align: center;\n    font-size: 60px;\n    color: black;\n}"
 
 /***/ }),
 
@@ -664,7 +765,7 @@ var HomeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".background {\n    background: url('background.jpg') no-repeat center center fixed;\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\n.content {\n    color: white;\n    text-align: center;\n}\n\nh1 {\n    margin: 10px auto;\n    padding: 8px;\n}"
+module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\n.content {\n    color: black;\n    text-align: center;\n}\n\nh1 {\n    margin: 10px auto;\n    padding: 8px;\n}\n\n.lotBiddingContainer {\n    width: 800px;\n    margin: 0 auto;\n}\n\n.bidDetailsContainer {\n    background: white;\n    color: black;\n    display: -ms-inline-grid;\n    display: inline-grid;\n    margin: 10px;\n    padding: 10px;\n    width: 360px;\n    height: 100px;\n}\n\n.lotImageContainer {\n    display: inline-block;\n}\n\n.lotImageContainer img {\n    width: 400px;\n}\n\n.lotDescriptionContainer {\n    width: 400px;\n    display: inline-block;\n}"
 
 /***/ }),
 
@@ -675,7 +776,7 @@ module.exports = ".background {\n    background: url('background.jpg') no-repeat
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background\"></div>\n\n<div class=\"content\">\n  <h1>\n    {{ lot.title }}\n  </h1>\n\n  <h2>\n    provided by {{lot.providedBy}}\n  </h2>\n\n  <div>\n    <div>\n      Reserve: £{{lot.reservePrice}}\n    </div>\n    <div>\n      Estimate: TODO\n    </div>\n  </div>\n\n  <div>\n    <label>My bid (minimum £TBD)*</label>\n    <input type=\"number\" placeholder=\"£TBD\"/>\n    <button>Place Bid</button>\n  </div>\n\n  <div>\n    <img src=\"{{lot.imageUri}}\"/>\n  </div>\n\n  <div>\n    Details TBC\n  </div>\n</div>"
+module.exports = "<div class=\"background\"></div>\n\n<div class=\"content\">\n    <h1>\n        {{ lot.title }}\n    </h1>\n\n    <h2>\n        provided by {{lot.providedBy}}\n    </h2>\n\n    <div class=\"lotBiddingContainer\">\n        <div class=\"bidDetailsContainer\">\n            <div>\n                <div>\n                    Reserve: £{{lot.reservePrice}}\n                </div>\n                <div>\n                    Estimate: £{{lot.estimate}}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"bidDetailsContainer\">\n            <div>\n                <label>My bid (minimum £{{lot.reservePrice}})*</label>\n                <input [(ngModel)]=\"amount\" type=\"number\" placeholder=\"{{lot.reservePrice}}\"/>\n                <button mat-raised-button color=\"primary\" class=\"bidButton\"\n                        (click)=\"openBidPopup()\">\n                    Place Bid\n                </button>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"lotImageContainer\">\n        <img src=\"{{lot.imageUri}}\"/>\n    </div>\n\n    <div class=\"lotDescriptionContainer\" [innerHTML]=\"lot.description\"></div>\n</div>"
 
 /***/ }),
 
@@ -695,6 +796,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_models_Club__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/models/Club */ "./common/models/Club.ts");
 /* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/lot.service */ "./src/app/services/lot.service.ts");
 /* harmony import */ var _common_models_Lot__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../common/models/Lot */ "./common/models/Lot.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../bid-dialog/bid-dialog.component */ "./src/app/bid-dialog/bid-dialog.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -710,16 +813,20 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
 var LotDetailsComponent = /** @class */ (function () {
-    function LotDetailsComponent(clubService, lotService, route) {
+    function LotDetailsComponent(clubService, lotService, route, dialog) {
         var _this = this;
         this.clubService = clubService;
         this.lotService = lotService;
         this.route = route;
+        this.dialog = dialog;
         this.lotId = '';
         this.clubId = '';
-        this.lot = new _common_models_Lot__WEBPACK_IMPORTED_MODULE_5__["Lot"]('', '', '', '', '', 0, 0, 0, []);
-        this.club = new _common_models_Club__WEBPACK_IMPORTED_MODULE_3__["Club"]('', '');
+        this.lot = new _common_models_Lot__WEBPACK_IMPORTED_MODULE_5__["Lot"]('', '', '', '', '', '', 0, 0, [], 0, 0, []);
+        this.club = new _common_models_Club__WEBPACK_IMPORTED_MODULE_3__["Club"]('', '', '', '', '', '');
+        this.amount = '';
         this.route.params.subscribe(function (params) {
             _this.clubId = params.clubId;
             _this.lotId = params.lotId;
@@ -731,13 +838,32 @@ var LotDetailsComponent = /** @class */ (function () {
             });
         });
     }
+    LotDetailsComponent.prototype.openBidPopup = function () {
+        var dialogRef = this.dialog.open(_bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_7__["BidDialogComponent"], {
+            width: '600px',
+            data: {
+                lotId: this.lotId,
+                amount: this.amount
+            }
+        });
+        dialogRef.afterClosed().subscribe(function (success) {
+            if (success) {
+                alert('Bid placed successfully!');
+                console.log('Bid placed successfully!');
+            }
+            else {
+                alert('Bid not placed');
+                console.log('Bid not placed');
+            }
+        });
+    };
     LotDetailsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-lot-details',
             template: __webpack_require__(/*! ./lot-details.component.html */ "./src/app/lot-details/lot-details.component.html"),
             styles: [__webpack_require__(/*! ./lot-details.component.css */ "./src/app/lot-details/lot-details.component.css")]
         }),
-        __metadata("design:paramtypes", [_services_club_service__WEBPACK_IMPORTED_MODULE_2__["ClubService"], _services_lot_service__WEBPACK_IMPORTED_MODULE_4__["LotService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
+        __metadata("design:paramtypes", [_services_club_service__WEBPACK_IMPORTED_MODULE_2__["ClubService"], _services_lot_service__WEBPACK_IMPORTED_MODULE_4__["LotService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatDialog"]])
     ], LotDetailsComponent);
     return LotDetailsComponent;
 }());
@@ -858,8 +984,8 @@ var CustomMaterialModule = /** @class */ (function () {
     }
     CustomMaterialModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-            imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatButtonModule"]],
-            exports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatButtonModule"]],
+            imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatButtonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatCardModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogModule"]],
+            exports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatButtonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatCardModule"], _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogModule"]],
         })
     ], CustomMaterialModule);
     return CustomMaterialModule;
@@ -991,6 +1117,14 @@ var LotService = /** @class */ (function () {
     LotService.prototype.LoadLot = function (lotId) {
         var url = this.host + '/api/lots/' + lotId;
         return this.http.get(url);
+    };
+    LotService.prototype.PlaceBid = function (lotId, bidderId, amount) {
+        var url = this.host + '/api/lots/' + lotId + '/bid';
+        var body = {
+            bidderId: bidderId,
+            value: amount
+        };
+        return this.http.post(url, body);
     };
     LotService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
