@@ -1,34 +1,70 @@
 .lotContainer {
     background-color: white;
-    padding: 5px;
     border-radius: 12px;
     text-align: center;
     float: left;
     height: 400px;
-    width: 300px;
-    margin: 10px 20px;
+    width: 275px;
+    padding: 10px;
+    margin: 10px 25px 42px;
+    -webkit-box-shadow: 0 15px 33px -1px #999!important;
+    box-shadow: 0 15px 33px -1px #999!important;
 }
 
 .lotContainer .name {
     font-weight: bold;
-    margin: 10px auto;
+    font-size: 18px;
+    padding: 25px 0 45px;
+    border-bottom: 1px solid #EEE;
 }
 
 .lotContainer .price {
     font-weight: bold;
-    margin: 10px auto;
+    margin: 14px auto;
+    text-align: left;
+}
+
+.lotContainer .price div {
+    display: inline-block;
+    width: 100px;
+    font-weight: normal;
+    font-size: 18px;
+}
+
+.lotContainer div.imageContainer {
+    position: relative;
+}
+
+.lotContainer div.providedBy {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    text-align: center!important;
+    padding: 8px 0;
+    background: rgba(207,207,207,.8);
+    border-radius: 0 0 4px 4px;
+    font-size: 14px;
+    width: 100%;
 }
 
 .lotContainer img {
-    width: 300px;
+    margin: -24px auto 0;
+    height: 200px;
+    width: 100%;
+    background: #cdcecd;
+    border-radius: 5px;
 }
 
-.viewButtonContainer {
+.lotsButtonContainer {
     margin: 10px auto;
     text-align: center;
 }
 
 .viewButton {
-    color: white;
-    font-size: 20px;
+    width: 100%;
+    background: #4dcc27;
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 5px 0;
 }

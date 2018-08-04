@@ -1,13 +1,12 @@
 div.auctionNav {
     width: 200px;
     height: 100%;
-    background-color: #333333;
+    background-color: rgb(243, 243, 243);
     color: white;
     overflow-x: hidden;
     position: fixed;
     top: 50px;
     left: 0;
-    margin: 8px auto;
 }
 
 ul.menuItemList {
@@ -17,8 +16,22 @@ ul.menuItemList {
 
 ul.menuItemList li {
     list-style-type: none;
-    padding: 8px 20px;
-    background-color: #CCC;
-    border: 1px solid;
+    border: 1px solid rgb(233, 233, 233);
     margin-bottom: 1px;
+}
+
+ul.menuItemList li a {
+    text-decoration: none;
+    color: #888;
+    padding: 12px;
+    display: block;
+    font-size: 14px;
+    cursor: pointer;
+    -webkit-transition: all .3s ease!important;
+    transition: all .3s ease!important;
+}
+
+ul.menuItemList li a:hover {
+    background: #888;
+    color: white;
 }

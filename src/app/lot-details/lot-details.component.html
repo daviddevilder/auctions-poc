@@ -1,9 +1,16 @@
 <div class="background"></div>
 
 <div class="content">
-    <h1>
-        {{ lot.title }}
-    </h1>
+    <div class="titleSection">
+        <button mat-raised-button class="backButton"
+                routerLink="/club/{{clubId}}/lots">
+            << All Lots
+        </button>
+
+        <h1>
+            {{ lot.title }}
+        </h1>
+    </div>
 
     <h2>
         provided by {{lot.providedBy}}
@@ -11,21 +18,30 @@
 
     <div class="lotBiddingContainer">
         <div class="bidDetailsContainer">
-            <div>
-                <div>
-                    Reserve: £{{lot.reservePrice}}
+            <div class="price">
+                <div class="label">
+                    Reserve:
                 </div>
-                <div>
-                    Estimate: £{{lot.estimate}}
+                <div class="amount">
+                    £{{lot.reservePrice}}
+                </div>
+            </div>
+
+            <div class="price">
+                <div class="label">
+                    Estimate:
+                </div>
+                <div class="amount">
+                    £{{lot.estimate}}
                 </div>
             </div>
         </div>
 
         <div class="bidDetailsContainer">
             <div>
-                <label>My bid (minimum £{{lot.reservePrice}})*</label>
+                <label>My bid <span class="minText">(minimum £{{lot.reservePrice}})</span>*</label>
                 <input [(ngModel)]="amount" type="number" placeholder="{{lot.reservePrice}}"/>
-                <button mat-raised-button color="primary" class="bidButton"
+                <button mat-raised-button class="bidButton"
                         (click)="openBidPopup()">
                     Place Bid
                 </button>
@@ -33,9 +49,12 @@
         </div>
     </div>
 
-    <div class="lotImageContainer">
-        <img src="{{lot.imageUri}}"/>
-    </div>
 
-    <div class="lotDescriptionContainer" [innerHTML]="lot.description"></div>
+    <div>
+        <div class="lotImageContainer">
+            <img src="{{lot.imageUri}}"/>
+        </div>
+
+        <div class="lotDescriptionContainer" [innerHTML]="lot.description"></div>
+    </div>
 </div>

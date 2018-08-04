@@ -10,14 +10,15 @@
 }
 
 h1 {
-    text-align: center;
     color: white;
     margin: 0 0 0 200px;
-    padding: 8px;
-    background-color: #333;
+    padding: 14px;
+    background-color: rgb(0, 43, 136);
     opacity: 0.9;
-    border-radius: 10px;
     width: auto;
+    font-weight: normal;
+    text-align: left;
+    font-size: 20px;
 }
 
 .nav {
@@ -26,4 +27,5 @@ h1 {
 
 .lots {
     margin-left: 200px;
+    margin-top: 50px;
 }

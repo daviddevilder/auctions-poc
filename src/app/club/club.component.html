@@ -14,28 +14,52 @@
     </h2>
 </div>
 
-<div class="lotList">
-    <app-lot-list clubId="{{clubId}}"></app-lot-list>
+<div class="banner">
+    <div class="bannerText">
+        TBC Banner Text
+    </div>
+    <div class="lotsButtonContainer">
+        <button mat-raised-button class="lotsButton" routerLink="/club/{{clubId}}/lots">
+            View the auction lots
+        </button>
+    </div>
 </div>
 
-<div class="lotsButtonContainer">
-    <button mat-raised-button color="primary" class="lotsButton" routerLink="/club/{{clubId}}/lots">
-        View all auction items
-    </button>
+<div class="introductionContainer">
+    <div class="introductionText">
+        TBC Introduction Text
+    </div>
 </div>
 
 <div class="clubDetailsContainer">
+    <div class="clubDetailsCard">
+        <div class="whenContainer">
+            <label>When</label>
+            <div>TBC Closing date/time</div>
+        </div>
+    </div>
+
     <div class="clubDetailsCard">
         <div class="contactContainer">
             <label>Contact</label>
             <div>{{club.contactEmail}}</div>
         </div>
+    </div>
 
+    <div class="clubDetailsCard">
         <div class="websiteContainer">
             <label>Website</label>
-            <a href="{{club.websiteUrl}}" target="_blank">
-                {{club.websiteUrl}}
-            </a>
+            <div>
+                <a href="{{club.websiteUrl}}" target="_blank">
+                    {{club.websiteUrl}}
+                </a>
+            </div>
         </div>
+    </div>
+</div>
+
+<div class="descriptionContainer">
+    <div class="descriptionHtml">
+        TBC Description HTML
     </div>
 </div>
