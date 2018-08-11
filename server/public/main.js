@@ -11,13 +11,19 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Club", function() { return Club; });
 var Club = /** @class */ (function () {
-    function Club(clubId, title, logoUrl, websiteUrl, contactEmail, contactPhone) {
+    function Club(clubId, title, subtitle, logoUrl, websiteUrl, contactEmail, contactPhone, closingDate, bannerUrl, bannerText, introText, descriptionHtml) {
         this.clubId = clubId;
         this.title = title;
+        this.subtitle = subtitle;
         this.logoUrl = logoUrl;
         this.websiteUrl = websiteUrl;
         this.contactEmail = contactEmail;
         this.contactPhone = contactPhone;
+        this.closingDate = closingDate;
+        this.bannerUrl = bannerUrl;
+        this.bannerText = bannerText;
+        this.introText = introText;
+        this.descriptionHtml = descriptionHtml;
     }
     return Club;
 }());
@@ -570,7 +576,7 @@ module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background\"></div>\n\n<div class=\"headerSection\">\n    <div class=\"clubLogo\">\n        <img src=\"{{club.logoUrl}}\"/>\n    </div>\n\n    <h1>\n        {{ title }}\n    </h1>\n\n    <h2>\n        Player Sponsorship Sealed Bid Auction\n    </h2>\n</div>\n\n<div class=\"banner\">\n    <div class=\"bannerText\">\n        TBC Banner Text\n    </div>\n    <div class=\"lotsButtonContainer\">\n        <button mat-raised-button class=\"lotsButton\" routerLink=\"/club/{{clubId}}/lots\">\n            View the auction lots\n        </button>\n    </div>\n</div>\n\n<div class=\"introductionContainer\">\n    <div class=\"introductionText\">\n        TBC Introduction Text\n    </div>\n</div>\n\n<div class=\"clubDetailsContainer\">\n    <div class=\"clubDetailsCard\">\n        <div class=\"whenContainer\">\n            <label>When</label>\n            <div>TBC Closing date/time</div>\n        </div>\n    </div>\n\n    <div class=\"clubDetailsCard\">\n        <div class=\"contactContainer\">\n            <label>Contact</label>\n            <div>{{club.contactEmail}}</div>\n        </div>\n    </div>\n\n    <div class=\"clubDetailsCard\">\n        <div class=\"websiteContainer\">\n            <label>Website</label>\n            <div>\n                <a href=\"{{club.websiteUrl}}\" target=\"_blank\">\n                    {{club.websiteUrl}}\n                </a>\n            </div>\n        </div>\n    </div>\n</div>\n\n<div class=\"descriptionContainer\">\n    <div class=\"descriptionHtml\">\n        TBC Description HTML\n    </div>\n</div>\n"
+module.exports = "<div class=\"background\"></div>\n\n<div class=\"headerSection\">\n    <div class=\"clubLogo\">\n        <img src=\"{{club.logoUrl}}\"/>\n    </div>\n\n    <h1>\n        {{title}}\n    </h1>\n\n    <h2>\n        {{club.subtitle}}\n    </h2>\n</div>\n\n<div class=\"banner\">\n    <div class=\"bannerText\">\n        {{club.bannerText}}\n    </div>\n    <div class=\"lotsButtonContainer\">\n        <button mat-raised-button class=\"lotsButton\" routerLink=\"/club/{{clubId}}/lots\">\n            View the auction lots\n        </button>\n    </div>\n</div>\n\n<div class=\"introductionContainer\">\n    <div class=\"introductionText\">\n        {{club.introText}}\n    </div>\n</div>\n\n<div class=\"clubDetailsContainer\">\n    <div class=\"clubDetailsCard\">\n        <div class=\"whenContainer\">\n            <label>When</label>\n            <div>{{club.closingDate}}</div>\n        </div>\n    </div>\n\n    <div class=\"clubDetailsCard\">\n        <div class=\"contactContainer\">\n            <label>Contact</label>\n            <div>{{club.contactEmail}}</div>\n        </div>\n    </div>\n\n    <div class=\"clubDetailsCard\">\n        <div class=\"websiteContainer\">\n            <label>Website</label>\n            <div>\n                <a href=\"{{club.websiteUrl}}\" target=\"_blank\">\n                    {{club.websiteUrl}}\n                </a>\n            </div>\n        </div>\n    </div>\n</div>\n\n<div class=\"descriptionContainer\">\n    <div class=\"descriptionHtml\" [innerHtml]=\"club.descriptionHtml\"></div>\n</div>\n"
 
 /***/ }),
 
@@ -608,7 +614,7 @@ var ClubComponent = /** @class */ (function () {
         this.route = route;
         this.title = '';
         this.clubId = '';
-        this.club = new _common_models_Club__WEBPACK_IMPORTED_MODULE_3__["Club"]('', '', '', '', '', '');
+        this.club = new _common_models_Club__WEBPACK_IMPORTED_MODULE_3__["Club"]('', '', '', '', '', '', '', new Date(), '', '', '', '');
         this.route.params.subscribe(function (params) {
             _this.clubId = params.clubId;
             clubService.LoadClubById(params.clubId).subscribe(function (club) {
@@ -825,7 +831,7 @@ var LotDetailsComponent = /** @class */ (function () {
         this.lotId = '';
         this.clubId = '';
         this.lot = new _common_models_Lot__WEBPACK_IMPORTED_MODULE_5__["Lot"]('', '', '', '', '', '', 0, 0, [], 0, 0, []);
-        this.club = new _common_models_Club__WEBPACK_IMPORTED_MODULE_3__["Club"]('', '', '', '', '', '');
+        this.club = new _common_models_Club__WEBPACK_IMPORTED_MODULE_3__["Club"]('', '', '', '', '', '', '', new Date(), '', '', '', '');
         this.amount = '';
         this.route.params.subscribe(function (params) {
             _this.clubId = params.clubId;
@@ -879,7 +885,7 @@ var LotDetailsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".lotContainer {\n    background-color: white;\n    border-radius: 12px;\n    text-align: center;\n    float: left;\n    height: 400px;\n    width: 275px;\n    padding: 10px;\n    margin: 10px 25px 42px;\n    box-shadow: 0 15px 33px -1px #999!important;\n}\n\n.lotContainer .name {\n    font-weight: bold;\n    font-size: 18px;\n    padding: 25px 0 45px;\n    border-bottom: 1px solid #EEE;\n}\n\n.lotContainer .price {\n    font-weight: bold;\n    margin: 14px auto;\n    text-align: left;\n}\n\n.lotContainer .price div {\n    display: inline-block;\n    width: 100px;\n    font-weight: normal;\n    font-size: 18px;\n}\n\n.lotContainer div.imageContainer {\n    position: relative;\n}\n\n.lotContainer div.providedBy {\n    position: absolute;\n    z-index: 1;\n    bottom: 0;\n    text-align: center!important;\n    padding: 8px 0;\n    background: rgba(207,207,207,.8);\n    border-radius: 0 0 4px 4px;\n    font-size: 14px;\n    width: 100%;\n}\n\n.lotContainer img {\n    margin: -24px auto 0;\n    height: 200px;\n    width: 100%;\n    background: #cdcecd;\n    border-radius: 5px;\n}\n\n.lotsButtonContainer {\n    margin: 10px auto;\n    text-align: center;\n}\n\n.viewButton {\n    width: 100%;\n    background: #4dcc27;\n    color: #fff;\n    font-weight: 700;\n    font-size: 18px;\n    padding: 5px 0;\n}"
+module.exports = ".lotContainer {\n    background-color: white;\n    border-radius: 12px;\n    text-align: center;\n    float: left;\n    height: 400px;\n    width: 275px;\n    padding: 10px;\n    margin: 10px 25px 42px;\n    box-shadow: 0 15px 33px -1px #999!important;\n}\n\n.lotContainer .name {\n    font-weight: bold;\n    font-size: 18px;\n    padding: 25px 0 45px;\n    border-bottom: 1px solid #EEE;\n}\n\n.lotContainer .price {\n    font-weight: bold;\n    margin: 14px auto;\n    text-align: left;\n}\n\n.lotContainer .price div {\n    display: inline-block;\n    width: 100px;\n    font-weight: normal;\n    font-size: 18px;\n}\n\n.lotContainer div.imageContainer {\n    position: relative;\n}\n\n.lotContainer div.providedBy {\n    position: absolute;\n    z-index: 1;\n    bottom: 4px;\n    text-align: center!important;\n    padding: 8px 0;\n    background: rgba(207,207,207,.8);\n    border-radius: 0 0 4px 4px;\n    font-size: 14px;\n    width: 100%;\n}\n\n.lotContainer img {\n    margin: -24px auto 0;\n    height: 200px;\n    width: 100%;\n    background: #cdcecd;\n    border-radius: 5px;\n}\n\n.lotsButtonContainer {\n    margin: 10px auto;\n    text-align: center;\n}\n\n.viewButton {\n    width: 100%;\n    background: #4dcc27;\n    color: #fff;\n    font-weight: 700;\n    font-size: 18px;\n    padding: 5px 0;\n}"
 
 /***/ }),
 
@@ -1052,7 +1058,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var ClubService = /** @class */ (function () {
     function ClubService(http) {
         this.http = http;
-        this.host = 'http://localhost:3000';
+        // private readonly host: string = 'http://localhost:3000';
+        this.host = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
     }
     ClubService.prototype.LoadClubs = function () {
         var url = this.host + '/api/clubs';
@@ -1099,7 +1106,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var LotService = /** @class */ (function () {
     function LotService(http) {
         this.http = http;
-        this.host = 'http://localhost:3000';
+        // private readonly host: string = 'http://localhost:3000';
+        this.host = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
         this.Lots = [];
     }
     LotService.prototype.LoadTags = function (clubId) {

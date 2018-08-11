@@ -6,17 +6,17 @@
     </div>
 
     <h1>
-        {{ title }}
+        {{title}}
     </h1>
 
     <h2>
-        Player Sponsorship Sealed Bid Auction
+        {{club.subtitle}}
     </h2>
 </div>
 
 <div class="banner">
     <div class="bannerText">
-        TBC Banner Text
+        {{club.bannerText}}
     </div>
     <div class="lotsButtonContainer">
         <button mat-raised-button class="lotsButton" routerLink="/club/{{clubId}}/lots">
@@ -27,7 +27,7 @@
 
 <div class="introductionContainer">
     <div class="introductionText">
-        TBC Introduction Text
+        {{club.introText}}
     </div>
 </div>
 
@@ -35,7 +35,7 @@
     <div class="clubDetailsCard">
         <div class="whenContainer">
             <label>When</label>
-            <div>TBC Closing date/time</div>
+            <div>{{club.closingDate}}</div>
         </div>
     </div>
 
@@ -59,7 +59,5 @@
 </div>
 
 <div class="descriptionContainer">
-    <div class="descriptionHtml">
-        TBC Description HTML
-    </div>
+    <div class="descriptionHtml" [innerHtml]="club.descriptionHtml"></div>
 </div>

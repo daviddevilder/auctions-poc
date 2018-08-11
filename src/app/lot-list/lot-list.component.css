@@ -38,7 +38,7 @@
 .lotContainer div.providedBy {
     position: absolute;
     z-index: 1;
-    bottom: 0;
+    bottom: 4px;
     text-align: center!important;
     padding: 8px 0;
     background: rgba(207,207,207,.8);

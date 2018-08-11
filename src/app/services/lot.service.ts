@@ -6,7 +6,8 @@ import {Lot} from '../../../common/models/Lot';
 @Injectable()
 export class LotService {
 
-    private readonly host: string = 'http://localhost:3000';
+    // private readonly host: string = 'http://localhost:3000';
+    private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
     public Lots: Lot[] = [];
 
     constructor(private http: HttpClient) {
