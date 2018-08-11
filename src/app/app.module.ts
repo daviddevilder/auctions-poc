@@ -1,3 +1,7 @@
+import {registerLocaleData} from '@angular/common';
+import localeEn from '@angular/common/locales/en';
+import localeEnExtra from '@angular/common/locales/extra/en';
+
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -18,6 +22,8 @@ import {AuctionNavComponent} from './auction-nav/auction-nav.component';
 import {LotDetailsComponent} from './lot-details/lot-details.component';
 import {BidDialogComponent} from './bid-dialog/bid-dialog.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
+registerLocaleData(localeEn, 'en', localeEnExtra);
 
 @NgModule({
     declarations: [
@@ -42,7 +48,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         CustomMaterialModule,
         AppRoutingModule
     ],
-    providers: [LotService, ClubService],
+    providers: [LotService, ClubService, { provide: localeEn, useValue: 'en' }],
     bootstrap: [AppComponent]
 })
 export class AppModule {

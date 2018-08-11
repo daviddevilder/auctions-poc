@@ -14,7 +14,7 @@
     </h2>
 </div>
 
-<div class="banner">
+<div class="banner" [ngStyle]="{ 'background-image': 'url(' + club.bannerUrl + ')'}">
     <div class="bannerText">
         {{club.bannerText}}
     </div>
@@ -35,7 +35,7 @@
     <div class="clubDetailsCard">
         <div class="whenContainer">
             <label>When</label>
-            <div>{{club.closingDate}}</div>
+            <div>Ends {{club.closingDate | date:'h:mm a, d LLLL y'}}</div>
         </div>
     </div>
 

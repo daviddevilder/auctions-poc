@@ -1,6 +1,5 @@
 import {Request, Response} from 'express';
 import {LotManager} from '../modules/LotManager';
-import {ClubManager} from '../modules/ClubManager';
 
 const router = require('express').Router();
 module.exports = router;

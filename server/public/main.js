@@ -169,25 +169,30 @@ var AppComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-/* harmony import */ var _material_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./material.module */ "./src/app/material.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
-/* harmony import */ var _club_list_club_list_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./club-list/club-list.component */ "./src/app/club-list/club-list.component.ts");
-/* harmony import */ var _services_club_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./services/club.service */ "./src/app/services/club.service.ts");
-/* harmony import */ var _club_club_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./club/club.component */ "./src/app/club/club.component.ts");
-/* harmony import */ var _lot_list_lot_list_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./lot-list/lot-list.component */ "./src/app/lot-list/lot-list.component.ts");
-/* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/lot.service */ "./src/app/services/lot.service.ts");
-/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
-/* harmony import */ var _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./club-lots/club-lots.component */ "./src/app/club-lots/club-lots.component.ts");
-/* harmony import */ var _auction_nav_auction_nav_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./auction-nav/auction-nav.component */ "./src/app/auction-nav/auction-nav.component.ts");
-/* harmony import */ var _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./lot-details/lot-details.component */ "./src/app/lot-details/lot-details.component.ts");
-/* harmony import */ var _bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./bid-dialog/bid-dialog.component */ "./src/app/bid-dialog/bid-dialog.component.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _angular_common_locales_en__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/locales/en */ "./node_modules/@angular/common/locales/en.js");
+/* harmony import */ var _angular_common_locales_en__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_angular_common_locales_en__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _angular_common_locales_extra_en__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/locales/extra/en */ "./node_modules/@angular/common/locales/extra/en.js");
+/* harmony import */ var _angular_common_locales_extra_en__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_angular_common_locales_extra_en__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _material_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./material.module */ "./src/app/material.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _club_list_club_list_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./club-list/club-list.component */ "./src/app/club-list/club-list.component.ts");
+/* harmony import */ var _services_club_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/club.service */ "./src/app/services/club.service.ts");
+/* harmony import */ var _club_club_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./club/club.component */ "./src/app/club/club.component.ts");
+/* harmony import */ var _lot_list_lot_list_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./lot-list/lot-list.component */ "./src/app/lot-list/lot-list.component.ts");
+/* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./services/lot.service */ "./src/app/services/lot.service.ts");
+/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
+/* harmony import */ var _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./club-lots/club-lots.component */ "./src/app/club-lots/club-lots.component.ts");
+/* harmony import */ var _auction_nav_auction_nav_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./auction-nav/auction-nav.component */ "./src/app/auction-nav/auction-nav.component.ts");
+/* harmony import */ var _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./lot-details/lot-details.component */ "./src/app/lot-details/lot-details.component.ts");
+/* harmony import */ var _bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./bid-dialog/bid-dialog.component */ "./src/app/bid-dialog/bid-dialog.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -213,35 +218,39 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
+
+Object(_angular_common__WEBPACK_IMPORTED_MODULE_0__["registerLocaleData"])(_angular_common_locales_en__WEBPACK_IMPORTED_MODULE_1___default.a, 'en', _angular_common_locales_extra_en__WEBPACK_IMPORTED_MODULE_2___default.a);
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_4__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
-                _header_header_component__WEBPACK_IMPORTED_MODULE_13__["HeaderComponent"],
-                _club_list_club_list_component__WEBPACK_IMPORTED_MODULE_8__["ClubListComponent"],
-                _home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"],
-                _club_club_component__WEBPACK_IMPORTED_MODULE_10__["ClubComponent"],
-                _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_16__["LotDetailsComponent"],
-                _lot_list_lot_list_component__WEBPACK_IMPORTED_MODULE_11__["LotListComponent"],
-                _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_14__["ClubLotsComponent"],
-                _auction_nav_auction_nav_component__WEBPACK_IMPORTED_MODULE_15__["AuctionNavComponent"],
-                _bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_17__["BidDialogComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
+                _header_header_component__WEBPACK_IMPORTED_MODULE_16__["HeaderComponent"],
+                _club_list_club_list_component__WEBPACK_IMPORTED_MODULE_11__["ClubListComponent"],
+                _home_home_component__WEBPACK_IMPORTED_MODULE_10__["HomeComponent"],
+                _club_club_component__WEBPACK_IMPORTED_MODULE_13__["ClubComponent"],
+                _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_19__["LotDetailsComponent"],
+                _lot_list_lot_list_component__WEBPACK_IMPORTED_MODULE_14__["LotListComponent"],
+                _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_17__["ClubLotsComponent"],
+                _auction_nav_auction_nav_component__WEBPACK_IMPORTED_MODULE_18__["AuctionNavComponent"],
+                _bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_20__["BidDialogComponent"]
             ],
-            entryComponents: [_bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_17__["BidDialogComponent"]],
+            entryComponents: [_bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_20__["BidDialogComponent"]],
             imports: [
-                _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_18__["FormsModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_18__["ReactiveFormsModule"],
-                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__["BrowserAnimationsModule"],
-                _material_module__WEBPACK_IMPORTED_MODULE_3__["CustomMaterialModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"]
+                _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["BrowserModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HttpClientModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_21__["FormsModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_21__["ReactiveFormsModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["BrowserAnimationsModule"],
+                _material_module__WEBPACK_IMPORTED_MODULE_6__["CustomMaterialModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"]
             ],
-            providers: [_services_lot_service__WEBPACK_IMPORTED_MODULE_12__["LotService"], _services_club_service__WEBPACK_IMPORTED_MODULE_9__["ClubService"]],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
+            providers: [_services_lot_service__WEBPACK_IMPORTED_MODULE_15__["LotService"], _services_club_service__WEBPACK_IMPORTED_MODULE_12__["ClubService"], { provide: _angular_common_locales_en__WEBPACK_IMPORTED_MODULE_1___default.a, useValue: 'en' }],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -333,7 +342,7 @@ var AuctionNavComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".form-group {\n    margin-top: 40px;\n}\n\ninput#email {\n    display: block;\n    font-size: 26px;\n    padding: 10px;\n    border-radius: 6px;\n    width: 520px;\n    margin: 10px auto;\n}\n\n.validationErrorText {\n    position: absolute;\n    color: red;\n    font-size: 12px;\n    font-style: italic;\n}\n\ninput#amount {\n    display: block;\n    border: none;\n    font-size: 26px;\n    padding: 10px;\n}\n\n.confirmButton {\n    background: #4dcc27;\n    color: #fff;\n}"
 
 /***/ }),
 
@@ -344,7 +353,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <h2 mat-dialog-title>Confirm your bid</h2>\n    <hr>\n\n    <form #bidForm=\"ngForm\">\n        <mat-dialog-content>\n            In order to confirm your bid, please enter your details below.\n            <br>\n            <br>\n\n            <div class=\"form-group\">\n                <label for=\"email\">Email Address*</label>\n                <input type=\"email\" class=\"form-control\" [(ngModel)]=\"emailAddress\" id=\"email\" name=\"email\" #email=\"ngModel\" required/>\n            </div>\n\n            <div *ngIf=\"email.invalid && (email.dirty || email.touched)\">\n                <div *ngIf=\"email.errors.required\">\n                    Email Address is required\n                </div>\n            </div>\n\n            <div class=\"form-group\">\n                <label for=\"amount\">My Bid</label>\n                <input type=\"text\" class=\"form-control\" id=\"amount\" value=\"£{{data.amount}}\" readonly>\n            </div>\n        </mat-dialog-content>\n        <hr>\n        <mat-dialog-actions>\n            <button mat-raised-button (click)=\"onCloseCancel()\">CANCEL</button>&nbsp;\n            <button mat-raised-button color=\"primary\" type=\"submit\" (click)=\"onCloseConfirm()\" [disabled]=\"!bidForm.valid\">CONFIRM BID</button>\n        </mat-dialog-actions>\n    </form>\n</div>"
+module.exports = "<div>\n    <h2 mat-dialog-title>Confirm your bid</h2>\n    <hr>\n\n    <form #bidForm=\"ngForm\">\n        <mat-dialog-content>\n            In order to confirm your bid, please enter your details below.\n\n            <div class=\"form-group\">\n                <label for=\"email\">Email Address*</label>\n                <input type=\"email\" class=\"form-control\" [(ngModel)]=\"emailAddress\" id=\"email\" name=\"email\" #email=\"ngModel\" required/>\n            </div>\n\n            <div class=\"validationErrorText\" *ngIf=\"email.invalid && (email.dirty || email.touched)\">\n                <div *ngIf=\"email.errors.required\">\n                    Email Address is required\n                </div>\n            </div>\n\n            <div class=\"form-group\">\n                <label for=\"amount\">My Bid</label>\n                <input type=\"text\" class=\"form-control\" id=\"amount\" value=\"£{{data.amount}}\" readonly>\n            </div>\n        </mat-dialog-content>\n        <hr>\n        <mat-dialog-actions>\n            <button mat-raised-button (click)=\"onCloseCancel()\">CANCEL</button>&nbsp;\n            <button mat-raised-button class=\"confirmButton\" type=\"submit\" (click)=\"onCloseConfirm()\" [disabled]=\"!bidForm.valid\">CONFIRM BID</button>\n        </mat-dialog-actions>\n    </form>\n</div>"
 
 /***/ }),
 
@@ -386,8 +395,12 @@ var BidDialogComponent = /** @class */ (function () {
     BidDialogComponent.prototype.ngOnInit = function () {
     };
     BidDialogComponent.prototype.onCloseConfirm = function () {
-        this.lotService.PlaceBid(this.data.lotId, this.emailAddress, this.data.amount);
-        this.thisDialogRef.close(true);
+        var _this = this;
+        this.lotService.PlaceBid(this.data.lotId, this.emailAddress, this.data.amount)
+            .subscribe((function (result) {
+            console.log(result);
+            _this.thisDialogRef.close(true);
+        }));
     };
     BidDialogComponent.prototype.onCloseCancel = function () {
         this.thisDialogRef.close(false);
@@ -576,7 +589,7 @@ module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background\"></div>\n\n<div class=\"headerSection\">\n    <div class=\"clubLogo\">\n        <img src=\"{{club.logoUrl}}\"/>\n    </div>\n\n    <h1>\n        {{title}}\n    </h1>\n\n    <h2>\n        {{club.subtitle}}\n    </h2>\n</div>\n\n<div class=\"banner\">\n    <div class=\"bannerText\">\n        {{club.bannerText}}\n    </div>\n    <div class=\"lotsButtonContainer\">\n        <button mat-raised-button class=\"lotsButton\" routerLink=\"/club/{{clubId}}/lots\">\n            View the auction lots\n        </button>\n    </div>\n</div>\n\n<div class=\"introductionContainer\">\n    <div class=\"introductionText\">\n        {{club.introText}}\n    </div>\n</div>\n\n<div class=\"clubDetailsContainer\">\n    <div class=\"clubDetailsCard\">\n        <div class=\"whenContainer\">\n            <label>When</label>\n            <div>{{club.closingDate}}</div>\n        </div>\n    </div>\n\n    <div class=\"clubDetailsCard\">\n        <div class=\"contactContainer\">\n            <label>Contact</label>\n            <div>{{club.contactEmail}}</div>\n        </div>\n    </div>\n\n    <div class=\"clubDetailsCard\">\n        <div class=\"websiteContainer\">\n            <label>Website</label>\n            <div>\n                <a href=\"{{club.websiteUrl}}\" target=\"_blank\">\n                    {{club.websiteUrl}}\n                </a>\n            </div>\n        </div>\n    </div>\n</div>\n\n<div class=\"descriptionContainer\">\n    <div class=\"descriptionHtml\" [innerHtml]=\"club.descriptionHtml\"></div>\n</div>\n"
+module.exports = "<div class=\"background\"></div>\n\n<div class=\"headerSection\">\n    <div class=\"clubLogo\">\n        <img src=\"{{club.logoUrl}}\"/>\n    </div>\n\n    <h1>\n        {{title}}\n    </h1>\n\n    <h2>\n        {{club.subtitle}}\n    </h2>\n</div>\n\n<div class=\"banner\" [ngStyle]=\"{ 'background-image': 'url(' + club.bannerUrl + ')'}\">\n    <div class=\"bannerText\">\n        {{club.bannerText}}\n    </div>\n    <div class=\"lotsButtonContainer\">\n        <button mat-raised-button class=\"lotsButton\" routerLink=\"/club/{{clubId}}/lots\">\n            View the auction lots\n        </button>\n    </div>\n</div>\n\n<div class=\"introductionContainer\">\n    <div class=\"introductionText\">\n        {{club.introText}}\n    </div>\n</div>\n\n<div class=\"clubDetailsContainer\">\n    <div class=\"clubDetailsCard\">\n        <div class=\"whenContainer\">\n            <label>When</label>\n            <div>Ends {{club.closingDate | date:'h:mm a, d LLLL y'}}</div>\n        </div>\n    </div>\n\n    <div class=\"clubDetailsCard\">\n        <div class=\"contactContainer\">\n            <label>Contact</label>\n            <div>{{club.contactEmail}}</div>\n        </div>\n    </div>\n\n    <div class=\"clubDetailsCard\">\n        <div class=\"websiteContainer\">\n            <label>Website</label>\n            <div>\n                <a href=\"{{club.websiteUrl}}\" target=\"_blank\">\n                    {{club.websiteUrl}}\n                </a>\n            </div>\n        </div>\n    </div>\n</div>\n\n<div class=\"descriptionContainer\">\n    <div class=\"descriptionHtml\" [innerHtml]=\"club.descriptionHtml\"></div>\n</div>\n"
 
 /***/ }),
 
@@ -771,7 +784,7 @@ var HomeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\n.content {\n    color: black;\n    text-align: center;\n}\n\nh1 {\n    margin: 10px auto;\n    padding: 8px;\n}\n\nh2 {\n    font-size: 14px;\n    font-weight: normal;\n    color: #666;\n    margin: 0 auto 30px;\n}\n\n.titleSection {\n    position: relative;\n}\n\n.backButton {\n    position: absolute;\n    left: 20px;\n    top: 0;\n}\n\n.lotBiddingContainer {\n    width: 690px;\n    height: 160px;\n    margin: 0 auto;\n}\n\n.bidDetailsContainer {\n    background-color: white;\n    border-radius: 12px;\n    text-align: center;\n    float: left;\n    height: 80px;\n    width: 305px;\n    padding: 10px;\n    margin: 10px 10px 42px;\n    box-shadow: 0 15px 33px -1px #999!important;\n}\n\n.bidDetailsContainer .price {\n    font-weight: bold;\n    margin: 14px auto;\n    text-align: left;\n}\n\n.bidDetailsContainer .price div {\n    display: inline-block;\n    width: 100px;\n    font-weight: normal;\n    font-size: 18px;\n}\n\n.bidDetailsContainer label {\n\n}\n\n.bidDetailsContainer .minText {\n    font-size: 12px;\n}\n\n.bidDetailsContainer input {\n    width: 100px;\n    height: 25px;\n    margin-left: 50px;\n}\n\n.bidButton {\n    width: 100%;\n    background: #4dcc27;\n    color: #fff;\n    font-weight: 700;\n    font-size: 18px;\n    padding: 5px 0;\n    margin-top: 4px;\n}\n\n.lotImageContainer {\n    display: inline-block;\n    margin-top:30px;\n    clear: both;\n}\n\n.lotImageContainer img {\n    width: 400px;\n    box-shadow: 0 15px 33px -1px #999!important;\n}\n\n.lotDescriptionContainer {\n    width: 380px;\n    display: inline-block;\n    vertical-align: top;\n    padding: 0 10px;\n    margin-top:30px;\n}"
+module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\n.content {\n    color: black;\n    text-align: center;\n}\n\nh1 {\n    margin: 10px auto;\n    padding: 8px;\n}\n\nh2 {\n    font-size: 14px;\n    font-weight: normal;\n    color: #666;\n    margin: 0 auto 30px;\n}\n\n.titleSection {\n    position: relative;\n}\n\n.backButton {\n    position: absolute;\n    left: 20px;\n    top: 0;\n}\n\n.lotBiddingContainer {\n    width: 820px;\n    height: 160px;\n    margin: 0 auto;\n}\n\n.bidDetailsContainer {\n    background-color: white;\n    border-radius: 12px;\n    text-align: center;\n    float: left;\n    height: 80px;\n    width: 370px;\n    padding: 10px;\n    margin: 10px 10px 42px;\n    box-shadow: 0 15px 33px -1px #999!important;\n}\n\n.bidDetailsContainer .price {\n    font-weight: bold;\n    margin: 14px auto;\n    text-align: left;\n}\n\n.bidDetailsContainer .price div {\n    display: inline-block;\n    width: 100px;\n    font-weight: normal;\n    font-size: 18px;\n}\n\n.bidDetailsContainer label {\n\n}\n\n.bidDetailsContainer .minText {\n    font-size: 12px;\n}\n\n.bidDetailsContainer input {\n    width: 100px;\n    height: 25px;\n    margin-left: 50px;\n}\n\n.bidButton {\n    width: 100%;\n    background: #4dcc27;\n    color: #fff;\n    font-weight: 700;\n    font-size: 18px;\n    padding: 5px 0;\n    margin-top: 4px;\n}\n\n.lotImageContainer {\n    display: inline-block;\n    margin-top:30px;\n    clear: both;\n}\n\n.lotImageContainer img {\n    width: 400px;\n    box-shadow: 0 15px 33px -1px #999!important;\n}\n\n.lotDescriptionContainer {\n    width: 380px;\n    display: inline-block;\n    vertical-align: top;\n    padding: 0 10px;\n    margin-top:30px;\n}"
 
 /***/ }),
 
@@ -847,6 +860,7 @@ var LotDetailsComponent = /** @class */ (function () {
     LotDetailsComponent.prototype.openBidPopup = function () {
         var dialogRef = this.dialog.open(_bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_7__["BidDialogComponent"], {
             width: '600px',
+            disableClose: true,
             data: {
                 lotId: this.lotId,
                 amount: this.amount
@@ -1056,10 +1070,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var ClubService = /** @class */ (function () {
+    // private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
     function ClubService(http) {
         this.http = http;
-        // private readonly host: string = 'http://localhost:3000';
-        this.host = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
+        this.host = 'http://localhost:3000';
     }
     ClubService.prototype.LoadClubs = function () {
         var url = this.host + '/api/clubs';
@@ -1106,8 +1120,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var LotService = /** @class */ (function () {
     function LotService(http) {
         this.http = http;
-        // private readonly host: string = 'http://localhost:3000';
-        this.host = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
+        this.host = 'http://localhost:3000';
+        // private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
         this.Lots = [];
     }
     LotService.prototype.LoadTags = function (clubId) {
@@ -1132,6 +1146,7 @@ var LotService = /** @class */ (function () {
             bidderId: bidderId,
             value: amount
         };
+        console.log(url);
         return this.http.post(url, body);
     };
     LotService = __decorate([

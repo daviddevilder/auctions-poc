@@ -39,6 +39,7 @@ export class LotDetailsComponent {
     openBidPopup() {
         const dialogRef = this.dialog.open(BidDialogComponent, {
             width: '600px',
+            disableClose: true,
             data: {
                 lotId: this.lotId,
                 amount: this.amount
@@ -48,10 +49,8 @@ export class LotDetailsComponent {
         dialogRef.afterClosed().subscribe(success => {
             if (success) {
                 alert('Bid placed successfully!');
-                console.log('Bid placed successfully!');
             } else {
                 alert('Bid not placed');
-                console.log('Bid not placed');
             }
         });
     }

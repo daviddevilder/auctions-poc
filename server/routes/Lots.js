@@ -67,7 +67,9 @@ router.post('/:lotId/bid', function (request, response) { return __awaiter(_this
     var result;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4, LotManager_1.LotManager.CreateBid(request.params.lotId, request.body.bidderId, request.body.value)];
+            case 0:
+                console.log(request.params.lotId + ', ' + request.body.bidderId + ', ' + request.body.value);
+                return [4, LotManager_1.LotManager.CreateBid(request.params.lotId, request.body.bidderId, request.body.value)];
             case 1:
                 result = _a.sent();
                 response.send(result);

@@ -1,0 +1,31 @@
+.form-group {
+    margin-top: 40px;
+}
+
+input#email {
+    display: block;
+    font-size: 26px;
+    padding: 10px;
+    border-radius: 6px;
+    width: 520px;
+    margin: 10px auto;
+}
+
+.validationErrorText {
+    position: absolute;
+    color: red;
+    font-size: 12px;
+    font-style: italic;
+}
+
+input#amount {
+    display: block;
+    border: none;
+    font-size: 26px;
+    padding: 10px;
+}
+
+.confirmButton {
+    background: #4dcc27;
+    color: #fff;
+}

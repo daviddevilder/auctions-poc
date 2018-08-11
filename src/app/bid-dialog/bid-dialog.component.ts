@@ -20,8 +20,10 @@ export class BidDialogComponent implements OnInit {
     }
 
     onCloseConfirm() {
-        this.lotService.PlaceBid(this.data.lotId, this.emailAddress, this.data.amount);
-        this.thisDialogRef.close(true);
+        this.lotService.PlaceBid(this.data.lotId, this.emailAddress, this.data.amount)
+            .subscribe((result => {
+                this.thisDialogRef.close(true);
+            }));
     }
 
     onCloseCancel() {
