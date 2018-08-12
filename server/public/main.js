@@ -398,7 +398,6 @@ var BidDialogComponent = /** @class */ (function () {
         var _this = this;
         this.lotService.PlaceBid(this.data.lotId, this.emailAddress, this.data.amount)
             .subscribe((function (result) {
-            console.log(result);
             _this.thisDialogRef.close(true);
         }));
     };
@@ -869,11 +868,9 @@ var LotDetailsComponent = /** @class */ (function () {
         dialogRef.afterClosed().subscribe(function (success) {
             if (success) {
                 alert('Bid placed successfully!');
-                console.log('Bid placed successfully!');
             }
             else {
                 alert('Bid not placed');
-                console.log('Bid not placed');
             }
         });
     };
@@ -1070,10 +1067,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var ClubService = /** @class */ (function () {
-    // private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
     function ClubService(http) {
         this.http = http;
-        this.host = 'http://localhost:3000';
+        // private readonly host: string = 'http://localhost:3000';
+        this.host = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
     }
     ClubService.prototype.LoadClubs = function () {
         var url = this.host + '/api/clubs';
@@ -1120,8 +1117,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var LotService = /** @class */ (function () {
     function LotService(http) {
         this.http = http;
-        this.host = 'http://localhost:3000';
-        // private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
+        // private readonly host: string = 'http://localhost:3000';
+        this.host = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
         this.Lots = [];
     }
     LotService.prototype.LoadTags = function (clubId) {
@@ -1146,7 +1143,6 @@ var LotService = /** @class */ (function () {
             bidderId: bidderId,
             value: amount
         };
-        console.log(url);
         return this.http.post(url, body);
     };
     LotService = __decorate([

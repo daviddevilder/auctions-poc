@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var API = require("./routes/API");
 var mongoose = require("mongoose");
-mongoose.connect('mongodb://localhost');
+mongoose.connect('mongodb://35.178.184.104:27017/admin');
 var bodyParser = require('body-parser'), express = require('express'), http = require('http'), path = require('path');
 start();
 function start() {
