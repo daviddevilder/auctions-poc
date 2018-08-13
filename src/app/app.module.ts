@@ -22,6 +22,7 @@ import {ClubLotsComponent} from './club-lots/club-lots.component';
 import {AuctionNavComponent} from './auction-nav/auction-nav.component';
 import {LotDetailsComponent} from './lot-details/lot-details.component';
 import {BidDialogComponent} from './bid-dialog/bid-dialog.component';
+import {NotificationDialogComponent} from './notification-dialog/notification-dialog.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 registerLocaleData(localeEn, 'en', localeEnExtra);
@@ -38,9 +39,10 @@ registerLocaleData(localeEn, 'en', localeEnExtra);
         LotListComponent,
         ClubLotsComponent,
         AuctionNavComponent,
-        BidDialogComponent
+        BidDialogComponent,
+        NotificationDialogComponent
     ],
-    entryComponents: [BidDialogComponent],
+    entryComponents: [BidDialogComponent, NotificationDialogComponent],
     imports: [
         BrowserModule,
         HttpClientModule,

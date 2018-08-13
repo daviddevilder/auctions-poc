@@ -6,6 +6,7 @@ import {LotService} from '../services/lot.service';
 import {Lot} from '../../../common/models/Lot';
 import {MatDialog} from '@angular/material';
 import {BidDialogComponent} from '../bid-dialog/bid-dialog.component';
+import {NotificationDialogComponent} from '../notification-dialog/notification-dialog.component';
 
 @Component({
   selector: 'app-lot-details',
@@ -48,9 +49,18 @@ export class LotDetailsComponent {
 
         dialogRef.afterClosed().subscribe(success => {
             if (success) {
-                alert('Bid placed successfully!');
-            } else {
-                alert('Bid not placed');
+                this.openBidConfirmedDialog();
+            }
+        });
+    }
+
+    private openBidConfirmedDialog() {
+        this.dialog.open(NotificationDialogComponent, {
+            width: '400px',
+            disableClose: true,
+            data: {
+                title: 'Bid placed',
+                body: 'Your bid has been placed. Thank you for your contribution!'
             }
         });
     }
