@@ -12,7 +12,7 @@
 h1 {
     color: white;
     margin: 0 0 0 200px;
-    padding: 14px;
+    padding: 65px 14px 14px;
     background-color: rgb(0, 43, 136);
     opacity: 0.9;
     width: auto;
@@ -28,4 +28,5 @@ h1 {
 .lots {
     margin-left: 200px;
     margin-top: 50px;
+    min-height: 350px;
 }

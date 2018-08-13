@@ -24,7 +24,7 @@ h2 {
 }
 
 .headerSection {
-    height: 300px;
+    height: 350px;
     background-color: rgb(0, 43, 136);
     margin-bottom: 40px;
 }
@@ -32,7 +32,7 @@ h2 {
 .clubLogo {
     height: 160px;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 70px;
 }
 .clubLogo img {
     height: 160px;

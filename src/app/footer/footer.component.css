@@ -5,6 +5,8 @@
     padding-bottom: 0px;
     z-index: 1000;
     font-weight: 200;
+    margin-top: 30px;
+    clear: both;
 }
 
 .footer-row {
