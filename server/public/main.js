@@ -149,7 +149,7 @@ var AppComponent = /** @class */ (function () {
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-root',
-            template: "\n      <app-header></app-header>\n      <router-outlet></router-outlet>\n  "
+            template: "\n      <app-header></app-header>\n      <router-outlet></router-outlet>\n      <app-footer></app-footer>\n  "
         })
     ], AppComponent);
     return AppComponent;
@@ -188,17 +188,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lot_list_lot_list_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./lot-list/lot-list.component */ "./src/app/lot-list/lot-list.component.ts");
 /* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./services/lot.service */ "./src/app/services/lot.service.ts");
 /* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
-/* harmony import */ var _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./club-lots/club-lots.component */ "./src/app/club-lots/club-lots.component.ts");
-/* harmony import */ var _auction_nav_auction_nav_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./auction-nav/auction-nav.component */ "./src/app/auction-nav/auction-nav.component.ts");
-/* harmony import */ var _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./lot-details/lot-details.component */ "./src/app/lot-details/lot-details.component.ts");
-/* harmony import */ var _bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./bid-dialog/bid-dialog.component */ "./src/app/bid-dialog/bid-dialog.component.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/footer/footer.component.ts");
+/* harmony import */ var _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./club-lots/club-lots.component */ "./src/app/club-lots/club-lots.component.ts");
+/* harmony import */ var _auction_nav_auction_nav_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./auction-nav/auction-nav.component */ "./src/app/auction-nav/auction-nav.component.ts");
+/* harmony import */ var _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./lot-details/lot-details.component */ "./src/app/lot-details/lot-details.component.ts");
+/* harmony import */ var _bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./bid-dialog/bid-dialog.component */ "./src/app/bid-dialog/bid-dialog.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -230,21 +232,22 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
                 _header_header_component__WEBPACK_IMPORTED_MODULE_16__["HeaderComponent"],
+                _footer_footer_component__WEBPACK_IMPORTED_MODULE_17__["FooterComponent"],
                 _club_list_club_list_component__WEBPACK_IMPORTED_MODULE_11__["ClubListComponent"],
                 _home_home_component__WEBPACK_IMPORTED_MODULE_10__["HomeComponent"],
                 _club_club_component__WEBPACK_IMPORTED_MODULE_13__["ClubComponent"],
-                _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_19__["LotDetailsComponent"],
+                _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_20__["LotDetailsComponent"],
                 _lot_list_lot_list_component__WEBPACK_IMPORTED_MODULE_14__["LotListComponent"],
-                _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_17__["ClubLotsComponent"],
-                _auction_nav_auction_nav_component__WEBPACK_IMPORTED_MODULE_18__["AuctionNavComponent"],
-                _bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_20__["BidDialogComponent"]
+                _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_18__["ClubLotsComponent"],
+                _auction_nav_auction_nav_component__WEBPACK_IMPORTED_MODULE_19__["AuctionNavComponent"],
+                _bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_21__["BidDialogComponent"]
             ],
-            entryComponents: [_bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_20__["BidDialogComponent"]],
+            entryComponents: [_bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_21__["BidDialogComponent"]],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["BrowserModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HttpClientModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_21__["FormsModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_21__["ReactiveFormsModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_22__["FormsModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_22__["ReactiveFormsModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["BrowserAnimationsModule"],
                 _material_module__WEBPACK_IMPORTED_MODULE_6__["CustomMaterialModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"]
@@ -644,6 +647,69 @@ var ClubComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_services_club_service__WEBPACK_IMPORTED_MODULE_2__["ClubService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
     ], ClubComponent);
     return ClubComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/footer/footer.component.css":
+/*!*********************************************!*\
+  !*** ./src/app/footer/footer.component.css ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".footer {\n    background-color: #1B1E2B;\n    color: white;\n    padding-top: 100px;\n    padding-bottom: 0px;\n    z-index: 1000;\n    font-weight: 200;\n}\n\n.footer-row {\n    margin: 0px auto;\n    width: 80%;\n}\n\n.footer-email {\n    float: left;\n    text-align: center;\n    width: 33%;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    height: 85px;\n}\n\n.footer-logo {\n    float: left;\n    text-align: center;\n    width: 34%;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    height: 85px;\n}\n\n.footer-logo img {\n    margin: 6px 20px;\n    width: 100%;\n    max-width: 200px;\n}\n\n.footer-social {\n    float: left;\n    text-align: center;\n    width: 33%;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    height: 85px;\n}\n\n.footer-social ul {\n    list-style: none;\n}\n\n.footer-social ul li {\n    display: inline-block;\n    width: 50px;\n    font-size: 20px;\n}\n\n.footer-social a {\n    text-decoration: none;\n    color: white;\n}\n\n.footer-address {\n    text-align: center;\n    font-size: 18px;\n    padding: 100px 0;\n}"
+
+/***/ }),
+
+/***/ "./src/app/footer/footer.component.html":
+/*!**********************************************!*\
+  !*** ./src/app/footer/footer.component.html ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"footer\">\n\n  <div class=\"footer-row\">\n\n    <div class=\"footer-email\">\n      <p>info@goinggone.io</p>\n    </div>\n\n    <div class=\"footer-logo\">\n      <a routerLink=\"/home\">\n        <img src=\"../../assets/images/gg_footer_logo.png\"/>\n      </a>\n    </div>\n\n    <div class=\"footer-social\">\n      <ul>\n        <li>\n          <a href=\"https://www.facebook.com/goinggonetechnology\">\n            <i class=\"fa fa-facebook\"></i>\n          </a>\n        </li>\n\n        <li>\n          <a href=\"https://www.instagram.com/goinggonetechnology\">\n            <i class=\"fa fa-instagram\"></i>\n          </a>\n        </li>\n\n        <li>\n          <a href=\"https://www.linkedin.com/company-beta/17881204/\">\n            <i class=\"fa fa-linkedin\"></i>\n          </a>\n        </li>\n      </ul>\n    </div>\n\n  </div>\n\n  <div class=\"footer-row\">\n    <div class=\"footer-address\">\n      Hayles Bridge Offices, 228 Mulgrave Road, Cheam, Surrey, UK, SM2 6JT\n    </div>\n  </div>\n\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/footer/footer.component.ts":
+/*!********************************************!*\
+  !*** ./src/app/footer/footer.component.ts ***!
+  \********************************************/
+/*! exports provided: FooterComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FooterComponent", function() { return FooterComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var FooterComponent = /** @class */ (function () {
+    function FooterComponent() {
+    }
+    FooterComponent.prototype.ngOnInit = function () {
+    };
+    FooterComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-footer',
+            template: __webpack_require__(/*! ./footer.component.html */ "./src/app/footer/footer.component.html"),
+            styles: [__webpack_require__(/*! ./footer.component.css */ "./src/app/footer/footer.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], FooterComponent);
+    return FooterComponent;
 }());
 
 

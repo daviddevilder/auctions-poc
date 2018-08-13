@@ -17,6 +17,7 @@ import {ClubComponent} from './club/club.component';
 import {LotListComponent} from './lot-list/lot-list.component';
 import {LotService} from './services/lot.service';
 import {HeaderComponent} from './header/header.component';
+import {FooterComponent} from './footer/footer.component';
 import {ClubLotsComponent} from './club-lots/club-lots.component';
 import {AuctionNavComponent} from './auction-nav/auction-nav.component';
 import {LotDetailsComponent} from './lot-details/lot-details.component';
@@ -29,6 +30,7 @@ registerLocaleData(localeEn, 'en', localeEnExtra);
     declarations: [
         AppComponent,
         HeaderComponent,
+        FooterComponent,
         ClubListComponent,
         HomeComponent,
         ClubComponent,
