@@ -1,21 +1,39 @@
 # Going Gone v2
 
+## Initial Setup
+
+Make sure you have git, node and npm installed
+
+https://git-scm.com/downloads
+
+https://nodejs.org/en/download
+
+https://www.npmjs.com/get-npm
+
+Install typings globally
+
+`npm install typings --global`
+
+Clone the project
+
+`git clone https://github.com/daviddevilder/auctions-poc.git`
+
+Install dependencies
+
+`cd auctions-poc`
+
+`npm install`
+
+`typings install`
+
+## Build the app
+
+`npm run build`
+
 ## Run the app
 
 You will need to have MongoDB installed and running first - [instructions here](https://treehouse.github.io/installation-guides/mac/mongo-mac.html)
 
-1. npm install
-2. npm run build
-3. npm start
+`npm start`
 
-## Run Angular unit tests (Karma & Jasmine)
-
-npm run ui-unit-tests
-
-## Run Angular end-to-end tests (Protractor)
-
-npm run ui-e2e-tests
-
-## Run NodeJS unit tests (Mocha & Chai)
-
-npm run server-unit-tests
+Open a browser and navigate to [localhost:3000](http://localhost:3000)
