@@ -7,6 +7,40 @@
     z-index: 1000;
 }
 
-.header img {
+.logo-container {
+    float: left;
+}
+
+.logo-container img {
     margin: 6px 20px;
+}
+
+.quicklinks-container {
+    float: right;
+}
+
+.quicklinks-container ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.quicklinks-container li {
+    float: left;
+}
+
+.quicklinks-container a {
+    background-color: transparent;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 18px 20px;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.quicklinks-container a:hover {
+    opacity: 1;
 }

@@ -1,9 +1,22 @@
 <div class="header">
+  <div class="logo-container">
+    <a routerLink="/home">
+      <img src="../../assets/images/gg_small_logo.png"/>
+    </a>
+  </div>
 
-  <a routerLink="/home">
-
-    <img src="../../assets/images/gg_small_logo.png"/>
-
-  </a>
+  <div class="quicklinks-container">
+    <ul>
+      <li>
+        <a routerLink="/club/{{clubId}}">Home</a>
+      </li>
+      <li>
+        <a routerLink="/club/{{clubId}}/lots">Auction</a>
+      </li>
+      <li>
+        <a routerLink="/club/{{clubId}}/faq">FAQ</a>
+      </li>
+    </ul>
+  </div>
 
 </div>

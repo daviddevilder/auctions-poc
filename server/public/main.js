@@ -149,7 +149,7 @@ var AppComponent = /** @class */ (function () {
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-root',
-            template: "\n      <app-header></app-header>\n      <router-outlet></router-outlet>\n      <app-footer></app-footer>\n  "
+            template: "\n      <router-outlet></router-outlet>\n      <app-footer></app-footer>\n  "
         })
     ], AppComponent);
     return AppComponent;
@@ -514,7 +514,7 @@ module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background\"></div>\n\n<h1>\n  {{ title }} Auction\n</h1>\n\n<div class=\"nav\">\n  <app-auction-nav clubId=\"{{clubId}}\"></app-auction-nav>\n</div>\n\n<div class=\"lots\">\n  <app-lot-list clubId=\"{{clubId}}\"></app-lot-list>\n</div>"
+module.exports = "<app-header [clubId]=\"clubId\"></app-header>\n\n<div class=\"background\"></div>\n\n<h1>\n  {{ title }} Auction\n</h1>\n\n<div class=\"nav\">\n  <app-auction-nav clubId=\"{{clubId}}\"></app-auction-nav>\n</div>\n\n<div class=\"lots\">\n  <app-lot-list clubId=\"{{clubId}}\"></app-lot-list>\n</div>"
 
 /***/ }),
 
@@ -594,7 +594,7 @@ module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background\"></div>\n\n<div class=\"headerSection\">\n    <div class=\"clubLogo\">\n        <img src=\"{{club.logoUrl}}\"/>\n    </div>\n\n    <h1>\n        {{title}}\n    </h1>\n\n    <h2>\n        {{club.subtitle}}\n    </h2>\n</div>\n\n<div class=\"banner\" [ngStyle]=\"{ 'background-image': 'url(' + club.bannerUrl + ')'}\">\n    <div class=\"bannerText\">\n        {{club.bannerText}}\n    </div>\n    <div class=\"lotsButtonContainer\">\n        <button mat-raised-button class=\"lotsButton\" routerLink=\"/club/{{clubId}}/lots\">\n            View the auction lots\n        </button>\n    </div>\n</div>\n\n<div class=\"introductionContainer\">\n    <div class=\"introductionText\">\n        {{club.introText}}\n    </div>\n</div>\n\n<div class=\"clubDetailsContainer\">\n    <div class=\"clubDetailsCard\">\n        <div class=\"whenContainer\">\n            <label>When</label>\n            <div>Ends {{club.closingDate | date:'h:mm a, d LLLL y'}}</div>\n        </div>\n    </div>\n\n    <div class=\"clubDetailsCard\">\n        <div class=\"contactContainer\">\n            <label>Contact</label>\n            <div>{{club.contactEmail}}</div>\n        </div>\n    </div>\n\n    <div class=\"clubDetailsCard\">\n        <div class=\"websiteContainer\">\n            <label>Website</label>\n            <div>\n                <a href=\"{{club.websiteUrl}}\" target=\"_blank\">\n                    {{club.websiteUrl}}\n                </a>\n            </div>\n        </div>\n    </div>\n</div>\n\n<div class=\"descriptionContainer\">\n    <div class=\"descriptionHtml\" [innerHtml]=\"club.descriptionHtml\"></div>\n</div>\n"
+module.exports = "<app-header [clubId]=\"clubId\"></app-header>\n\n<div class=\"background\"></div>\n\n<div class=\"headerSection\">\n    <div class=\"clubLogo\">\n        <img src=\"{{club.logoUrl}}\"/>\n    </div>\n\n    <h1>\n        {{title}}\n    </h1>\n\n    <h2>\n        {{club.subtitle}}\n    </h2>\n</div>\n\n<div class=\"banner\" [ngStyle]=\"{ 'background-image': 'url(' + club.bannerUrl + ')'}\">\n    <div class=\"bannerText\">\n        {{club.bannerText}}\n    </div>\n    <div class=\"lotsButtonContainer\">\n        <button mat-raised-button class=\"lotsButton\" routerLink=\"/club/{{clubId}}/lots\">\n            View the auction lots\n        </button>\n    </div>\n</div>\n\n<div class=\"introductionContainer\">\n    <div class=\"introductionText\">\n        {{club.introText}}\n    </div>\n</div>\n\n<div class=\"clubDetailsContainer\">\n    <div class=\"clubDetailsCard\">\n        <div class=\"whenContainer\">\n            <label>When</label>\n            <div>Ends {{club.closingDate | date:'h:mm a, d LLLL y'}}</div>\n        </div>\n    </div>\n\n    <div class=\"clubDetailsCard\">\n        <div class=\"contactContainer\">\n            <label>Contact</label>\n            <div>{{club.contactEmail}}</div>\n        </div>\n    </div>\n\n    <div class=\"clubDetailsCard\">\n        <div class=\"websiteContainer\">\n            <label>Website</label>\n            <div>\n                <a href=\"{{club.websiteUrl}}\" target=\"_blank\">\n                    {{club.websiteUrl}}\n                </a>\n            </div>\n        </div>\n    </div>\n</div>\n\n<div class=\"descriptionContainer\">\n    <div class=\"descriptionHtml\" [innerHtml]=\"club.descriptionHtml\"></div>\n</div>\n"
 
 /***/ }),
 
@@ -726,7 +726,7 @@ var FooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".header {\n    height: 50px;\n    background-color: #0FBAAD;\n    position: fixed;\n    top: 0;\n    width: 100%;\n    z-index: 1000;\n}\n\n.header img {\n    margin: 6px 20px;\n}"
+module.exports = ".header {\n    height: 50px;\n    background-color: #0FBAAD;\n    position: fixed;\n    top: 0;\n    width: 100%;\n    z-index: 1000;\n}\n\n.logo-container {\n    float: left;\n}\n\n.logo-container img {\n    margin: 6px 20px;\n}\n\n.quicklinks-container {\n    float: right;\n}\n\n.quicklinks-container ul {\n    list-style-type: none;\n    margin: 0;\n    padding: 0;\n    overflow: hidden;\n}\n\n.quicklinks-container li {\n    float: left;\n}\n\n.quicklinks-container a {\n    background-color: transparent;\n    display: block;\n    color: white;\n    text-align: center;\n    padding: 18px 20px;\n    text-decoration: none;\n    font-size: 14px;\n    opacity: 0.9;\n}\n\n.quicklinks-container a:hover {\n    opacity: 1;\n}"
 
 /***/ }),
 
@@ -737,7 +737,7 @@ module.exports = ".header {\n    height: 50px;\n    background-color: #0FBAAD;\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\n\n  <a routerLink=\"/home\">\n\n    <img src=\"../../assets/images/gg_small_logo.png\"/>\n\n  </a>\n\n</div>\n"
+module.exports = "<div class=\"header\">\n  <div class=\"logo-container\">\n    <a routerLink=\"/home\">\n      <img src=\"../../assets/images/gg_small_logo.png\"/>\n    </a>\n  </div>\n\n  <div class=\"quicklinks-container\">\n    <ul>\n      <li>\n        <a routerLink=\"/club/{{clubId}}\">Home</a>\n      </li>\n      <li>\n        <a routerLink=\"/club/{{clubId}}/lots\">Auction</a>\n      </li>\n      <li>\n        <a routerLink=\"/club/{{clubId}}/faq\">FAQ</a>\n      </li>\n    </ul>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -767,6 +767,10 @@ var HeaderComponent = /** @class */ (function () {
     }
     HeaderComponent.prototype.ngOnInit = function () {
     };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], HeaderComponent.prototype, "clubId", void 0);
     HeaderComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-header',
@@ -863,7 +867,7 @@ module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background\"></div>\n\n<div class=\"content\">\n    <div class=\"titleSection\">\n        <button mat-raised-button class=\"backButton\"\n                routerLink=\"/club/{{clubId}}/lots\">\n            << All Lots\n        </button>\n\n        <h1>\n            {{ lot.title }}\n        </h1>\n    </div>\n\n    <h2>\n        provided by {{lot.providedBy}}\n    </h2>\n\n    <div class=\"lotBiddingContainer\">\n        <div class=\"bidDetailsContainer\">\n            <div class=\"price\">\n                <div class=\"label\">\n                    Reserve:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.reservePrice}}\n                </div>\n            </div>\n\n            <div class=\"price\">\n                <div class=\"label\">\n                    Estimate:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.estimate}}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"bidDetailsContainer\">\n            <div>\n                <label>My bid <span class=\"minText\">(minimum £{{lot.reservePrice}})</span>*</label>\n                <input [(ngModel)]=\"amount\" type=\"number\" placeholder=\"0\"/>\n                <button mat-raised-button class=\"bidButton\" [disabled]=\"amount < lot.reservePrice\"\n                        (click)=\"openBidPopup()\">\n                    Place Bid\n                </button>\n            </div>\n        </div>\n    </div>\n\n\n    <div>\n        <div class=\"lotImageContainer\">\n            <img src=\"{{lot.imageUri}}\"/>\n        </div>\n\n        <div class=\"lotDescriptionContainer\" [innerHTML]=\"lot.description\"></div>\n    </div>\n</div>"
+module.exports = "<app-header [clubId]=\"clubId\"></app-header>\n\n<div class=\"background\"></div>\n\n<div class=\"content\">\n    <div class=\"titleSection\">\n        <button mat-raised-button class=\"backButton\"\n                routerLink=\"/club/{{clubId}}/lots\">\n            << All Lots\n        </button>\n\n        <h1>\n            {{ lot.title }}\n        </h1>\n    </div>\n\n    <h2>\n        provided by {{lot.providedBy}}\n    </h2>\n\n    <div class=\"lotBiddingContainer\">\n        <div class=\"bidDetailsContainer\">\n            <div class=\"price\">\n                <div class=\"label\">\n                    Reserve:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.reservePrice}}\n                </div>\n            </div>\n\n            <div class=\"price\">\n                <div class=\"label\">\n                    Estimate:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.estimate}}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"bidDetailsContainer\">\n            <div>\n                <label>My bid <span class=\"minText\">(minimum £{{lot.reservePrice}})</span>*</label>\n                <input [(ngModel)]=\"amount\" type=\"number\" placeholder=\"0\"/>\n                <button mat-raised-button class=\"bidButton\" [disabled]=\"amount < lot.reservePrice\"\n                        (click)=\"openBidPopup()\">\n                    Place Bid\n                </button>\n            </div>\n        </div>\n    </div>\n\n\n    <div>\n        <div class=\"lotImageContainer\">\n            <img src=\"{{lot.imageUri}}\"/>\n        </div>\n\n        <div class=\"lotDescriptionContainer\" [innerHTML]=\"lot.description\"></div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -1221,10 +1225,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var ClubService = /** @class */ (function () {
+    // private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
     function ClubService(http) {
         this.http = http;
-        // private readonly host: string = 'http://localhost:3000';
-        this.host = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
+        this.host = 'http://localhost:3000';
     }
     ClubService.prototype.LoadClubs = function () {
         var url = this.host + '/api/clubs';
@@ -1271,8 +1275,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var LotService = /** @class */ (function () {
     function LotService(http) {
         this.http = http;
-        // private readonly host: string = 'http://localhost:3000';
-        this.host = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
+        this.host = 'http://localhost:3000';
+        // private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
         this.Lots = [];
     }
     LotService.prototype.LoadTags = function (clubId) {
