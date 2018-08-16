@@ -1,7 +1,7 @@
 .footer {
-    background-color: #1B1E2B;
+    background-color: rgb(0, 43, 136);
     color: white;
-    padding-top: 100px;
+    padding-top: 30px;
     padding-bottom: 0px;
     z-index: 1000;
     font-weight: 200;
@@ -11,7 +11,9 @@
 
 .footer-row {
     margin: 0px auto;
-    width: 80%;
+    width: 100%;
+    border-bottom: 1px white solid;
+    overflow: hidden;
 }
 
 .footer-email {
@@ -21,23 +23,43 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 85px;
+    height: 140px;
+}
+
+.footer-email a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    margin: 0px 0px 20px 20px;
+    display: block;
+    text-align: left;
+}
+
+.footer-email i {
+    margin: 0 12px;
 }
 
 .footer-logo {
     float: left;
     text-align: center;
     width: 34%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 85px;
+    height: 140px;
+}
+
+.footer-logo label {
+    font-size: 12px;
+    top: -18px;
+    position: relative;
 }
 
 .footer-logo img {
-    margin: 6px 20px;
-    width: 100%;
-    max-width: 200px;
+    margin: 6px 10px;
+    width: auto;
+}
+
+.footer-logo p {
+    font-size: 12px;
+    line-height: 16px;
 }
 
 .footer-social {
@@ -47,11 +69,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 85px;
+    height: 140px;
 }
 
 .footer-social ul {
     list-style: none;
+    text-align: right;
+    margin-right: 30px;
 }
 
 .footer-social ul li {
@@ -69,4 +93,49 @@
     text-align: center;
     font-size: 18px;
     padding: 100px 0;
+}
+
+.footer-terms {
+    float: left;
+    text-align: center;
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80px;
+}
+
+.footer-terms a {
+    color: white;
+    text-align: left;
+    text-decoration: none;
+    font-size: 12px;
+    margin-left: 30px;
+}
+
+.footer-version {
+    float: left;
+    text-align: center;
+    width: 34%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80px;
+    font-size: 12px;
+}
+
+.footer-copyright {
+    float: left;
+    text-align: center;
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80px;
+    font-size: 12px;
+}
+
+.footer-copyright div {
+    text-align: right;
+    margin-right: 30px;
 }
