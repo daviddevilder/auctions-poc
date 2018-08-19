@@ -5,6 +5,7 @@ export interface IClubModel extends IClub, Document {
     clubId: string;
     title: string;
     subtitle: string;
+    primaryColour: string;
     logoUrl: string;
     websiteUrl: string;
     contactEmail: string;
@@ -20,6 +21,7 @@ export const ClubSchema: Schema = new Schema({
     clubId: String,
     title: String,
     subtitle: String,
+    primaryColour: String,
     logoUrl: String,
     websiteUrl: String,
     contactEmail: String,

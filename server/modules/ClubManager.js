@@ -47,7 +47,7 @@ var ClubManager;
                             try {
                                 var results_1 = [];
                                 clubs.forEach(function (club) {
-                                    results_1.push(new Club_1.Club(club.clubId, club.title, club.subtitle, club.logoUrl, club.websiteUrl, club.contactEmail, club.contactPhone, club.closingDate, club.bannerUrl, club.bannerText, club.introText, club.descriptionHtml));
+                                    results_1.push(new Club_1.Club(club.clubId, club.title, club.subtitle, club.primaryColour, club.logoUrl, club.websiteUrl, club.contactEmail, club.contactPhone, club.closingDate, club.bannerUrl, club.bannerText, club.introText, club.descriptionHtml));
                                 });
                                 resolve(results_1);
                             }
@@ -65,7 +65,7 @@ var ClubManager;
             return __generator(this, function (_a) {
                 return [2, new Promise(function (resolve, reject) {
                         Club_2.ClubModel.findOne({ clubId: clubId }, function (err, club) {
-                            resolve(new Club_1.Club(club.clubId, club.title, club.subtitle, club.logoUrl, club.websiteUrl, club.contactEmail, club.contactPhone, club.closingDate, club.bannerUrl, club.bannerText, club.introText, club.descriptionHtml));
+                            resolve(new Club_1.Club(club.clubId, club.title, club.subtitle, club.primaryColour, club.logoUrl, club.websiteUrl, club.contactEmail, club.contactPhone, club.closingDate, club.bannerUrl, club.bannerText, club.introText, club.descriptionHtml));
                         });
                     })];
             });

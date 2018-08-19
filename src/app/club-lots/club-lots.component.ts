@@ -10,8 +10,9 @@ import {LotService} from '../services/lot.service';
   styleUrls: ['./club-lots.component.css']
 })
 export class ClubLotsComponent {
-    public title: String = '';
     public clubId: String = '';
+
+    public club: Club = new Club('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
 
     constructor(private clubService: ClubService, private lotService: LotService, private route: ActivatedRoute) {
         this.route.params.subscribe( params => {
@@ -19,7 +20,7 @@ export class ClubLotsComponent {
 
             clubService.LoadClubById(params.clubId)
                 .subscribe((club: Club) => {
-                    this.title = club.title;
+                    this.club = club;
                 });
         });
     }

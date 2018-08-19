@@ -1,4 +1,4 @@
-<app-header [clubId]="clubId"></app-header>
+<app-header [clubId]="clubId" [colour]="club.primaryColour"></app-header>
 
 <div class="background"></div>
 
@@ -60,3 +60,5 @@
         <div class="lotDescriptionContainer" [innerHTML]="lot.description"></div>
     </div>
 </div>
+
+<app-footer [colour]="club.primaryColour"></app-footer>

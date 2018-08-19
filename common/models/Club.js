@@ -1,10 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Club = (function () {
-    function Club(clubId, title, subtitle, logoUrl, websiteUrl, contactEmail, contactPhone, closingDate, bannerUrl, bannerText, introText, descriptionHtml) {
+    function Club(clubId, title, subtitle, primaryColour, logoUrl, websiteUrl, contactEmail, contactPhone, closingDate, bannerUrl, bannerText, introText, descriptionHtml) {
         this.clubId = clubId;
         this.title = title;
         this.subtitle = subtitle;
+        this.primaryColour = primaryColour;
         this.logoUrl = logoUrl;
         this.websiteUrl = websiteUrl;
         this.contactEmail = contactEmail;

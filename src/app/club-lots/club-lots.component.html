@@ -1,9 +1,9 @@
-<app-header [clubId]="clubId"></app-header>
+<app-header [clubId]="clubId" [colour]="club.primaryColour"></app-header>
 
 <div class="background"></div>
 
-<h1>
-  {{ title }} Auction
+<h1 [ngStyle]="{ 'background-color': club.primaryColour}">
+  {{ club.title }} Auction
 </h1>
 
 <div class="nav">
@@ -13,3 +13,5 @@
 <div class="lots">
   <app-lot-list clubId="{{clubId}}"></app-lot-list>
 </div>
+
+<app-footer [colour]="club.primaryColour"></app-footer>

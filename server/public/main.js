@@ -11,10 +11,11 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Club", function() { return Club; });
 var Club = /** @class */ (function () {
-    function Club(clubId, title, subtitle, logoUrl, websiteUrl, contactEmail, contactPhone, closingDate, bannerUrl, bannerText, introText, descriptionHtml) {
+    function Club(clubId, title, subtitle, primaryColour, logoUrl, websiteUrl, contactEmail, contactPhone, closingDate, bannerUrl, bannerText, introText, descriptionHtml) {
         this.clubId = clubId;
         this.title = title;
         this.subtitle = subtitle;
+        this.primaryColour = primaryColour;
         this.logoUrl = logoUrl;
         this.websiteUrl = websiteUrl;
         this.contactEmail = contactEmail;
@@ -149,7 +150,7 @@ var AppComponent = /** @class */ (function () {
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-root',
-            template: "\n      <router-outlet></router-outlet>\n      <app-footer></app-footer>\n  "
+            template: "<router-outlet></router-outlet>"
         })
     ], AppComponent);
     return AppComponent;
@@ -514,7 +515,7 @@ module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header [clubId]=\"clubId\"></app-header>\n\n<div class=\"background\"></div>\n\n<h1>\n  {{ title }} Auction\n</h1>\n\n<div class=\"nav\">\n  <app-auction-nav clubId=\"{{clubId}}\"></app-auction-nav>\n</div>\n\n<div class=\"lots\">\n  <app-lot-list clubId=\"{{clubId}}\"></app-lot-list>\n</div>"
+module.exports = "<app-header [clubId]=\"clubId\" [colour]=\"club.primaryColour\"></app-header>\n\n<div class=\"background\"></div>\n\n<h1>\n  {{ club.title }} Auction\n</h1>\n\n<div class=\"nav\">\n  <app-auction-nav clubId=\"{{clubId}}\"></app-auction-nav>\n</div>\n\n<div class=\"lots\">\n  <app-lot-list clubId=\"{{clubId}}\"></app-lot-list>\n</div>\n\n<app-footer [colour]=\"club.primaryColour\"></app-footer>"
 
 /***/ }),
 
@@ -531,7 +532,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _services_club_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/club.service */ "./src/app/services/club.service.ts");
-/* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/lot.service */ "./src/app/services/lot.service.ts");
+/* harmony import */ var _common_models_Club__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/models/Club */ "./common/models/Club.ts");
+/* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/lot.service */ "./src/app/services/lot.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -545,19 +547,20 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var ClubLotsComponent = /** @class */ (function () {
     function ClubLotsComponent(clubService, lotService, route) {
         var _this = this;
         this.clubService = clubService;
         this.lotService = lotService;
         this.route = route;
-        this.title = '';
         this.clubId = '';
+        this.club = new _common_models_Club__WEBPACK_IMPORTED_MODULE_3__["Club"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
         this.route.params.subscribe(function (params) {
             _this.clubId = params.clubId;
             clubService.LoadClubById(params.clubId)
                 .subscribe(function (club) {
-                _this.title = club.title;
+                _this.club = club;
             });
         });
     }
@@ -567,7 +570,7 @@ var ClubLotsComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./club-lots.component.html */ "./src/app/club-lots/club-lots.component.html"),
             styles: [__webpack_require__(/*! ./club-lots.component.css */ "./src/app/club-lots/club-lots.component.css")]
         }),
-        __metadata("design:paramtypes", [_services_club_service__WEBPACK_IMPORTED_MODULE_2__["ClubService"], _services_lot_service__WEBPACK_IMPORTED_MODULE_3__["LotService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
+        __metadata("design:paramtypes", [_services_club_service__WEBPACK_IMPORTED_MODULE_2__["ClubService"], _services_lot_service__WEBPACK_IMPORTED_MODULE_4__["LotService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
     ], ClubLotsComponent);
     return ClubLotsComponent;
 }());
@@ -583,7 +586,7 @@ var ClubLotsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\nh1 {\n    text-align: center;\n    color: white;\n    font-size: 24px;\n    font-weight: normal;\n}\n\nh2 {\n    text-align: center;\n    color: white;\n    font-size: 16px;\n    font-weight: normal;\n}\n\n.headerSection {\n    height: 350px;\n    background-color: rgb(0, 43, 136);\n    margin-bottom: 40px;\n}\n\n.clubLogo {\n    height: 160px;\n    text-align: center;\n    padding-top: 70px;\n}\n\n.clubLogo img {\n    height: 160px;\n}\n\n.bannerContainer {\n    margin-bottom: 40px;\n}\n\n.banner {\n    padding: 40px 100px;\n    background: center/cover no-repeat #789;\n    min-height: 160px;\n    max-width: 700px;\n    margin: 0 auto;\n}\n\n.bannerText {\n    font-size: 30px;\n    background: rgba(0,0,0,0.38);\n    text-transform: uppercase;\n    color: #fff;\n    padding: 0 10px;\n    -webkit-box-decoration-break: clone;\n    -ms-box-decoration-break: clone;\n    -o-box-decoration-break: clone;\n    box-decoration-break: clone;\n}\n\n.lotsButtonContainer {\n    margin-top: 40px;\n    text-align: center;\n}\n\n.lotsButton {\n    width: 100%;\n    text-transform: uppercase;\n    font-size: 18px;\n    font-weight: bold;\n}\n\n.introductionContainer {\n    max-width: 900px;\n    margin: 35px auto 0;\n}\n\n.introductionText {\n\n}\n\n.clubDetailsContainer {\n    margin: 0 auto;\n    width: 400px;\n}\n\n.clubDetailsCard {\n    background: white;\n    color: black;\n    margin: 25px auto;\n    padding: 15px;\n    text-align: center;\n}\n\n.clubDetailsCard label {\n    color: #6f6f6f;\n    font-size: 12px;\n    margin-bottom: 6px;\n}\n\n.descriptionContainer {\n    max-width: 900px;\n    margin: 35px auto 0;\n}\n\n.descriptionHtml {\n\n}"
+module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\nh1 {\n    text-align: center;\n    color: white;\n    font-size: 24px;\n    font-weight: normal;\n}\n\nh2 {\n    text-align: center;\n    color: white;\n    font-size: 16px;\n    font-weight: normal;\n}\n\n.headerSection {\n    height: 350px;\n    margin-bottom: 40px;\n}\n\n.clubLogo {\n    height: 160px;\n    text-align: center;\n    padding-top: 70px;\n}\n\n.clubLogo img {\n    height: 160px;\n}\n\n.bannerContainer {\n    margin-bottom: 40px;\n}\n\n.banner {\n    padding: 40px 100px;\n    background: center/cover no-repeat #789;\n    min-height: 160px;\n    max-width: 700px;\n    margin: 0 auto;\n}\n\n.bannerText {\n    font-size: 30px;\n    background: rgba(0,0,0,0.38);\n    text-transform: uppercase;\n    color: #fff;\n    padding: 0 10px;\n    -webkit-box-decoration-break: clone;\n    -ms-box-decoration-break: clone;\n    -o-box-decoration-break: clone;\n    box-decoration-break: clone;\n}\n\n.lotsButtonContainer {\n    margin-top: 40px;\n    text-align: center;\n}\n\n.lotsButton {\n    width: 100%;\n    text-transform: uppercase;\n    font-size: 18px;\n    font-weight: bold;\n}\n\n.introductionContainer {\n    max-width: 900px;\n    margin: 35px auto 0;\n}\n\n.introductionText {\n\n}\n\n.clubDetailsContainer {\n    margin: 0 auto;\n    width: 400px;\n}\n\n.clubDetailsCard {\n    background: white;\n    color: black;\n    margin: 25px auto;\n    padding: 15px;\n    text-align: center;\n}\n\n.clubDetailsCard label {\n    color: #6f6f6f;\n    font-size: 12px;\n    margin-bottom: 6px;\n}\n\n.descriptionContainer {\n    max-width: 900px;\n    margin: 35px auto 0;\n}\n\n.descriptionHtml {\n\n}"
 
 /***/ }),
 
@@ -594,7 +597,7 @@ module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header [clubId]=\"clubId\"></app-header>\n\n<div class=\"background\"></div>\n\n<div class=\"headerSection\">\n    <div class=\"clubLogo\">\n        <img src=\"{{club.logoUrl}}\"/>\n    </div>\n\n    <h1>\n        {{title}}\n    </h1>\n\n    <h2>\n        {{club.subtitle}}\n    </h2>\n</div>\n\n<div class=\"banner\" [ngStyle]=\"{ 'background-image': 'url(' + club.bannerUrl + ')'}\">\n    <div class=\"bannerText\">\n        {{club.bannerText}}\n    </div>\n    <div class=\"lotsButtonContainer\">\n        <button mat-raised-button class=\"lotsButton\" routerLink=\"/club/{{clubId}}/lots\">\n            View the auction lots\n        </button>\n    </div>\n</div>\n\n<div class=\"introductionContainer\">\n    <div class=\"introductionText\">\n        {{club.introText}}\n    </div>\n</div>\n\n<div class=\"clubDetailsContainer\">\n    <div class=\"clubDetailsCard\">\n        <div class=\"whenContainer\">\n            <label>When</label>\n            <div>Ends {{club.closingDate | date:'h:mm a, d LLLL y'}}</div>\n        </div>\n    </div>\n\n    <div class=\"clubDetailsCard\">\n        <div class=\"contactContainer\">\n            <label>Contact</label>\n            <div>{{club.contactEmail}}</div>\n        </div>\n    </div>\n\n    <div class=\"clubDetailsCard\">\n        <div class=\"websiteContainer\">\n            <label>Website</label>\n            <div>\n                <a href=\"{{club.websiteUrl}}\" target=\"_blank\">\n                    {{club.websiteUrl}}\n                </a>\n            </div>\n        </div>\n    </div>\n</div>\n\n<div class=\"descriptionContainer\">\n    <div class=\"descriptionHtml\" [innerHtml]=\"club.descriptionHtml\"></div>\n</div>\n"
+module.exports = "<app-header [clubId]=\"clubId\" [colour]=\"club.primaryColour\"></app-header>\n\n<div class=\"background\"></div>\n\n<div class=\"headerSection\" [ngStyle]=\"{ 'background-color': club.primaryColour}\">\n    <div class=\"clubLogo\">\n        <img src=\"{{club.logoUrl}}\"/>\n    </div>\n\n    <h1>\n        {{title}}\n    </h1>\n\n    <h2>\n        {{club.subtitle}}\n    </h2>\n</div>\n\n<div class=\"banner\" [ngStyle]=\"{ 'background-image': 'url(' + club.bannerUrl + ')'}\">\n    <div class=\"bannerText\">\n        {{club.bannerText}}\n    </div>\n    <div class=\"lotsButtonContainer\">\n        <button mat-raised-button class=\"lotsButton\" routerLink=\"/club/{{clubId}}/lots\">\n            View the auction lots\n        </button>\n    </div>\n</div>\n\n<div class=\"introductionContainer\">\n    <div class=\"introductionText\">\n        {{club.introText}}\n    </div>\n</div>\n\n<div class=\"clubDetailsContainer\">\n    <div class=\"clubDetailsCard\">\n        <div class=\"whenContainer\">\n            <label>When</label>\n            <div>Ends {{club.closingDate | date:'h:mm a, d LLLL y'}}</div>\n        </div>\n    </div>\n\n    <div class=\"clubDetailsCard\">\n        <div class=\"contactContainer\">\n            <label>Contact</label>\n            <div>{{club.contactEmail}}</div>\n        </div>\n    </div>\n\n    <div class=\"clubDetailsCard\">\n        <div class=\"websiteContainer\">\n            <label>Website</label>\n            <div>\n                <a href=\"{{club.websiteUrl}}\" target=\"_blank\">\n                    {{club.websiteUrl}}\n                </a>\n            </div>\n        </div>\n    </div>\n</div>\n\n<div class=\"descriptionContainer\">\n    <div class=\"descriptionHtml\" [innerHtml]=\"club.descriptionHtml\"></div>\n</div>\n\n<app-footer [colour]=\"club.primaryColour\"></app-footer>"
 
 /***/ }),
 
@@ -632,7 +635,7 @@ var ClubComponent = /** @class */ (function () {
         this.route = route;
         this.title = '';
         this.clubId = '';
-        this.club = new _common_models_Club__WEBPACK_IMPORTED_MODULE_3__["Club"]('', '', '', '', '', '', '', new Date(), '', '', '', '');
+        this.club = new _common_models_Club__WEBPACK_IMPORTED_MODULE_3__["Club"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
         this.route.params.subscribe(function (params) {
             _this.clubId = params.clubId;
             clubService.LoadClubById(params.clubId).subscribe(function (club) {
@@ -663,7 +666,7 @@ var ClubComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".footer {\n    background-color: rgb(0, 43, 136);\n    color: white;\n    padding-top: 30px;\n    padding-bottom: 0px;\n    z-index: 1000;\n    font-weight: 200;\n    margin-top: 30px;\n    clear: both;\n}\n\n.footer-row {\n    margin: 0px auto;\n    width: 100%;\n    border-bottom: 1px white solid;\n    overflow: hidden;\n}\n\n.footer-email {\n    float: left;\n    text-align: center;\n    width: 33%;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    height: 140px;\n}\n\n.footer-email a {\n    text-decoration: none;\n    color: white;\n    font-size: 14px;\n    margin: 0px 0px 20px 20px;\n    display: block;\n    text-align: left;\n}\n\n.footer-email i {\n    margin: 0 12px;\n}\n\n.footer-logo {\n    float: left;\n    text-align: center;\n    width: 34%;\n    height: 140px;\n}\n\n.footer-logo label {\n    font-size: 12px;\n    top: -18px;\n    position: relative;\n}\n\n.footer-logo img {\n    margin: 6px 10px;\n    width: auto;\n}\n\n.footer-logo p {\n    font-size: 12px;\n    line-height: 16px;\n}\n\n.footer-social {\n    float: left;\n    text-align: center;\n    width: 33%;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    height: 140px;\n}\n\n.footer-social ul {\n    list-style: none;\n    text-align: right;\n    margin-right: 30px;\n}\n\n.footer-social ul li {\n    display: inline-block;\n    width: 50px;\n    font-size: 20px;\n}\n\n.footer-social a {\n    text-decoration: none;\n    color: white;\n}\n\n.footer-address {\n    text-align: center;\n    font-size: 18px;\n    padding: 100px 0;\n}\n\n.footer-terms {\n    float: left;\n    text-align: center;\n    width: 33%;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    height: 80px;\n}\n\n.footer-terms a {\n    color: white;\n    text-align: left;\n    text-decoration: none;\n    font-size: 12px;\n    margin-left: 30px;\n}\n\n.footer-version {\n    float: left;\n    text-align: center;\n    width: 34%;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    height: 80px;\n    font-size: 12px;\n}\n\n.footer-copyright {\n    float: left;\n    text-align: center;\n    width: 33%;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    height: 80px;\n    font-size: 12px;\n}\n\n.footer-copyright div {\n    text-align: right;\n    margin-right: 30px;\n}"
+module.exports = ".footer {\n    color: white;\n    padding-top: 30px;\n    padding-bottom: 0px;\n    z-index: 1000;\n    font-weight: 200;\n    margin-top: 30px;\n    clear: both;\n}\n\n.footer-row {\n    margin: 0px auto;\n    width: 100%;\n    border-bottom: 1px white solid;\n    overflow: hidden;\n}\n\n.footer-email {\n    float: left;\n    text-align: center;\n    width: 33%;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    height: 140px;\n}\n\n.footer-email a {\n    text-decoration: none;\n    color: white;\n    font-size: 14px;\n    margin: 0px 0px 20px 20px;\n    display: block;\n    text-align: left;\n}\n\n.footer-email i {\n    margin: 0 12px;\n}\n\n.footer-logo {\n    float: left;\n    text-align: center;\n    width: 34%;\n    height: 140px;\n}\n\n.footer-logo label {\n    font-size: 12px;\n    top: -18px;\n    position: relative;\n}\n\n.footer-logo img {\n    margin: 6px 10px;\n    width: auto;\n}\n\n.footer-logo p {\n    font-size: 12px;\n    line-height: 16px;\n}\n\n.footer-social {\n    float: left;\n    text-align: center;\n    width: 33%;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    height: 140px;\n}\n\n.footer-social ul {\n    list-style: none;\n    text-align: right;\n    margin-right: 30px;\n}\n\n.footer-social ul li {\n    display: inline-block;\n    width: 50px;\n    font-size: 20px;\n}\n\n.footer-social a {\n    text-decoration: none;\n    color: white;\n}\n\n.footer-address {\n    text-align: center;\n    font-size: 18px;\n    padding: 100px 0;\n}\n\n.footer-terms {\n    float: left;\n    text-align: center;\n    width: 33%;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    height: 80px;\n}\n\n.footer-terms a {\n    color: white;\n    text-align: left;\n    text-decoration: none;\n    font-size: 12px;\n    margin-left: 30px;\n}\n\n.footer-version {\n    float: left;\n    text-align: center;\n    width: 34%;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    height: 80px;\n    font-size: 12px;\n}\n\n.footer-copyright {\n    float: left;\n    text-align: center;\n    width: 33%;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    height: 80px;\n    font-size: 12px;\n}\n\n.footer-copyright div {\n    text-align: right;\n    margin-right: 30px;\n}"
 
 /***/ }),
 
@@ -674,7 +677,7 @@ module.exports = ".footer {\n    background-color: rgb(0, 43, 136);\n    color: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"footer\">\n\n  <div class=\"footer-row\">\n\n    <div class=\"footer-email\">\n      <div>\n        <a href=\"mailto:info@goinggone.io\">\n          <i class=\"fa fa-envelope\"></i>\n          info@goinggone.io\n        </a>\n      </div>\n\n      <div>\n        <a href=\"http://goinggone.io\">\n          <i class=\"fa fa-globe\"></i>\n          www.goinggone.io\n        </a>\n      </div>\n    </div>\n\n    <div class=\"footer-logo\">\n      <label>Powered by:</label>\n      <a routerLink=\"/home\">\n        <img src=\"../../assets/images/gg_small_logo.png\"/>\n      </a>\n\n      <p>If you would like to use the Going Gone system at your next event, please don't hesitate to get in touch at info@goinggone.io.</p>\n    </div>\n\n    <div class=\"footer-social\">\n      <ul>\n        <li>\n          <a href=\"https://www.facebook.com/goinggonetechnology\">\n            <i class=\"fa fa-facebook\"></i>\n          </a>\n        </li>\n\n        <li>\n          <a href=\"https://www.instagram.com/goinggonetechnology\">\n            <i class=\"fa fa-instagram\"></i>\n          </a>\n        </li>\n\n        <li>\n          <a href=\"https://www.linkedin.com/company-beta/17881204/\">\n            <i class=\"fa fa-linkedin\"></i>\n          </a>\n        </li>\n      </ul>\n    </div>\n\n  </div>\n\n  <div class=\"footer-row\">\n    <div class=\"footer-terms\">\n      <a routerLink=\"/terms-and-conditions\">\n        Terms &  Conditions\n      </a>\n    </div>\n\n    <div class=\"footer-version\">\n      Version 2.0.0\n    </div>\n\n    <div class=\"footer-copyright\">\n      <div>\n        © Copyright 2018. Going Gone.\n      </div>\n    </div>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"footer\" [ngStyle]=\"{ 'background-color': colour }\">\n\n  <div class=\"footer-row\">\n\n    <div class=\"footer-email\">\n      <div>\n        <a href=\"mailto:info@goinggone.io\">\n          <i class=\"fa fa-envelope\"></i>\n          info@goinggone.io\n        </a>\n      </div>\n\n      <div>\n        <a href=\"http://goinggone.io\">\n          <i class=\"fa fa-globe\"></i>\n          www.goinggone.io\n        </a>\n      </div>\n    </div>\n\n    <div class=\"footer-logo\">\n      <label>Powered by:</label>\n      <a routerLink=\"/home\">\n        <img src=\"../../assets/images/gg_small_logo.png\"/>\n      </a>\n\n      <p>If you would like to use the Going Gone system at your next event, please don't hesitate to get in touch at info@goinggone.io.</p>\n    </div>\n\n    <div class=\"footer-social\">\n      <ul>\n        <li>\n          <a href=\"https://www.facebook.com/goinggonetechnology\">\n            <i class=\"fa fa-facebook\"></i>\n          </a>\n        </li>\n\n        <li>\n          <a href=\"https://www.instagram.com/goinggonetechnology\">\n            <i class=\"fa fa-instagram\"></i>\n          </a>\n        </li>\n\n        <li>\n          <a href=\"https://www.linkedin.com/company-beta/17881204/\">\n            <i class=\"fa fa-linkedin\"></i>\n          </a>\n        </li>\n      </ul>\n    </div>\n\n  </div>\n\n  <div class=\"footer-row\">\n    <div class=\"footer-terms\">\n      <a routerLink=\"/terms-and-conditions\">\n        Terms &  Conditions\n      </a>\n    </div>\n\n    <div class=\"footer-version\">\n      Version 2.0.0\n    </div>\n\n    <div class=\"footer-copyright\">\n      <div>\n        © Copyright 2018. Going Gone.\n      </div>\n    </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -704,6 +707,10 @@ var FooterComponent = /** @class */ (function () {
     }
     FooterComponent.prototype.ngOnInit = function () {
     };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], FooterComponent.prototype, "colour", void 0);
     FooterComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-footer',
@@ -726,7 +733,7 @@ var FooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".header {\n    height: 50px;\n    background-color: #0FBAAD;\n    position: fixed;\n    top: 0;\n    width: 100%;\n    z-index: 1000;\n}\n\n.logo-container {\n    float: left;\n}\n\n.logo-container img {\n    margin: 6px 20px;\n}\n\n.quicklinks-container {\n    float: right;\n}\n\n.quicklinks-container ul {\n    list-style-type: none;\n    margin: 0;\n    padding: 0;\n    overflow: hidden;\n}\n\n.quicklinks-container li {\n    float: left;\n}\n\n.quicklinks-container a {\n    background-color: transparent;\n    display: block;\n    color: white;\n    text-align: center;\n    padding: 18px 20px;\n    text-decoration: none;\n    font-size: 14px;\n    opacity: 0.9;\n}\n\n.quicklinks-container a:hover {\n    opacity: 1;\n}"
+module.exports = ".header {\n    height: 50px;\n    position: fixed;\n    top: 0;\n    width: 100%;\n    z-index: 1000;\n}\n\n.logo-container {\n    float: left;\n}\n\n.logo-container img {\n    margin: 6px 20px;\n}\n\n.quicklinks-container {\n    float: right;\n}\n\n.quicklinks-container ul {\n    list-style-type: none;\n    margin: 0;\n    padding: 0;\n    overflow: hidden;\n}\n\n.quicklinks-container li {\n    float: left;\n}\n\n.quicklinks-container a {\n    background-color: transparent;\n    display: block;\n    color: white;\n    text-align: center;\n    padding: 18px 20px;\n    text-decoration: none;\n    font-size: 14px;\n    opacity: 0.9;\n}\n\n.quicklinks-container a:hover {\n    opacity: 1;\n}"
 
 /***/ }),
 
@@ -737,7 +744,7 @@ module.exports = ".header {\n    height: 50px;\n    background-color: #0FBAAD;\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\n  <div class=\"logo-container\">\n    <a href=\"http://goinggone.io\">\n      <img src=\"../../assets/images/gg_small_logo.png\"/>\n    </a>\n  </div>\n\n  <div class=\"quicklinks-container\">\n    <ul>\n      <li>\n        <a routerLink=\"/club/{{clubId}}\">Home</a>\n      </li>\n      <li>\n        <a routerLink=\"/club/{{clubId}}/lots\">Auction</a>\n      </li>\n      <li>\n        <a routerLink=\"/club/{{clubId}}/faq\">FAQ</a>\n      </li>\n    </ul>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"header\" [ngStyle]=\"{ 'background-color': colour }\">\n  <div class=\"logo-container\">\n    <a href=\"http://goinggone.io\">\n      <img src=\"../../assets/images/gg_small_logo.png\"/>\n    </a>\n  </div>\n\n  <div class=\"quicklinks-container\">\n    <ul>\n      <li>\n        <a routerLink=\"/club/{{clubId}}\">Home</a>\n      </li>\n      <li>\n        <a routerLink=\"/club/{{clubId}}/lots\">Auction</a>\n      </li>\n      <li>\n        <a routerLink=\"/club/{{clubId}}/faq\">FAQ</a>\n      </li>\n    </ul>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -771,6 +778,10 @@ var HeaderComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", String)
     ], HeaderComponent.prototype, "clubId", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], HeaderComponent.prototype, "colour", void 0);
     HeaderComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-header',
@@ -867,7 +878,7 @@ module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header [clubId]=\"clubId\"></app-header>\n\n<div class=\"background\"></div>\n\n<div class=\"content\">\n    <div class=\"titleSection\">\n        <button mat-raised-button class=\"backButton\"\n                routerLink=\"/club/{{clubId}}/lots\">\n            << All Lots\n        </button>\n\n        <h1>\n            {{ lot.title }}\n        </h1>\n    </div>\n\n    <h2>\n        provided by {{lot.providedBy}}\n    </h2>\n\n    <div class=\"lotBiddingContainer\">\n        <div class=\"bidDetailsContainer\">\n            <div class=\"price\">\n                <div class=\"label\">\n                    Reserve:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.reservePrice}}\n                </div>\n            </div>\n\n            <div class=\"price\">\n                <div class=\"label\">\n                    Estimate:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.estimate}}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"bidDetailsContainer\">\n            <div>\n                <label>My bid <span class=\"minText\">(minimum £{{lot.reservePrice}})</span>*</label>\n                <input [(ngModel)]=\"amount\" type=\"number\" placeholder=\"0\"/>\n                <button mat-raised-button class=\"bidButton\" [disabled]=\"amount < lot.reservePrice\"\n                        (click)=\"openBidPopup()\">\n                    Place Bid\n                </button>\n            </div>\n        </div>\n    </div>\n\n\n    <div>\n        <div class=\"lotImageContainer\">\n            <img src=\"{{lot.imageUri}}\"/>\n        </div>\n\n        <div class=\"lotDescriptionContainer\" [innerHTML]=\"lot.description\"></div>\n    </div>\n</div>"
+module.exports = "<app-header [clubId]=\"clubId\" [colour]=\"club.primaryColour\"></app-header>\n\n<div class=\"background\"></div>\n\n<div class=\"content\">\n    <div class=\"titleSection\">\n        <button mat-raised-button class=\"backButton\"\n                routerLink=\"/club/{{clubId}}/lots\">\n            << All Lots\n        </button>\n\n        <h1>\n            {{ lot.title }}\n        </h1>\n    </div>\n\n    <h2>\n        provided by {{lot.providedBy}}\n    </h2>\n\n    <div class=\"lotBiddingContainer\">\n        <div class=\"bidDetailsContainer\">\n            <div class=\"price\">\n                <div class=\"label\">\n                    Reserve:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.reservePrice}}\n                </div>\n            </div>\n\n            <div class=\"price\">\n                <div class=\"label\">\n                    Estimate:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.estimate}}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"bidDetailsContainer\">\n            <div>\n                <label>My bid <span class=\"minText\">(minimum £{{lot.reservePrice}})</span>*</label>\n                <input [(ngModel)]=\"amount\" type=\"number\" placeholder=\"0\"/>\n                <button mat-raised-button class=\"bidButton\" [disabled]=\"amount < lot.reservePrice\"\n                        (click)=\"openBidPopup()\">\n                    Place Bid\n                </button>\n            </div>\n        </div>\n    </div>\n\n\n    <div>\n        <div class=\"lotImageContainer\">\n            <img src=\"{{lot.imageUri}}\"/>\n        </div>\n\n        <div class=\"lotDescriptionContainer\" [innerHTML]=\"lot.description\"></div>\n    </div>\n</div>\n\n<app-footer [colour]=\"club.primaryColour\"></app-footer>"
 
 /***/ }),
 
@@ -918,7 +929,7 @@ var LotDetailsComponent = /** @class */ (function () {
         this.lotId = '';
         this.clubId = '';
         this.lot = new _common_models_Lot__WEBPACK_IMPORTED_MODULE_5__["Lot"]('', '', '', '', '', '', 0, 0, [], 0, 0, []);
-        this.club = new _common_models_Club__WEBPACK_IMPORTED_MODULE_3__["Club"]('', '', '', '', '', '', '', new Date(), '', '', '', '');
+        this.club = new _common_models_Club__WEBPACK_IMPORTED_MODULE_3__["Club"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
         this.amount = '';
         this.route.params.subscribe(function (params) {
             _this.clubId = params.clubId;

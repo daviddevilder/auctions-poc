@@ -18,7 +18,7 @@ export class LotDetailsComponent {
     public clubId: String = '';
 
     public lot: Lot = new Lot('', '', '', '', '', '', 0, 0, [], 0, 0, []);
-    public club: Club = new Club('', '', '', '', '', '', '', new Date(), '', '', '', '');
+    public club: Club = new Club('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
 
     public amount: String = '';
 

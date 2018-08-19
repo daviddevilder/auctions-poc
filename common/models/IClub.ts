@@ -2,6 +2,7 @@ export interface IClub {
     clubId?: string;
     title?: string;
     subtitle?: string;
+    primaryColour?: string;
     logoUrl?: string;
     websiteUrl?: string;
     contactEmail?: string;

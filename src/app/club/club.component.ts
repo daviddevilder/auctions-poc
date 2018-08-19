@@ -12,7 +12,7 @@ export class ClubComponent {
     public title: String = '';
     public clubId: String = '';
 
-    public club: Club = new Club('', '', '', '', '', '', '', new Date(), '', '', '', '');
+    public club: Club = new Club('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
 
     constructor(private clubService: ClubService, private route: ActivatedRoute) {
         this.route.params.subscribe( params => {

@@ -5,6 +5,7 @@ exports.ClubSchema = new mongoose_1.Schema({
     clubId: String,
     title: String,
     subtitle: String,
+    primaryColour: String,
     logoUrl: String,
     websiteUrl: String,
     contactEmail: String,

@@ -1,8 +1,8 @@
-<app-header [clubId]="clubId"></app-header>
+<app-header [clubId]="clubId" [colour]="club.primaryColour"></app-header>
 
 <div class="background"></div>
 
-<div class="headerSection">
+<div class="headerSection" [ngStyle]="{ 'background-color': club.primaryColour}">
     <div class="clubLogo">
         <img src="{{club.logoUrl}}"/>
     </div>
@@ -63,3 +63,5 @@
 <div class="descriptionContainer">
     <div class="descriptionHtml" [innerHtml]="club.descriptionHtml"></div>
 </div>
+
+<app-footer [colour]="club.primaryColour"></app-footer>
