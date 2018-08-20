@@ -29,6 +29,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {TermsAndConditionsComponent} from './terms-and-conditions/terms-and-conditions.component';
+import {ClubFaqComponent} from './club-faq/club-faq.component';
 
 registerLocaleData(localeEn, 'en', localeEnExtra);
 
@@ -45,7 +47,9 @@ registerLocaleData(localeEn, 'en', localeEnExtra);
         ClubLotsComponent,
         AuctionNavComponent,
         BidDialogComponent,
-        NotificationDialogComponent
+        NotificationDialogComponent,
+        ClubFaqComponent,
+        TermsAndConditionsComponent
     ],
     entryComponents: [BidDialogComponent, NotificationDialogComponent],
     imports: [

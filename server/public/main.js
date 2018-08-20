@@ -201,12 +201,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @angular/material/toolbar */ "./node_modules/@angular/material/esm5/toolbar.es5.js");
 /* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/esm5/icon.es5.js");
 /* harmony import */ var _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @angular/material/sidenav */ "./node_modules/@angular/material/esm5/sidenav.es5.js");
+/* harmony import */ var _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./terms-and-conditions/terms-and-conditions.component */ "./src/app/terms-and-conditions/terms-and-conditions.component.ts");
+/* harmony import */ var _club_faq_club_faq_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./club-faq/club-faq.component */ "./src/app/club-faq/club-faq.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -254,7 +258,9 @@ var AppModule = /** @class */ (function () {
                 _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_18__["ClubLotsComponent"],
                 _auction_nav_auction_nav_component__WEBPACK_IMPORTED_MODULE_19__["AuctionNavComponent"],
                 _bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_21__["BidDialogComponent"],
-                _notification_dialog_notification_dialog_component__WEBPACK_IMPORTED_MODULE_22__["NotificationDialogComponent"]
+                _notification_dialog_notification_dialog_component__WEBPACK_IMPORTED_MODULE_22__["NotificationDialogComponent"],
+                _club_faq_club_faq_component__WEBPACK_IMPORTED_MODULE_30__["ClubFaqComponent"],
+                _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_29__["TermsAndConditionsComponent"]
             ],
             entryComponents: [_bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_21__["BidDialogComponent"], _notification_dialog_notification_dialog_component__WEBPACK_IMPORTED_MODULE_22__["NotificationDialogComponent"]],
             imports: [
@@ -300,7 +306,7 @@ module.exports = "div.auctionNav {\r\n    width: 200px;\r\n}\r\n\r\nul.menuItemL
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"auctionNav\">\r\n\r\n  <ul class=\"menuItemList\">\r\n\r\n    <li>\r\n      <div>\r\n        <a routerLink=\"/club/{{clubId}}/lots\">\r\n          All Items\r\n        </a>\r\n      </div>\r\n    </li>\r\n\r\n    <li *ngFor=\"let tag of tags\">\r\n      <div>\r\n        <a routerLink=\"/club/{{clubId}}/lots\" [queryParams]=\"{filter: tag}\">\r\n          {{tag}}\r\n        </a>\r\n      </div>\r\n    </li>\r\n\r\n  </ul>\r\n\r\n</div>\r\n"
+module.exports = "<div class=\"auctionNav\">\r\n\r\n  <ul class=\"menuItemList\">\r\n\r\n    <li>\r\n      <div>\r\n        <a routerLink=\"/{{clubId}}/lots\">\r\n          All Items\r\n        </a>\r\n      </div>\r\n    </li>\r\n\r\n    <li *ngFor=\"let tag of tags\">\r\n      <div>\r\n        <a routerLink=\"/{{clubId}}/lots\" [queryParams]=\"{filter: tag}\">\r\n          {{tag}}\r\n        </a>\r\n      </div>\r\n    </li>\r\n\r\n  </ul>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -442,6 +448,88 @@ var BidDialogComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/club-faq/club-faq.component.css":
+/*!*************************************************!*\
+  !*** ./src/app/club-faq/club-faq.component.css ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n    background-size: cover;\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: -1;\r\n}"
+
+/***/ }),
+
+/***/ "./src/app/club-faq/club-faq.component.html":
+/*!**************************************************!*\
+  !*** ./src/app/club-faq/club-faq.component.html ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<app-header [clubId]=\"clubId\" [colour]=\"club.primaryColour\"></app-header>\r\n\r\n<div class=\"background\"></div>\r\n\r\n<h1>\r\n    {{club.title}} FAQs\r\n</h1>\r\n\r\n<div>\r\n    Content\r\n</div>\r\n\r\n<app-footer [colour]=\"club.primaryColour\"></app-footer>"
+
+/***/ }),
+
+/***/ "./src/app/club-faq/club-faq.component.ts":
+/*!************************************************!*\
+  !*** ./src/app/club-faq/club-faq.component.ts ***!
+  \************************************************/
+/*! exports provided: ClubFaqComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClubFaqComponent", function() { return ClubFaqComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_club_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/club.service */ "./src/app/services/club.service.ts");
+/* harmony import */ var _common_models_Club__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/models/Club */ "./common/models/Club.ts");
+/* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/lot.service */ "./src/app/services/lot.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var ClubFaqComponent = /** @class */ (function () {
+    function ClubFaqComponent(clubService, lotService, route) {
+        var _this = this;
+        this.clubService = clubService;
+        this.lotService = lotService;
+        this.route = route;
+        this.clubId = '';
+        this.club = new _common_models_Club__WEBPACK_IMPORTED_MODULE_3__["Club"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
+        this.route.params.subscribe(function (params) {
+            _this.clubId = params.clubId;
+            clubService.LoadClubById(params.clubId)
+                .subscribe(function (club) {
+                _this.club = club;
+            });
+        });
+    }
+    ClubFaqComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-club-faq',
+            template: __webpack_require__(/*! ./club-faq.component.html */ "./src/app/club-faq/club-faq.component.html"),
+            styles: [__webpack_require__(/*! ./club-faq.component.css */ "./src/app/club-faq/club-faq.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_club_service__WEBPACK_IMPORTED_MODULE_2__["ClubService"], _services_lot_service__WEBPACK_IMPORTED_MODULE_4__["LotService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
+    ], ClubFaqComponent);
+    return ClubFaqComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/club-list/club-list.component.css":
 /*!***************************************************!*\
   !*** ./src/app/club-list/club-list.component.css ***!
@@ -460,7 +548,7 @@ module.exports = "h2 {\n    text-align: center;\n    color: white;\n    margin: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>\n  Our Partners\n</h2>\n\n<div class=\"clubContainer\" *ngFor=\"let club of Clubs\">\n  <div class=\"title\">\n    <a routerLink=\"/club/{{club.clubId}}\">\n      <img class=\"clubLogo\" src=\"{{club.logoUrl}}\"/>\n      <div>{{club.title}}</div>\n    </a>\n  </div>\n</div>\n"
+module.exports = "<h2>\n  Our Partners\n</h2>\n\n<div class=\"clubContainer\" *ngFor=\"let club of Clubs\">\n  <div class=\"title\">\n    <a routerLink=\"/{{club.clubId}}\">\n      <img class=\"clubLogo\" src=\"{{club.logoUrl}}\"/>\n      <div>{{club.title}}</div>\n    </a>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -612,7 +700,7 @@ module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header [clubId]=\"clubId\" [colour]=\"club.primaryColour\"></app-header>\r\n\r\n<div class=\"background\"></div>\r\n\r\n<div fxLayout=\"column\" class=\"headerSection\" [ngStyle]=\"{ 'background-color': club.primaryColour}\">\r\n    <div class=\"clubLogo\">\r\n        <img src=\"{{club.logoUrl}}\"/>\r\n    </div>\r\n\r\n    <h1>\r\n        {{title}}\r\n    </h1>\r\n\r\n    <h2>\r\n        {{club.subtitle}}\r\n    </h2>\r\n</div>\r\n<div class=\"bannerContainer\">    \r\n    <div class=\"banner\" [ngStyle]=\"{ 'background-image': 'url(' + club.bannerUrl + ')'}\">\r\n        <div class=\"bannerText\">\r\n            {{club.bannerText}}\r\n        </div>\r\n        <div class=\"lotsButtonContainer\">\r\n            <button mat-raised-button class=\"lotsButton\" routerLink=\"/club/{{clubId}}/lots\">\r\n                View the auction lots\r\n            </button>\r\n        </div>\r\n    </div>\r\n</div>\r\n    \r\n\r\n<div class=\"introductionContainer\" fxLayout=\"row\" fxLayoutGap=\"20px\">\r\n    <div class=\"introductionText\">\r\n        {{club.introText}}\r\n    </div>\r\n\r\n\r\n</div>\r\n\r\n<div fxLayout=\"row\" fxLayoutGap=\"20px grid\" class=\"infoCardContainerRow\">\r\n\r\n    <div fxLayout=\"column\" fxLayoutGap=\"20px\" fxFlexOrder=\"0\" class=\"infoCardColumn1\">\r\n\r\n        <mat-card class=\"infoCard\">\r\n            <mat-card-header>\r\n                <div mat-card-avatar>\r\n                    <mat-icon>alarm</mat-icon>\r\n                </div>\r\n                <mat-card-title>When</mat-card-title>\r\n                <mat-card-subtitle>Ends {{club.closingDate | date:'h:mm a, d LLLL y'}}</mat-card-subtitle>\r\n            </mat-card-header>\r\n        </mat-card>\r\n\r\n        <mat-card class=\"infoCard\">\r\n            <mat-card-header>\r\n                <div mat-card-avatar>\r\n                        <mat-icon>email</mat-icon>\r\n                </div>\r\n                <mat-card-title>Contact</mat-card-title>\r\n                <mat-card-subtitle>{{club.contactEmail}}</mat-card-subtitle>\r\n            </mat-card-header>\r\n        </mat-card>\r\n\r\n        <mat-card class=\"infoCard\">\r\n            <mat-card-header>\r\n                <div mat-card-avatar>\r\n                        <mat-icon>language</mat-icon>\r\n                </div>\r\n                <mat-card-title>Website</mat-card-title>\r\n                <mat-card-subtitle><a href=\"{{club.websiteUrl}}\" target=\"_blank\">{{club.websiteUrl}}</a></mat-card-subtitle>\r\n            </mat-card-header>\r\n        </mat-card>\r\n\r\n    </div>\r\n\r\n    <div fxLayout=\"column\" fxFlexOrder=\"1\" class=\"infoCardColumn2\">\r\n\r\n        <mat-card class=\"infoCard\" style=\"height:270px;\">\r\n            <mat-card-header>\r\n                <div mat-card-avatar>\r\n                        <mat-icon>place</mat-icon>\r\n                </div>\r\n                <mat-card-title>Where</mat-card-title>\r\n                <mat-card-subtitle>Some Address</mat-card-subtitle>\r\n            </mat-card-header>\r\n        </mat-card>\r\n\r\n    </div>\r\n\r\n</div>\r\n\r\n<div class=\"descriptionContainer\">\r\n    <div class=\"descriptionHtml\" [innerHtml]=\"club.descriptionHtml\"></div>\r\n</div>\r\n\r\n<app-footer [colour]=\"club.primaryColour\"></app-footer>"
+module.exports = "<app-header [clubId]=\"clubId\" [colour]=\"club.primaryColour\"></app-header>\r\n\r\n<div class=\"background\"></div>\r\n\r\n<div fxLayout=\"column\" class=\"headerSection\" [ngStyle]=\"{ 'background-color': club.primaryColour}\">\r\n    <div class=\"clubLogo\">\r\n        <img src=\"{{club.logoUrl}}\"/>\r\n    </div>\r\n\r\n    <h1>\r\n        {{title}}\r\n    </h1>\r\n\r\n    <h2>\r\n        {{club.subtitle}}\r\n    </h2>\r\n</div>\r\n<div class=\"bannerContainer\">    \r\n    <div class=\"banner\" [ngStyle]=\"{ 'background-image': 'url(' + club.bannerUrl + ')'}\">\r\n        <div class=\"bannerText\">\r\n            {{club.bannerText}}\r\n        </div>\r\n        <div class=\"lotsButtonContainer\">\r\n            <button mat-raised-button class=\"lotsButton\" routerLink=\"/{{clubId}}/lots\">\r\n                View the auction lots\r\n            </button>\r\n        </div>\r\n    </div>\r\n</div>\r\n    \r\n\r\n<div class=\"introductionContainer\" fxLayout=\"row\" fxLayoutGap=\"20px\">\r\n    <div class=\"introductionText\">\r\n        {{club.introText}}\r\n    </div>\r\n\r\n\r\n</div>\r\n\r\n<div fxLayout=\"row\" fxLayoutGap=\"20px grid\" class=\"infoCardContainerRow\">\r\n\r\n    <div fxLayout=\"column\" fxLayoutGap=\"20px\" fxFlexOrder=\"0\" class=\"infoCardColumn1\">\r\n\r\n        <mat-card class=\"infoCard\">\r\n            <mat-card-header>\r\n                <div mat-card-avatar>\r\n                    <mat-icon>alarm</mat-icon>\r\n                </div>\r\n                <mat-card-title>When</mat-card-title>\r\n                <mat-card-subtitle>Ends {{club.closingDate | date:'h:mm a, d LLLL y'}}</mat-card-subtitle>\r\n            </mat-card-header>\r\n        </mat-card>\r\n\r\n        <mat-card class=\"infoCard\">\r\n            <mat-card-header>\r\n                <div mat-card-avatar>\r\n                        <mat-icon>email</mat-icon>\r\n                </div>\r\n                <mat-card-title>Contact</mat-card-title>\r\n                <mat-card-subtitle>{{club.contactEmail}}</mat-card-subtitle>\r\n            </mat-card-header>\r\n        </mat-card>\r\n\r\n        <mat-card class=\"infoCard\">\r\n            <mat-card-header>\r\n                <div mat-card-avatar>\r\n                        <mat-icon>language</mat-icon>\r\n                </div>\r\n                <mat-card-title>Website</mat-card-title>\r\n                <mat-card-subtitle><a href=\"{{club.websiteUrl}}\" target=\"_blank\">{{club.websiteUrl}}</a></mat-card-subtitle>\r\n            </mat-card-header>\r\n        </mat-card>\r\n\r\n    </div>\r\n\r\n    <div fxLayout=\"column\" fxFlexOrder=\"1\" class=\"infoCardColumn2\">\r\n\r\n        <mat-card class=\"infoCard\" style=\"height:270px;\">\r\n            <mat-card-header>\r\n                <div mat-card-avatar>\r\n                        <mat-icon>place</mat-icon>\r\n                </div>\r\n                <mat-card-title>Where</mat-card-title>\r\n                <mat-card-subtitle>Some Address</mat-card-subtitle>\r\n            </mat-card-header>\r\n        </mat-card>\r\n\r\n    </div>\r\n\r\n</div>\r\n\r\n<div class=\"descriptionContainer\">\r\n    <div class=\"descriptionHtml\" [innerHtml]=\"club.descriptionHtml\"></div>\r\n</div>\r\n\r\n<app-footer [colour]=\"club.primaryColour\"></app-footer>"
 
 /***/ }),
 
@@ -759,7 +847,7 @@ module.exports = ".app-toolbar {\r\n    position: sticky;\r\n    position: -webk
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar [ngStyle]=\"{ 'background-color': colour }\" class='app-toolbar mat-elevation-z4'>\r\n    <div class=\"logo-container\">\r\n        <a href=\"http://goinggone.io\">\r\n            <img src=\"../../assets/images/gg_small_logo.png\"/>\r\n        </a>\r\n    </div>\r\n    <div class=\"quicklinks-container\">\r\n        <ul>\r\n            <li>\r\n                <a routerLink=\"/club/{{clubId}}\">Home</a>\r\n            </li>\r\n            <li>\r\n                <a routerLink=\"/club/{{clubId}}/lots\">Auction</a>\r\n            </li>\r\n            <li>\r\n                <a routerLink=\"/club/{{clubId}}/faq\">FAQ</a>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</mat-toolbar>"
+module.exports = "<mat-toolbar [ngStyle]=\"{ 'background-color': colour }\" class='app-toolbar mat-elevation-z4'>\r\n    <div class=\"logo-container\">\r\n        <a href=\"http://goinggone.io\">\r\n            <img src=\"../../assets/images/gg_small_logo.png\"/>\r\n        </a>\r\n    </div>\r\n    <div class=\"quicklinks-container\">\r\n        <ul>\r\n            <li>\r\n                <a routerLink=\"/{{clubId}}\">Home</a>\r\n            </li>\r\n            <li>\r\n                <a routerLink=\"/{{clubId}}/lots\">Auction</a>\r\n            </li>\r\n            <li>\r\n                <a routerLink=\"/{{clubId}}/faq\">FAQ</a>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</mat-toolbar>"
 
 /***/ }),
 
@@ -893,7 +981,7 @@ module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header [clubId]=\"clubId\" [colour]=\"club.primaryColour\"></app-header>\n\n<div class=\"background\"></div>\n\n<div class=\"content\">\n    <div class=\"titleSection\">\n        <button mat-raised-button class=\"backButton\"\n                routerLink=\"/club/{{clubId}}/lots\">\n            << All Lots\n        </button>\n\n        <h1>\n            {{ lot.title }}\n        </h1>\n    </div>\n\n    <h2>\n        provided by {{lot.providedBy}}\n    </h2>\n\n    <div class=\"lotBiddingContainer\">\n        <div class=\"bidDetailsContainer\">\n            <div class=\"price\">\n                <div class=\"label\">\n                    Reserve:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.reservePrice}}\n                </div>\n            </div>\n\n            <div class=\"price\">\n                <div class=\"label\">\n                    Estimate:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.estimate}}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"bidDetailsContainer\">\n            <div>\n                <label>My bid <span class=\"minText\">(minimum £{{lot.reservePrice}})</span>*</label>\n                <input [(ngModel)]=\"amount\" type=\"number\" placeholder=\"0\"/>\n                <button mat-raised-button class=\"bidButton\" [disabled]=\"amount < lot.reservePrice\"\n                        (click)=\"openBidPopup()\">\n                    Place Bid\n                </button>\n            </div>\n        </div>\n    </div>\n\n\n    <div>\n        <div class=\"lotImageContainer\">\n            <img src=\"{{lot.imageUri}}\"/>\n        </div>\n\n        <div class=\"lotDescriptionContainer\" [innerHTML]=\"lot.description\"></div>\n    </div>\n</div>\n\n<app-footer [colour]=\"club.primaryColour\"></app-footer>"
+module.exports = "<app-header [clubId]=\"clubId\" [colour]=\"club.primaryColour\"></app-header>\n\n<div class=\"background\"></div>\n\n<div class=\"content\">\n    <div class=\"titleSection\">\n        <button mat-raised-button class=\"backButton\"\n                routerLink=\"/{{clubId}}/lots\">\n            << All Lots\n        </button>\n\n        <h1>\n            {{ lot.title }}\n        </h1>\n    </div>\n\n    <h2>\n        provided by {{lot.providedBy}}\n    </h2>\n\n    <div class=\"lotBiddingContainer\">\n        <div class=\"bidDetailsContainer\">\n            <div class=\"price\">\n                <div class=\"label\">\n                    Reserve:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.reservePrice}}\n                </div>\n            </div>\n\n            <div class=\"price\">\n                <div class=\"label\">\n                    Estimate:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.estimate}}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"bidDetailsContainer\">\n            <div>\n                <label>My bid <span class=\"minText\">(minimum £{{lot.reservePrice}})</span>*</label>\n                <input [(ngModel)]=\"amount\" type=\"number\" placeholder=\"0\"/>\n                <button mat-raised-button class=\"bidButton\" [disabled]=\"amount < lot.reservePrice\"\n                        (click)=\"openBidPopup()\">\n                    Place Bid\n                </button>\n            </div>\n        </div>\n    </div>\n\n\n    <div>\n        <div class=\"lotImageContainer\">\n            <img src=\"{{lot.imageUri}}\"/>\n        </div>\n\n        <div class=\"lotDescriptionContainer\" [innerHTML]=\"lot.description\"></div>\n    </div>\n</div>\n\n<app-footer [colour]=\"club.primaryColour\"></app-footer>"
 
 /***/ }),
 
@@ -1016,7 +1104,7 @@ module.exports = ".lotContainer {\n    background-color: white;\n    border-radi
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"content\">\n    <div class=\"float_center\">\n        <div class=\"lotContainer child\" *ngFor=\"let lot of Lots\">\n\n            <div class=\"imageContainer\">\n                <div class=\"providedBy\">\n                    Provided by: {{lot.providedBy}}\n                </div>\n                <img src=\"{{lot.imageUri}}\"/>\n            </div>\n\n            <div class=\"name\">{{lot.title}}</div>\n\n            <div class=\"price\">\n                <div class=\"label\">\n                    Reserve:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.reservePrice}}\n                </div>\n            </div>\n\n            <div class=\"price\">\n                <div class=\"label\">\n                    Estimate:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.estimate}}\n                </div>\n            </div>\n\n            <div class=\"lotsButtonContainer\">\n                <button mat-raised-button class=\"viewButton\"\n                        routerLink=\"/club/{{clubId}}/lot/{{lot.lotId}}\">\n                    View\n                </button>\n            </div>\n\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"content\">\n    <div class=\"float_center\">\n        <div class=\"lotContainer child\" *ngFor=\"let lot of Lots\">\n\n            <div class=\"imageContainer\">\n                <div class=\"providedBy\">\n                    Provided by: {{lot.providedBy}}\n                </div>\n                <img src=\"{{lot.imageUri}}\"/>\n            </div>\n\n            <div class=\"name\">{{lot.title}}</div>\n\n            <div class=\"price\">\n                <div class=\"label\">\n                    Reserve:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.reservePrice}}\n                </div>\n            </div>\n\n            <div class=\"price\">\n                <div class=\"label\">\n                    Estimate:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.estimate}}\n                </div>\n            </div>\n\n            <div class=\"lotsButtonContainer\">\n                <button mat-raised-button class=\"viewButton\"\n                        routerLink=\"/{{clubId}}/lot/{{lot.lotId}}\">\n                    View\n                </button>\n            </div>\n\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -1210,16 +1298,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
 /* harmony import */ var _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./club-lots/club-lots.component */ "./src/app/club-lots/club-lots.component.ts");
 /* harmony import */ var _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lot-details/lot-details.component */ "./src/app/lot-details/lot-details.component.ts");
+/* harmony import */ var _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./terms-and-conditions/terms-and-conditions.component */ "./src/app/terms-and-conditions/terms-and-conditions.component.ts");
+/* harmony import */ var _club_faq_club_faq_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./club-faq/club-faq.component */ "./src/app/club-faq/club-faq.component.ts");
+
+
 
 
 
 
 var routes = [
     { path: 'home', component: _home_home_component__WEBPACK_IMPORTED_MODULE_1__["HomeComponent"] },
-    { path: 'club/:clubId', component: _club_club_component__WEBPACK_IMPORTED_MODULE_0__["ClubComponent"] },
-    { path: 'club/:clubId/lots', component: _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_2__["ClubLotsComponent"] },
-    { path: 'club/:clubId/lots/:activeTag', component: _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_2__["ClubLotsComponent"] },
-    { path: 'club/:clubId/lot/:lotId', component: _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_3__["LotDetailsComponent"] },
+    { path: 'terms-and-conditions', component: _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_4__["TermsAndConditionsComponent"] },
+    { path: ':clubId', component: _club_club_component__WEBPACK_IMPORTED_MODULE_0__["ClubComponent"] },
+    { path: ':clubId/faq', component: _club_faq_club_faq_component__WEBPACK_IMPORTED_MODULE_5__["ClubFaqComponent"] },
+    { path: ':clubId/lots', component: _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_2__["ClubLotsComponent"] },
+    { path: ':clubId/lots/:activeTag', component: _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_2__["ClubLotsComponent"] },
+    { path: ':clubId/lot/:lotId', component: _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_3__["LotDetailsComponent"] },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: '**', component: _home_home_component__WEBPACK_IMPORTED_MODULE_1__["HomeComponent"] }
 ];
@@ -1251,10 +1345,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var ClubService = /** @class */ (function () {
+    // private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
     function ClubService(http) {
         this.http = http;
-        // private readonly host: string = 'http://localhost:3000';
-        this.host = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
+        this.host = 'http://localhost:3000';
     }
     ClubService.prototype.LoadClubs = function () {
         var url = this.host + '/api/clubs';
@@ -1301,8 +1395,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var LotService = /** @class */ (function () {
     function LotService(http) {
         this.http = http;
-        // private readonly host: string = 'http://localhost:3000';
-        this.host = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
+        this.host = 'http://localhost:3000';
+        // private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
         this.Lots = [];
     }
     LotService.prototype.LoadTags = function (clubId) {
@@ -1334,6 +1428,69 @@ var LotService = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], LotService);
     return LotService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/terms-and-conditions/terms-and-conditions.component.css":
+/*!*************************************************************************!*\
+  !*** ./src/app/terms-and-conditions/terms-and-conditions.component.css ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\n.app-toolbar {\n    background-color: #002B88;\n    position: sticky;\n    position: -webkit-sticky;\n    top: 0;\n    z-index: 1000;\n    height:56px;\n}\n\n.app-toolbar img{\n    padding-top: 7px;\n}"
+
+/***/ }),
+
+/***/ "./src/app/terms-and-conditions/terms-and-conditions.component.html":
+/*!**************************************************************************!*\
+  !*** ./src/app/terms-and-conditions/terms-and-conditions.component.html ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<mat-toolbar class='app-toolbar mat-elevation-z4'>\n    <div class=\"logo-container\">\n        <a href=\"http://goinggone.io\">\n            <img src=\"../../assets/images/gg_small_logo.png\"/>\n        </a>\n    </div>\n</mat-toolbar>\n\n<div class=\"background\"></div>\n\n<app-footer [colour]=\"'#002B88'\"></app-footer>"
+
+/***/ }),
+
+/***/ "./src/app/terms-and-conditions/terms-and-conditions.component.ts":
+/*!************************************************************************!*\
+  !*** ./src/app/terms-and-conditions/terms-and-conditions.component.ts ***!
+  \************************************************************************/
+/*! exports provided: TermsAndConditionsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TermsAndConditionsComponent", function() { return TermsAndConditionsComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var TermsAndConditionsComponent = /** @class */ (function () {
+    function TermsAndConditionsComponent() {
+    }
+    TermsAndConditionsComponent.prototype.ngOnInit = function () {
+    };
+    TermsAndConditionsComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-terms',
+            template: __webpack_require__(/*! ./terms-and-conditions.component.html */ "./src/app/terms-and-conditions/terms-and-conditions.component.html"),
+            styles: [__webpack_require__(/*! ./terms-and-conditions.component.css */ "./src/app/terms-and-conditions/terms-and-conditions.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], TermsAndConditionsComponent);
+    return TermsAndConditionsComponent;
 }());
 
 

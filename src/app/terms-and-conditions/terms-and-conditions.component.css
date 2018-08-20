@@ -1,0 +1,23 @@
+.background {
+    background-color: rgb(238, 238, 238);
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.app-toolbar {
+    background-color: #002B88;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1000;
+    height:56px;
+}
+
+.app-toolbar img{
+    padding-top: 7px;
+}

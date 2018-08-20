@@ -4,7 +4,7 @@
 
 <div class="clubContainer" *ngFor="let club of Clubs">
   <div class="title">
-    <a routerLink="/club/{{club.clubId}}">
+    <a routerLink="/{{club.clubId}}">
       <img class="clubLogo" src="{{club.logoUrl}}"/>
       <div>{{club.title}}</div>
     </a>
