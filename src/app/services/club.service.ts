@@ -6,8 +6,8 @@ import {Club} from '../../../common/models/Club';
 @Injectable()
 export class ClubService {
 
-  private readonly host: string = 'http://localhost:3000';
-  // private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
+  // private readonly host: string = 'http://localhost:3000';
+  private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
 
   constructor(private http: HttpClient) {
   }
