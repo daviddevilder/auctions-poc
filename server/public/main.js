@@ -1251,10 +1251,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var ClubService = /** @class */ (function () {
-    // private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
     function ClubService(http) {
         this.http = http;
-        this.host = 'http://localhost:3000';
+        // private readonly host: string = 'http://localhost:3000';
+        this.host = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
     }
     ClubService.prototype.LoadClubs = function () {
         var url = this.host + '/api/clubs';
@@ -1301,8 +1301,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var LotService = /** @class */ (function () {
     function LotService(http) {
         this.http = http;
-        this.host = 'http://localhost:3000';
-        // private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
+        // private readonly host: string = 'http://localhost:3000';
+        this.host = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
         this.Lots = [];
     }
     LotService.prototype.LoadTags = function (clubId) {
