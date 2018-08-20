@@ -1,11 +1,5 @@
 div.auctionNav {
     width: 200px;
-    background-color: rgb(243, 243, 243);
-    color: white;
-    overflow-x: hidden;
-    position: fixed;
-    top: 50px;
-    left: 0;
 }
 
 ul.menuItemList {
@@ -15,8 +9,8 @@ ul.menuItemList {
 
 ul.menuItemList li {
     list-style-type: none;
-    border: 1px solid rgb(233, 233, 233);
-    margin-bottom: 1px;
+    border: solid rgb(233, 233, 233);
+    border-width: 0px 0px 1px 0px;
 }
 
 ul.menuItemList li a {

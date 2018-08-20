@@ -11,8 +11,9 @@
 
 h1 {
     color: white;
-    margin: 0 0 0 200px;
-    padding: 65px 14px 14px;
+    margin: 0 0 0 0px;
+    padding: 20px;
+    background-color: rgb(0, 43, 136);
     opacity: 0.9;
     width: auto;
     font-weight: normal;
@@ -20,12 +21,12 @@ h1 {
     font-size: 20px;
 }
 
-.nav {
-    height: 100%;
+.sideNav {
+    position: fixed;
+    top: 56px;
 }
 
 .lots {
-    margin-left: 200px;
-    margin-top: 50px;
+    margin: 20px;
     min-height: 350px;
 }

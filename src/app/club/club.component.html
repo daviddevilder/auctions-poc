@@ -1,8 +1,6 @@
-<app-header [clubId]="clubId" [colour]="club.primaryColour"></app-header>
-
 <div class="background"></div>
 
-<div class="headerSection" [ngStyle]="{ 'background-color': club.primaryColour}">
+<div fxLayout="column" class="headerSection" [ngStyle]="{ 'background-color': club.primaryColour}">
     <div class="clubLogo">
         <img src="{{club.logoUrl}}"/>
     </div>
@@ -15,49 +13,78 @@
         {{club.subtitle}}
     </h2>
 </div>
-
-<div class="banner" [ngStyle]="{ 'background-image': 'url(' + club.bannerUrl + ')'}">
-    <div class="bannerText">
-        {{club.bannerText}}
-    </div>
-    <div class="lotsButtonContainer">
-        <button mat-raised-button class="lotsButton" routerLink="/club/{{clubId}}/lots">
-            View the auction lots
-        </button>
+<div class="bannerContainer">    
+    <div class="banner" [ngStyle]="{ 'background-image': 'url(' + club.bannerUrl + ')'}">
+        <div class="bannerText">
+            {{club.bannerText}}
+        </div>
+        <div class="lotsButtonContainer">
+            <button mat-raised-button class="lotsButton" routerLink="/club/{{clubId}}/lots">
+                View the auction lots
+            </button>
+        </div>
     </div>
 </div>
+    
 
-<div class="introductionContainer">
+<div class="introductionContainer" fxLayout="row" fxLayoutGap="20px">
     <div class="introductionText">
         {{club.introText}}
     </div>
+
+
 </div>
 
-<div class="clubDetailsContainer">
-    <div class="clubDetailsCard">
-        <div class="whenContainer">
-            <label>When</label>
-            <div>Ends {{club.closingDate | date:'h:mm a, d LLLL y'}}</div>
-        </div>
+<div fxLayout="row" fxLayoutGap="20px grid" class="infoCardContainerRow">
+
+    <div fxLayout="column" fxLayoutGap="20px" fxFlexOrder="0" class="infoCardColumn1">
+
+        <mat-card class="infoCard">
+            <mat-card-header>
+                <div mat-card-avatar>
+                    <mat-icon>alarm</mat-icon>
+                </div>
+                <mat-card-title>When</mat-card-title>
+                <mat-card-subtitle>Ends {{club.closingDate | date:'h:mm a, d LLLL y'}}</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+
+        <mat-card class="infoCard">
+            <mat-card-header>
+                <div mat-card-avatar>
+                        <mat-icon>email</mat-icon>
+                </div>
+                <mat-card-title>Contact</mat-card-title>
+                <mat-card-subtitle>{{club.contactEmail}}</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+
+        <mat-card class="infoCard">
+            <mat-card-header>
+                <div mat-card-avatar>
+                        <mat-icon>language</mat-icon>
+                </div>
+                <mat-card-title>Website</mat-card-title>
+                <mat-card-subtitle><a href="{{club.websiteUrl}}" target="_blank">{{club.websiteUrl}}</a></mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+
     </div>
 
-    <div class="clubDetailsCard">
-        <div class="contactContainer">
-            <label>Contact</label>
-            <div>{{club.contactEmail}}</div>
-        </div>
+    <div fxLayout="column" fxFlexOrder="1" class="infoCardColumn2">
+
+        <mat-card class="infoCard" style="height:270px;">
+            <mat-card-header>
+                <div mat-card-avatar>
+                        <mat-icon>place</mat-icon>
+                </div>
+                <mat-card-title>Where</mat-card-title>
+                <mat-card-subtitle>Some Address</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+
     </div>
 
-    <div class="clubDetailsCard">
-        <div class="websiteContainer">
-            <label>Website</label>
-            <div>
-                <a href="{{club.websiteUrl}}" target="_blank">
-                    {{club.websiteUrl}}
-                </a>
-            </div>
-        </div>
-    </div>
 </div>
 
 <div class="descriptionContainer">

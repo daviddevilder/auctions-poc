@@ -2,16 +2,23 @@
 
 <div class="background"></div>
 
-<h1 [ngStyle]="{ 'background-color': club.primaryColour}">
-  {{ club.title }} Auction
-</h1>
+<mat-sidenav-container class="example-container">
 
-<div class="nav">
-  <app-auction-nav clubId="{{clubId}}"></app-auction-nav>
-</div>
+    <mat-sidenav mode="side" opened class="sideNav">
+      <div class="nav">
+        <app-auction-nav clubId="{{clubId}}"></app-auction-nav>
+      </div>
+    </mat-sidenav>
 
-<div class="lots">
-  <app-lot-list clubId="{{clubId}}"></app-lot-list>
-</div>
+    <mat-sidenav-content>
+        <h1 [ngStyle]="{ 'background-color': club.primaryColour}">
+            {{ club.title }} Auction
+        </h1>
+      <div class="lots">
+          <app-lot-list clubId="{{clubId}}"></app-lot-list>
+      </div>
+    </mat-sidenav-content>
+    
+</mat-sidenav-container>
 
 <app-footer [colour]="club.primaryColour"></app-footer>

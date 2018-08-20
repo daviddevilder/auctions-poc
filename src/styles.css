@@ -3,6 +3,5 @@
 @import '~normalize.css';
 
 body {
-    font-family: "Helvetica";
-    min-width: 700px;
+    font-family: 'Nunito Sans', sans-serif;
 }

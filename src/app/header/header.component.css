@@ -1,21 +1,18 @@
-.header {
-    height: 50px;
-    position: fixed;
-    top: 0;
-    width: 100%;
+.app-toolbar {
+    position: sticky;
+    position: -webkit-sticky; 
+    top: 0; 
     z-index: 1000;
+    height:56px;
 }
 
-.logo-container {
-    float: left;
-}
-
-.logo-container img {
-    margin: 6px 20px;
+.app-toolbar img{
+    padding-top: 7px;
 }
 
 .quicklinks-container {
-    float: right;
+    position: fixed;
+    right: 0px;
 }
 
 .quicklinks-container ul {

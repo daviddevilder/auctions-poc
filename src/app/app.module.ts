@@ -24,6 +24,11 @@ import {LotDetailsComponent} from './lot-details/lot-details.component';
 import {BidDialogComponent} from './bid-dialog/bid-dialog.component';
 import {NotificationDialogComponent} from './notification-dialog/notification-dialog.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatCardModule} from '@angular/material/card';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 registerLocaleData(localeEn, 'en', localeEnExtra);
 
@@ -50,7 +55,12 @@ registerLocaleData(localeEn, 'en', localeEnExtra);
         ReactiveFormsModule,
         BrowserAnimationsModule,
         CustomMaterialModule,
-        AppRoutingModule
+        AppRoutingModule,
+        MatCardModule,
+        FlexLayoutModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatSidenavModule
     ],
     providers: [LotService, ClubService, { provide: localeEn, useValue: 'en' }],
     bootstrap: [AppComponent]
