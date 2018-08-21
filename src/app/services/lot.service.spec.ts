@@ -22,7 +22,7 @@ describe('LotService', () => {
 
     describe('LoadLots', () => {
         beforeEach(() => {
-            this.expectedUrl = 'http://localhost:3000/api/club/dummyClub/lots';
+            this.expectedUrl = 'http://localhost:3000/api/Organisation/dummyClub/lots';
             this.mockResponseBody = {'some': 'thing'};
         });
 

@@ -1,7 +1,7 @@
 export class Lot {
 
     constructor(public lotId: string,
-                public clubId: string,
+                public organisationId: string,
                 public title: string,
                 public description: string,
                 public imageUri: string,

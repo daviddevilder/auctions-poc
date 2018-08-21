@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Lots = require("./Lots");
-var Clubs = require("./Clubs");
+var Organisations = require("./Organisations");
 var router = require('express').Router();
 module.exports = router;
 router.use('/lots', Lots);
-router.use('/clubs', Clubs);
+router.use('/organisations', Organisations);
 //# sourceMappingURL=API.js.map

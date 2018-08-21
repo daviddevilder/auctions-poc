@@ -11,14 +11,14 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import {HomeComponent} from './home/home.component';
-import {ClubListComponent} from './club-list/club-list.component';
-import {ClubService} from './services/club.service';
-import {ClubComponent} from './club/club.component';
+import {OrganisationListComponent} from './organisation-list/organisation-list.component';
+import {OrganisationService} from './services/organisation.service';
+import {OrganisationComponent} from './organisation/organisation.component';
 import {LotListComponent} from './lot-list/lot-list.component';
 import {LotService} from './services/lot.service';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
-import {ClubLotsComponent} from './club-lots/club-lots.component';
+import {OrganisationLotsComponent} from './organisation-lots/organisation-lots.component';
 import {AuctionNavComponent} from './auction-nav/auction-nav.component';
 import {LotDetailsComponent} from './lot-details/lot-details.component';
 import {BidDialogComponent} from './bid-dialog/bid-dialog.component';
@@ -30,7 +30,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {TermsAndConditionsComponent} from './terms-and-conditions/terms-and-conditions.component';
-import {ClubFaqComponent} from './club-faq/club-faq.component';
+import {OrganisationFaqComponent} from './organisation-faq/organisation-faq.component';
 
 registerLocaleData(localeEn, 'en', localeEnExtra);
 
@@ -39,16 +39,16 @@ registerLocaleData(localeEn, 'en', localeEnExtra);
         AppComponent,
         HeaderComponent,
         FooterComponent,
-        ClubListComponent,
+        OrganisationListComponent,
         HomeComponent,
-        ClubComponent,
+        OrganisationComponent,
         LotDetailsComponent,
         LotListComponent,
-        ClubLotsComponent,
+        OrganisationLotsComponent,
         AuctionNavComponent,
         BidDialogComponent,
         NotificationDialogComponent,
-        ClubFaqComponent,
+        OrganisationFaqComponent,
         TermsAndConditionsComponent
     ],
     entryComponents: [BidDialogComponent, NotificationDialogComponent],
@@ -66,7 +66,7 @@ registerLocaleData(localeEn, 'en', localeEnExtra);
         MatIconModule,
         MatSidenavModule
     ],
-    providers: [LotService, ClubService, { provide: localeEn, useValue: 'en' }],
+    providers: [LotService, OrganisationService, { provide: localeEn, useValue: 'en' }],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {ClubService} from '../services/club.service';
-import {Club} from '../../../common/models/Club';
+import {OrganisationService} from '../services/organisation.service';
+import {Organisation} from '../../../common/models/Organisation';
 import {LotService} from '../services/lot.service';
 import {Lot} from '../../../common/models/Lot';
 import {MatDialog} from '@angular/material';
@@ -15,24 +15,25 @@ import {NotificationDialogComponent} from '../notification-dialog/notification-d
 })
 export class LotDetailsComponent {
     public lotId: String = '';
-    public clubId: String = '';
+    public organisationId: String = '';
 
     public lot: Lot = new Lot('', '', '', '', '', '', 0, 0, [], 0, 0, []);
-    public club: Club = new Club('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
+    public Organisation: Organisation = new Organisation('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
 
     public amount: String = '';
 
-    constructor(private clubService: ClubService, private lotService: LotService, private route: ActivatedRoute, public dialog: MatDialog) {
+    constructor(private organisationService: OrganisationService, private lotService: LotService, private route: ActivatedRoute,
+                public dialog: MatDialog) {
         this.route.params.subscribe( params => {
-            this.clubId = params.clubId;
+            this.organisationId = params.organisationId;
             this.lotId = params.lotId;
 
             lotService.LoadLot(params.lotId).subscribe((lot: Lot) => {
                 this.lot = lot;
             });
 
-            clubService.LoadClubById(params.clubId).subscribe((club: Club) => {
-                this.club = club;
+            organisationService.LoadOrganisationById(params.organisationId).subscribe((organisation: Organisation) => {
+                this.Organisation = organisation;
             });
         });
     }

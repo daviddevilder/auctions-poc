@@ -1,6 +1,6 @@
 export interface ILot {
     lotId?: string;
-    clubId?: string;
+    organisationId?: string;
     title?: string;
     description?: string;
     imageUri?: string;

@@ -1,0 +1,12 @@
+<h2>
+  Our Partners
+</h2>
+
+<div class="orgContainer" *ngFor="let org of Organisations">
+  <div class="title">
+    <a routerLink="/{{org.organisationId}}">
+      <img class="orgLogo" src="{{org.logoUrl}}"/>
+      <div>{{org.title}}</div>
+    </a>
+  </div>
+</div>

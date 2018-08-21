@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
     styleUrls: ['lot-list.component.css']
 })
 export class LotListComponent implements OnInit {
-    @Input() clubId: string;
+    @Input() organisationId: string;
     public Lots: Lot[] = [];
 
     constructor(private lotService: LotService, private route: ActivatedRoute) {
@@ -18,10 +18,10 @@ export class LotListComponent implements OnInit {
     ngOnInit() {
         this.route.queryParams.subscribe(params => {
             if (params.filter) {
-                this.lotService.LoadLotsForTag(this.clubId, params.filter)
+                this.lotService.LoadLotsForTag(this.organisationId, params.filter)
                     .subscribe((lots: Lot[]) => this.Lots = lots);
             } else {
-                this.lotService.LoadLots(this.clubId)
+                this.lotService.LoadLots(this.organisationId)
                     .subscribe((lots: Lot[]) => this.Lots = lots);
             }
         });

@@ -1,11 +1,11 @@
-<app-header [clubId]="clubId" [colour]="club.primaryColour"></app-header>
+<app-header [organisationId]="organisationId" [colour]="Organisation.primaryColour"></app-header>
 
 <div class="background"></div>
 
 <div class="content">
     <div class="titleSection">
         <button mat-raised-button class="backButton"
-                routerLink="/{{clubId}}/lots">
+                routerLink="/{{organisationId}}/lots">
             << All Lots
         </button>
 
@@ -61,4 +61,4 @@
     </div>
 </div>
 
-<app-footer [colour]="club.primaryColour"></app-footer>
+<app-footer [colour]="Organisation.primaryColour"></app-footer>

@@ -3,7 +3,7 @@ import {ILot} from '../../../common/models/ILot';
 
 export interface ILotModel extends ILot, Document {
     lotId: string;
-    clubId: string;
+    organisationId: string;
     title: string;
     description: string;
     imageUri: string;
@@ -18,7 +18,7 @@ export interface ILotModel extends ILot, Document {
 
 export const LotSchema: Schema = new Schema({
     lotId: String,
-    clubId: String,
+    organisationId: String,
     title: String,
     description: String,
     imageUri: String,

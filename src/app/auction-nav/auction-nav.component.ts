@@ -7,14 +7,14 @@ import {LotService} from '../services/lot.service';
     styleUrls: ['auction-nav.component.css']
 })
 export class AuctionNavComponent implements OnInit {
-    @Input() clubId: String;
+    @Input() organisationId: String;
     public tags: String[];
 
     constructor(private lotService: LotService) {
     }
 
     ngOnInit() {
-        this.lotService.LoadTags(this.clubId)
+        this.lotService.LoadTags(this.organisationId)
             .subscribe((tags: String[]) => {
                 this.tags = tags;
             });

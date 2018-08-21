@@ -1,0 +1,24 @@
+<app-header [organisationId]="organisationId" [colour]="Organisation.primaryColour"></app-header>
+
+<div class="background"></div>
+
+<mat-sidenav-container class="example-container">
+
+    <mat-sidenav mode="side" opened class="sideNav">
+      <div class="nav">
+        <app-auction-nav [organisationId]="organisationId"></app-auction-nav>
+      </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <h1 [ngStyle]="{ 'background-color': Organisation.primaryColour}">
+            {{ Organisation.title }} Auction
+        </h1>
+      <div class="lots">
+          <app-lot-list [organisationId]="organisationId"></app-lot-list>
+      </div>
+    </mat-sidenav-content>
+    
+</mat-sidenav-container>
+
+<app-footer [colour]="Organisation.primaryColour"></app-footer>

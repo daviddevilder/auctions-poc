@@ -7,7 +7,7 @@ import {ActivatedRoute} from '@angular/router';
     styleUrls: ['header.component.css']
 })
 export class HeaderComponent implements OnInit {
-    @Input() clubId: string;
+    @Input() organisationId: string;
     @Input() colour: string;
 
     constructor() {}

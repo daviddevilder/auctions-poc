@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Lot = (function () {
-    function Lot(lotId, clubId, title, description, imageUri, providedBy, reservePrice, estimate, tags, orderNumbder, isFeatured, bids) {
+    function Lot(lotId, organisationId, title, description, imageUri, providedBy, reservePrice, estimate, tags, orderNumbder, isFeatured, bids) {
         this.lotId = lotId;
-        this.clubId = clubId;
+        this.organisationId = organisationId;
         this.title = title;
         this.description = description;
         this.imageUri = imageUri;

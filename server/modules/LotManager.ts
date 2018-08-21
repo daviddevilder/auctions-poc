@@ -3,63 +3,6 @@ import {Lot} from '../../common/models/Lot';
 
 export namespace LotManager {
 
-    // LotModel.create({
-    //     lotId: '12345',
-    //     clubId: 'buryfc',
-    //     title: 'Harry Bunn',
-    //     description: 'Description...',
-    //     imageUri: '/assets/auctions/harry_bunn.png',
-    //     providedBy: 'Bury FC',
-    //     reservePrice: 150,
-    //     estimate: 500,
-    //     tags: ['Players', 'Defenders'],
-    //     orderNumber: 1,
-    //     isFeatured: 0,
-    //     bids: [{createdAt: new Date().toISOString(), bidderId: 'John Smith', value: 220}, {}]
-    // }, function (err) {
-    //     if (err) {
-    //         console.log(err);
-    //     }
-    // });
-    //
-    // LotModel.create({
-    //     lotId: '23456',
-    //     clubId: 'buryfc',
-    //     title: 'Neil Danns',
-    //     description: 'Description...',
-    //     imageUri: '/assets/auctions/neil_danns.jpg',
-    //     providedBy: 'Bury FC',
-    //     reservePrice: 150,
-    //     estimate: 500,
-    //     tags: ['Players', 'Midfielders'],
-    //     orderNumber: 1,
-    //     isFeatured: 0,
-    //     bids: [{createdAt: new Date().toISOString(), bidderId: 'John Smith', value: 220}, {}]
-    // }, function (err) {
-    //     if (err) {
-    //         console.log(err);
-    //     }
-    // });
-    //
-    // LotModel.create({
-    //     lotId: '34567',
-    //     clubId: 'buryfc',
-    //     title: 'Nicky Adams',
-    //     description: 'Description...',
-    //     imageUri: '/assets/auctions/nicky_adams.jpg',
-    //     providedBy: 'Bury FC',
-    //     reservePrice: 150,
-    //     estimate: 500,
-    //     tags: ['Players', 'Forwards'],
-    //     orderNumber: 1,
-    //     isFeatured: 0,
-    //     bids: [{createdAt: new Date().toISOString(), bidderId: 'John Smith', value: 220}, {}]
-    // }, function (err) {
-    //     if (err) {
-    //         console.log(err);
-    //     }
-    // });
-
     export async function GetLots(): Promise<Lot[]> {
 
         return new Promise((resolve: (result) => void, reject: (error: Error) => void) => {
@@ -67,7 +10,7 @@ export namespace LotManager {
                 try {
                     const results: Lot[] = [];
                     lots.forEach(function (lot) {
-                        results.push(new Lot(lot.lotId, lot.clubId, lot.title, lot.description, lot.imageUri, lot.providedBy,
+                        results.push(new Lot(lot.lotId, lot.organisationId, lot.title, lot.description, lot.imageUri, lot.providedBy,
                                                     lot.reservePrice, lot.estimate, lot.tags, lot.orderNumber,
                                                     lot.isFeatured, lot.bids));
                     });
@@ -80,14 +23,14 @@ export namespace LotManager {
         });
     }
 
-    export async function GetAllLotsForClub(clubId: String): Promise<Lot[]> {
+    export async function GetAllLotsForOrganisation(organisationId: String): Promise<Lot[]> {
 
         return new Promise((resolve: (result) => void, reject: (error: Error) => void) => {
-            LotModel.find({clubId: clubId}, function (err, lots) {
+            LotModel.find({organisationId: organisationId}, function (err, lots) {
                 try {
                     const results: Lot[] = [];
                     lots.forEach(function (lot) {
-                        results.push(new Lot(lot.lotId, lot.clubId, lot.title, lot.description, lot.imageUri, lot.providedBy,
+                        results.push(new Lot(lot.lotId, lot.organisationId, lot.title, lot.description, lot.imageUri, lot.providedBy,
                             lot.reservePrice, lot.estimate, lot.tags, lot.orderNumber, lot.isFeatured, lot.bids));
                     });
 
@@ -99,14 +42,14 @@ export namespace LotManager {
         });
     }
 
-    export async function GetLotsForClub(clubId: String, tag: String): Promise<Lot[]> {
+    export async function GetLotsForOrganisation(organisationId: String, tag: String): Promise<Lot[]> {
 
         return new Promise((resolve: (result) => void, reject: (error: Error) => void) => {
-            LotModel.find({clubId: clubId, tags: tag}, function (err, lots) {
+            LotModel.find({organisationId: organisationId, tags: tag}, function (err, lots) {
                 try {
                     const results: Lot[] = [];
                     lots.forEach(function (lot) {
-                        results.push(new Lot(lot.lotId, lot.clubId, lot.title, lot.description, lot.imageUri, lot.providedBy,
+                        results.push(new Lot(lot.lotId, lot.organisationId, lot.title, lot.description, lot.imageUri, lot.providedBy,
                             lot.reservePrice, lot.estimate, lot.tags, lot.orderNumber, lot.isFeatured, lot.bids));
                     });
 
@@ -118,11 +61,11 @@ export namespace LotManager {
         });
     }
 
-    export async function GetTagsForClub(clubId: String): Promise<Lot[]> {
+    export async function GetTagsForOrganisation(organisationId: String): Promise<Lot[]> {
 
         return new Promise((resolve: (result) => void, reject: (error: Error) => void) => {
             LotModel
-                .find({clubId: clubId})
+                .find({organisationId: organisationId})
                 .distinct('tags', function (err, tags) {
                 try {
                     resolve(tags);
@@ -138,7 +81,7 @@ export namespace LotManager {
         return new Promise((resolve: (result) => void, reject: (error: Error) => void) => {
             LotModel.findOne({lotId: lotId}, function (err, lot) {
                 try {
-                    resolve(new Lot(lot.lotId, lot.clubId, lot.title, lot.description, lot.imageUri, lot.providedBy,
+                    resolve(new Lot(lot.lotId, lot.organisationId, lot.title, lot.description, lot.imageUri, lot.providedBy,
                         lot.reservePrice, lot.estimate, lot.tags, lot.orderNumber, lot.isFeatured, lot.bids));
                 } catch (error) {
                     reject(error);

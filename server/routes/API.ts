@@ -1,8 +1,8 @@
 import * as Lots from './Lots';
-import * as Clubs from './Clubs';
+import * as Organisations from './Organisations';
 
 const router = require('express').Router();
 module.exports = router;
 
 router.use('/lots', Lots);
-router.use('/clubs', Clubs);
+router.use('/organisations', Organisations);

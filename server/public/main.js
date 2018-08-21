@@ -1,18 +1,50 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"],{
 
-/***/ "./common/models/Club.ts":
-/*!*******************************!*\
-  !*** ./common/models/Club.ts ***!
-  \*******************************/
-/*! exports provided: Club */
+/***/ "./common/models/Lot.ts":
+/*!******************************!*\
+  !*** ./common/models/Lot.ts ***!
+  \******************************/
+/*! exports provided: Lot */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Club", function() { return Club; });
-var Club = /** @class */ (function () {
-    function Club(clubId, title, subtitle, primaryColour, logoUrl, websiteUrl, contactEmail, contactPhone, closingDate, bannerUrl, bannerText, introText, descriptionHtml) {
-        this.clubId = clubId;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Lot", function() { return Lot; });
+var Lot = /** @class */ (function () {
+    function Lot(lotId, organisationId, title, description, imageUri, providedBy, reservePrice, estimate, tags, orderNumbder, isFeatured, bids) {
+        this.lotId = lotId;
+        this.organisationId = organisationId;
+        this.title = title;
+        this.description = description;
+        this.imageUri = imageUri;
+        this.providedBy = providedBy;
+        this.reservePrice = reservePrice;
+        this.estimate = estimate;
+        this.tags = tags;
+        this.orderNumbder = orderNumbder;
+        this.isFeatured = isFeatured;
+        this.bids = bids;
+    }
+    return Lot;
+}());
+
+
+
+/***/ }),
+
+/***/ "./common/models/Organisation.ts":
+/*!***************************************!*\
+  !*** ./common/models/Organisation.ts ***!
+  \***************************************/
+/*! exports provided: Organisation */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Organisation", function() { return Organisation; });
+var Organisation = /** @class */ (function () {
+    function Organisation(organisationId, title, subtitle, primaryColour, logoUrl, websiteUrl, contactEmail, contactPhone, closingDate, bannerUrl, bannerText, introText, descriptionHtml) {
+        this.organisationId = organisationId;
         this.title = title;
         this.subtitle = subtitle;
         this.primaryColour = primaryColour;
@@ -26,39 +58,7 @@ var Club = /** @class */ (function () {
         this.introText = introText;
         this.descriptionHtml = descriptionHtml;
     }
-    return Club;
-}());
-
-
-
-/***/ }),
-
-/***/ "./common/models/Lot.ts":
-/*!******************************!*\
-  !*** ./common/models/Lot.ts ***!
-  \******************************/
-/*! exports provided: Lot */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Lot", function() { return Lot; });
-var Lot = /** @class */ (function () {
-    function Lot(lotId, clubId, title, description, imageUri, providedBy, reservePrice, estimate, tags, orderNumbder, isFeatured, bids) {
-        this.lotId = lotId;
-        this.clubId = clubId;
-        this.title = title;
-        this.description = description;
-        this.imageUri = imageUri;
-        this.providedBy = providedBy;
-        this.reservePrice = reservePrice;
-        this.estimate = estimate;
-        this.tags = tags;
-        this.orderNumbder = orderNumbder;
-        this.isFeatured = isFeatured;
-        this.bids = bids;
-    }
-    return Lot;
+    return Organisation;
 }());
 
 
@@ -183,14 +183,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
-/* harmony import */ var _club_list_club_list_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./club-list/club-list.component */ "./src/app/club-list/club-list.component.ts");
-/* harmony import */ var _services_club_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/club.service */ "./src/app/services/club.service.ts");
-/* harmony import */ var _club_club_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./club/club.component */ "./src/app/club/club.component.ts");
+/* harmony import */ var _organisation_list_organisation_list_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./organisation-list/organisation-list.component */ "./src/app/organisation-list/organisation-list.component.ts");
+/* harmony import */ var _services_organisation_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/organisation.service */ "./src/app/services/organisation.service.ts");
+/* harmony import */ var _organisation_organisation_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./organisation/organisation.component */ "./src/app/organisation/organisation.component.ts");
 /* harmony import */ var _lot_list_lot_list_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./lot-list/lot-list.component */ "./src/app/lot-list/lot-list.component.ts");
 /* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./services/lot.service */ "./src/app/services/lot.service.ts");
 /* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
 /* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/footer/footer.component.ts");
-/* harmony import */ var _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./club-lots/club-lots.component */ "./src/app/club-lots/club-lots.component.ts");
+/* harmony import */ var _organisation_lots_organisation_lots_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./organisation-lots/organisation-lots.component */ "./src/app/organisation-lots/organisation-lots.component.ts");
 /* harmony import */ var _auction_nav_auction_nav_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./auction-nav/auction-nav.component */ "./src/app/auction-nav/auction-nav.component.ts");
 /* harmony import */ var _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./lot-details/lot-details.component */ "./src/app/lot-details/lot-details.component.ts");
 /* harmony import */ var _bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./bid-dialog/bid-dialog.component */ "./src/app/bid-dialog/bid-dialog.component.ts");
@@ -202,7 +202,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/esm5/icon.es5.js");
 /* harmony import */ var _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @angular/material/sidenav */ "./node_modules/@angular/material/esm5/sidenav.es5.js");
 /* harmony import */ var _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./terms-and-conditions/terms-and-conditions.component */ "./src/app/terms-and-conditions/terms-and-conditions.component.ts");
-/* harmony import */ var _club_faq_club_faq_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./club-faq/club-faq.component */ "./src/app/club-faq/club-faq.component.ts");
+/* harmony import */ var _organisation_faq_organisation_faq_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./organisation-faq/organisation-faq.component */ "./src/app/organisation-faq/organisation-faq.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -250,16 +250,16 @@ var AppModule = /** @class */ (function () {
                 _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
                 _header_header_component__WEBPACK_IMPORTED_MODULE_16__["HeaderComponent"],
                 _footer_footer_component__WEBPACK_IMPORTED_MODULE_17__["FooterComponent"],
-                _club_list_club_list_component__WEBPACK_IMPORTED_MODULE_11__["ClubListComponent"],
+                _organisation_list_organisation_list_component__WEBPACK_IMPORTED_MODULE_11__["OrganisationListComponent"],
                 _home_home_component__WEBPACK_IMPORTED_MODULE_10__["HomeComponent"],
-                _club_club_component__WEBPACK_IMPORTED_MODULE_13__["ClubComponent"],
+                _organisation_organisation_component__WEBPACK_IMPORTED_MODULE_13__["OrganisationComponent"],
                 _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_20__["LotDetailsComponent"],
                 _lot_list_lot_list_component__WEBPACK_IMPORTED_MODULE_14__["LotListComponent"],
-                _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_18__["ClubLotsComponent"],
+                _organisation_lots_organisation_lots_component__WEBPACK_IMPORTED_MODULE_18__["OrganisationLotsComponent"],
                 _auction_nav_auction_nav_component__WEBPACK_IMPORTED_MODULE_19__["AuctionNavComponent"],
                 _bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_21__["BidDialogComponent"],
                 _notification_dialog_notification_dialog_component__WEBPACK_IMPORTED_MODULE_22__["NotificationDialogComponent"],
-                _club_faq_club_faq_component__WEBPACK_IMPORTED_MODULE_30__["ClubFaqComponent"],
+                _organisation_faq_organisation_faq_component__WEBPACK_IMPORTED_MODULE_30__["OrganisationFaqComponent"],
                 _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_29__["TermsAndConditionsComponent"]
             ],
             entryComponents: [_bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_21__["BidDialogComponent"], _notification_dialog_notification_dialog_component__WEBPACK_IMPORTED_MODULE_22__["NotificationDialogComponent"]],
@@ -277,7 +277,7 @@ var AppModule = /** @class */ (function () {
                 _angular_material_icon__WEBPACK_IMPORTED_MODULE_27__["MatIconModule"],
                 _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_28__["MatSidenavModule"]
             ],
-            providers: [_services_lot_service__WEBPACK_IMPORTED_MODULE_15__["LotService"], _services_club_service__WEBPACK_IMPORTED_MODULE_12__["ClubService"], { provide: _angular_common_locales_en__WEBPACK_IMPORTED_MODULE_1___default.a, useValue: 'en' }],
+            providers: [_services_lot_service__WEBPACK_IMPORTED_MODULE_15__["LotService"], _services_organisation_service__WEBPACK_IMPORTED_MODULE_12__["OrganisationService"], { provide: _angular_common_locales_en__WEBPACK_IMPORTED_MODULE_1___default.a, useValue: 'en' }],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
         })
     ], AppModule);
@@ -306,7 +306,7 @@ module.exports = "div.auctionNav {\r\n    width: 200px;\r\n}\r\n\r\nul.menuItemL
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"auctionNav\">\r\n\r\n  <ul class=\"menuItemList\">\r\n\r\n    <li>\r\n      <div>\r\n        <a routerLink=\"/{{clubId}}/lots\">\r\n          All Items\r\n        </a>\r\n      </div>\r\n    </li>\r\n\r\n    <li *ngFor=\"let tag of tags\">\r\n      <div>\r\n        <a routerLink=\"/{{clubId}}/lots\" [queryParams]=\"{filter: tag}\">\r\n          {{tag}}\r\n        </a>\r\n      </div>\r\n    </li>\r\n\r\n  </ul>\r\n\r\n</div>\r\n"
+module.exports = "<div class=\"auctionNav\">\r\n\r\n  <ul class=\"menuItemList\">\r\n\r\n    <li>\r\n      <div>\r\n        <a routerLink=\"/{{organisationId}}/lots\">\r\n          All Items\r\n        </a>\r\n      </div>\r\n    </li>\r\n\r\n    <li *ngFor=\"let tag of tags\">\r\n      <div>\r\n        <a routerLink=\"/{{organisationId}}/lots\" [queryParams]=\"{filter: tag}\">\r\n          {{tag}}\r\n        </a>\r\n      </div>\r\n    </li>\r\n\r\n  </ul>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -339,7 +339,7 @@ var AuctionNavComponent = /** @class */ (function () {
     }
     AuctionNavComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.lotService.LoadTags(this.clubId)
+        this.lotService.LoadTags(this.organisationId)
             .subscribe(function (tags) {
             _this.tags = tags;
         });
@@ -347,7 +347,7 @@ var AuctionNavComponent = /** @class */ (function () {
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", String)
-    ], AuctionNavComponent.prototype, "clubId", void 0);
+    ], AuctionNavComponent.prototype, "organisationId", void 0);
     AuctionNavComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-auction-nav',
@@ -448,320 +448,6 @@ var BidDialogComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/club-faq/club-faq.component.css":
-/*!*************************************************!*\
-  !*** ./src/app/club-faq/club-faq.component.css ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n    background-size: cover;\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: -1;\r\n}"
-
-/***/ }),
-
-/***/ "./src/app/club-faq/club-faq.component.html":
-/*!**************************************************!*\
-  !*** ./src/app/club-faq/club-faq.component.html ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<app-header [clubId]=\"clubId\" [colour]=\"club.primaryColour\"></app-header>\r\n\r\n<div class=\"background\"></div>\r\n\r\n<h1>\r\n    {{club.title}} FAQs\r\n</h1>\r\n\r\n<div>\r\n    Content\r\n</div>\r\n\r\n<app-footer [colour]=\"club.primaryColour\"></app-footer>"
-
-/***/ }),
-
-/***/ "./src/app/club-faq/club-faq.component.ts":
-/*!************************************************!*\
-  !*** ./src/app/club-faq/club-faq.component.ts ***!
-  \************************************************/
-/*! exports provided: ClubFaqComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClubFaqComponent", function() { return ClubFaqComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _services_club_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/club.service */ "./src/app/services/club.service.ts");
-/* harmony import */ var _common_models_Club__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/models/Club */ "./common/models/Club.ts");
-/* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/lot.service */ "./src/app/services/lot.service.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var ClubFaqComponent = /** @class */ (function () {
-    function ClubFaqComponent(clubService, lotService, route) {
-        var _this = this;
-        this.clubService = clubService;
-        this.lotService = lotService;
-        this.route = route;
-        this.clubId = '';
-        this.club = new _common_models_Club__WEBPACK_IMPORTED_MODULE_3__["Club"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
-        this.route.params.subscribe(function (params) {
-            _this.clubId = params.clubId;
-            clubService.LoadClubById(params.clubId)
-                .subscribe(function (club) {
-                _this.club = club;
-            });
-        });
-    }
-    ClubFaqComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-club-faq',
-            template: __webpack_require__(/*! ./club-faq.component.html */ "./src/app/club-faq/club-faq.component.html"),
-            styles: [__webpack_require__(/*! ./club-faq.component.css */ "./src/app/club-faq/club-faq.component.css")]
-        }),
-        __metadata("design:paramtypes", [_services_club_service__WEBPACK_IMPORTED_MODULE_2__["ClubService"], _services_lot_service__WEBPACK_IMPORTED_MODULE_4__["LotService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
-    ], ClubFaqComponent);
-    return ClubFaqComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/club-list/club-list.component.css":
-/*!***************************************************!*\
-  !*** ./src/app/club-list/club-list.component.css ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "h2 {\n    text-align: center;\n    color: white;\n    margin: 10px auto;\n    padding: 8px;\n    background-color: #333;\n    opacity: 0.9;\n    border-radius: 10px;\n    max-width: 400px;\n}\n\n.clubContainer {\n    background-color: white;\n    width: 280px;\n    padding: 5px;\n    border-radius: 12px;\n    text-align: center;\n    margin: 20px auto;\n}\n\n.clubContainer .title {\n    font-weight: bold;\n}\n\n.clubContainer .title a {\n    display: block;\n    text-decoration: none;\n    color: black;\n    font-size: 24px;\n}\n\n.clubContainer .clubLogo {\n    height: 120px;\n}"
-
-/***/ }),
-
-/***/ "./src/app/club-list/club-list.component.html":
-/*!****************************************************!*\
-  !*** ./src/app/club-list/club-list.component.html ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<h2>\n  Our Partners\n</h2>\n\n<div class=\"clubContainer\" *ngFor=\"let club of Clubs\">\n  <div class=\"title\">\n    <a routerLink=\"/{{club.clubId}}\">\n      <img class=\"clubLogo\" src=\"{{club.logoUrl}}\"/>\n      <div>{{club.title}}</div>\n    </a>\n  </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "./src/app/club-list/club-list.component.ts":
-/*!**************************************************!*\
-  !*** ./src/app/club-list/club-list.component.ts ***!
-  \**************************************************/
-/*! exports provided: ClubListComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClubListComponent", function() { return ClubListComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_club_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/club.service */ "./src/app/services/club.service.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var ClubListComponent = /** @class */ (function () {
-    function ClubListComponent(clubService) {
-        this.clubService = clubService;
-        this.Clubs = [];
-    }
-    ClubListComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.clubService.LoadClubs()
-            .subscribe(function (clubs) { return _this.Clubs = clubs; });
-    };
-    ClubListComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-club-list',
-            template: __webpack_require__(/*! ./club-list.component.html */ "./src/app/club-list/club-list.component.html"),
-            styles: [__webpack_require__(/*! ./club-list.component.css */ "./src/app/club-list/club-list.component.css")]
-        }),
-        __metadata("design:paramtypes", [_services_club_service__WEBPACK_IMPORTED_MODULE_1__["ClubService"]])
-    ], ClubListComponent);
-    return ClubListComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/club-lots/club-lots.component.css":
-/*!***************************************************!*\
-  !*** ./src/app/club-lots/club-lots.component.css ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n    background-size: cover;\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: -1;\r\n}\r\n\r\nh1 {\r\n    color: white;\r\n    margin: 0 0 0 0px;\r\n    padding: 20px;\r\n    background-color: rgb(0, 43, 136);\r\n    opacity: 0.9;\r\n    width: auto;\r\n    font-weight: normal;\r\n    text-align: left;\r\n    font-size: 20px;\r\n}\r\n\r\n.sideNav {\r\n    position: fixed;\r\n    top: 56px;\r\n}\r\n\r\n.lots {\r\n    margin: 20px;\r\n    min-height: 350px;\r\n}"
-
-/***/ }),
-
-/***/ "./src/app/club-lots/club-lots.component.html":
-/*!****************************************************!*\
-  !*** ./src/app/club-lots/club-lots.component.html ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<app-header [clubId]=\"clubId\" [colour]=\"club.primaryColour\"></app-header>\r\n\r\n<div class=\"background\"></div>\r\n\r\n<mat-sidenav-container class=\"example-container\">\r\n\r\n    <mat-sidenav mode=\"side\" opened class=\"sideNav\">\r\n      <div class=\"nav\">\r\n        <app-auction-nav clubId=\"{{clubId}}\"></app-auction-nav>\r\n      </div>\r\n    </mat-sidenav>\r\n\r\n    <mat-sidenav-content>\r\n        <h1 [ngStyle]=\"{ 'background-color': club.primaryColour}\">\r\n            {{ club.title }} Auction\r\n        </h1>\r\n      <div class=\"lots\">\r\n          <app-lot-list clubId=\"{{clubId}}\"></app-lot-list>\r\n      </div>\r\n    </mat-sidenav-content>\r\n    \r\n</mat-sidenav-container>\r\n\r\n<app-footer [colour]=\"club.primaryColour\"></app-footer>"
-
-/***/ }),
-
-/***/ "./src/app/club-lots/club-lots.component.ts":
-/*!**************************************************!*\
-  !*** ./src/app/club-lots/club-lots.component.ts ***!
-  \**************************************************/
-/*! exports provided: ClubLotsComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClubLotsComponent", function() { return ClubLotsComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _services_club_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/club.service */ "./src/app/services/club.service.ts");
-/* harmony import */ var _common_models_Club__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/models/Club */ "./common/models/Club.ts");
-/* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/lot.service */ "./src/app/services/lot.service.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var ClubLotsComponent = /** @class */ (function () {
-    function ClubLotsComponent(clubService, lotService, route) {
-        var _this = this;
-        this.clubService = clubService;
-        this.lotService = lotService;
-        this.route = route;
-        this.clubId = '';
-        this.club = new _common_models_Club__WEBPACK_IMPORTED_MODULE_3__["Club"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
-        this.route.params.subscribe(function (params) {
-            _this.clubId = params.clubId;
-            clubService.LoadClubById(params.clubId)
-                .subscribe(function (club) {
-                _this.club = club;
-            });
-        });
-    }
-    ClubLotsComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-club-lots',
-            template: __webpack_require__(/*! ./club-lots.component.html */ "./src/app/club-lots/club-lots.component.html"),
-            styles: [__webpack_require__(/*! ./club-lots.component.css */ "./src/app/club-lots/club-lots.component.css")]
-        }),
-        __metadata("design:paramtypes", [_services_club_service__WEBPACK_IMPORTED_MODULE_2__["ClubService"], _services_lot_service__WEBPACK_IMPORTED_MODULE_4__["LotService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
-    ], ClubLotsComponent);
-    return ClubLotsComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/club/club.component.css":
-/*!*****************************************!*\
-  !*** ./src/app/club/club.component.css ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n    background-size: cover;\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: -1;\r\n}\r\n\r\n.headerSection {\r\n    height: 350px;\r\n    background-color: rgb(0, 43, 136);\r\n    margin-bottom: 60px;\r\n    align-items: center;\r\n}\r\n\r\n.headerSection h1 {\r\n    color: white;\r\n    font-size: 24px;\r\n    font-weight: normal;\r\n    margin-bottom: 0px; \r\n    padding: 0px 10px 0px 10px;  \r\n}\r\n\r\n.headerSection h2 {\r\n    color: white;\r\n    font-size: 16px;\r\n    font-weight: normal;\r\n    padding: 0px 10px 0px 10px;\r\n    text-align: center;\r\n}\r\n\r\n.clubLogo {\r\n    height: 160px;\r\n    padding-top: 50px;\r\n}\r\n\r\n.clubLogo img {\r\n    height: 160px;\r\n}\r\n\r\n.bannerContainer {\r\n    padding: 0px 10px 0px 10px;\r\n}\r\n\r\n.banner {\r\n    padding: 40px;\r\n    background: center/cover no-repeat #789;\r\n    min-height: 160px;\r\n    max-width: 880px;\r\n    margin: 0 auto;\r\n}\r\n\r\n.bannerText {\r\n    font-size: 30px;\r\n    background: rgba(0,0,0,0.38);\r\n    text-transform: uppercase;\r\n    color: #fff;\r\n    padding: 0 10px;\r\n    -webkit-box-decoration-break: clone;\r\n    -ms-box-decoration-break: clone;\r\n    -o-box-decoration-break: clone;\r\n    box-decoration-break: clone;\r\n}\r\n\r\n.lotsButtonContainer {\r\n    margin-top: 40px;\r\n    text-align: center;\r\n}\r\n\r\n.lotsButton {\r\n    text-transform: uppercase;\r\n    font-size: 18px;\r\n    font-weight: bold;\r\n}\r\n\r\n.introductionContainer {\r\n    max-width: 980px;\r\n    margin: 35px auto 35px;\r\n    padding: 0px 10px 0px 10px;\r\n}\r\n\r\n.introductionText {\r\n    font-size: 15px;\r\n}\r\n\r\n.infoCardContainerRow{\r\n    max-width: 980px;\r\n    margin: 20px auto 20px !important;\r\n    padding: 0px 10px 0px 10px;\r\n    flex-flow: row wrap;\r\n}\r\n\r\n.infoCardColumn1 {\r\n    flex-grow: 1;\r\n    flex-basis: 0;    \r\n}\r\n\r\n.infoCardColumn2 {\r\n    flex-grow: 1;\r\n    flex-basis: 0;\r\n    \r\n}\r\n\r\nmat-card.infoCard {\r\n    padding: 10px !important;\r\n    min-width: 350px;\r\n}\r\n\r\n.infoCard mat-card-header  {\r\n    margin: 7px!important;\r\n}\r\n\r\n.infoCard div.mat-card-avatar{\r\n    background: red;\r\n    height: 50px;\r\n    width: 50px;\r\n    font-size: 34px;\r\n    color: #fff;\r\n    vertical-align: middle;\r\n    text-align: center;\r\n    line-height: 50px;\r\n}\r\n\r\n.infoCard mat-card-title{\r\n    color: #6f6f6f;\r\n    font-size: 12px;\r\n    margin-bottom: 6px;\r\n    margin-top: 6px;\r\n}\r\n\r\n.infoCard mat-card-subtitle{\r\n    font-size: 14px;\r\n    color: #3d3d3d;\r\n    margin: -3px auto !important;    \r\n}\r\n\r\n.descriptionContainer {\r\n    max-width: 960px;\r\n    margin: 20px auto 60px;\r\n    padding: 0px 10px 0px 10px;\r\n}\r\n\r\n.descriptionHtml {\r\n    font-size: 15px;\r\n}\r\n\r\n"
-
-/***/ }),
-
-/***/ "./src/app/club/club.component.html":
-/*!******************************************!*\
-  !*** ./src/app/club/club.component.html ***!
-  \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<app-header [clubId]=\"clubId\" [colour]=\"club.primaryColour\"></app-header>\r\n\r\n<div class=\"background\"></div>\r\n\r\n<div fxLayout=\"column\" class=\"headerSection\" [ngStyle]=\"{ 'background-color': club.primaryColour}\">\r\n    <div class=\"clubLogo\">\r\n        <img src=\"{{club.logoUrl}}\"/>\r\n    </div>\r\n\r\n    <h1>\r\n        {{title}}\r\n    </h1>\r\n\r\n    <h2>\r\n        {{club.subtitle}}\r\n    </h2>\r\n</div>\r\n<div class=\"bannerContainer\">    \r\n    <div class=\"banner\" [ngStyle]=\"{ 'background-image': 'url(' + club.bannerUrl + ')'}\">\r\n        <div class=\"bannerText\">\r\n            {{club.bannerText}}\r\n        </div>\r\n        <div class=\"lotsButtonContainer\">\r\n            <button mat-raised-button class=\"lotsButton\" routerLink=\"/{{clubId}}/lots\">\r\n                View the auction lots\r\n            </button>\r\n        </div>\r\n    </div>\r\n</div>\r\n    \r\n\r\n<div class=\"introductionContainer\" fxLayout=\"row\" fxLayoutGap=\"20px\">\r\n    <div class=\"introductionText\">\r\n        {{club.introText}}\r\n    </div>\r\n\r\n\r\n</div>\r\n\r\n<div fxLayout=\"row\" fxLayoutGap=\"20px grid\" class=\"infoCardContainerRow\">\r\n\r\n    <div fxLayout=\"column\" fxLayoutGap=\"20px\" fxFlexOrder=\"0\" class=\"infoCardColumn1\">\r\n\r\n        <mat-card class=\"infoCard\">\r\n            <mat-card-header>\r\n                <div mat-card-avatar>\r\n                    <mat-icon>alarm</mat-icon>\r\n                </div>\r\n                <mat-card-title>When</mat-card-title>\r\n                <mat-card-subtitle>Ends {{club.closingDate | date:'h:mm a, d LLLL y'}}</mat-card-subtitle>\r\n            </mat-card-header>\r\n        </mat-card>\r\n\r\n        <mat-card class=\"infoCard\">\r\n            <mat-card-header>\r\n                <div mat-card-avatar>\r\n                        <mat-icon>email</mat-icon>\r\n                </div>\r\n                <mat-card-title>Contact</mat-card-title>\r\n                <mat-card-subtitle>{{club.contactEmail}}</mat-card-subtitle>\r\n            </mat-card-header>\r\n        </mat-card>\r\n\r\n        <mat-card class=\"infoCard\">\r\n            <mat-card-header>\r\n                <div mat-card-avatar>\r\n                        <mat-icon>language</mat-icon>\r\n                </div>\r\n                <mat-card-title>Website</mat-card-title>\r\n                <mat-card-subtitle><a href=\"{{club.websiteUrl}}\" target=\"_blank\">{{club.websiteUrl}}</a></mat-card-subtitle>\r\n            </mat-card-header>\r\n        </mat-card>\r\n\r\n    </div>\r\n\r\n    <div fxLayout=\"column\" fxFlexOrder=\"1\" class=\"infoCardColumn2\">\r\n\r\n        <mat-card class=\"infoCard\" style=\"height:270px;\">\r\n            <mat-card-header>\r\n                <div mat-card-avatar>\r\n                        <mat-icon>place</mat-icon>\r\n                </div>\r\n                <mat-card-title>Where</mat-card-title>\r\n                <mat-card-subtitle>Some Address</mat-card-subtitle>\r\n            </mat-card-header>\r\n        </mat-card>\r\n\r\n    </div>\r\n\r\n</div>\r\n\r\n<div class=\"descriptionContainer\">\r\n    <div class=\"descriptionHtml\" [innerHtml]=\"club.descriptionHtml\"></div>\r\n</div>\r\n\r\n<app-footer [colour]=\"club.primaryColour\"></app-footer>"
-
-/***/ }),
-
-/***/ "./src/app/club/club.component.ts":
-/*!****************************************!*\
-  !*** ./src/app/club/club.component.ts ***!
-  \****************************************/
-/*! exports provided: ClubComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClubComponent", function() { return ClubComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _services_club_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/club.service */ "./src/app/services/club.service.ts");
-/* harmony import */ var _common_models_Club__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/models/Club */ "./common/models/Club.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var ClubComponent = /** @class */ (function () {
-    function ClubComponent(clubService, route) {
-        var _this = this;
-        this.clubService = clubService;
-        this.route = route;
-        this.title = '';
-        this.clubId = '';
-        this.club = new _common_models_Club__WEBPACK_IMPORTED_MODULE_3__["Club"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
-        this.route.params.subscribe(function (params) {
-            _this.clubId = params.clubId;
-            clubService.LoadClubById(params.clubId).subscribe(function (club) {
-                _this.title = club.title;
-                _this.club = club;
-            });
-        });
-    }
-    ClubComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-club',
-            template: __webpack_require__(/*! ./club.component.html */ "./src/app/club/club.component.html"),
-            styles: [__webpack_require__(/*! ./club.component.css */ "./src/app/club/club.component.css")]
-        }),
-        __metadata("design:paramtypes", [_services_club_service__WEBPACK_IMPORTED_MODULE_2__["ClubService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
-    ], ClubComponent);
-    return ClubComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/footer/footer.component.css":
 /*!*********************************************!*\
   !*** ./src/app/footer/footer.component.css ***!
@@ -847,7 +533,7 @@ module.exports = ".app-toolbar {\r\n    position: sticky;\r\n    position: -webk
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar [ngStyle]=\"{ 'background-color': colour }\" class='app-toolbar mat-elevation-z4'>\r\n    <div class=\"logo-container\">\r\n        <a href=\"http://goinggone.io\">\r\n            <img src=\"../../assets/images/gg_small_logo.png\"/>\r\n        </a>\r\n    </div>\r\n    <div class=\"quicklinks-container\">\r\n        <ul>\r\n            <li>\r\n                <a routerLink=\"/{{clubId}}\">Home</a>\r\n            </li>\r\n            <li>\r\n                <a routerLink=\"/{{clubId}}/lots\">Auction</a>\r\n            </li>\r\n            <li>\r\n                <a routerLink=\"/{{clubId}}/faq\">FAQ</a>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</mat-toolbar>"
+module.exports = "<mat-toolbar [ngStyle]=\"{ 'background-color': colour }\" class='app-toolbar mat-elevation-z4'>\r\n    <div class=\"logo-container\">\r\n        <a href=\"http://goinggone.io\">\r\n            <img src=\"../../assets/images/gg_small_logo.png\"/>\r\n        </a>\r\n    </div>\r\n    <div class=\"quicklinks-container\">\r\n        <ul>\r\n            <li>\r\n                <a routerLink=\"/{{organisationId}}\">Home</a>\r\n            </li>\r\n            <li>\r\n                <a routerLink=\"/{{organisationId}}/lots\">Auction</a>\r\n            </li>\r\n            <li>\r\n                <a routerLink=\"/{{organisationId}}/faq\">FAQ</a>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</mat-toolbar>"
 
 /***/ }),
 
@@ -880,7 +566,7 @@ var HeaderComponent = /** @class */ (function () {
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", String)
-    ], HeaderComponent.prototype, "clubId", void 0);
+    ], HeaderComponent.prototype, "organisationId", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", String)
@@ -918,7 +604,7 @@ module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background\"></div>\n\n<p class=\"title\">Welcome to Going Gone!</p>\n\n<app-club-list></app-club-list>"
+module.exports = "<div class=\"background\"></div>\n\n<p class=\"title\">Welcome to Going Gone!</p>\n\n<app-organisation-list></app-organisation-list>"
 
 /***/ }),
 
@@ -981,7 +667,7 @@ module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header [clubId]=\"clubId\" [colour]=\"club.primaryColour\"></app-header>\n\n<div class=\"background\"></div>\n\n<div class=\"content\">\n    <div class=\"titleSection\">\n        <button mat-raised-button class=\"backButton\"\n                routerLink=\"/{{clubId}}/lots\">\n            << All Lots\n        </button>\n\n        <h1>\n            {{ lot.title }}\n        </h1>\n    </div>\n\n    <h2>\n        provided by {{lot.providedBy}}\n    </h2>\n\n    <div class=\"lotBiddingContainer\">\n        <div class=\"bidDetailsContainer\">\n            <div class=\"price\">\n                <div class=\"label\">\n                    Reserve:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.reservePrice}}\n                </div>\n            </div>\n\n            <div class=\"price\">\n                <div class=\"label\">\n                    Estimate:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.estimate}}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"bidDetailsContainer\">\n            <div>\n                <label>My bid <span class=\"minText\">(minimum £{{lot.reservePrice}})</span>*</label>\n                <input [(ngModel)]=\"amount\" type=\"number\" placeholder=\"0\"/>\n                <button mat-raised-button class=\"bidButton\" [disabled]=\"amount < lot.reservePrice\"\n                        (click)=\"openBidPopup()\">\n                    Place Bid\n                </button>\n            </div>\n        </div>\n    </div>\n\n\n    <div>\n        <div class=\"lotImageContainer\">\n            <img src=\"{{lot.imageUri}}\"/>\n        </div>\n\n        <div class=\"lotDescriptionContainer\" [innerHTML]=\"lot.description\"></div>\n    </div>\n</div>\n\n<app-footer [colour]=\"club.primaryColour\"></app-footer>"
+module.exports = "<app-header [organisationId]=\"organisationId\" [colour]=\"Organisation.primaryColour\"></app-header>\n\n<div class=\"background\"></div>\n\n<div class=\"content\">\n    <div class=\"titleSection\">\n        <button mat-raised-button class=\"backButton\"\n                routerLink=\"/{{organisationId}}/lots\">\n            << All Lots\n        </button>\n\n        <h1>\n            {{ lot.title }}\n        </h1>\n    </div>\n\n    <h2>\n        provided by {{lot.providedBy}}\n    </h2>\n\n    <div class=\"lotBiddingContainer\">\n        <div class=\"bidDetailsContainer\">\n            <div class=\"price\">\n                <div class=\"label\">\n                    Reserve:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.reservePrice}}\n                </div>\n            </div>\n\n            <div class=\"price\">\n                <div class=\"label\">\n                    Estimate:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.estimate}}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"bidDetailsContainer\">\n            <div>\n                <label>My bid <span class=\"minText\">(minimum £{{lot.reservePrice}})</span>*</label>\n                <input [(ngModel)]=\"amount\" type=\"number\" placeholder=\"0\"/>\n                <button mat-raised-button class=\"bidButton\" [disabled]=\"amount < lot.reservePrice\"\n                        (click)=\"openBidPopup()\">\n                    Place Bid\n                </button>\n            </div>\n        </div>\n    </div>\n\n\n    <div>\n        <div class=\"lotImageContainer\">\n            <img src=\"{{lot.imageUri}}\"/>\n        </div>\n\n        <div class=\"lotDescriptionContainer\" [innerHTML]=\"lot.description\"></div>\n    </div>\n</div>\n\n<app-footer [colour]=\"Organisation.primaryColour\"></app-footer>"
 
 /***/ }),
 
@@ -997,8 +683,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LotDetailsComponent", function() { return LotDetailsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _services_club_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/club.service */ "./src/app/services/club.service.ts");
-/* harmony import */ var _common_models_Club__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/models/Club */ "./common/models/Club.ts");
+/* harmony import */ var _services_organisation_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/organisation.service */ "./src/app/services/organisation.service.ts");
+/* harmony import */ var _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/models/Organisation */ "./common/models/Organisation.ts");
 /* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/lot.service */ "./src/app/services/lot.service.ts");
 /* harmony import */ var _common_models_Lot__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../common/models/Lot */ "./common/models/Lot.ts");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
@@ -1023,25 +709,25 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var LotDetailsComponent = /** @class */ (function () {
-    function LotDetailsComponent(clubService, lotService, route, dialog) {
+    function LotDetailsComponent(organisationService, lotService, route, dialog) {
         var _this = this;
-        this.clubService = clubService;
+        this.organisationService = organisationService;
         this.lotService = lotService;
         this.route = route;
         this.dialog = dialog;
         this.lotId = '';
-        this.clubId = '';
+        this.organisationId = '';
         this.lot = new _common_models_Lot__WEBPACK_IMPORTED_MODULE_5__["Lot"]('', '', '', '', '', '', 0, 0, [], 0, 0, []);
-        this.club = new _common_models_Club__WEBPACK_IMPORTED_MODULE_3__["Club"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
+        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
         this.amount = '';
         this.route.params.subscribe(function (params) {
-            _this.clubId = params.clubId;
+            _this.organisationId = params.organisationId;
             _this.lotId = params.lotId;
             lotService.LoadLot(params.lotId).subscribe(function (lot) {
                 _this.lot = lot;
             });
-            clubService.LoadClubById(params.clubId).subscribe(function (club) {
-                _this.club = club;
+            organisationService.LoadOrganisationById(params.organisationId).subscribe(function (organisation) {
+                _this.Organisation = organisation;
             });
         });
     }
@@ -1077,7 +763,8 @@ var LotDetailsComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./lot-details.component.html */ "./src/app/lot-details/lot-details.component.html"),
             styles: [__webpack_require__(/*! ./lot-details.component.css */ "./src/app/lot-details/lot-details.component.css")]
         }),
-        __metadata("design:paramtypes", [_services_club_service__WEBPACK_IMPORTED_MODULE_2__["ClubService"], _services_lot_service__WEBPACK_IMPORTED_MODULE_4__["LotService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatDialog"]])
+        __metadata("design:paramtypes", [_services_organisation_service__WEBPACK_IMPORTED_MODULE_2__["OrganisationService"], _services_lot_service__WEBPACK_IMPORTED_MODULE_4__["LotService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatDialog"]])
     ], LotDetailsComponent);
     return LotDetailsComponent;
 }());
@@ -1104,7 +791,7 @@ module.exports = ".lotContainer {\n    background-color: white;\n    border-radi
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"content\">\n    <div class=\"float_center\">\n        <div class=\"lotContainer child\" *ngFor=\"let lot of Lots\">\n\n            <div class=\"imageContainer\">\n                <div class=\"providedBy\">\n                    Provided by: {{lot.providedBy}}\n                </div>\n                <img src=\"{{lot.imageUri}}\"/>\n            </div>\n\n            <div class=\"name\">{{lot.title}}</div>\n\n            <div class=\"price\">\n                <div class=\"label\">\n                    Reserve:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.reservePrice}}\n                </div>\n            </div>\n\n            <div class=\"price\">\n                <div class=\"label\">\n                    Estimate:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.estimate}}\n                </div>\n            </div>\n\n            <div class=\"lotsButtonContainer\">\n                <button mat-raised-button class=\"viewButton\"\n                        routerLink=\"/{{clubId}}/lot/{{lot.lotId}}\">\n                    View\n                </button>\n            </div>\n\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"content\">\n    <div class=\"float_center\">\n        <div class=\"lotContainer child\" *ngFor=\"let lot of Lots\">\n\n            <div class=\"imageContainer\">\n                <div class=\"providedBy\">\n                    Provided by: {{lot.providedBy}}\n                </div>\n                <img src=\"{{lot.imageUri}}\"/>\n            </div>\n\n            <div class=\"name\">{{lot.title}}</div>\n\n            <div class=\"price\">\n                <div class=\"label\">\n                    Reserve:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.reservePrice}}\n                </div>\n            </div>\n\n            <div class=\"price\">\n                <div class=\"label\">\n                    Estimate:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.estimate}}\n                </div>\n            </div>\n\n            <div class=\"lotsButtonContainer\">\n                <button mat-raised-button class=\"viewButton\"\n                        routerLink=\"/{{organisationId}}/lot/{{lot.lotId}}\">\n                    View\n                </button>\n            </div>\n\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -1143,11 +830,11 @@ var LotListComponent = /** @class */ (function () {
         var _this = this;
         this.route.queryParams.subscribe(function (params) {
             if (params.filter) {
-                _this.lotService.LoadLotsForTag(_this.clubId, params.filter)
+                _this.lotService.LoadLotsForTag(_this.organisationId, params.filter)
                     .subscribe(function (lots) { return _this.Lots = lots; });
             }
             else {
-                _this.lotService.LoadLots(_this.clubId)
+                _this.lotService.LoadLots(_this.organisationId)
                     .subscribe(function (lots) { return _this.Lots = lots; });
             }
         });
@@ -1155,7 +842,7 @@ var LotListComponent = /** @class */ (function () {
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", String)
-    ], LotListComponent.prototype, "clubId", void 0);
+    ], LotListComponent.prototype, "organisationId", void 0);
     LotListComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-lot-list',
@@ -1284,55 +971,43 @@ var NotificationDialogComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/routes.ts":
-/*!***************************!*\
-  !*** ./src/app/routes.ts ***!
-  \***************************/
-/*! exports provided: routes */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "./src/app/organisation-faq/organisation-faq.component.css":
+/*!*****************************************************************!*\
+  !*** ./src/app/organisation-faq/organisation-faq.component.css ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "routes", function() { return routes; });
-/* harmony import */ var _club_club_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./club/club.component */ "./src/app/club/club.component.ts");
-/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
-/* harmony import */ var _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./club-lots/club-lots.component */ "./src/app/club-lots/club-lots.component.ts");
-/* harmony import */ var _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lot-details/lot-details.component */ "./src/app/lot-details/lot-details.component.ts");
-/* harmony import */ var _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./terms-and-conditions/terms-and-conditions.component */ "./src/app/terms-and-conditions/terms-and-conditions.component.ts");
-/* harmony import */ var _club_faq_club_faq_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./club-faq/club-faq.component */ "./src/app/club-faq/club-faq.component.ts");
-
-
-
-
-
-
-var routes = [
-    { path: 'home', component: _home_home_component__WEBPACK_IMPORTED_MODULE_1__["HomeComponent"] },
-    { path: 'terms-and-conditions', component: _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_4__["TermsAndConditionsComponent"] },
-    { path: ':clubId', component: _club_club_component__WEBPACK_IMPORTED_MODULE_0__["ClubComponent"] },
-    { path: ':clubId/faq', component: _club_faq_club_faq_component__WEBPACK_IMPORTED_MODULE_5__["ClubFaqComponent"] },
-    { path: ':clubId/lots', component: _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_2__["ClubLotsComponent"] },
-    { path: ':clubId/lots/:activeTag', component: _club_lots_club_lots_component__WEBPACK_IMPORTED_MODULE_2__["ClubLotsComponent"] },
-    { path: ':clubId/lot/:lotId', component: _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_3__["LotDetailsComponent"] },
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: '**', component: _home_home_component__WEBPACK_IMPORTED_MODULE_1__["HomeComponent"] }
-];
-
+module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n    background-size: cover;\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: -1;\r\n}"
 
 /***/ }),
 
-/***/ "./src/app/services/club.service.ts":
-/*!******************************************!*\
-  !*** ./src/app/services/club.service.ts ***!
-  \******************************************/
-/*! exports provided: ClubService */
+/***/ "./src/app/organisation-faq/organisation-faq.component.html":
+/*!******************************************************************!*\
+  !*** ./src/app/organisation-faq/organisation-faq.component.html ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<app-header [organisationId]=\"organisationId\" [colour]=\"Organisation.primaryColour\"></app-header>\r\n\r\n<div class=\"background\"></div>\r\n\r\n<h1>\r\n    {{Organisation.title}} FAQs\r\n</h1>\r\n\r\n<div>\r\n    Content\r\n</div>\r\n\r\n<app-footer [colour]=\"Organisation.primaryColour\"></app-footer>"
+
+/***/ }),
+
+/***/ "./src/app/organisation-faq/organisation-faq.component.ts":
+/*!****************************************************************!*\
+  !*** ./src/app/organisation-faq/organisation-faq.component.ts ***!
+  \****************************************************************/
+/*! exports provided: OrganisationFaqComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClubService", function() { return ClubService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrganisationFaqComponent", function() { return OrganisationFaqComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_organisation_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/organisation.service */ "./src/app/services/organisation.service.ts");
+/* harmony import */ var _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/models/Organisation */ "./common/models/Organisation.ts");
+/* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/lot.service */ "./src/app/services/lot.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1344,27 +1019,305 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
-var ClubService = /** @class */ (function () {
-    // private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
-    function ClubService(http) {
-        this.http = http;
-        this.host = 'http://localhost:3000';
+
+
+
+var OrganisationFaqComponent = /** @class */ (function () {
+    function OrganisationFaqComponent(organisationService, lotService, route) {
+        var _this = this;
+        this.organisationService = organisationService;
+        this.lotService = lotService;
+        this.route = route;
+        this.organisationId = '';
+        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
+        this.route.params.subscribe(function (params) {
+            _this.organisationId = params.organisationId;
+            organisationService.LoadOrganisationById(params.organisationId)
+                .subscribe(function (organisation) {
+                _this.Organisation = organisation;
+            });
+        });
     }
-    ClubService.prototype.LoadClubs = function () {
-        var url = this.host + '/api/clubs';
-        return this.http.get(url);
-    };
-    ClubService.prototype.LoadClubById = function (slug) {
-        var url = this.host + '/api/clubs/' + slug;
-        return this.http.get(url);
-    };
-    ClubService = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
-        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
-    ], ClubService);
-    return ClubService;
+    OrganisationFaqComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-organisation-faq',
+            template: __webpack_require__(/*! ./organisation-faq.component.html */ "./src/app/organisation-faq/organisation-faq.component.html"),
+            styles: [__webpack_require__(/*! ./organisation-faq.component.css */ "./src/app/organisation-faq/organisation-faq.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_organisation_service__WEBPACK_IMPORTED_MODULE_2__["OrganisationService"], _services_lot_service__WEBPACK_IMPORTED_MODULE_4__["LotService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
+    ], OrganisationFaqComponent);
+    return OrganisationFaqComponent;
 }());
 
+
+
+/***/ }),
+
+/***/ "./src/app/organisation-list/organisation-list.component.css":
+/*!*******************************************************************!*\
+  !*** ./src/app/organisation-list/organisation-list.component.css ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "h2 {\n    text-align: center;\n    color: white;\n    margin: 10px auto;\n    padding: 8px;\n    background-color: #333;\n    opacity: 0.9;\n    border-radius: 10px;\n    max-width: 400px;\n}\n\n.orgContainer {\n    background-color: white;\n    width: 280px;\n    padding: 5px;\n    border-radius: 12px;\n    text-align: center;\n    margin: 20px auto;\n}\n\n.orgContainer .title {\n    font-weight: bold;\n}\n\n.orgContainer .title a {\n    display: block;\n    text-decoration: none;\n    color: black;\n    font-size: 24px;\n}\n\n.orgContainer .orgLogo {\n    height: 120px;\n}"
+
+/***/ }),
+
+/***/ "./src/app/organisation-list/organisation-list.component.html":
+/*!********************************************************************!*\
+  !*** ./src/app/organisation-list/organisation-list.component.html ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h2>\n  Our Partners\n</h2>\n\n<div class=\"orgContainer\" *ngFor=\"let org of Organisations\">\n  <div class=\"title\">\n    <a routerLink=\"/{{org.organisationId}}\">\n      <img class=\"orgLogo\" src=\"{{org.logoUrl}}\"/>\n      <div>{{org.title}}</div>\n    </a>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/organisation-list/organisation-list.component.ts":
+/*!******************************************************************!*\
+  !*** ./src/app/organisation-list/organisation-list.component.ts ***!
+  \******************************************************************/
+/*! exports provided: OrganisationListComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrganisationListComponent", function() { return OrganisationListComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_organisation_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/organisation.service */ "./src/app/services/organisation.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var OrganisationListComponent = /** @class */ (function () {
+    function OrganisationListComponent(organisationService) {
+        this.organisationService = organisationService;
+        this.Organisations = [];
+    }
+    OrganisationListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.organisationService.LoadOrganisations()
+            .subscribe(function (organisations) { return _this.Organisations = organisations; });
+    };
+    OrganisationListComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-organisation-list',
+            template: __webpack_require__(/*! ./organisation-list.component.html */ "./src/app/organisation-list/organisation-list.component.html"),
+            styles: [__webpack_require__(/*! ./organisation-list.component.css */ "./src/app/organisation-list/organisation-list.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_organisation_service__WEBPACK_IMPORTED_MODULE_1__["OrganisationService"]])
+    ], OrganisationListComponent);
+    return OrganisationListComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/organisation-lots/organisation-lots.component.css":
+/*!*******************************************************************!*\
+  !*** ./src/app/organisation-lots/organisation-lots.component.css ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n    background-size: cover;\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: -1;\r\n}\r\n\r\nh1 {\r\n    color: white;\r\n    margin: 0 0 0 0px;\r\n    padding: 20px;\r\n    background-color: rgb(0, 43, 136);\r\n    opacity: 0.9;\r\n    width: auto;\r\n    font-weight: normal;\r\n    text-align: left;\r\n    font-size: 20px;\r\n}\r\n\r\n.sideNav {\r\n    position: fixed;\r\n    top: 56px;\r\n}\r\n\r\n.lots {\r\n    margin: 20px;\r\n    min-height: 350px;\r\n}"
+
+/***/ }),
+
+/***/ "./src/app/organisation-lots/organisation-lots.component.html":
+/*!********************************************************************!*\
+  !*** ./src/app/organisation-lots/organisation-lots.component.html ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<app-header [organisationId]=\"organisationId\" [colour]=\"Organisation.primaryColour\"></app-header>\r\n\r\n<div class=\"background\"></div>\r\n\r\n<mat-sidenav-container class=\"example-container\">\r\n\r\n    <mat-sidenav mode=\"side\" opened class=\"sideNav\">\r\n      <div class=\"nav\">\r\n        <app-auction-nav [organisationId]=\"organisationId\"></app-auction-nav>\r\n      </div>\r\n    </mat-sidenav>\r\n\r\n    <mat-sidenav-content>\r\n        <h1 [ngStyle]=\"{ 'background-color': Organisation.primaryColour}\">\r\n            {{ Organisation.title }} Auction\r\n        </h1>\r\n      <div class=\"lots\">\r\n          <app-lot-list [organisationId]=\"organisationId\"></app-lot-list>\r\n      </div>\r\n    </mat-sidenav-content>\r\n    \r\n</mat-sidenav-container>\r\n\r\n<app-footer [colour]=\"Organisation.primaryColour\"></app-footer>"
+
+/***/ }),
+
+/***/ "./src/app/organisation-lots/organisation-lots.component.ts":
+/*!******************************************************************!*\
+  !*** ./src/app/organisation-lots/organisation-lots.component.ts ***!
+  \******************************************************************/
+/*! exports provided: OrganisationLotsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrganisationLotsComponent", function() { return OrganisationLotsComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_organisation_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/organisation.service */ "./src/app/services/organisation.service.ts");
+/* harmony import */ var _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/models/Organisation */ "./common/models/Organisation.ts");
+/* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/lot.service */ "./src/app/services/lot.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var OrganisationLotsComponent = /** @class */ (function () {
+    function OrganisationLotsComponent(organisationService, lotService, route) {
+        var _this = this;
+        this.organisationService = organisationService;
+        this.lotService = lotService;
+        this.route = route;
+        this.organisationId = '';
+        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
+        this.route.params.subscribe(function (params) {
+            _this.organisationId = params.organisationId;
+            organisationService.LoadOrganisationById(params.organisationId)
+                .subscribe(function (organisation) {
+                _this.Organisation = organisation;
+            });
+        });
+    }
+    OrganisationLotsComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-organisation-lots',
+            template: __webpack_require__(/*! ./organisation-lots.component.html */ "./src/app/organisation-lots/organisation-lots.component.html"),
+            styles: [__webpack_require__(/*! ./organisation-lots.component.css */ "./src/app/organisation-lots/organisation-lots.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_organisation_service__WEBPACK_IMPORTED_MODULE_2__["OrganisationService"], _services_lot_service__WEBPACK_IMPORTED_MODULE_4__["LotService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
+    ], OrganisationLotsComponent);
+    return OrganisationLotsComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/organisation/organisation.component.css":
+/*!*********************************************************!*\
+  !*** ./src/app/organisation/organisation.component.css ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n    background-size: cover;\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: -1;\r\n}\r\n\r\n.headerSection {\r\n    height: 350px;\r\n    background-color: rgb(0, 43, 136);\r\n    margin-bottom: 60px;\r\n    align-items: center;\r\n}\r\n\r\n.headerSection h1 {\r\n    color: white;\r\n    font-size: 24px;\r\n    font-weight: normal;\r\n    margin-bottom: 0px; \r\n    padding: 0px 10px 0px 10px;  \r\n}\r\n\r\n.headerSection h2 {\r\n    color: white;\r\n    font-size: 16px;\r\n    font-weight: normal;\r\n    padding: 0px 10px 0px 10px;\r\n    text-align: center;\r\n}\r\n\r\n.orgLogo {\r\n    height: 160px;\r\n    padding-top: 50px;\r\n}\r\n\r\n.orgLogo img {\r\n    height: 160px;\r\n}\r\n\r\n.bannerContainer {\r\n    padding: 0px 10px 0px 10px;\r\n}\r\n\r\n.banner {\r\n    padding: 40px;\r\n    background: center/cover no-repeat #789;\r\n    min-height: 160px;\r\n    max-width: 880px;\r\n    margin: 0 auto;\r\n}\r\n\r\n.bannerText {\r\n    font-size: 30px;\r\n    background: rgba(0,0,0,0.38);\r\n    text-transform: uppercase;\r\n    color: #fff;\r\n    padding: 0 10px;\r\n    -webkit-box-decoration-break: clone;\r\n    -ms-box-decoration-break: clone;\r\n    -o-box-decoration-break: clone;\r\n    box-decoration-break: clone;\r\n}\r\n\r\n.lotsButtonContainer {\r\n    margin-top: 40px;\r\n    text-align: center;\r\n}\r\n\r\n.lotsButton {\r\n    text-transform: uppercase;\r\n    font-size: 18px;\r\n    font-weight: bold;\r\n}\r\n\r\n.introductionContainer {\r\n    max-width: 980px;\r\n    margin: 35px auto 35px;\r\n    padding: 0px 10px 0px 10px;\r\n}\r\n\r\n.introductionText {\r\n    font-size: 15px;\r\n}\r\n\r\n.infoCardContainerRow{\r\n    max-width: 980px;\r\n    margin: 20px auto 20px !important;\r\n    padding: 0px 10px 0px 10px;\r\n    flex-flow: row wrap;\r\n}\r\n\r\n.infoCardColumn1 {\r\n    flex-grow: 1;\r\n    flex-basis: 0;    \r\n}\r\n\r\n.infoCardColumn2 {\r\n    flex-grow: 1;\r\n    flex-basis: 0;\r\n    \r\n}\r\n\r\nmat-card.infoCard {\r\n    padding: 10px !important;\r\n    min-width: 350px;\r\n}\r\n\r\n.infoCard mat-card-header  {\r\n    margin: 7px!important;\r\n}\r\n\r\n.infoCard div.mat-card-avatar{\r\n    background: red;\r\n    height: 50px;\r\n    width: 50px;\r\n    font-size: 34px;\r\n    color: #fff;\r\n    vertical-align: middle;\r\n    text-align: center;\r\n    line-height: 50px;\r\n}\r\n\r\n.infoCard mat-card-title{\r\n    color: #6f6f6f;\r\n    font-size: 12px;\r\n    margin-bottom: 6px;\r\n    margin-top: 6px;\r\n}\r\n\r\n.infoCard mat-card-subtitle{\r\n    font-size: 14px;\r\n    color: #3d3d3d;\r\n    margin: -3px auto !important;    \r\n}\r\n\r\n.descriptionContainer {\r\n    max-width: 960px;\r\n    margin: 20px auto 60px;\r\n    padding: 0px 10px 0px 10px;\r\n}\r\n\r\n.descriptionHtml {\r\n    font-size: 15px;\r\n}\r\n\r\n"
+
+/***/ }),
+
+/***/ "./src/app/organisation/organisation.component.html":
+/*!**********************************************************!*\
+  !*** ./src/app/organisation/organisation.component.html ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<app-header [organisationId]=\"organisationId\" [colour]=\"Organisation.primaryColour\"></app-header>\r\n\r\n<div class=\"background\"></div>\r\n\r\n<div fxLayout=\"column\" class=\"headerSection\" [ngStyle]=\"{ 'background-color': Organisation.primaryColour}\">\r\n    <div class=\"orgLogo\">\r\n        <img src=\"{{Organisation.logoUrl}}\"/>\r\n    </div>\r\n\r\n    <h1>\r\n        {{title}}\r\n    </h1>\r\n\r\n    <h2>\r\n        {{Organisation.subtitle}}\r\n    </h2>\r\n</div>\r\n<div class=\"bannerContainer\">    \r\n    <div class=\"banner\" [ngStyle]=\"{ 'background-image': 'url(' + Organisation.bannerUrl + ')'}\">\r\n        <div class=\"bannerText\">\r\n            {{Organisation.bannerText}}\r\n        </div>\r\n        <div class=\"lotsButtonContainer\">\r\n            <button mat-raised-button class=\"lotsButton\" routerLink=\"/{{organisationId}}/lots\">\r\n                View the auction lots\r\n            </button>\r\n        </div>\r\n    </div>\r\n</div>\r\n    \r\n\r\n<div class=\"introductionContainer\" fxLayout=\"row\" fxLayoutGap=\"20px\">\r\n    <div class=\"introductionText\">\r\n        {{Organisation.introText}}\r\n    </div>\r\n\r\n\r\n</div>\r\n\r\n<div fxLayout=\"row\" fxLayoutGap=\"20px grid\" class=\"infoCardContainerRow\">\r\n\r\n    <div fxLayout=\"column\" fxLayoutGap=\"20px\" fxFlexOrder=\"0\" class=\"infoCardColumn1\">\r\n\r\n        <mat-card class=\"infoCard\">\r\n            <mat-card-header>\r\n                <div mat-card-avatar>\r\n                    <mat-icon>alarm</mat-icon>\r\n                </div>\r\n                <mat-card-title>When</mat-card-title>\r\n                <mat-card-subtitle>Ends {{Organisation.closingDate | date:'h:mm a, d LLLL y'}}</mat-card-subtitle>\r\n            </mat-card-header>\r\n        </mat-card>\r\n\r\n        <mat-card class=\"infoCard\">\r\n            <mat-card-header>\r\n                <div mat-card-avatar>\r\n                        <mat-icon>email</mat-icon>\r\n                </div>\r\n                <mat-card-title>Contact</mat-card-title>\r\n                <mat-card-subtitle>{{Organisation.contactEmail}}</mat-card-subtitle>\r\n            </mat-card-header>\r\n        </mat-card>\r\n\r\n        <mat-card class=\"infoCard\">\r\n            <mat-card-header>\r\n                <div mat-card-avatar>\r\n                        <mat-icon>language</mat-icon>\r\n                </div>\r\n                <mat-card-title>Website</mat-card-title>\r\n                <mat-card-subtitle><a href=\"{{Organisation.websiteUrl}}\" target=\"_blank\">{{Organisation.websiteUrl}}</a></mat-card-subtitle>\r\n            </mat-card-header>\r\n        </mat-card>\r\n\r\n    </div>\r\n\r\n    <div fxLayout=\"column\" fxFlexOrder=\"1\" class=\"infoCardColumn2\">\r\n\r\n        <mat-card class=\"infoCard\" style=\"height:270px;\">\r\n            <mat-card-header>\r\n                <div mat-card-avatar>\r\n                        <mat-icon>place</mat-icon>\r\n                </div>\r\n                <mat-card-title>Where</mat-card-title>\r\n                <mat-card-subtitle>Some Address</mat-card-subtitle>\r\n            </mat-card-header>\r\n        </mat-card>\r\n\r\n    </div>\r\n\r\n</div>\r\n\r\n<div class=\"descriptionContainer\">\r\n    <div class=\"descriptionHtml\" [innerHtml]=\"Organisation.descriptionHtml\"></div>\r\n</div>\r\n\r\n<app-footer [colour]=\"Organisation.primaryColour\"></app-footer>"
+
+/***/ }),
+
+/***/ "./src/app/organisation/organisation.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/organisation/organisation.component.ts ***!
+  \********************************************************/
+/*! exports provided: OrganisationComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrganisationComponent", function() { return OrganisationComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_organisation_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/organisation.service */ "./src/app/services/organisation.service.ts");
+/* harmony import */ var _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/models/Organisation */ "./common/models/Organisation.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var OrganisationComponent = /** @class */ (function () {
+    function OrganisationComponent(organisationService, route) {
+        var _this = this;
+        this.organisationService = organisationService;
+        this.route = route;
+        this.title = '';
+        this.organisationId = '';
+        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
+        this.route.params.subscribe(function (params) {
+            _this.organisationId = params.organisationId;
+            organisationService.LoadOrganisationById(params.organisationId).subscribe(function (organisation) {
+                _this.title = organisation.title;
+                _this.Organisation = organisation;
+            });
+        });
+    }
+    OrganisationComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-organisation',
+            template: __webpack_require__(/*! ./organisation.component.html */ "./src/app/organisation/organisation.component.html"),
+            styles: [__webpack_require__(/*! ./organisation.component.css */ "./src/app/organisation/organisation.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_organisation_service__WEBPACK_IMPORTED_MODULE_2__["OrganisationService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
+    ], OrganisationComponent);
+    return OrganisationComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/routes.ts":
+/*!***************************!*\
+  !*** ./src/app/routes.ts ***!
+  \***************************/
+/*! exports provided: routes */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "routes", function() { return routes; });
+/* harmony import */ var _organisation_organisation_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./organisation/organisation.component */ "./src/app/organisation/organisation.component.ts");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _organisation_lots_organisation_lots_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./organisation-lots/organisation-lots.component */ "./src/app/organisation-lots/organisation-lots.component.ts");
+/* harmony import */ var _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lot-details/lot-details.component */ "./src/app/lot-details/lot-details.component.ts");
+/* harmony import */ var _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./terms-and-conditions/terms-and-conditions.component */ "./src/app/terms-and-conditions/terms-and-conditions.component.ts");
+/* harmony import */ var _organisation_faq_organisation_faq_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./organisation-faq/organisation-faq.component */ "./src/app/organisation-faq/organisation-faq.component.ts");
+
+
+
+
+
+
+var routes = [
+    { path: 'home', component: _home_home_component__WEBPACK_IMPORTED_MODULE_1__["HomeComponent"] },
+    { path: 'terms-and-conditions', component: _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_4__["TermsAndConditionsComponent"] },
+    { path: ':organisationId', component: _organisation_organisation_component__WEBPACK_IMPORTED_MODULE_0__["OrganisationComponent"] },
+    { path: ':organisationId/faq', component: _organisation_faq_organisation_faq_component__WEBPACK_IMPORTED_MODULE_5__["OrganisationFaqComponent"] },
+    { path: ':organisationId/lots', component: _organisation_lots_organisation_lots_component__WEBPACK_IMPORTED_MODULE_2__["OrganisationLotsComponent"] },
+    { path: ':organisationId/lots/:activeTag', component: _organisation_lots_organisation_lots_component__WEBPACK_IMPORTED_MODULE_2__["OrganisationLotsComponent"] },
+    { path: ':organisationId/lot/:lotId', component: _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_3__["LotDetailsComponent"] },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '**', component: _home_home_component__WEBPACK_IMPORTED_MODULE_1__["HomeComponent"] }
+];
 
 
 /***/ }),
@@ -1399,16 +1352,16 @@ var LotService = /** @class */ (function () {
         // private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
         this.Lots = [];
     }
-    LotService.prototype.LoadTags = function (clubId) {
-        var url = this.host + '/api/clubs/' + clubId + '/tags';
+    LotService.prototype.LoadTags = function (organisationId) {
+        var url = this.host + '/api/organisations/' + organisationId + '/tags';
         return this.http.get(url);
     };
-    LotService.prototype.LoadLots = function (clubId) {
-        var url = this.host + '/api/clubs/' + clubId + '/lots';
+    LotService.prototype.LoadLots = function (organisationId) {
+        var url = this.host + '/api/organisations/' + organisationId + '/lots';
         return this.http.get(url);
     };
-    LotService.prototype.LoadLotsForTag = function (clubId, tag) {
-        var url = this.host + '/api/clubs/' + clubId + '/lots/' + tag;
+    LotService.prototype.LoadLotsForTag = function (organisationId, tag) {
+        var url = this.host + '/api/organisations/' + organisationId + '/lots/' + tag;
         return this.http.get(url);
     };
     LotService.prototype.LoadLot = function (lotId) {
@@ -1428,6 +1381,54 @@ var LotService = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], LotService);
     return LotService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/organisation.service.ts":
+/*!**************************************************!*\
+  !*** ./src/app/services/organisation.service.ts ***!
+  \**************************************************/
+/*! exports provided: OrganisationService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrganisationService", function() { return OrganisationService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var OrganisationService = /** @class */ (function () {
+    // private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
+    function OrganisationService(http) {
+        this.http = http;
+        this.host = 'http://localhost:3000';
+    }
+    OrganisationService.prototype.LoadOrganisations = function () {
+        var url = this.host + '/api/organisations';
+        return this.http.get(url);
+    };
+    OrganisationService.prototype.LoadOrganisationById = function (slug) {
+        var url = this.host + '/api/organisations/' + slug;
+        return this.http.get(url);
+    };
+    OrganisationService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], OrganisationService);
+    return OrganisationService;
 }());
 
 

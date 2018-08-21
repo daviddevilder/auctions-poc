@@ -13,18 +13,18 @@ export class LotService {
     constructor(private http: HttpClient) {
     }
 
-    public LoadTags(clubId: String): Observable<any> {
-        const url = this.host + '/api/clubs/' + clubId + '/tags';
+    public LoadTags(organisationId: String): Observable<any> {
+        const url = this.host + '/api/organisations/' + organisationId + '/tags';
         return this.http.get(url);
     }
 
-    public LoadLots(clubId: String): Observable<any> {
-        const url = this.host + '/api/clubs/' + clubId + '/lots';
+    public LoadLots(organisationId: String): Observable<any> {
+        const url = this.host + '/api/organisations/' + organisationId + '/lots';
         return this.http.get(url);
     }
 
-    public LoadLotsForTag(clubId: String, tag: String): Observable<any> {
-        const url = this.host + '/api/clubs/' + clubId + '/lots/' + tag;
+    public LoadLotsForTag(organisationId: String, tag: String): Observable<any> {
+        const url = this.host + '/api/organisations/' + organisationId + '/lots/' + tag;
         return this.http.get(url);
     }
 

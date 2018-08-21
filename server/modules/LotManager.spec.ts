@@ -13,7 +13,7 @@ describe('GetLots', () => {
 
     const mockLots = [
         {
-            clubId: 1,
+            organisationId: 1,
             title: 'dummyTitle1',
             imageUri: 'dummyImageUri1',
             providedBy: 'dummyProvidedBy1',
@@ -23,7 +23,7 @@ describe('GetLots', () => {
             tags: ['some', 'thing']
         },
         {
-            clubId: 2,
+            organisationId: 2,
             title: 'dummyTitle2',
             imageUri: 'dummyImageUri2',
             providedBy: 'dummyProvidedBy2',
@@ -33,7 +33,7 @@ describe('GetLots', () => {
             tags: ['some', 'thing']
         },
         {
-            clubId: 3,
+            organisationId: 3,
             title: 'dummyTitle3',
             imageUri: 'dummyImageUri3',
             providedBy: 'dummyProvidedBy3',
