@@ -1350,8 +1350,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var LotService = /** @class */ (function () {
     function LotService(http) {
         this.http = http;
-        // private readonly host: string = 'http://localhost:3000';
-        this.host = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
+        this.host = 'http://localhost:3000';
+        // private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
         this.Lots = [];
     }
     LotService.prototype.LoadTags = function (organisationId) {
@@ -1413,10 +1413,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var OrganisationService = /** @class */ (function () {
+    // private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
     function OrganisationService(http) {
         this.http = http;
-        // private readonly host: string = 'http://localhost:3000';
-        this.host = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
+        this.host = 'http://localhost:3000';
     }
     OrganisationService.prototype.LoadOrganisations = function () {
         var url = this.host + '/api/organisations';
