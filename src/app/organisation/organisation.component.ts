@@ -12,7 +12,7 @@ export class OrganisationComponent {
     public title: String = '';
     public organisationId: String = '';
 
-    public Organisation: Organisation = new Organisation('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
+    public Organisation: Organisation = new Organisation('', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
 
     constructor(private organisationService: OrganisationService, private route: ActivatedRoute) {
         this.route.params.subscribe( params => {

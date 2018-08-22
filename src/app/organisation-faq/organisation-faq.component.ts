@@ -12,7 +12,7 @@ import {LotService} from '../services/lot.service';
 export class OrganisationFaqComponent {
     public organisationId: String = '';
 
-    public Organisation: Organisation = new Organisation('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
+    public Organisation: Organisation = new Organisation('', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
 
     constructor(private organisationService: OrganisationService, private lotService: LotService, private route: ActivatedRoute) {
         this.route.params.subscribe( params => {
@@ -21,6 +21,7 @@ export class OrganisationFaqComponent {
             organisationService.LoadOrganisationById(params.organisationId)
                 .subscribe((organisation: Organisation) => {
                     this.Organisation = organisation;
+                    console.log(organisation.faqs);
                 });
         });
     }

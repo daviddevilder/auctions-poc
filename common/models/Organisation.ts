@@ -12,6 +12,7 @@ export class Organisation {
                 public bannerUrl: string,
                 public bannerText: string,
                 public introText: string,
-                public descriptionHtml: string) {
+                public descriptionHtml: string,
+                public faqs: object[]) {
     }
 }

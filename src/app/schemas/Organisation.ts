@@ -15,6 +15,7 @@ export interface IOrganisationModel extends IOrganisation, Document {
     bannerText: string;
     introText: string;
     descriptionHtml: string;
+    faqs: object[];
 }
 
 export const OrganisationSchema: Schema = new Schema({
@@ -30,7 +31,11 @@ export const OrganisationSchema: Schema = new Schema({
     bannerUrl: String,
     bannerText: String,
     introText: String,
-    descriptionHtml: String
+    descriptionHtml: String,
+    faqs: [{
+        question: String,
+        answer: String,
+    }]
 });
 
 export const OrganisationModel: Model<IOrganisationModel> = model<IOrganisationModel>('Organisation', OrganisationSchema);

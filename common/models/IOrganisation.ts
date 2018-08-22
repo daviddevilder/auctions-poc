@@ -12,4 +12,5 @@ export interface IOrganisation {
     bannerText?: string;
     introText?: string;
     descriptionHtml?: string;
+    faqs?: object[];
 }

@@ -43,7 +43,7 @@ var Lot = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Organisation", function() { return Organisation; });
 var Organisation = /** @class */ (function () {
-    function Organisation(organisationId, title, subtitle, primaryColour, logoUrl, websiteUrl, contactEmail, contactPhone, closingDate, bannerUrl, bannerText, introText, descriptionHtml) {
+    function Organisation(organisationId, title, subtitle, primaryColour, logoUrl, websiteUrl, contactEmail, contactPhone, closingDate, bannerUrl, bannerText, introText, descriptionHtml, faqs) {
         this.organisationId = organisationId;
         this.title = title;
         this.subtitle = subtitle;
@@ -57,6 +57,7 @@ var Organisation = /** @class */ (function () {
         this.bannerText = bannerText;
         this.introText = introText;
         this.descriptionHtml = descriptionHtml;
+        this.faqs = faqs;
     }
     return Organisation;
 }());
@@ -718,7 +719,7 @@ var LotDetailsComponent = /** @class */ (function () {
         this.lotId = '';
         this.organisationId = '';
         this.lot = new _common_models_Lot__WEBPACK_IMPORTED_MODULE_5__["Lot"]('', '', '', '', '', '', 0, 0, [], 0, 0, []);
-        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
+        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
         this.amount = '';
         this.route.params.subscribe(function (params) {
             _this.organisationId = params.organisationId;
@@ -978,7 +979,7 @@ var NotificationDialogComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n    background-size: cover;\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: -1;\r\n}"
+module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n    background-size: cover;\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: -1;\r\n}\r\n\r\n.headerSection {\r\n    height: 350px;\r\n    background-color: rgb(0, 43, 136);\r\n    margin-bottom: 60px;\r\n    align-items: center;\r\n}\r\n\r\n.headerSection h1 {\r\n    color: white;\r\n    font-size: 24px;\r\n    font-weight: normal;\r\n    margin-bottom: 0px;\r\n    padding: 0px 10px 0px 10px;\r\n}\r\n\r\n.headerSection h2 {\r\n    color: white;\r\n    font-size: 16px;\r\n    font-weight: normal;\r\n    padding: 0px 10px 0px 10px;\r\n    text-align: center;\r\n}\r\n\r\n.orgLogo {\r\n    height: 160px;\r\n    padding-top: 50px;\r\n}\r\n\r\n.orgLogo img {\r\n    height: 160px;\r\n}"
 
 /***/ }),
 
@@ -989,7 +990,7 @@ module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header [organisationId]=\"organisationId\" [colour]=\"Organisation.primaryColour\"></app-header>\r\n\r\n<div class=\"background\"></div>\r\n\r\n<h1>\r\n    {{Organisation.title}} FAQs\r\n</h1>\r\n\r\n<div>\r\n    Content\r\n</div>\r\n\r\n<app-footer [colour]=\"Organisation.primaryColour\"></app-footer>"
+module.exports = "<app-header [organisationId]=\"organisationId\" [colour]=\"Organisation.primaryColour\"></app-header>\r\n\r\n<div class=\"background\"></div>\r\n\r\n<div fxLayout=\"column\" class=\"headerSection\" [ngStyle]=\"{ 'background-color': Organisation.primaryColour}\">\r\n    <div class=\"orgLogo\">\r\n        <img src=\"{{Organisation.logoUrl}}\"/>\r\n    </div>\r\n\r\n    <h1>\r\n        {{Organisation.title}}\r\n    </h1>\r\n\r\n    <h2>\r\n        FAQ\r\n    </h2>\r\n</div>\r\n\r\n<div>\r\n    <ul>\r\n        <li *ngFor=\"let faq of Organisation.faqs\">\r\n            <div>\r\n                {{faq.question}}\r\n            </div><div>\r\n                {{faq.answer}}\r\n            </div>\r\n        </li>\r\n    </ul>\r\n</div>\r\n\r\n<app-footer [colour]=\"Organisation.primaryColour\"></app-footer>"
 
 /***/ }),
 
@@ -1029,12 +1030,13 @@ var OrganisationFaqComponent = /** @class */ (function () {
         this.lotService = lotService;
         this.route = route;
         this.organisationId = '';
-        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
+        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
         this.route.params.subscribe(function (params) {
             _this.organisationId = params.organisationId;
             organisationService.LoadOrganisationById(params.organisationId)
                 .subscribe(function (organisation) {
                 _this.Organisation = organisation;
+                console.log(organisation.faqs);
             });
         });
     }
@@ -1181,7 +1183,7 @@ var OrganisationLotsComponent = /** @class */ (function () {
         this.lotService = lotService;
         this.route = route;
         this.organisationId = '';
-        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
+        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
         this.route.params.subscribe(function (params) {
             _this.organisationId = params.organisationId;
             organisationService.LoadOrganisationById(params.organisationId)
@@ -1261,7 +1263,7 @@ var OrganisationComponent = /** @class */ (function () {
         this.route = route;
         this.title = '';
         this.organisationId = '';
-        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '');
+        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
         this.route.params.subscribe(function (params) {
             _this.organisationId = params.organisationId;
             organisationService.LoadOrganisationById(params.organisationId).subscribe(function (organisation) {

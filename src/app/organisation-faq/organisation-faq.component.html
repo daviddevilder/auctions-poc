@@ -2,12 +2,30 @@
 
 <div class="background"></div>
 
-<h1>
-    {{Organisation.title}} FAQs
-</h1>
+<div fxLayout="column" class="headerSection" [ngStyle]="{ 'background-color': Organisation.primaryColour}">
+    <div class="orgLogo">
+        <img src="{{Organisation.logoUrl}}"/>
+    </div>
+
+    <h1>
+        {{Organisation.title}}
+    </h1>
+
+    <h2>
+        FAQ
+    </h2>
+</div>
 
 <div>
-    Content
+    <ul>
+        <li *ngFor="let faq of Organisation.faqs">
+            <div>
+                {{faq.question}}
+            </div><div>
+                {{faq.answer}}
+            </div>
+        </li>
+    </ul>
 </div>
 
 <app-footer [colour]="Organisation.primaryColour"></app-footer>

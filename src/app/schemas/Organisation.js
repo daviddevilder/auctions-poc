@@ -14,7 +14,11 @@ exports.OrganisationSchema = new mongoose_1.Schema({
     bannerUrl: String,
     bannerText: String,
     introText: String,
-    descriptionHtml: String
+    descriptionHtml: String,
+    faqs: [{
+            question: String,
+            answer: String,
+        }]
 });
 exports.OrganisationModel = mongoose_1.model('Organisation', exports.OrganisationSchema);
 //# sourceMappingURL=Organisation.js.map
