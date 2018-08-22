@@ -44,7 +44,7 @@
                 <label>My bid <span class="minText">(minimum £{{lot.reservePrice}})</span>*</label>
                 <input [(ngModel)]="amount" type="number" placeholder="0"/>
                 <button mat-raised-button class="bidButton" [disabled]="amount < lot.reservePrice"
-                        (click)="openBidPopup()">
+                        (click)="openCheckout()">
                     Place Bid
                 </button>
             </div>

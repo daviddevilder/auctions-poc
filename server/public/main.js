@@ -668,7 +668,7 @@ module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header [organisationId]=\"organisationId\" [colour]=\"Organisation.primaryColour\"></app-header>\n\n<div class=\"background\"></div>\n\n<div class=\"content\">\n    <div class=\"titleSection\">\n        <button mat-raised-button class=\"backButton\"\n                routerLink=\"/{{organisationId}}/lots\">\n            << All Lots\n        </button>\n\n        <h1>\n            {{ lot.title }}\n        </h1>\n    </div>\n\n    <h2>\n        provided by {{lot.providedBy}}\n    </h2>\n\n    <div class=\"lotBiddingContainer\">\n        <div class=\"bidDetailsContainer\">\n            <div class=\"price\">\n                <div class=\"label\">\n                    Reserve:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.reservePrice}}\n                </div>\n            </div>\n\n            <div class=\"price\">\n                <div class=\"label\">\n                    Estimate:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.estimate}}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"bidDetailsContainer\">\n            <div>\n                <label>My bid <span class=\"minText\">(minimum £{{lot.reservePrice}})</span>*</label>\n                <input [(ngModel)]=\"amount\" type=\"number\" placeholder=\"0\"/>\n                <button mat-raised-button class=\"bidButton\" [disabled]=\"amount < lot.reservePrice\"\n                        (click)=\"openBidPopup()\">\n                    Place Bid\n                </button>\n            </div>\n        </div>\n    </div>\n\n\n    <div>\n        <div class=\"lotImageContainer\">\n            <img src=\"{{lot.imageUri}}\"/>\n        </div>\n\n        <div class=\"lotDescriptionContainer\" [innerHTML]=\"lot.description\"></div>\n    </div>\n</div>\n\n<app-footer [colour]=\"Organisation.primaryColour\"></app-footer>"
+module.exports = "<app-header [organisationId]=\"organisationId\" [colour]=\"Organisation.primaryColour\"></app-header>\n\n<div class=\"background\"></div>\n\n<div class=\"content\">\n    <div class=\"titleSection\">\n        <button mat-raised-button class=\"backButton\"\n                routerLink=\"/{{organisationId}}/lots\">\n            << All Lots\n        </button>\n\n        <h1>\n            {{ lot.title }}\n        </h1>\n    </div>\n\n    <h2>\n        provided by {{lot.providedBy}}\n    </h2>\n\n    <div class=\"lotBiddingContainer\">\n        <div class=\"bidDetailsContainer\">\n            <div class=\"price\">\n                <div class=\"label\">\n                    Reserve:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.reservePrice}}\n                </div>\n            </div>\n\n            <div class=\"price\">\n                <div class=\"label\">\n                    Estimate:\n                </div>\n                <div class=\"amount\">\n                    £{{lot.estimate}}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"bidDetailsContainer\">\n            <div>\n                <label>My bid <span class=\"minText\">(minimum £{{lot.reservePrice}})</span>*</label>\n                <input [(ngModel)]=\"amount\" type=\"number\" placeholder=\"0\"/>\n                <button mat-raised-button class=\"bidButton\" [disabled]=\"amount < lot.reservePrice\"\n                        (click)=\"openCheckout()\">\n                    Place Bid\n                </button>\n            </div>\n        </div>\n    </div>\n\n\n    <div>\n        <div class=\"lotImageContainer\">\n            <img src=\"{{lot.imageUri}}\"/>\n        </div>\n\n        <div class=\"lotDescriptionContainer\" [innerHTML]=\"lot.description\"></div>\n    </div>\n</div>\n\n<app-footer [colour]=\"Organisation.primaryColour\"></app-footer>"
 
 /***/ }),
 
@@ -689,8 +689,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/lot.service */ "./src/app/services/lot.service.ts");
 /* harmony import */ var _common_models_Lot__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../common/models/Lot */ "./common/models/Lot.ts");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../bid-dialog/bid-dialog.component */ "./src/app/bid-dialog/bid-dialog.component.ts");
-/* harmony import */ var _notification_dialog_notification_dialog_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../notification-dialog/notification-dialog.component */ "./src/app/notification-dialog/notification-dialog.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -700,8 +698,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
-
 
 
 
@@ -732,30 +728,20 @@ var LotDetailsComponent = /** @class */ (function () {
             });
         });
     }
-    LotDetailsComponent.prototype.openBidPopup = function () {
-        var _this = this;
-        var dialogRef = this.dialog.open(_bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_7__["BidDialogComponent"], {
-            width: '600px',
-            disableClose: true,
-            data: {
-                lotId: this.lotId,
-                amount: this.amount
-            }
+    LotDetailsComponent.prototype.openCheckout = function () {
+        var handler = window.StripeCheckout.configure({
+            key: 'pk_test_mPTpczYYMxOv3S3O0Jj9TXQI',
+            locale: 'auto',
+            token: function (token) {
+                // You can access the token ID with `token.id`.
+                // Get the token ID to your server-side code for use.
+            },
+            currency: 'gbp'
         });
-        dialogRef.afterClosed().subscribe(function (success) {
-            if (success) {
-                _this.openBidConfirmedDialog();
-            }
-        });
-    };
-    LotDetailsComponent.prototype.openBidConfirmedDialog = function () {
-        this.dialog.open(_notification_dialog_notification_dialog_component__WEBPACK_IMPORTED_MODULE_8__["NotificationDialogComponent"], {
-            width: '400px',
-            disableClose: true,
-            data: {
-                title: 'Bid placed',
-                body: 'Your bid has been placed. Thank you for your contribution!'
-            }
+        handler.open({
+            name: 'Going Gone - ' + this.Organisation.title,
+            description: this.lot.title,
+            amount: (parseInt(this.amount.toString(), 0) * 100)
         });
     };
     LotDetailsComponent = __decorate([

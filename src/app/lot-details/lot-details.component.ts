@@ -38,31 +38,22 @@ export class LotDetailsComponent {
         });
     }
 
-    openBidPopup() {
-        const dialogRef = this.dialog.open(BidDialogComponent, {
-            width: '600px',
-            disableClose: true,
-            data: {
-                lotId: this.lotId,
-                amount: this.amount
-            }
+    openCheckout() {
+        const handler = (<any>window).StripeCheckout.configure({
+            key: 'pk_test_mPTpczYYMxOv3S3O0Jj9TXQI',
+            locale: 'auto',
+            token: function (token: any) {
+                // You can access the token ID with `token.id`.
+                // Get the token ID to your server-side code for use.
+            },
+            currency: 'gbp'
         });
 
-        dialogRef.afterClosed().subscribe(success => {
-            if (success) {
-                this.openBidConfirmedDialog();
-            }
+        handler.open({
+            name: 'Going Gone - ' + this.Organisation.title,
+            description: this.lot.title,
+            amount: (parseInt(this.amount.toString(), 0) * 100)
         });
-    }
 
-    private openBidConfirmedDialog() {
-        this.dialog.open(NotificationDialogComponent, {
-            width: '400px',
-            disableClose: true,
-            data: {
-                title: 'Bid placed',
-                body: 'Your bid has been placed. Thank you for your contribution!'
-            }
-        });
     }
 }
