@@ -2,30 +2,23 @@
 
 <div class="background"></div>
 
-<div fxLayout="column" class="headerSection" [ngStyle]="{ 'background-color': Organisation.primaryColour}">
-    <div class="orgLogo">
-        <img src="{{Organisation.logoUrl}}"/>
-    </div>
-
-    <h1>
-        {{Organisation.title}}
-    </h1>
-
-    <h2>
-        FAQ
-    </h2>
+<div class="pageHeader" [ngStyle]="{ 'background-color': Organisation.primaryColour}">
+    <span>Frequently Asked Questions</span>
 </div>
 
-<div>
-    <ul>
-        <li *ngFor="let faq of Organisation.faqs">
-            <div>
+<div class='accordionContainer'>
+
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let faq of Organisation.faqs">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
                 {{faq.question}}
-            </div><div>
-                {{faq.answer}}
-            </div>
-        </li>
-    </ul>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+            <div class="answerHTML" [innerHTML]="faq.answer"></div>
+        </mat-expansion-panel>
+    </mat-accordion>
+
 </div>
 
 <app-footer [colour]="Organisation.primaryColour"></app-footer>

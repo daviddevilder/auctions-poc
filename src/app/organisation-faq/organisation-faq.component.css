@@ -9,33 +9,20 @@
     z-index: -1;
 }
 
-.headerSection {
-    height: 350px;
-    background-color: rgb(0, 43, 136);
+.pageHeader {
+    color: white;
+    margin: 0 0 0 0px;
+    padding: 20px;
+    opacity: 0.9;
+    width: auto;
+    font-weight: normal;
+    text-align: left;
+    font-size: 20px;
     margin-bottom: 60px;
-    align-items: center;
 }
 
-.headerSection h1 {
-    color: white;
-    font-size: 24px;
-    font-weight: normal;
-    margin-bottom: 0px;
-    padding: 0px 10px 0px 10px;
-}
-
-.headerSection h2 {
-    color: white;
-    font-size: 16px;
-    font-weight: normal;
-    padding: 0px 10px 0px 10px;
-    text-align: center;
-}
-
-.orgLogo {
-    height: 160px;
-    padding-top: 50px;
-}
-.orgLogo img {
-    height: 160px;
+.accordionContainer{
+    max-width: 980px;
+    margin: 20px auto 20px !important;
+    padding: 0 10px 0 10px;
 }

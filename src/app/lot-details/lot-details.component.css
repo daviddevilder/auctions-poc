@@ -9,105 +9,91 @@
     z-index: -1;
 }
 
-.content {
-    color: black;
-    text-align: center;
-    margin-top: 55px;
-}
-
-h1 {
-    margin: 10px auto;
-    padding: 8px;
-}
-
-h2 {
-    font-size: 14px;
+.pageHeader {
+    color: white;
+    margin: 0 0 0 0px;
+    padding: 20px;
+    background-color: rgb(0, 43, 136);
+    opacity: 0.9;
+    width: auto;
     font-weight: normal;
-    color: #666;
-    margin: 0 auto 30px;
+    text-align: left;
+    font-size: 20px;
+    margin-bottom: 60px;
 }
 
-.titleSection {
+.pageHeader a {
+    color: white;
+}
+
+.pageHeader mat-icon {
+    padding-right: 10px;
     position: relative;
+    top: 5px;
+    
 }
 
-.backButton {
-    position: absolute;
-    left: 20px;
-    top: 0;
+mat-card.lotDetailsCard{
+    padding: 12px;
 }
 
-.lotBiddingContainer {
-    width: 820px;
-    height: 160px;
-    margin: 0 auto;
+mat-card.lotDetailsCard.inputCard{
+    height: 100%;
 }
-
-.bidDetailsContainer {
-    background-color: white;
-    border-radius: 12px;
-    text-align: center;
-    float: left;
-    height: 80px;
-    width: 370px;
-    padding: 10px;
-    margin: 10px 10px 42px;
-    -webkit-box-shadow: 0 15px 33px -1px #999!important;
-    box-shadow: 0 15px 33px -1px #999!important;
-}
-
-.bidDetailsContainer .price {
-    font-weight: bold;
-    margin: 14px auto;
+.lotDetailsCard .lotPricing {
+    margin: 10px auto;
     text-align: left;
 }
 
-.bidDetailsContainer .price div {
+.lotDetailsCard .lotPricing div {
     display: inline-block;
     width: 100px;
-    font-weight: normal;
     font-size: 18px;
 }
 
-.bidDetailsContainer label {
-
+.lotDetailsCard mat-form-field {
+    flex-grow: 1;
 }
 
-.bidDetailsContainer .minText {
-    font-size: 12px;
+.lotDetailsCard button {
+    flex-grow: 1;
 }
 
-.bidDetailsContainer input {
-    width: 100px;
-    height: 25px;
-    margin-left: 50px;
+.containerRow{
+    max-width: 980px;
+    margin: 20px auto 20px !important;
+    padding: 0px 10px 0px 10px;
+    flex-flow: row wrap;
+    justify-content:center;
+}
+
+.containerRow.secondRow{
+    position: relative;
+    top: -20px;
+}
+
+.lotContentContainer{
+    flex: 1 0 0;
+    padding: 12px;
+    align-items: center;
+    min-width: 350px;
+}
+
+.lotContentContainer .lotDetailsCard{
+    align-items: center;
+}
+
+.lotContentContainer img {
+    width: 100%;
 }
 
 .bidButton {
-    width: 100%;
     background: #4dcc27;
     color: #fff;
-    font-weight: 700;
     font-size: 18px;
-    padding: 5px 0;
-    margin-top: 4px;
+    padding: 5px;
 }
 
-.lotImageContainer {
-    display: inline-block;
-    margin-top:30px;
-    clear: both;
-}
-.lotImageContainer img {
-    width: 400px;
-    -webkit-box-shadow: 0 15px 33px -1px #999!important;
-    box-shadow: 0 15px 33px -1px #999!important;
-}
-
-.lotDescriptionContainer {
-    width: 380px;
-    display: inline-block;
-    vertical-align: top;
-    padding: 0 10px;
-    margin-top:30px;
+.bidButton mat-icon {
+    padding-right: 8px;
 }

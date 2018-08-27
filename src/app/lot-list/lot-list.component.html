@@ -1,41 +1,80 @@
 <div class="content">
-    <div class="float_center">
-        <div class="lotContainer child" *ngFor="let lot of Lots">
 
-            <div class="imageContainer">
-                <div class="providedBy">
-                    Provided by: {{lot.providedBy}}
-                </div>
-                <img src="{{lot.imageUri}}"/>
-            </div>
+    <div class="lotContainer" fxLayout="row" fxLayoutGap="20px grid">
 
-            <div class="name">{{lot.title}}</div>
+        <div class="lotCard" *ngFor="let lot of Lots">
+            <mat-card>
+                
+                <img class="mat-elevation-z4" src="{{lot.imageUri}}"/>
 
-            <div class="price">
-                <div class="label">
-                    Reserve:
-                </div>
-                <div class="amount">
-                    £{{lot.reservePrice}}
-                </div>
-            </div>
+                <mat-card-title>
+                    {{lot.title}}
+                </mat-card-title>
 
-            <div class="price">
-                <div class="label">
-                    Estimate:
-                </div>
-                <div class="amount">
-                    £{{lot.estimate}}
-                </div>
-            </div>
+                <mat-card-content>
 
-            <div class="lotsButtonContainer">
-                <button mat-raised-button class="viewButton"
-                        routerLink="/{{organisationId}}/lot/{{lot.lotId}}">
-                    View
-                </button>
-            </div>
+                    <div class='lotPricing'>
+                        <div class='label'>Reserve: </div>
+                        <div class='value'>£{{lot.reservePrice}}</div>
+                    </div>  
 
+                    <div class='lotPricing'>
+                        <div class='label'>Estimate: </div>
+                        <div class='value'>£{{lot.estimate}}</div>
+                    </div>
+     
+                </mat-card-content>
+
+                <mat-card-actions>
+                    <button mat-raised-button routerLink="/{{organisationId}}/lot/{{lot.lotId}}">
+                        <mat-icon>visibility</mat-icon>
+                        View
+                    </button>
+                </mat-card-actions>
+
+                
+            </mat-card>
         </div>
+
     </div>
+    
+    
+    <!-- <div class="lotContainer child" *ngFor="let lot of Lots">
+
+        <div class="imageContainer">
+            <div class="providedBy">
+                Provided by: {{lot.providedBy}}
+            </div>
+            <img src="{{lot.imageUri}}"/>
+        </div>
+
+        <div class="name">{{lot.title}}</div>
+
+        <div class="price">
+            <div class="label">
+                Reserve:
+            </div>
+            <div class="amount">
+                £{{lot.reservePrice}}
+            </div>
+        </div>
+
+        <div class="price">
+            <div class="label">
+                Estimate:
+            </div>
+            <div class="amount">
+                £{{lot.estimate}}
+            </div>
+        </div>
+
+        <div class="lotsButtonContainer">
+            <button mat-raised-button class="viewButton"
+                    routerLink="/club/{{clubId}}/lot/{{lot.lotId}}">
+                View
+            </button>
+        </div>
+
+    </div> -->
+
 </div>

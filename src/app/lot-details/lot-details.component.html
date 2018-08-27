@@ -1,64 +1,56 @@
-<app-header [organisationId]="organisationId" [colour]="Organisation.primaryColour"></app-header>
-
 <div class="background"></div>
 
+<app-header [organisationId]="organisationId" [colour]="Organisation.primaryColour"></app-header>
+
 <div class="content">
-    <div class="titleSection">
-        <button mat-raised-button class="backButton"
-                routerLink="/{{organisationId}}/lots">
-            << All Lots
-        </button>
-
-        <h1>
-            {{ lot.title }}
-        </h1>
+    <div class="pageHeader" [ngStyle]="{ 'background-color': Organisation.primaryColour}">
+        <a routerLink="/{{organisationId}}/lots"><mat-icon>arrow_back</mat-icon></a>
+        <span>{{ lot.title }}</span>
     </div>
 
-    <h2>
-        provided by {{lot.providedBy}}
-    </h2>
+    <div fxLayout="row" class="containerRow firstRow" fxLayoutGap="20px grid">
 
-    <div class="lotBiddingContainer">
-        <div class="bidDetailsContainer">
-            <div class="price">
-                <div class="label">
-                    Reserve:
+        <div class="lotContentContainer">
+            <mat-card class="lotDetailsCard">
+                <div class='lotPricing firstRow'>
+                    <div class='label'>Reserve: </div>
+                    <div class='value'>£{{lot.reservePrice}}</div>
+                </div>  
+        
+                <div class='lotPricing'>
+                    <div class='label'>Estimate: </div>
+                    <div class='value'>£{{lot.estimate}}</div>
                 </div>
-                <div class="amount">
-                    £{{lot.reservePrice}}
-                </div>
-            </div>
-
-            <div class="price">
-                <div class="label">
-                    Estimate:
-                </div>
-                <div class="amount">
-                    £{{lot.estimate}}
-                </div>
-            </div>
+            </mat-card>
         </div>
 
-        <div class="bidDetailsContainer">
-            <div>
-                <label>My bid <span class="minText">(minimum £{{lot.reservePrice}})</span>*</label>
-                <input [(ngModel)]="amount" type="number" placeholder="0"/>
-                <button mat-raised-button class="bidButton" [disabled]="amount < lot.reservePrice"
-                        (click)="openCheckout()">
-                    Place Bid
-                </button>
-            </div>
+        <div class="lotContentContainer">
+            <mat-card class="lotDetailsCard inputCard" fxLayout="row wrap" fxLayoutGap="20px">
+                    <mat-form-field>
+                        <input matInput [(ngModel)]="amount" type="number" placeholder="My Bid (minimum £{{lot.reservePrice}})" autofocus>
+                        <mat-hint>Currency: GBP</mat-hint>
+                    </mat-form-field>
+                    
+                    <button mat-raised-button class="bidButton" [disabled]="amount < lot.reservePrice" (click)="openCheckout()">
+                        <mat-icon>gavel</mat-icon><span>Place Bid</span>
+                    </button>
+
+            </mat-card>
         </div>
+
     </div>
 
+    <div fxLayout="row" class="containerRow secondRow" fxLayoutGap="20px grid">
+        <div class="lotContentContainer">
+                <img src="{{lot.imageUri}}"/>
+        </div> 
+        
+        <div class="lotContentContainer" [innerHTML]="lot.description">
 
-    <div>
-        <div class="lotImageContainer">
-            <img src="{{lot.imageUri}}"/>
         </div>
-
-        <div class="lotDescriptionContainer" [innerHTML]="lot.description"></div>
+    
     </div>
+
+    <app-footer [colour]="Organisation.primaryColour"></app-footer>
+
 </div>
-
-<app-footer [colour]="Organisation.primaryColour"></app-footer>

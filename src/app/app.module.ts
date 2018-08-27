@@ -31,6 +31,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {TermsAndConditionsComponent} from './terms-and-conditions/terms-and-conditions.component';
 import {OrganisationFaqComponent} from './organisation-faq/organisation-faq.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 registerLocaleData(localeEn, 'en', localeEnExtra);
 
@@ -64,7 +66,9 @@ registerLocaleData(localeEn, 'en', localeEnExtra);
         FlexLayoutModule,
         MatToolbarModule,
         MatIconModule,
-        MatSidenavModule
+        MatSidenavModule,
+        MatInputModule,
+        MatExpansionModule
     ],
     providers: [LotService, OrganisationService, { provide: localeEn, useValue: 'en' }],
     bootstrap: [AppComponent]
