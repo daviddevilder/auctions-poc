@@ -6,8 +6,8 @@ import {Lot} from '../../../common/models/Lot';
 @Injectable()
 export class LotService {
 
-    // private readonly host: string = 'http://localhost:3000';
-    private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
+    private readonly host: string = 'http://localhost:3000';
+    // private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
     public Lots: Lot[] = [];
 
     constructor(private http: HttpClient) {
@@ -33,11 +33,12 @@ export class LotService {
         return this.http.get(url);
     }
 
-    public PlaceBid(lotId: String, bidderId: String, amount: Number): Observable<any> {
+    public PlaceBid(lotId: String, bidderId: String, amount: Number, stripeTokenId: String): Observable<any> {
         const url = this.host + '/api/lots/' + lotId + '/bid';
         const body = {
             bidderId: bidderId,
-            value: amount
+            value: amount,
+            stripeTokenId: stripeTokenId
         };
         return this.http.post(url, body);
     }

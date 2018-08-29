@@ -1,18 +1,17 @@
 .form-group {
-    margin-top: 40px;
+    margin-top: 16px;
 }
 
 input#email {
     display: block;
-    font-size: 26px;
+    font-size: 18px;
     padding: 10px;
     border-radius: 6px;
-    width: 520px;
-    margin: 10px auto;
+    width: 95%;
+    margin: 16px auto 10px;
 }
 
 .validationErrorText {
-    position: absolute;
     color: red;
     font-size: 12px;
     font-style: italic;
@@ -28,4 +27,27 @@ input#amount {
 .confirmButton {
     background: #4dcc27;
     color: #fff;
+}
+
+.StripeElement {
+    margin: 1rem 0 1rem;
+    background-color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+    box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+    border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
 }

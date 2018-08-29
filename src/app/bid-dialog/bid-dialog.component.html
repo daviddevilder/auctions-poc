@@ -2,35 +2,84 @@
     <h2 mat-dialog-title>Confirm your bid</h2>
     <hr>
 
-    <form #bidForm="ngForm">
+    <!--<form #bidForm="ngForm">-->
+        <!--<mat-dialog-content>-->
+            <!--In order to confirm your bid, please enter your details below.-->
+
+            <!--<div class="form-group">-->
+                <!--<label for="email">Email Address*</label>-->
+                <!--<input type="email" class="form-control" [(ngModel)]="emailAddress" id="email" name="email" #email="ngModel"-->
+                       <!--required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"/>-->
+            <!--</div>-->
+
+            <!--<div class="validationErrorText" *ngIf="email.invalid && (email.dirty || email.touched)">-->
+                <!--<div *ngIf="email.errors.required">-->
+                    <!--Email address is required-->
+                <!--</div>-->
+
+                <!--<div *ngIf="email.errors && email.errors.pattern">-->
+                    <!--Email address is invalid-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="form-group">-->
+                <!--<label for="amount">My Bid</label>-->
+                <!--<input type="text" class="form-control" id="amount" value="£{{data.amount}}" readonly>-->
+            <!--</div>-->
+        <!--</mat-dialog-content>-->
+        <!--<hr>-->
+        <!--<mat-dialog-actions>-->
+            <!--<button mat-raised-button (click)="onCloseCancel()">CANCEL</button>&nbsp;-->
+            <!--<button mat-raised-button class="confirmButton" type="submit" (click)="onCloseConfirm()" [disabled]="!bidForm.valid">CONFIRM BID</button>-->
+        <!--</mat-dialog-actions>-->
+    <!--</form>-->
+
+
+    <form #checkout="ngForm" (ngSubmit)="onSubmit(checkout)" class="checkout">
+
         <mat-dialog-content>
             In order to confirm your bid, please enter your details below.
-
-            <div class="form-group">
-                <label for="email">Email Address*</label>
-                <input type="email" class="form-control" [(ngModel)]="emailAddress" id="email" name="email" #email="ngModel"
-                       required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"/>
-            </div>
-
-            <div class="validationErrorText" *ngIf="email.invalid && (email.dirty || email.touched)">
-                <div *ngIf="email.errors.required">
-                    Email address is required
-                </div>
-
-                <div *ngIf="email.errors && email.errors.pattern">
-                    Email address is invalid
-                </div>
-            </div>
+            Your card will be pre-authorised and will ONLY be charged if you win the auction.
 
             <div class="form-group">
                 <label for="amount">My Bid</label>
                 <input type="text" class="form-control" id="amount" value="£{{data.amount}}" readonly>
             </div>
+
+            <div class="form-group">
+                <label for="email">Email Address*</label>
+                <input type="email" class="form-control" [(ngModel)]="emailAddress" id="email" name="email"
+                       #email="ngModel"
+                       required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"/>
+                <div class="validationErrorText" *ngIf="email.invalid && (email.dirty || email.touched)">
+                    <div *ngIf="email.errors.required">
+                        Email address is required
+                    </div>
+
+                    <div *ngIf="email.errors && email.errors.pattern">
+                        Email address is invalid
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="card-info">Card Info</label>
+                <div id="card-info" #cardInfo></div>
+
+                <div id="card-errors" class="validationErrorText" role="alert" *ngIf="error">{{ error }}</div>
+            </div>
         </mat-dialog-content>
+
         <hr>
+
         <mat-dialog-actions>
             <button mat-raised-button (click)="onCloseCancel()">CANCEL</button>&nbsp;
-            <button mat-raised-button class="confirmButton" type="submit" (click)="onCloseConfirm()" [disabled]="!bidForm.valid">CONFIRM BID</button>
+            <button mat-raised-button class="confirmButton" type="submit"
+                    [disabled]="!checkout.valid || isBidInProgress">Bid £{{data.amount}}
+            </button>
         </mat-dialog-actions>
+
     </form>
+
+
 </div>

@@ -31,7 +31,8 @@ export const LotSchema: Schema = new Schema({
     bids: [{
         createdAt: String,
         bidderId: String,
-        value: Number
+        value: Number,
+        chargeId: String
     }]
 });
 

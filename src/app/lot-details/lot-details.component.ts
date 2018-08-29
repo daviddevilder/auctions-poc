@@ -38,6 +38,34 @@ export class LotDetailsComponent {
         });
     }
 
+    openBidPopup() {
+        const dialogRef = this.dialog.open(BidDialogComponent, {
+            width: '600px',
+            disableClose: true,
+            data: {
+                lotId: this.lotId,
+                amount: this.amount
+            }
+        });
+
+        dialogRef.afterClosed().subscribe(success => {
+            if (success) {
+                this.openBidConfirmedDialog();
+            }
+        });
+    }
+
+    private openBidConfirmedDialog() {
+        this.dialog.open(NotificationDialogComponent, {
+            width: '400px',
+            disableClose: true,
+            data: {
+                title: 'Bid placed',
+                body: 'Your bid has been placed. Thank you for your contribution!'
+            }
+        });
+    }
+
     openCheckout() {
         const handler = (<any>window).StripeCheckout.configure({
             key: 'pk_test_mPTpczYYMxOv3S3O0Jj9TXQI',

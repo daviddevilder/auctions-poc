@@ -377,7 +377,7 @@ var AuctionNavComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".form-group {\n    margin-top: 40px;\n}\n\ninput#email {\n    display: block;\n    font-size: 26px;\n    padding: 10px;\n    border-radius: 6px;\n    width: 520px;\n    margin: 10px auto;\n}\n\n.validationErrorText {\n    position: absolute;\n    color: red;\n    font-size: 12px;\n    font-style: italic;\n}\n\ninput#amount {\n    display: block;\n    border: none;\n    font-size: 26px;\n    padding: 10px;\n}\n\n.confirmButton {\n    background: #4dcc27;\n    color: #fff;\n}"
+module.exports = ".form-group {\n    margin-top: 16px;\n}\n\ninput#email {\n    display: block;\n    font-size: 18px;\n    padding: 10px;\n    border-radius: 6px;\n    width: 95%;\n    margin: 16px auto 10px;\n}\n\n.validationErrorText {\n    color: red;\n    font-size: 12px;\n    font-style: italic;\n}\n\ninput#amount {\n    display: block;\n    border: none;\n    font-size: 26px;\n    padding: 10px;\n}\n\n.confirmButton {\n    background: #4dcc27;\n    color: #fff;\n}\n\n.StripeElement {\n    margin: 1rem 0 1rem;\n    background-color: white;\n    padding: 8px 12px;\n    border-radius: 4px;\n    border: 1px solid transparent;\n    box-shadow: 0 1px 3px 0 #e6ebf1;\n    transition: box-shadow 150ms ease;\n}\n\n.StripeElement--focus {\n    box-shadow: 0 1px 3px 0 #cfd7df;\n}\n\n.StripeElement--invalid {\n    border-color: #fa755a;\n}\n\n.StripeElement--webkit-autofill {\n    background-color: #fefde5 !important;\n}"
 
 /***/ }),
 
@@ -388,7 +388,7 @@ module.exports = ".form-group {\n    margin-top: 40px;\n}\n\ninput#email {\n    
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <h2 mat-dialog-title>Confirm your bid</h2>\n    <hr>\n\n    <form #bidForm=\"ngForm\">\n        <mat-dialog-content>\n            In order to confirm your bid, please enter your details below.\n\n            <div class=\"form-group\">\n                <label for=\"email\">Email Address*</label>\n                <input type=\"email\" class=\"form-control\" [(ngModel)]=\"emailAddress\" id=\"email\" name=\"email\" #email=\"ngModel\"\n                       required pattern=\"^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$\"/>\n            </div>\n\n            <div class=\"validationErrorText\" *ngIf=\"email.invalid && (email.dirty || email.touched)\">\n                <div *ngIf=\"email.errors.required\">\n                    Email address is required\n                </div>\n\n                <div *ngIf=\"email.errors && email.errors.pattern\">\n                    Email address is invalid\n                </div>\n            </div>\n\n            <div class=\"form-group\">\n                <label for=\"amount\">My Bid</label>\n                <input type=\"text\" class=\"form-control\" id=\"amount\" value=\"£{{data.amount}}\" readonly>\n            </div>\n        </mat-dialog-content>\n        <hr>\n        <mat-dialog-actions>\n            <button mat-raised-button (click)=\"onCloseCancel()\">CANCEL</button>&nbsp;\n            <button mat-raised-button class=\"confirmButton\" type=\"submit\" (click)=\"onCloseConfirm()\" [disabled]=\"!bidForm.valid\">CONFIRM BID</button>\n        </mat-dialog-actions>\n    </form>\n</div>"
+module.exports = "<div>\n    <h2 mat-dialog-title>Confirm your bid</h2>\n    <hr>\n\n    <!--<form #bidForm=\"ngForm\">-->\n        <!--<mat-dialog-content>-->\n            <!--In order to confirm your bid, please enter your details below.-->\n\n            <!--<div class=\"form-group\">-->\n                <!--<label for=\"email\">Email Address*</label>-->\n                <!--<input type=\"email\" class=\"form-control\" [(ngModel)]=\"emailAddress\" id=\"email\" name=\"email\" #email=\"ngModel\"-->\n                       <!--required pattern=\"^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$\"/>-->\n            <!--</div>-->\n\n            <!--<div class=\"validationErrorText\" *ngIf=\"email.invalid && (email.dirty || email.touched)\">-->\n                <!--<div *ngIf=\"email.errors.required\">-->\n                    <!--Email address is required-->\n                <!--</div>-->\n\n                <!--<div *ngIf=\"email.errors && email.errors.pattern\">-->\n                    <!--Email address is invalid-->\n                <!--</div>-->\n            <!--</div>-->\n\n            <!--<div class=\"form-group\">-->\n                <!--<label for=\"amount\">My Bid</label>-->\n                <!--<input type=\"text\" class=\"form-control\" id=\"amount\" value=\"£{{data.amount}}\" readonly>-->\n            <!--</div>-->\n        <!--</mat-dialog-content>-->\n        <!--<hr>-->\n        <!--<mat-dialog-actions>-->\n            <!--<button mat-raised-button (click)=\"onCloseCancel()\">CANCEL</button>&nbsp;-->\n            <!--<button mat-raised-button class=\"confirmButton\" type=\"submit\" (click)=\"onCloseConfirm()\" [disabled]=\"!bidForm.valid\">CONFIRM BID</button>-->\n        <!--</mat-dialog-actions>-->\n    <!--</form>-->\n\n\n    <form #checkout=\"ngForm\" (ngSubmit)=\"onSubmit(checkout)\" class=\"checkout\">\n\n        <mat-dialog-content>\n            In order to confirm your bid, please enter your details below.\n            Your card will be pre-authorised and will ONLY be charged if you win the auction.\n\n            <div class=\"form-group\">\n                <label for=\"amount\">My Bid</label>\n                <input type=\"text\" class=\"form-control\" id=\"amount\" value=\"£{{data.amount}}\" readonly>\n            </div>\n\n            <div class=\"form-group\">\n                <label for=\"email\">Email Address*</label>\n                <input type=\"email\" class=\"form-control\" [(ngModel)]=\"emailAddress\" id=\"email\" name=\"email\"\n                       #email=\"ngModel\"\n                       required pattern=\"^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$\"/>\n                <div class=\"validationErrorText\" *ngIf=\"email.invalid && (email.dirty || email.touched)\">\n                    <div *ngIf=\"email.errors.required\">\n                        Email address is required\n                    </div>\n\n                    <div *ngIf=\"email.errors && email.errors.pattern\">\n                        Email address is invalid\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"form-group\">\n                <label for=\"card-info\">Card Info</label>\n                <div id=\"card-info\" #cardInfo></div>\n\n                <div id=\"card-errors\" class=\"validationErrorText\" role=\"alert\" *ngIf=\"error\">{{ error }}</div>\n            </div>\n        </mat-dialog-content>\n\n        <hr>\n\n        <mat-dialog-actions>\n            <button mat-raised-button (click)=\"onCloseCancel()\">CANCEL</button>&nbsp;\n            <button mat-raised-button class=\"confirmButton\" type=\"submit\"\n                    [disabled]=\"!checkout.valid || isBidInProgress\">Bid £{{data.amount}}\n            </button>\n        </mat-dialog-actions>\n\n    </form>\n\n\n</div>"
 
 /***/ }),
 
@@ -402,9 +402,9 @@ module.exports = "<div>\n    <h2 mat-dialog-title>Confirm your bid</h2>\n    <hr
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BidDialogComponent", function() { return BidDialogComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/lot.service */ "./src/app/services/lot.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/lot.service */ "./src/app/services/lot.service.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -417,36 +417,115 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 
 
 
 
 var BidDialogComponent = /** @class */ (function () {
-    function BidDialogComponent(thisDialogRef, data, lotService) {
+    function BidDialogComponent(thisDialogRef, data, lotService, cd) {
         this.thisDialogRef = thisDialogRef;
         this.data = data;
         this.lotService = lotService;
+        this.cd = cd;
+        this.cardHandler = this.onChange.bind(this);
+        this.isBidInProgress = false;
     }
-    BidDialogComponent.prototype.ngOnInit = function () {
+    BidDialogComponent.prototype.ngOnDestroy = function () {
+        this.card.removeEventListener('change', this.cardHandler);
+        this.card.destroy();
     };
-    BidDialogComponent.prototype.onCloseConfirm = function () {
-        var _this = this;
-        this.lotService.PlaceBid(this.data.lotId, this.emailAddress, this.data.amount)
-            .subscribe((function (result) {
-            _this.thisDialogRef.close(true);
-        }));
+    BidDialogComponent.prototype.onChange = function (_a) {
+        var error = _a.error;
+        if (error) {
+            this.error = error.message;
+        }
+        else {
+            this.error = null;
+        }
+        this.cd.detectChanges();
+    };
+    BidDialogComponent.prototype.ngAfterViewInit = function () {
+        this.card = elements.create('card');
+        this.card.mount(this.cardInfo.nativeElement);
+        this.card.addEventListener('change', this.cardHandler);
+    };
+    BidDialogComponent.prototype.onSubmit = function (form) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var _a, token, error;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        this.isBidInProgress = true;
+                        return [4 /*yield*/, stripe.createToken(this.card)];
+                    case 1:
+                        _a = _b.sent(), token = _a.token, error = _a.error;
+                        if (error) {
+                            console.log('Something is wrong:', error);
+                        }
+                        else {
+                            console.log('Success!', token);
+                            this.lotService.PlaceBid(this.data.lotId, this.emailAddress, this.data.amount, token.id)
+                                .subscribe((function (result) {
+                                _this.isBidInProgress = false;
+                                _this.thisDialogRef.close(true);
+                            }));
+                        }
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     BidDialogComponent.prototype.onCloseCancel = function () {
         this.thisDialogRef.close(false);
     };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ViewChild"])('cardInfo'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_2__["ElementRef"])
+    ], BidDialogComponent.prototype, "cardInfo", void 0);
     BidDialogComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
             selector: 'app-bid-dialog',
             template: __webpack_require__(/*! ./bid-dialog.component.html */ "./src/app/bid-dialog/bid-dialog.component.html"),
             styles: [__webpack_require__(/*! ./bid-dialog.component.css */ "./src/app/bid-dialog/bid-dialog.component.css")]
         }),
-        __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MAT_DIALOG_DATA"])),
-        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"], Object, _services_lot_service__WEBPACK_IMPORTED_MODULE_2__["LotService"]])
+        __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_0__["MAT_DIALOG_DATA"])),
+        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_0__["MatDialogRef"], Object, _services_lot_service__WEBPACK_IMPORTED_MODULE_1__["LotService"], _angular_core__WEBPACK_IMPORTED_MODULE_2__["ChangeDetectorRef"]])
     ], BidDialogComponent);
     return BidDialogComponent;
 }());
@@ -674,7 +753,7 @@ module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background\"></div>\r\n\r\n<app-header [organisationId]=\"organisationId\" [colour]=\"Organisation.primaryColour\"></app-header>\r\n\r\n<div class=\"content\">\r\n    <div class=\"pageHeader\" [ngStyle]=\"{ 'background-color': Organisation.primaryColour}\">\r\n        <a routerLink=\"/{{organisationId}}/lots\"><mat-icon>arrow_back</mat-icon></a>\r\n        <span>{{ lot.title }}</span>\r\n    </div>\r\n\r\n    <div fxLayout=\"row\" class=\"containerRow firstRow\" fxLayoutGap=\"20px grid\">\r\n\r\n        <div class=\"lotContentContainer\">\r\n            <mat-card class=\"lotDetailsCard\">\r\n                <div class='lotPricing firstRow'>\r\n                    <div class='label'>Reserve: </div>\r\n                    <div class='value'>£{{lot.reservePrice}}</div>\r\n                </div>  \r\n        \r\n                <div class='lotPricing'>\r\n                    <div class='label'>Estimate: </div>\r\n                    <div class='value'>£{{lot.estimate}}</div>\r\n                </div>\r\n            </mat-card>\r\n        </div>\r\n\r\n        <div class=\"lotContentContainer\">\r\n            <mat-card class=\"lotDetailsCard inputCard\" fxLayout=\"row wrap\" fxLayoutGap=\"20px\">\r\n                    <mat-form-field>\r\n                        <input matInput [(ngModel)]=\"amount\" type=\"number\" placeholder=\"My Bid (minimum £{{lot.reservePrice}})\" autofocus>\r\n                        <mat-hint>Currency: GBP</mat-hint>\r\n                    </mat-form-field>\r\n                    \r\n                    <button mat-raised-button class=\"bidButton\" [disabled]=\"amount < lot.reservePrice\" (click)=\"openCheckout()\">\r\n                        <mat-icon>gavel</mat-icon><span>Place Bid</span>\r\n                    </button>\r\n\r\n            </mat-card>\r\n        </div>\r\n\r\n    </div>\r\n\r\n    <div fxLayout=\"row\" class=\"containerRow secondRow\" fxLayoutGap=\"20px grid\">\r\n        <div class=\"lotContentContainer\">\r\n                <img src=\"{{lot.imageUri}}\"/>\r\n        </div> \r\n        \r\n        <div class=\"lotContentContainer\" [innerHTML]=\"lot.description\">\r\n\r\n        </div>\r\n    \r\n    </div>\r\n\r\n    <app-footer [colour]=\"Organisation.primaryColour\"></app-footer>\r\n\r\n</div>"
+module.exports = "<div class=\"background\"></div>\r\n\r\n<app-header [organisationId]=\"organisationId\" [colour]=\"Organisation.primaryColour\"></app-header>\r\n\r\n<div class=\"content\">\r\n    <div class=\"pageHeader\" [ngStyle]=\"{ 'background-color': Organisation.primaryColour}\">\r\n        <a routerLink=\"/{{organisationId}}/lots\"><mat-icon>arrow_back</mat-icon></a>\r\n        <span>{{ lot.title }}</span>\r\n    </div>\r\n\r\n    <div fxLayout=\"row\" class=\"containerRow firstRow\" fxLayoutGap=\"20px grid\">\r\n\r\n        <div class=\"lotContentContainer\">\r\n            <mat-card class=\"lotDetailsCard\">\r\n                <div class='lotPricing firstRow'>\r\n                    <div class='label'>Reserve: </div>\r\n                    <div class='value'>£{{lot.reservePrice}}</div>\r\n                </div>  \r\n        \r\n                <div class='lotPricing'>\r\n                    <div class='label'>Estimate: </div>\r\n                    <div class='value'>£{{lot.estimate}}</div>\r\n                </div>\r\n            </mat-card>\r\n        </div>\r\n\r\n        <div class=\"lotContentContainer\">\r\n            <mat-card class=\"lotDetailsCard inputCard\" fxLayout=\"row wrap\" fxLayoutGap=\"20px\">\r\n                    <mat-form-field>\r\n                        <input matInput [(ngModel)]=\"amount\" type=\"number\" placeholder=\"My Bid (minimum £{{lot.reservePrice}})\" autofocus>\r\n                        <mat-hint>Currency: GBP</mat-hint>\r\n                    </mat-form-field>\r\n                    \r\n                    <button mat-raised-button class=\"bidButton\" [disabled]=\"amount < lot.reservePrice\" (click)=\"openBidPopup()\">\r\n                        <mat-icon>gavel</mat-icon><span>Place Bid</span>\r\n                    </button>\r\n\r\n            </mat-card>\r\n        </div>\r\n\r\n    </div>\r\n\r\n    <div fxLayout=\"row\" class=\"containerRow secondRow\" fxLayoutGap=\"20px grid\">\r\n        <div class=\"lotContentContainer\">\r\n                <img src=\"{{lot.imageUri}}\"/>\r\n        </div> \r\n        \r\n        <div class=\"lotContentContainer\" [innerHTML]=\"lot.description\">\r\n\r\n        </div>\r\n    \r\n    </div>\r\n\r\n    <app-footer [colour]=\"Organisation.primaryColour\"></app-footer>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -695,6 +774,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/lot.service */ "./src/app/services/lot.service.ts");
 /* harmony import */ var _common_models_Lot__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../common/models/Lot */ "./common/models/Lot.ts");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../bid-dialog/bid-dialog.component */ "./src/app/bid-dialog/bid-dialog.component.ts");
+/* harmony import */ var _notification_dialog_notification_dialog_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../notification-dialog/notification-dialog.component */ "./src/app/notification-dialog/notification-dialog.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -704,6 +785,8 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 
@@ -734,6 +817,32 @@ var LotDetailsComponent = /** @class */ (function () {
             });
         });
     }
+    LotDetailsComponent.prototype.openBidPopup = function () {
+        var _this = this;
+        var dialogRef = this.dialog.open(_bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_7__["BidDialogComponent"], {
+            width: '600px',
+            disableClose: true,
+            data: {
+                lotId: this.lotId,
+                amount: this.amount
+            }
+        });
+        dialogRef.afterClosed().subscribe(function (success) {
+            if (success) {
+                _this.openBidConfirmedDialog();
+            }
+        });
+    };
+    LotDetailsComponent.prototype.openBidConfirmedDialog = function () {
+        this.dialog.open(_notification_dialog_notification_dialog_component__WEBPACK_IMPORTED_MODULE_8__["NotificationDialogComponent"], {
+            width: '400px',
+            disableClose: true,
+            data: {
+                title: 'Bid placed',
+                body: 'Your bid has been placed. Thank you for your contribution!'
+            }
+        });
+    };
     LotDetailsComponent.prototype.openCheckout = function () {
         var handler = window.StripeCheckout.configure({
             key: 'pk_test_mPTpczYYMxOv3S3O0Jj9TXQI',
@@ -1342,8 +1451,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var LotService = /** @class */ (function () {
     function LotService(http) {
         this.http = http;
-        // private readonly host: string = 'http://localhost:3000';
-        this.host = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
+        this.host = 'http://localhost:3000';
+        // private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
         this.Lots = [];
     }
     LotService.prototype.LoadTags = function (organisationId) {
@@ -1362,11 +1471,12 @@ var LotService = /** @class */ (function () {
         var url = this.host + '/api/lots/' + lotId;
         return this.http.get(url);
     };
-    LotService.prototype.PlaceBid = function (lotId, bidderId, amount) {
+    LotService.prototype.PlaceBid = function (lotId, bidderId, amount, stripeTokenId) {
         var url = this.host + '/api/lots/' + lotId + '/bid';
         var body = {
             bidderId: bidderId,
-            value: amount
+            value: amount,
+            stripeTokenId: stripeTokenId
         };
         return this.http.post(url, body);
     };
@@ -1405,10 +1515,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var OrganisationService = /** @class */ (function () {
+    // private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
     function OrganisationService(http) {
         this.http = http;
-        // private readonly host: string = 'http://localhost:3000';
-        this.host = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
+        this.host = 'http://localhost:3000';
     }
     OrganisationService.prototype.LoadOrganisations = function () {
         var url = this.host + '/api/organisations';

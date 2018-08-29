@@ -1,6 +1,8 @@
 import {LotModel} from '../../src/app/schemas/Lot';
 import {Lot} from '../../common/models/Lot';
 
+const stripe = require('stripe')('sk_test_CCQ3GTssWVeH5ReqteFjt6P3');
+
 export namespace LotManager {
 
     export async function GetLots(): Promise<Lot[]> {
@@ -90,20 +92,40 @@ export namespace LotManager {
         });
     }
 
-    export async function CreateBid(lotId: String, bidderId: String, value: Number): Promise<Lot[]> {
+    export async function CreateBid(lotId: String, bidderId: String, value: Number, stripeTokenId: String): Promise<Lot[]> {
 
         return new Promise((resolve: (result) => void, reject: (error: Error) => void) => {
-            LotModel.findOneAndUpdate(
-                {lotId: lotId},
-                {$push: { bids: { createdAt: new Date().toISOString(), bidderId: bidderId, value: value }}},
-                function (err, doc) {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        resolve(doc);
+
+            stripe.charges.create({
+                amount: (parseInt(value.toString(), 0) * 100),
+                currency: 'gbp',
+                description: lotId + ' ' + bidderId,
+                source: stripeTokenId,
+                capture: false
+            }).then((charge) => {
+                LotModel.findOneAndUpdate(
+                    {lotId: lotId},
+                    {$push: { bids: { createdAt: new Date().toISOString(), bidderId: bidderId, value: value, chargeId: charge.id }}},
+                    function (err, doc) {
+                        if (err) {
+                            reject(err);
+                        } else {
+                            resolve(doc);
+                        }
                     }
-                }
-            );
+                );
+
+                // TODO - move these functions to an admin screen to settle/refund the charges
+                // stripe.charges.capture(charge.id)
+                //     .then((settledCharge) => {
+                //         console.log(settledCharge);
+                //     });
+                //
+                // stripe.refunds.create({charge: charge.id})
+                //     .then((refund) => {
+                //     console.log(refund);
+                // });
+            });
         });
     }
 }

@@ -16,7 +16,8 @@ exports.LotSchema = new mongoose_1.Schema({
     bids: [{
             createdAt: String,
             bidderId: String,
-            value: Number
+            value: Number,
+            chargeId: String
         }]
 });
 exports.LotModel = mongoose_1.model('Lot', exports.LotSchema);

@@ -37,6 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var Lot_1 = require("../../src/app/schemas/Lot");
 var Lot_2 = require("../../common/models/Lot");
+var stripe = require('stripe')('sk_test_CCQ3GTssWVeH5ReqteFjt6P3');
 var LotManager;
 (function (LotManager) {
     function GetLots() {
@@ -138,17 +139,25 @@ var LotManager;
         });
     }
     LotManager.GetLotById = GetLotById;
-    function CreateBid(lotId, bidderId, value) {
+    function CreateBid(lotId, bidderId, value, stripeTokenId) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2, new Promise(function (resolve, reject) {
-                        Lot_1.LotModel.findOneAndUpdate({ lotId: lotId }, { $push: { bids: { createdAt: new Date().toISOString(), bidderId: bidderId, value: value } } }, function (err, doc) {
-                            if (err) {
-                                reject(err);
-                            }
-                            else {
-                                resolve(doc);
-                            }
+                        stripe.charges.create({
+                            amount: (parseInt(value.toString(), 0) * 100),
+                            currency: 'gbp',
+                            description: lotId + ' ' + bidderId,
+                            source: stripeTokenId,
+                            capture: false
+                        }).then(function (charge) {
+                            Lot_1.LotModel.findOneAndUpdate({ lotId: lotId }, { $push: { bids: { createdAt: new Date().toISOString(), bidderId: bidderId, value: value, chargeId: charge.id } } }, function (err, doc) {
+                                if (err) {
+                                    reject(err);
+                                }
+                                else {
+                                    resolve(doc);
+                                }
+                            });
                         });
                     })];
             });
