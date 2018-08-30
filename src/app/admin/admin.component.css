@@ -1,0 +1,70 @@
+.background {
+    background-color: rgb(238, 238, 238);
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.app-toolbar {
+    background-color: #002B88;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1000;
+    height:56px;
+}
+
+.app-toolbar img{
+    padding-top: 7px;
+}
+
+h2 {
+    text-align: center;
+    color: white;
+    margin: 10px auto;
+    padding: 8px;
+    background-color: #333;
+    opacity: 0.9;
+    border-radius: 10px;
+    max-width: 400px;
+}
+
+.orgContainer {
+    background-color: white;
+    width: 80%;
+    padding: 5px;
+    border-radius: 12px;
+    text-align: center;
+    margin: 6px auto;
+}
+
+.orgContainer .title {
+    font-weight: normal;
+}
+
+.orgContainer .orgLogo {
+    height: 50px;
+}
+
+.orgContainer .orgName {
+    vertical-align: middle;
+    padding: 6px;
+    font-size: 24px;
+}
+.orgContainer .orgLots {
+    margin-top: 25px;
+}
+
+.lotContainer {
+    margin: 12px auto;
+}
+
+.lotContainer a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}

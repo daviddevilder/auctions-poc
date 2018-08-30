@@ -1,0 +1,29 @@
+<mat-toolbar class='app-toolbar mat-elevation-z4'>
+    <div class="logo-container">
+        <a href="http://goinggone.io">
+            <img src="../../assets/images/gg_small_logo.png"/>
+        </a>
+    </div>
+</mat-toolbar>
+
+<div class="background"></div>
+
+<h2>
+    Admin Panel
+</h2>
+
+<div class="orgContainer" *ngFor="let org of Organisations">
+    <div class="title">
+        <img class="orgLogo" src="{{org.logoUrl}}"/>
+        <div class="orgName">{{org.title}}</div>
+    </div>
+    <div class="orgLots">
+        <div class="lotContainer" *ngFor="let lot of Lots[org.organisationId]">
+            <a routerLink="/admin/{{lot.lotId}}">
+                {{lot.title}}
+            </a>
+        </div>
+    </div>
+</div>
+
+<app-footer [colour]="'#002B88'"></app-footer>

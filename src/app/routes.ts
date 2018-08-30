@@ -5,9 +5,11 @@ import {OrganisationLotsComponent} from './organisation-lots/organisation-lots.c
 import {LotDetailsComponent} from './lot-details/lot-details.component';
 import {TermsAndConditionsComponent} from './terms-and-conditions/terms-and-conditions.component';
 import {OrganisationFaqComponent} from './organisation-faq/organisation-faq.component';
+import {AdminComponent} from './admin/admin.component';
 
 export const routes: Routes = [
     {path: 'home', component: HomeComponent},
+    {path: 'admin', component: AdminComponent},
     {path: 'terms-and-conditions', component: TermsAndConditionsComponent},
     {path: ':organisationId', component: OrganisationComponent},
     {path: ':organisationId/faq', component: OrganisationFaqComponent},

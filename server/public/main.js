@@ -89,6 +89,86 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/admin/admin.component.css":
+/*!*******************************************!*\
+  !*** ./src/app/admin/admin.component.css ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\n.app-toolbar {\n    background-color: #002B88;\n    position: sticky;\n    position: -webkit-sticky;\n    top: 0;\n    z-index: 1000;\n    height:56px;\n}\n\n.app-toolbar img{\n    padding-top: 7px;\n}\n\nh2 {\n    text-align: center;\n    color: white;\n    margin: 10px auto;\n    padding: 8px;\n    background-color: #333;\n    opacity: 0.9;\n    border-radius: 10px;\n    max-width: 400px;\n}\n\n.orgContainer {\n    background-color: white;\n    width: 80%;\n    padding: 5px;\n    border-radius: 12px;\n    text-align: center;\n    margin: 6px auto;\n}\n\n.orgContainer .title {\n    font-weight: normal;\n}\n\n.orgContainer .orgLogo {\n    height: 50px;\n}\n\n.orgContainer .orgName {\n    vertical-align: middle;\n    padding: 6px;\n    font-size: 24px;\n}\n\n.orgContainer .orgLots {\n    margin-top: 25px;\n}\n\n.lotContainer {\n    margin: 12px auto;\n}\n\n.lotContainer a {\n    text-decoration: none;\n    color: black;\n    font-size: 16px;\n}"
+
+/***/ }),
+
+/***/ "./src/app/admin/admin.component.html":
+/*!********************************************!*\
+  !*** ./src/app/admin/admin.component.html ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<mat-toolbar class='app-toolbar mat-elevation-z4'>\n    <div class=\"logo-container\">\n        <a href=\"http://goinggone.io\">\n            <img src=\"../../assets/images/gg_small_logo.png\"/>\n        </a>\n    </div>\n</mat-toolbar>\n\n<div class=\"background\"></div>\n\n<h2>\n    Admin Panel\n</h2>\n\n<div class=\"orgContainer\" *ngFor=\"let org of Organisations\">\n    <div class=\"title\">\n        <img class=\"orgLogo\" src=\"{{org.logoUrl}}\"/>\n        <div class=\"orgName\">{{org.title}}</div>\n    </div>\n    <div class=\"orgLots\">\n        <div class=\"lotContainer\" *ngFor=\"let lot of Lots[org.organisationId]\">\n            <a routerLink=\"/admin/{{lot.lotId}}\">\n                {{lot.title}}\n            </a>\n        </div>\n    </div>\n</div>\n\n<app-footer [colour]=\"'#002B88'\"></app-footer>"
+
+/***/ }),
+
+/***/ "./src/app/admin/admin.component.ts":
+/*!******************************************!*\
+  !*** ./src/app/admin/admin.component.ts ***!
+  \******************************************/
+/*! exports provided: AdminComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminComponent", function() { return AdminComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_organisation_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/organisation.service */ "./src/app/services/organisation.service.ts");
+/* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/lot.service */ "./src/app/services/lot.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AdminComponent = /** @class */ (function () {
+    function AdminComponent(organisationService, lotService) {
+        this.organisationService = organisationService;
+        this.lotService = lotService;
+        this.Organisations = [];
+        this.Lots = {};
+    }
+    AdminComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.organisationService.LoadOrganisations()
+            .subscribe(function (organisations) {
+            _this.Organisations = organisations;
+            _this.Organisations.forEach(function (organisation) {
+                _this.lotService.LoadLots(organisation.organisationId)
+                    .subscribe(function (lots) { return _this.Lots[organisation.organisationId] = lots; });
+            });
+        });
+    };
+    AdminComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-terms',
+            template: __webpack_require__(/*! ./admin.component.html */ "./src/app/admin/admin.component.html"),
+            styles: [__webpack_require__(/*! ./admin.component.css */ "./src/app/admin/admin.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_organisation_service__WEBPACK_IMPORTED_MODULE_1__["OrganisationService"], _services_lot_service__WEBPACK_IMPORTED_MODULE_2__["LotService"]])
+    ], AdminComponent);
+    return AdminComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/app-routing.module.ts":
 /*!***************************************!*\
   !*** ./src/app/app-routing.module.ts ***!
@@ -206,12 +286,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _organisation_faq_organisation_faq_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./organisation-faq/organisation-faq.component */ "./src/app/organisation-faq/organisation-faq.component.ts");
 /* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @angular/material/input */ "./node_modules/@angular/material/esm5/input.es5.js");
 /* harmony import */ var _angular_material_expansion__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! @angular/material/expansion */ "./node_modules/@angular/material/esm5/expansion.es5.js");
+/* harmony import */ var _admin_admin_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./admin/admin.component */ "./src/app/admin/admin.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -265,7 +347,8 @@ var AppModule = /** @class */ (function () {
                 _bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_21__["BidDialogComponent"],
                 _notification_dialog_notification_dialog_component__WEBPACK_IMPORTED_MODULE_22__["NotificationDialogComponent"],
                 _organisation_faq_organisation_faq_component__WEBPACK_IMPORTED_MODULE_30__["OrganisationFaqComponent"],
-                _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_29__["TermsAndConditionsComponent"]
+                _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_29__["TermsAndConditionsComponent"],
+                _admin_admin_component__WEBPACK_IMPORTED_MODULE_33__["AdminComponent"]
             ],
             entryComponents: [_bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_21__["BidDialogComponent"], _notification_dialog_notification_dialog_component__WEBPACK_IMPORTED_MODULE_22__["NotificationDialogComponent"]],
             imports: [
@@ -388,7 +471,7 @@ module.exports = ".form-group {\n    margin-top: 16px;\n}\n\ninput#email {\n    
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <h2 mat-dialog-title>Confirm your bid</h2>\n    <hr>\n\n    <!--<form #bidForm=\"ngForm\">-->\n        <!--<mat-dialog-content>-->\n            <!--In order to confirm your bid, please enter your details below.-->\n\n            <!--<div class=\"form-group\">-->\n                <!--<label for=\"email\">Email Address*</label>-->\n                <!--<input type=\"email\" class=\"form-control\" [(ngModel)]=\"emailAddress\" id=\"email\" name=\"email\" #email=\"ngModel\"-->\n                       <!--required pattern=\"^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$\"/>-->\n            <!--</div>-->\n\n            <!--<div class=\"validationErrorText\" *ngIf=\"email.invalid && (email.dirty || email.touched)\">-->\n                <!--<div *ngIf=\"email.errors.required\">-->\n                    <!--Email address is required-->\n                <!--</div>-->\n\n                <!--<div *ngIf=\"email.errors && email.errors.pattern\">-->\n                    <!--Email address is invalid-->\n                <!--</div>-->\n            <!--</div>-->\n\n            <!--<div class=\"form-group\">-->\n                <!--<label for=\"amount\">My Bid</label>-->\n                <!--<input type=\"text\" class=\"form-control\" id=\"amount\" value=\"£{{data.amount}}\" readonly>-->\n            <!--</div>-->\n        <!--</mat-dialog-content>-->\n        <!--<hr>-->\n        <!--<mat-dialog-actions>-->\n            <!--<button mat-raised-button (click)=\"onCloseCancel()\">CANCEL</button>&nbsp;-->\n            <!--<button mat-raised-button class=\"confirmButton\" type=\"submit\" (click)=\"onCloseConfirm()\" [disabled]=\"!bidForm.valid\">CONFIRM BID</button>-->\n        <!--</mat-dialog-actions>-->\n    <!--</form>-->\n\n\n    <form #checkout=\"ngForm\" (ngSubmit)=\"onSubmit(checkout)\" class=\"checkout\">\n\n        <mat-dialog-content>\n            In order to confirm your bid, please enter your details below.\n            Your card will be pre-authorised and will ONLY be charged if you win the auction.\n\n            <div class=\"form-group\">\n                <label for=\"amount\">My Bid</label>\n                <input type=\"text\" class=\"form-control\" id=\"amount\" value=\"£{{data.amount}}\" readonly>\n            </div>\n\n            <div class=\"form-group\">\n                <label for=\"email\">Email Address*</label>\n                <input type=\"email\" class=\"form-control\" [(ngModel)]=\"emailAddress\" id=\"email\" name=\"email\"\n                       #email=\"ngModel\"\n                       required pattern=\"^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$\"/>\n                <div class=\"validationErrorText\" *ngIf=\"email.invalid && (email.dirty || email.touched)\">\n                    <div *ngIf=\"email.errors.required\">\n                        Email address is required\n                    </div>\n\n                    <div *ngIf=\"email.errors && email.errors.pattern\">\n                        Email address is invalid\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"form-group\">\n                <label for=\"card-info\">Card Info</label>\n                <div id=\"card-info\" #cardInfo></div>\n\n                <div id=\"card-errors\" class=\"validationErrorText\" role=\"alert\" *ngIf=\"error\">{{ error }}</div>\n            </div>\n        </mat-dialog-content>\n\n        <hr>\n\n        <mat-dialog-actions>\n            <button mat-raised-button (click)=\"onCloseCancel()\">CANCEL</button>&nbsp;\n            <button mat-raised-button class=\"confirmButton\" type=\"submit\"\n                    [disabled]=\"!checkout.valid || isBidInProgress\">Bid £{{data.amount}}\n            </button>\n        </mat-dialog-actions>\n\n    </form>\n\n\n</div>"
+module.exports = "<div>\n    <h2 mat-dialog-title>Confirm your bid</h2>\n    <hr>\n    <form #checkout=\"ngForm\" (ngSubmit)=\"onSubmit(checkout)\" class=\"checkout\">\n\n        <mat-dialog-content>\n            In order to confirm your bid, please enter your details below.\n            Your card will be pre-authorised and will ONLY be charged if you win the auction.\n\n            <div class=\"form-group\">\n                <label for=\"amount\">My Bid</label>\n                <input type=\"text\" class=\"form-control\" id=\"amount\" value=\"£{{data.amount}}\" readonly>\n            </div>\n\n            <div class=\"form-group\">\n                <label for=\"email\">Email Address*</label>\n                <input type=\"email\" class=\"form-control\" [(ngModel)]=\"emailAddress\" id=\"email\" name=\"email\"\n                       #email=\"ngModel\"\n                       required pattern=\"^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$\"/>\n                <div class=\"validationErrorText\" *ngIf=\"email.invalid && (email.dirty || email.touched)\">\n                    <div *ngIf=\"email.errors.required\">\n                        Email address is required\n                    </div>\n\n                    <div *ngIf=\"email.errors && email.errors.pattern\">\n                        Email address is invalid\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"form-group\">\n                <label for=\"card-info\">Card Info</label>\n                <div id=\"card-info\" #cardInfo></div>\n\n                <div id=\"card-errors\" class=\"validationErrorText\" role=\"alert\" *ngIf=\"error\">{{ error }}</div>\n            </div>\n        </mat-dialog-content>\n\n        <hr>\n\n        <mat-dialog-actions>\n            <button mat-raised-button (click)=\"onCloseCancel()\">CANCEL</button>&nbsp;\n            <button mat-raised-button class=\"confirmButton\" type=\"submit\"\n                    [disabled]=\"!checkout.valid || isBidInProgress\">Bid £{{data.amount}}\n            </button>\n        </mat-dialog-actions>\n\n    </form>\n\n\n</div>"
 
 /***/ }),
 
@@ -841,22 +924,6 @@ var LotDetailsComponent = /** @class */ (function () {
                 title: 'Bid placed',
                 body: 'Your bid has been placed. Thank you for your contribution!'
             }
-        });
-    };
-    LotDetailsComponent.prototype.openCheckout = function () {
-        var handler = window.StripeCheckout.configure({
-            key: 'pk_test_mPTpczYYMxOv3S3O0Jj9TXQI',
-            locale: 'auto',
-            token: function (token) {
-                // You can access the token ID with `token.id`.
-                // Get the token ID to your server-side code for use.
-            },
-            currency: 'gbp'
-        });
-        handler.open({
-            name: 'Going Gone - ' + this.Organisation.title,
-            description: this.lot.title,
-            amount: (parseInt(this.amount.toString(), 0) * 100)
         });
     };
     LotDetailsComponent = __decorate([
@@ -1404,6 +1471,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lot-details/lot-details.component */ "./src/app/lot-details/lot-details.component.ts");
 /* harmony import */ var _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./terms-and-conditions/terms-and-conditions.component */ "./src/app/terms-and-conditions/terms-and-conditions.component.ts");
 /* harmony import */ var _organisation_faq_organisation_faq_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./organisation-faq/organisation-faq.component */ "./src/app/organisation-faq/organisation-faq.component.ts");
+/* harmony import */ var _admin_admin_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./admin/admin.component */ "./src/app/admin/admin.component.ts");
+
 
 
 
@@ -1412,6 +1481,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [
     { path: 'home', component: _home_home_component__WEBPACK_IMPORTED_MODULE_1__["HomeComponent"] },
+    { path: 'admin', component: _admin_admin_component__WEBPACK_IMPORTED_MODULE_6__["AdminComponent"] },
     { path: 'terms-and-conditions', component: _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_4__["TermsAndConditionsComponent"] },
     { path: ':organisationId', component: _organisation_organisation_component__WEBPACK_IMPORTED_MODULE_0__["OrganisationComponent"] },
     { path: ':organisationId/faq', component: _organisation_faq_organisation_faq_component__WEBPACK_IMPORTED_MODULE_5__["OrganisationFaqComponent"] },

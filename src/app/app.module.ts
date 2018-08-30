@@ -33,6 +33,7 @@ import {TermsAndConditionsComponent} from './terms-and-conditions/terms-and-cond
 import {OrganisationFaqComponent} from './organisation-faq/organisation-faq.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {AdminComponent} from './admin/admin.component';
 
 registerLocaleData(localeEn, 'en', localeEnExtra);
 
@@ -51,7 +52,8 @@ registerLocaleData(localeEn, 'en', localeEnExtra);
         BidDialogComponent,
         NotificationDialogComponent,
         OrganisationFaqComponent,
-        TermsAndConditionsComponent
+        TermsAndConditionsComponent,
+        AdminComponent
     ],
     entryComponents: [BidDialogComponent, NotificationDialogComponent],
     imports: [
