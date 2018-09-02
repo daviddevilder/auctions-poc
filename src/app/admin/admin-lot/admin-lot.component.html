@@ -1,0 +1,65 @@
+<mat-toolbar class='app-toolbar mat-elevation-z4'>
+    <div class="logo-container">
+        <a href="http://goinggone.io">
+            <img src="../../../assets/images/gg_small_logo.png"/>
+        </a>
+    </div>
+</mat-toolbar>
+
+<div class="background"></div>
+
+<h2>
+    Admin Panel
+</h2>
+
+<div class="pageHeader" [ngStyle]="{ 'background-color': Organisation.primaryColour}">
+    <a routerLink="/admin">
+        <mat-icon>arrow_back</mat-icon>
+    </a>
+    <span>{{ lot.title }}</span>
+</div>
+
+<div fxLayout="row" class="containerRow secondRow" fxLayoutGap="20px grid">
+    <div class="lotImageContainer">
+        <img src="../{{lot.imageUri}}"/>
+    </div>
+</div>
+
+<table class="bids" *ngIf="!lot.winningBidId">
+    <tr class="bidContainer" *ngFor="let bid of lot.bids">
+        <td class="bidDate">
+            {{bid.createdAt | date:'d LLLL y h:mm a'}}
+        </td>
+        <td class="bidderId">
+            {{bid.bidderId}}
+        </td>
+        <td class="bidderId">
+            £{{bid.value}}
+        </td>
+        <td>
+            <button mat-raised-button class="acceptBidButton"
+                    [disabled]="isAcceptInProgress" (click)="acceptBid(bid._id)">
+                Accept Bid
+            </button>
+        </td>
+    </tr>
+</table>
+
+<div *ngIf="lot.winningBidId && winningBid" class="winningBidContainer">
+    <h2>Winning Bid</h2>
+    <table class="bids">
+        <tr class="bidContainer">
+            <td class="bidDate">
+                {{winningBid.createdAt | date:'d LLLL y h:mm a'}}
+            </td>
+            <td class="bidderId">
+                {{winningBid.bidderId}}
+            </td>
+            <td class="bidderId">
+                £{{winningBid.value}}
+            </td>
+        </tr>
+    </table>
+</div>
+
+<app-footer [colour]="'#002B88'"></app-footer>

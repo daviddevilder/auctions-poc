@@ -11,4 +11,5 @@ export interface ILot {
     orderNumber?: number;
     isFeatured?: number;
     bids?: object[];
+    winningBidId?: string;
 }

@@ -6,10 +6,12 @@ import {LotDetailsComponent} from './lot-details/lot-details.component';
 import {TermsAndConditionsComponent} from './terms-and-conditions/terms-and-conditions.component';
 import {OrganisationFaqComponent} from './organisation-faq/organisation-faq.component';
 import {AdminComponent} from './admin/admin.component';
+import {AdminLotComponent} from './admin/admin-lot/admin-lot.component';
 
 export const routes: Routes = [
     {path: 'home', component: HomeComponent},
     {path: 'admin', component: AdminComponent},
+    {path: 'admin/:lotId', component: AdminLotComponent},
     {path: 'terms-and-conditions', component: TermsAndConditionsComponent},
     {path: ':organisationId', component: OrganisationComponent},
     {path: ':organisationId/faq', component: OrganisationFaqComponent},

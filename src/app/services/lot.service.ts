@@ -42,4 +42,10 @@ export class LotService {
         };
         return this.http.post(url, body);
     }
+
+    public AcceptWinningBid(lotId: String, bidId: String): Observable<any> {
+        const url = this.host + '/api/lots/' + lotId + '/bids/' + bidId;
+        const body = {};
+        return this.http.post(url, body);
+    }
 }

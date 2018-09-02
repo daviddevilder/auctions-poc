@@ -5,7 +5,7 @@ import {Lot} from '../../../common/models/Lot';
 import {LotService} from '../services/lot.service';
 
 @Component({
-  selector: 'app-terms',
+  selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })

@@ -26,9 +26,10 @@
                 </mat-card-content>
 
                 <mat-card-actions>
-                    <button mat-raised-button routerLink="/{{organisationId}}/lot/{{lot.lotId}}">
+                    <button mat-raised-button [disabled]="lot.winningBidId" routerLink="/{{organisationId}}/lot/{{lot.lotId}}">
                         <mat-icon>visibility</mat-icon>
-                        View
+                        <span *ngIf="lot.winningBidId">Sold</span>
+                        <span *ngIf="!lot.winningBidId">View</span>
                     </button>
                 </mat-card-actions>
 

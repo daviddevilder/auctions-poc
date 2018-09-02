@@ -19,3 +19,8 @@ router.post('/:lotId/bid', async (request: Request, response: Response) => {
     response.send(result);
 });
 
+router.post('/:lotId/bids/:bidId', async (request: Request, response: Response) => {
+    const result = await LotManager.AcceptWinningBid(request.params.lotId, request.params.bidId);
+    response.send(result);
+});
+

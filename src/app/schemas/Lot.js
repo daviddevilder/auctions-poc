@@ -18,7 +18,8 @@ exports.LotSchema = new mongoose_1.Schema({
             bidderId: String,
             value: Number,
             chargeId: String
-        }]
+        }],
+    winningBidId: String
 });
 exports.LotModel = mongoose_1.model('Lot', exports.LotSchema);
 //# sourceMappingURL=Lot.js.map

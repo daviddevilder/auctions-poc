@@ -11,6 +11,7 @@ export class Lot {
                 public tags: string[],
                 public orderNumbder: number,
                 public isFeatured: number,
-                public bids: object[]) {
+                public bids: object[],
+                public winningBidId: string) {
     }
 }

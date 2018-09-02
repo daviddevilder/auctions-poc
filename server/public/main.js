@@ -11,7 +11,7 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Lot", function() { return Lot; });
 var Lot = /** @class */ (function () {
-    function Lot(lotId, organisationId, title, description, imageUri, providedBy, reservePrice, estimate, tags, orderNumbder, isFeatured, bids) {
+    function Lot(lotId, organisationId, title, description, imageUri, providedBy, reservePrice, estimate, tags, orderNumbder, isFeatured, bids, winningBidId) {
         this.lotId = lotId;
         this.organisationId = organisationId;
         this.title = title;
@@ -24,6 +24,7 @@ var Lot = /** @class */ (function () {
         this.orderNumbder = orderNumbder;
         this.isFeatured = isFeatured;
         this.bids = bids;
+        this.winningBidId = winningBidId;
     }
     return Lot;
 }());
@@ -89,6 +90,116 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/admin/admin-lot/admin-lot.component.css":
+/*!*********************************************************!*\
+  !*** ./src/app/admin/admin-lot/admin-lot.component.css ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\n.app-toolbar {\n    background-color: #002B88;\n    position: sticky;\n    position: -webkit-sticky;\n    top: 0;\n    z-index: 1000;\n    height:56px;\n}\n\n.app-toolbar img{\n    padding-top: 7px;\n}\n\nh2 {\n    text-align: center;\n    color: white;\n    margin: 10px auto;\n    padding: 8px;\n    background-color: #333;\n    opacity: 0.9;\n    border-radius: 10px;\n    max-width: 400px;\n}\n\n.pageHeader {\n    color: white;\n    margin: 0 0 0 0px;\n    padding: 20px;\n    background-color: rgb(0, 43, 136);\n    opacity: 0.9;\n    width: auto;\n    font-weight: normal;\n    text-align: left;\n    font-size: 20px;\n    margin-bottom: 60px;\n\n}\n\n.pageHeader a {\n    color: white;\n}\n\n.pageHeader mat-icon {\n    padding-right: 10px;\n    position: relative;\n    top: 5px;\n\n}\n\n.lotImageContainer {\n    margin: 0 auto;\n    padding: 20px;\n}\n\n.lotImageContainer img {\n    width: 300px;\n}\n\ntable.bids {\n    margin: 10px auto;\n    width: 80%;\n}\n\ntable.bids td {\n    border-bottom: 1px solid #CCC;\n    padding: 10px;\n}\n\nbutton.acceptBidButton {\n    background: #4dcc27;\n    color: #fff;\n}\n\n.winningBidContainer {\n    margin: 0 auto;\n}"
+
+/***/ }),
+
+/***/ "./src/app/admin/admin-lot/admin-lot.component.html":
+/*!**********************************************************!*\
+  !*** ./src/app/admin/admin-lot/admin-lot.component.html ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<mat-toolbar class='app-toolbar mat-elevation-z4'>\n    <div class=\"logo-container\">\n        <a href=\"http://goinggone.io\">\n            <img src=\"../../../assets/images/gg_small_logo.png\"/>\n        </a>\n    </div>\n</mat-toolbar>\n\n<div class=\"background\"></div>\n\n<h2>\n    Admin Panel\n</h2>\n\n<div class=\"pageHeader\" [ngStyle]=\"{ 'background-color': Organisation.primaryColour}\">\n    <a routerLink=\"/admin\">\n        <mat-icon>arrow_back</mat-icon>\n    </a>\n    <span>{{ lot.title }}</span>\n</div>\n\n<div fxLayout=\"row\" class=\"containerRow secondRow\" fxLayoutGap=\"20px grid\">\n    <div class=\"lotImageContainer\">\n        <img src=\"../{{lot.imageUri}}\"/>\n    </div>\n</div>\n\n<table class=\"bids\" *ngIf=\"!lot.winningBidId\">\n    <tr class=\"bidContainer\" *ngFor=\"let bid of lot.bids\">\n        <td class=\"bidDate\">\n            {{bid.createdAt | date:'d LLLL y h:mm a'}}\n        </td>\n        <td class=\"bidderId\">\n            {{bid.bidderId}}\n        </td>\n        <td class=\"bidderId\">\n            £{{bid.value}}\n        </td>\n        <td>\n            <button mat-raised-button class=\"acceptBidButton\"\n                    [disabled]=\"isAcceptInProgress\" (click)=\"acceptBid(bid._id)\">\n                Accept Bid\n            </button>\n        </td>\n    </tr>\n</table>\n\n<div *ngIf=\"lot.winningBidId && winningBid\" class=\"winningBidContainer\">\n    <h2>Winning Bid</h2>\n    <table class=\"bids\">\n        <tr class=\"bidContainer\">\n            <td class=\"bidDate\">\n                {{winningBid.createdAt | date:'d LLLL y h:mm a'}}\n            </td>\n            <td class=\"bidderId\">\n                {{winningBid.bidderId}}\n            </td>\n            <td class=\"bidderId\">\n                £{{winningBid.value}}\n            </td>\n        </tr>\n    </table>\n</div>\n\n<app-footer [colour]=\"'#002B88'\"></app-footer>"
+
+/***/ }),
+
+/***/ "./src/app/admin/admin-lot/admin-lot.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/admin/admin-lot/admin-lot.component.ts ***!
+  \********************************************************/
+/*! exports provided: AdminLotComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminLotComponent", function() { return AdminLotComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_organisation_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/organisation.service */ "./src/app/services/organisation.service.ts");
+/* harmony import */ var _common_models_Organisation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../common/models/Organisation */ "./common/models/Organisation.ts");
+/* harmony import */ var _common_models_Lot__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../common/models/Lot */ "./common/models/Lot.ts");
+/* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/lot.service */ "./src/app/services/lot.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var AdminLotComponent = /** @class */ (function () {
+    function AdminLotComponent(organisationService, lotService, route) {
+        var _this = this;
+        this.organisationService = organisationService;
+        this.lotService = lotService;
+        this.route = route;
+        this.lotId = '';
+        this.organisationId = '';
+        this.lot = new _common_models_Lot__WEBPACK_IMPORTED_MODULE_3__["Lot"]('', '', '', '', '', '', 0, 0, [], 0, 0, [], '');
+        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_2__["Organisation"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
+        this.isAcceptInProgress = false;
+        this.winningBid = null;
+        this.route.params.subscribe(function (params) {
+            _this.lotId = params.lotId;
+            lotService.LoadLot(params.lotId).subscribe(function (lot) {
+                _this.lot = lot;
+                if (lot.winningBidId) {
+                    console.log(lot.winningBidId);
+                    _this.winningBid = lot.bids.filter(function (bid) {
+                        console.log(bid._id);
+                        return bid._id === lot.winningBidId;
+                    })[0];
+                    console.log(_this.winningBid);
+                }
+                organisationService.LoadOrganisationById(lot.organisationId).subscribe(function (organisation) {
+                    _this.Organisation = organisation;
+                });
+            });
+        });
+    }
+    AdminLotComponent.prototype.acceptBid = function (bidId) {
+        var _this = this;
+        this.isAcceptInProgress = true;
+        this.lotService.AcceptWinningBid(this.lotId, bidId)
+            .subscribe((function (lot) {
+            _this.lot.winningBidId = bidId.toString();
+            _this.winningBid = lot.bids.filter(function (bid) {
+                return bid._id === bidId.toString();
+            })[0];
+            _this.isAcceptInProgress = false;
+        }));
+    };
+    AdminLotComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-admin-lot',
+            template: __webpack_require__(/*! ./admin-lot.component.html */ "./src/app/admin/admin-lot/admin-lot.component.html"),
+            styles: [__webpack_require__(/*! ./admin-lot.component.css */ "./src/app/admin/admin-lot/admin-lot.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_organisation_service__WEBPACK_IMPORTED_MODULE_1__["OrganisationService"], _services_lot_service__WEBPACK_IMPORTED_MODULE_4__["LotService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"]])
+    ], AdminLotComponent);
+    return AdminLotComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/admin/admin.component.css":
 /*!*******************************************!*\
   !*** ./src/app/admin/admin.component.css ***!
@@ -107,7 +218,7 @@ module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar class='app-toolbar mat-elevation-z4'>\n    <div class=\"logo-container\">\n        <a href=\"http://goinggone.io\">\n            <img src=\"../../assets/images/gg_small_logo.png\"/>\n        </a>\n    </div>\n</mat-toolbar>\n\n<div class=\"background\"></div>\n\n<h2>\n    Admin Panel\n</h2>\n\n<div class=\"orgContainer\" *ngFor=\"let org of Organisations\">\n    <div class=\"title\">\n        <img class=\"orgLogo\" src=\"{{org.logoUrl}}\"/>\n        <div class=\"orgName\">{{org.title}}</div>\n    </div>\n    <div class=\"orgLots\">\n        <div class=\"lotContainer\" *ngFor=\"let lot of Lots[org.organisationId]\">\n            <a routerLink=\"/admin/{{lot.lotId}}\">\n                {{lot.title}}\n            </a>\n        </div>\n    </div>\n</div>\n\n<app-footer [colour]=\"'#002B88'\"></app-footer>"
+module.exports = "<mat-toolbar class='app-toolbar mat-elevation-z4'>\n    <div class=\"logo-container\">\n        <a href=\"http://goinggone.io\">\n            <img src=\"../../assets/images/gg_small_logo.png\"/>\n        </a>\n    </div>\n</mat-toolbar>\n\n<div class=\"background\"></div>\n\n<h2>\n    Admin Panel\n</h2>\n\n<div class=\"orgContainer\" *ngFor=\"let org of Organisations\">\n    <div class=\"title\">\n        <img class=\"orgLogo\" src=\"{{org.logoUrl}}\"/>\n        <div class=\"orgName\">{{org.title}}</div>\n    </div>\n    <div class=\"orgLots\">\n        <div class=\"lotContainer\" *ngFor=\"let lot of Lots[org.organisationId]\">\n            <a routerLink=\"/admin/{{lot.lotId}}\">\n                {{lot.title}}\n                <span *ngIf=\"lot.winningBidId\"> (Sold)</span>\n                <span *ngIf=\"!lot.winningBidId\"> (Live)</span>\n            </a>\n        </div>\n    </div>\n</div>\n\n<app-footer [colour]=\"'#002B88'\"></app-footer>"
 
 /***/ }),
 
@@ -156,7 +267,7 @@ var AdminComponent = /** @class */ (function () {
     };
     AdminComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-terms',
+            selector: 'app-admin',
             template: __webpack_require__(/*! ./admin.component.html */ "./src/app/admin/admin.component.html"),
             styles: [__webpack_require__(/*! ./admin.component.css */ "./src/app/admin/admin.component.css")]
         }),
@@ -287,12 +398,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @angular/material/input */ "./node_modules/@angular/material/esm5/input.es5.js");
 /* harmony import */ var _angular_material_expansion__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! @angular/material/expansion */ "./node_modules/@angular/material/esm5/expansion.es5.js");
 /* harmony import */ var _admin_admin_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./admin/admin.component */ "./src/app/admin/admin.component.ts");
+/* harmony import */ var _admin_admin_lot_admin_lot_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./admin/admin-lot/admin-lot.component */ "./src/app/admin/admin-lot/admin-lot.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -348,7 +461,8 @@ var AppModule = /** @class */ (function () {
                 _notification_dialog_notification_dialog_component__WEBPACK_IMPORTED_MODULE_22__["NotificationDialogComponent"],
                 _organisation_faq_organisation_faq_component__WEBPACK_IMPORTED_MODULE_30__["OrganisationFaqComponent"],
                 _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_29__["TermsAndConditionsComponent"],
-                _admin_admin_component__WEBPACK_IMPORTED_MODULE_33__["AdminComponent"]
+                _admin_admin_component__WEBPACK_IMPORTED_MODULE_33__["AdminComponent"],
+                _admin_admin_lot_admin_lot_component__WEBPACK_IMPORTED_MODULE_34__["AdminLotComponent"]
             ],
             entryComponents: [_bid_dialog_bid_dialog_component__WEBPACK_IMPORTED_MODULE_21__["BidDialogComponent"], _notification_dialog_notification_dialog_component__WEBPACK_IMPORTED_MODULE_22__["NotificationDialogComponent"]],
             imports: [
@@ -762,7 +876,7 @@ var HeaderComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\n.title {\n    margin: 100px auto 50px;\n    text-align: center;\n    font-size: 42px;\n    color: black;\n}"
+module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    background-size: cover;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    z-index: -1;\n}\n\n.title {\n    margin: 100px auto 50px;\n    text-align: center;\n    font-size: 42px;\n    color: black;\n}\n\n.adminLinkContainer {\n    text-align: center;\n}\n\n.adminLinkContainer a {\n    text-decoration: none;\n}"
 
 /***/ }),
 
@@ -773,7 +887,7 @@ module.exports = ".background {\n    background-color: rgb(238, 238, 238);\n    
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background\"></div>\n\n<p class=\"title\">Welcome to Going Gone!</p>\n\n<app-organisation-list></app-organisation-list>"
+module.exports = "<div class=\"background\"></div>\n\n<p class=\"title\">Welcome to Going Gone!</p>\n\n<app-organisation-list></app-organisation-list>\n\n<div class=\"adminLinkContainer\">\n    <a routerLink=\"/admin\">\n        Admin Page\n    </a>\n</div>\n"
 
 /***/ }),
 
@@ -836,7 +950,7 @@ module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background\"></div>\r\n\r\n<app-header [organisationId]=\"organisationId\" [colour]=\"Organisation.primaryColour\"></app-header>\r\n\r\n<div class=\"content\">\r\n    <div class=\"pageHeader\" [ngStyle]=\"{ 'background-color': Organisation.primaryColour}\">\r\n        <a routerLink=\"/{{organisationId}}/lots\"><mat-icon>arrow_back</mat-icon></a>\r\n        <span>{{ lot.title }}</span>\r\n    </div>\r\n\r\n    <div fxLayout=\"row\" class=\"containerRow firstRow\" fxLayoutGap=\"20px grid\">\r\n\r\n        <div class=\"lotContentContainer\">\r\n            <mat-card class=\"lotDetailsCard\">\r\n                <div class='lotPricing firstRow'>\r\n                    <div class='label'>Reserve: </div>\r\n                    <div class='value'>£{{lot.reservePrice}}</div>\r\n                </div>  \r\n        \r\n                <div class='lotPricing'>\r\n                    <div class='label'>Estimate: </div>\r\n                    <div class='value'>£{{lot.estimate}}</div>\r\n                </div>\r\n            </mat-card>\r\n        </div>\r\n\r\n        <div class=\"lotContentContainer\">\r\n            <mat-card class=\"lotDetailsCard inputCard\" fxLayout=\"row wrap\" fxLayoutGap=\"20px\">\r\n                    <mat-form-field>\r\n                        <input matInput [(ngModel)]=\"amount\" type=\"number\" placeholder=\"My Bid (minimum £{{lot.reservePrice}})\" autofocus>\r\n                        <mat-hint>Currency: GBP</mat-hint>\r\n                    </mat-form-field>\r\n                    \r\n                    <button mat-raised-button class=\"bidButton\" [disabled]=\"amount < lot.reservePrice\" (click)=\"openBidPopup()\">\r\n                        <mat-icon>gavel</mat-icon><span>Place Bid</span>\r\n                    </button>\r\n\r\n            </mat-card>\r\n        </div>\r\n\r\n    </div>\r\n\r\n    <div fxLayout=\"row\" class=\"containerRow secondRow\" fxLayoutGap=\"20px grid\">\r\n        <div class=\"lotContentContainer\">\r\n                <img src=\"{{lot.imageUri}}\"/>\r\n        </div> \r\n        \r\n        <div class=\"lotContentContainer\" [innerHTML]=\"lot.description\">\r\n\r\n        </div>\r\n    \r\n    </div>\r\n\r\n    <app-footer [colour]=\"Organisation.primaryColour\"></app-footer>\r\n\r\n</div>"
+module.exports = "<div class=\"background\"></div>\r\n\r\n<app-header [organisationId]=\"organisationId\" [colour]=\"Organisation.primaryColour\"></app-header>\r\n\r\n<div class=\"content\">\r\n    <div class=\"pageHeader\" [ngStyle]=\"{ 'background-color': Organisation.primaryColour}\">\r\n        <a routerLink=\"/{{organisationId}}/lots\"><mat-icon>arrow_back</mat-icon></a>\r\n        <span>{{ lot.title }}</span>\r\n    </div>\r\n\r\n    <div fxLayout=\"row\" class=\"containerRow firstRow\" fxLayoutGap=\"20px grid\">\r\n\r\n        <div class=\"lotContentContainer\">\r\n            <mat-card class=\"lotDetailsCard\">\r\n                <div class='lotPricing firstRow'>\r\n                    <div class='label'>Reserve: </div>\r\n                    <div class='value'>£{{lot.reservePrice}}</div>\r\n                </div>  \r\n        \r\n                <div class='lotPricing'>\r\n                    <div class='label'>Estimate: </div>\r\n                    <div class='value'>£{{lot.estimate}}</div>\r\n                </div>\r\n            </mat-card>\r\n        </div>\r\n\r\n        <div class=\"lotContentContainer\">\r\n            <mat-card class=\"lotDetailsCard inputCard\" fxLayout=\"row wrap\" fxLayoutGap=\"20px\">\r\n                    <mat-form-field>\r\n                        <input matInput [(ngModel)]=\"amount\" type=\"number\" placeholder=\"My Bid (minimum £{{lot.reservePrice}})\" autofocus>\r\n                        <mat-hint>Currency: GBP</mat-hint>\r\n                    </mat-form-field>\r\n                    \r\n                    <button mat-raised-button class=\"bidButton\" [disabled]=\"amount < lot.reservePrice || lot.winningBidId\" (click)=\"openBidPopup()\">\r\n                        <mat-icon>gavel</mat-icon><span>Place Bid</span>\r\n                    </button>\r\n\r\n            </mat-card>\r\n        </div>\r\n\r\n    </div>\r\n\r\n    <div fxLayout=\"row\" class=\"containerRow secondRow\" fxLayoutGap=\"20px grid\">\r\n        <div class=\"lotContentContainer\">\r\n                <img src=\"{{lot.imageUri}}\"/>\r\n        </div> \r\n        \r\n        <div class=\"lotContentContainer\" [innerHTML]=\"lot.description\">\r\n\r\n        </div>\r\n    \r\n    </div>\r\n\r\n    <app-footer [colour]=\"Organisation.primaryColour\"></app-footer>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -886,7 +1000,7 @@ var LotDetailsComponent = /** @class */ (function () {
         this.dialog = dialog;
         this.lotId = '';
         this.organisationId = '';
-        this.lot = new _common_models_Lot__WEBPACK_IMPORTED_MODULE_5__["Lot"]('', '', '', '', '', '', 0, 0, [], 0, 0, []);
+        this.lot = new _common_models_Lot__WEBPACK_IMPORTED_MODULE_5__["Lot"]('', '', '', '', '', '', 0, 0, [], 0, 0, [], '');
         this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
         this.amount = '';
         this.route.params.subscribe(function (params) {
@@ -960,7 +1074,7 @@ module.exports = ".lotContainer{\r\n    width:100%;\r\n    display: flex;\r\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"content\">\r\n\r\n    <div class=\"lotContainer\" fxLayout=\"row\" fxLayoutGap=\"20px grid\">\r\n\r\n        <div class=\"lotCard\" *ngFor=\"let lot of Lots\">\r\n            <mat-card>\r\n                \r\n                <img class=\"mat-elevation-z4\" src=\"{{lot.imageUri}}\"/>\r\n\r\n                <mat-card-title>\r\n                    {{lot.title}}\r\n                </mat-card-title>\r\n\r\n                <mat-card-content>\r\n\r\n                    <div class='lotPricing'>\r\n                        <div class='label'>Reserve: </div>\r\n                        <div class='value'>£{{lot.reservePrice}}</div>\r\n                    </div>  \r\n\r\n                    <div class='lotPricing'>\r\n                        <div class='label'>Estimate: </div>\r\n                        <div class='value'>£{{lot.estimate}}</div>\r\n                    </div>\r\n     \r\n                </mat-card-content>\r\n\r\n                <mat-card-actions>\r\n                    <button mat-raised-button routerLink=\"/{{organisationId}}/lot/{{lot.lotId}}\">\r\n                        <mat-icon>visibility</mat-icon>\r\n                        View\r\n                    </button>\r\n                </mat-card-actions>\r\n\r\n                \r\n            </mat-card>\r\n        </div>\r\n\r\n    </div>\r\n    \r\n    \r\n    <!-- <div class=\"lotContainer child\" *ngFor=\"let lot of Lots\">\r\n\r\n        <div class=\"imageContainer\">\r\n            <div class=\"providedBy\">\r\n                Provided by: {{lot.providedBy}}\r\n            </div>\r\n            <img src=\"{{lot.imageUri}}\"/>\r\n        </div>\r\n\r\n        <div class=\"name\">{{lot.title}}</div>\r\n\r\n        <div class=\"price\">\r\n            <div class=\"label\">\r\n                Reserve:\r\n            </div>\r\n            <div class=\"amount\">\r\n                £{{lot.reservePrice}}\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"price\">\r\n            <div class=\"label\">\r\n                Estimate:\r\n            </div>\r\n            <div class=\"amount\">\r\n                £{{lot.estimate}}\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"lotsButtonContainer\">\r\n            <button mat-raised-button class=\"viewButton\"\r\n                    routerLink=\"/club/{{clubId}}/lot/{{lot.lotId}}\">\r\n                View\r\n            </button>\r\n        </div>\r\n\r\n    </div> -->\r\n\r\n</div>"
+module.exports = "<div class=\"content\">\r\n\r\n    <div class=\"lotContainer\" fxLayout=\"row\" fxLayoutGap=\"20px grid\">\r\n\r\n        <div class=\"lotCard\" *ngFor=\"let lot of Lots\">\r\n            <mat-card>\r\n                \r\n                <img class=\"mat-elevation-z4\" src=\"{{lot.imageUri}}\"/>\r\n\r\n                <mat-card-title>\r\n                    {{lot.title}}\r\n                </mat-card-title>\r\n\r\n                <mat-card-content>\r\n\r\n                    <div class='lotPricing'>\r\n                        <div class='label'>Reserve: </div>\r\n                        <div class='value'>£{{lot.reservePrice}}</div>\r\n                    </div>  \r\n\r\n                    <div class='lotPricing'>\r\n                        <div class='label'>Estimate: </div>\r\n                        <div class='value'>£{{lot.estimate}}</div>\r\n                    </div>\r\n     \r\n                </mat-card-content>\r\n\r\n                <mat-card-actions>\r\n                    <button mat-raised-button [disabled]=\"lot.winningBidId\" routerLink=\"/{{organisationId}}/lot/{{lot.lotId}}\">\r\n                        <mat-icon>visibility</mat-icon>\r\n                        <span *ngIf=\"lot.winningBidId\">Sold</span>\r\n                        <span *ngIf=\"!lot.winningBidId\">View</span>\r\n                    </button>\r\n                </mat-card-actions>\r\n\r\n                \r\n            </mat-card>\r\n        </div>\r\n\r\n    </div>\r\n    \r\n    \r\n    <!-- <div class=\"lotContainer child\" *ngFor=\"let lot of Lots\">\r\n\r\n        <div class=\"imageContainer\">\r\n            <div class=\"providedBy\">\r\n                Provided by: {{lot.providedBy}}\r\n            </div>\r\n            <img src=\"{{lot.imageUri}}\"/>\r\n        </div>\r\n\r\n        <div class=\"name\">{{lot.title}}</div>\r\n\r\n        <div class=\"price\">\r\n            <div class=\"label\">\r\n                Reserve:\r\n            </div>\r\n            <div class=\"amount\">\r\n                £{{lot.reservePrice}}\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"price\">\r\n            <div class=\"label\">\r\n                Estimate:\r\n            </div>\r\n            <div class=\"amount\">\r\n                £{{lot.estimate}}\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"lotsButtonContainer\">\r\n            <button mat-raised-button class=\"viewButton\"\r\n                    routerLink=\"/club/{{clubId}}/lot/{{lot.lotId}}\">\r\n                View\r\n            </button>\r\n        </div>\r\n\r\n    </div> -->\r\n\r\n</div>"
 
 /***/ }),
 
@@ -1472,6 +1586,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./terms-and-conditions/terms-and-conditions.component */ "./src/app/terms-and-conditions/terms-and-conditions.component.ts");
 /* harmony import */ var _organisation_faq_organisation_faq_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./organisation-faq/organisation-faq.component */ "./src/app/organisation-faq/organisation-faq.component.ts");
 /* harmony import */ var _admin_admin_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./admin/admin.component */ "./src/app/admin/admin.component.ts");
+/* harmony import */ var _admin_admin_lot_admin_lot_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./admin/admin-lot/admin-lot.component */ "./src/app/admin/admin-lot/admin-lot.component.ts");
+
 
 
 
@@ -1482,6 +1598,7 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [
     { path: 'home', component: _home_home_component__WEBPACK_IMPORTED_MODULE_1__["HomeComponent"] },
     { path: 'admin', component: _admin_admin_component__WEBPACK_IMPORTED_MODULE_6__["AdminComponent"] },
+    { path: 'admin/:lotId', component: _admin_admin_lot_admin_lot_component__WEBPACK_IMPORTED_MODULE_7__["AdminLotComponent"] },
     { path: 'terms-and-conditions', component: _terms_and_conditions_terms_and_conditions_component__WEBPACK_IMPORTED_MODULE_4__["TermsAndConditionsComponent"] },
     { path: ':organisationId', component: _organisation_organisation_component__WEBPACK_IMPORTED_MODULE_0__["OrganisationComponent"] },
     { path: ':organisationId/faq', component: _organisation_faq_organisation_faq_component__WEBPACK_IMPORTED_MODULE_5__["OrganisationFaqComponent"] },
@@ -1548,6 +1665,11 @@ var LotService = /** @class */ (function () {
             value: amount,
             stripeTokenId: stripeTokenId
         };
+        return this.http.post(url, body);
+    };
+    LotService.prototype.AcceptWinningBid = function (lotId, bidId) {
+        var url = this.host + '/api/lots/' + lotId + '/bids/' + bidId;
+        var body = {};
         return this.http.post(url, body);
     };
     LotService = __decorate([

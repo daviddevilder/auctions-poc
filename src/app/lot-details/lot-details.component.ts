@@ -17,7 +17,7 @@ export class LotDetailsComponent {
     public lotId: String = '';
     public organisationId: String = '';
 
-    public lot: Lot = new Lot('', '', '', '', '', '', 0, 0, [], 0, 0, []);
+    public lot: Lot = new Lot('', '', '', '', '', '', 0, 0, [], 0, 0, [], '');
     public Organisation: Organisation = new Organisation('', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
 
     public amount: String = '';

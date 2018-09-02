@@ -21,6 +21,8 @@
         <div class="lotContainer" *ngFor="let lot of Lots[org.organisationId]">
             <a routerLink="/admin/{{lot.lotId}}">
                 {{lot.title}}
+                <span *ngIf="lot.winningBidId"> (Sold)</span>
+                <span *ngIf="!lot.winningBidId"> (Live)</span>
             </a>
         </div>
     </div>

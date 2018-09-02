@@ -75,4 +75,16 @@ router.post('/:lotId/bid', function (request, response) { return __awaiter(_this
         }
     });
 }); });
+router.post('/:lotId/bids/:bidId', function (request, response) { return __awaiter(_this, void 0, void 0, function () {
+    var result;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4, LotManager_1.LotManager.AcceptWinningBid(request.params.lotId, request.params.bidId)];
+            case 1:
+                result = _a.sent();
+                response.send(result);
+                return [2];
+        }
+    });
+}); });
 //# sourceMappingURL=Lots.js.map

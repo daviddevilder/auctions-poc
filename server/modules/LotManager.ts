@@ -13,8 +13,7 @@ export namespace LotManager {
                     const results: Lot[] = [];
                     lots.forEach(function (lot) {
                         results.push(new Lot(lot.lotId, lot.organisationId, lot.title, lot.description, lot.imageUri, lot.providedBy,
-                                                    lot.reservePrice, lot.estimate, lot.tags, lot.orderNumber,
-                                                    lot.isFeatured, lot.bids));
+                            lot.reservePrice, lot.estimate, lot.tags, lot.orderNumber, lot.isFeatured, lot.bids, lot.winningBidId));
                     });
 
                     resolve(results);
@@ -33,7 +32,7 @@ export namespace LotManager {
                     const results: Lot[] = [];
                     lots.forEach(function (lot) {
                         results.push(new Lot(lot.lotId, lot.organisationId, lot.title, lot.description, lot.imageUri, lot.providedBy,
-                            lot.reservePrice, lot.estimate, lot.tags, lot.orderNumber, lot.isFeatured, lot.bids));
+                            lot.reservePrice, lot.estimate, lot.tags, lot.orderNumber, lot.isFeatured, lot.bids, lot.winningBidId));
                     });
 
                     resolve(results);
@@ -52,7 +51,7 @@ export namespace LotManager {
                     const results: Lot[] = [];
                     lots.forEach(function (lot) {
                         results.push(new Lot(lot.lotId, lot.organisationId, lot.title, lot.description, lot.imageUri, lot.providedBy,
-                            lot.reservePrice, lot.estimate, lot.tags, lot.orderNumber, lot.isFeatured, lot.bids));
+                            lot.reservePrice, lot.estimate, lot.tags, lot.orderNumber, lot.isFeatured, lot.bids, lot.winningBidId));
                     });
 
                     resolve(results);
@@ -69,12 +68,12 @@ export namespace LotManager {
             LotModel
                 .find({organisationId: organisationId})
                 .distinct('tags', function (err, tags) {
-                try {
-                    resolve(tags);
-                } catch (error) {
-                    reject(error);
-                }
-            });
+                    try {
+                        resolve(tags);
+                    } catch (error) {
+                        reject(error);
+                    }
+                });
         });
     }
 
@@ -84,7 +83,7 @@ export namespace LotManager {
             LotModel.findOne({lotId: lotId}, function (err, lot) {
                 try {
                     resolve(new Lot(lot.lotId, lot.organisationId, lot.title, lot.description, lot.imageUri, lot.providedBy,
-                        lot.reservePrice, lot.estimate, lot.tags, lot.orderNumber, lot.isFeatured, lot.bids));
+                        lot.reservePrice, lot.estimate, lot.tags, lot.orderNumber, lot.isFeatured, lot.bids, lot.winningBidId));
                 } catch (error) {
                     reject(error);
                 }
@@ -105,7 +104,7 @@ export namespace LotManager {
             }).then((charge) => {
                 LotModel.findOneAndUpdate(
                     {lotId: lotId},
-                    {$push: { bids: { createdAt: new Date().toISOString(), bidderId: bidderId, value: value, chargeId: charge.id }}},
+                    {$push: {bids: {createdAt: new Date().toISOString(), bidderId: bidderId, value: value, chargeId: charge.id}}},
                     function (err, doc) {
                         if (err) {
                             reject(err);
@@ -114,18 +113,37 @@ export namespace LotManager {
                         }
                     }
                 );
-
-                // TODO - move these functions to an admin screen to settle/refund the charges
-                // stripe.charges.capture(charge.id)
-                //     .then((settledCharge) => {
-                //         console.log(settledCharge);
-                //     });
-                //
-                // stripe.refunds.create({charge: charge.id})
-                //     .then((refund) => {
-                //     console.log(refund);
-                // });
             });
+        });
+    }
+
+    export async function AcceptWinningBid(lotId: String, bidId: String): Promise<Lot[]> {
+
+        return new Promise((resolve: (result) => void, reject: (error: Error) => void) => {
+
+            LotModel.findOneAndUpdate(
+                {lotId: lotId},
+                {winningBidId: bidId},
+                function (err, lot) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        lot.bids.forEach((bid: any) => {
+                            if (bid._id.equals(bidId)) {
+                                stripe.charges.capture(bid.chargeId)
+                                    .then((settledCharge) => {
+                                    });
+                            } else {
+                                stripe.refunds.create({charge: bid.chargeId})
+                                    .then((refund) => {
+                                    });
+                            }
+                        });
+
+                        resolve(lot);
+                    }
+                }
+            );
         });
     }
 }

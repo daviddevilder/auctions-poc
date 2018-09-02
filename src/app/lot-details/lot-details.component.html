@@ -31,7 +31,7 @@
                         <mat-hint>Currency: GBP</mat-hint>
                     </mat-form-field>
                     
-                    <button mat-raised-button class="bidButton" [disabled]="amount < lot.reservePrice" (click)="openBidPopup()">
+                    <button mat-raised-button class="bidButton" [disabled]="amount < lot.reservePrice || lot.winningBidId" (click)="openBidPopup()">
                         <mat-icon>gavel</mat-icon><span>Place Bid</span>
                     </button>
 

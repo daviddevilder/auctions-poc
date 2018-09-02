@@ -14,6 +14,7 @@ export interface ILotModel extends ILot, Document {
     orderNumber: number;
     isFeatured: number;
     bids: object[];
+    winningBidId: string;
 }
 
 export const LotSchema: Schema = new Schema({
@@ -33,7 +34,8 @@ export const LotSchema: Schema = new Schema({
         bidderId: String,
         value: Number,
         chargeId: String
-    }]
+    }],
+    winningBidId: String
 });
 
 export const LotModel: Model<ILotModel> = model<ILotModel>('Lot', LotSchema);

@@ -34,6 +34,7 @@ import {OrganisationFaqComponent} from './organisation-faq/organisation-faq.comp
 import {MatInputModule} from '@angular/material/input';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {AdminComponent} from './admin/admin.component';
+import {AdminLotComponent} from './admin/admin-lot/admin-lot.component';
 
 registerLocaleData(localeEn, 'en', localeEnExtra);
 
@@ -53,7 +54,8 @@ registerLocaleData(localeEn, 'en', localeEnExtra);
         NotificationDialogComponent,
         OrganisationFaqComponent,
         TermsAndConditionsComponent,
-        AdminComponent
+        AdminComponent,
+        AdminLotComponent
     ],
     entryComponents: [BidDialogComponent, NotificationDialogComponent],
     imports: [
