@@ -2,95 +2,99 @@
 
 <div class="background"></div>
 
-<div fxLayout="column" class="headerSection" [ngStyle]="{ 'background-color': Organisation.primaryColour}">
-    <div class="orgLogo">
-        <img src="{{Organisation.logoUrl}}"/>
-    </div>
+<div class="content">
 
-    <h1>
-        {{title}}
-    </h1>
-
-    <h2>
-        {{Organisation.subtitle}}
-    </h2>
-</div>
-<div class="bannerContainer">    
-    <div class="banner" [ngStyle]="{ 'background-image': 'url(' + Organisation.bannerUrl + ')'}">
-        <div class="bannerText">
-            {{Organisation.bannerText}}
+    <div fxLayout="column" class="headerSection" [ngStyle]="{ 'background-color': Organisation.primaryColour}">
+        <div class="orgLogo">
+            <img src="{{Organisation.logoUrl}}"/>
         </div>
-        <div class="lotsButtonContainer">
-            <button mat-raised-button class="lotsButton" routerLink="/{{organisationId}}/lots">
-                View the auction lots
-            </button>
+
+        <h1>
+            {{title}}
+        </h1>
+
+        <h2>
+            {{Organisation.subtitle}}
+        </h2>
+    </div>
+    <div class="bannerContainer">    
+        <div class="banner" [ngStyle]="{ 'background-image': 'url(' + Organisation.bannerUrl + ')'}">
+            <div class="bannerText">
+                {{Organisation.bannerText}}
+            </div>
+            <div class="lotsButtonContainer">
+                <button mat-raised-button class="lotsButton" routerLink="/{{organisationId}}/lots">
+                    View the auction lots
+                </button>
+            </div>
         </div>
     </div>
-</div>
-    
+        
 
-<div class="introductionContainer" fxLayout="row" fxLayoutGap="20px">
-    <div class="introductionText">
-        {{Organisation.introText}}
-    </div>
+    <div class="introductionContainer" fxLayout="row" fxLayoutGap="20px">
+        <div class="introductionText">
+            {{Organisation.introText}}
+        </div>
 
-
-</div>
-
-<div fxLayout="row" fxLayoutGap="20px grid" class="infoCardContainerRow">
-
-    <div fxLayout="column" fxLayoutGap="20px" fxFlexOrder="0" class="infoCardColumn1">
-
-        <mat-card class="infoCard">
-            <mat-card-header>
-                <div mat-card-avatar>
-                    <mat-icon>alarm</mat-icon>
-                </div>
-                <mat-card-title>When</mat-card-title>
-                <mat-card-subtitle>Ends {{Organisation.closingDate | date:'h:mm a, d LLLL y'}}</mat-card-subtitle>
-            </mat-card-header>
-        </mat-card>
-
-        <mat-card class="infoCard">
-            <mat-card-header>
-                <div mat-card-avatar>
-                        <mat-icon>email</mat-icon>
-                </div>
-                <mat-card-title>Contact</mat-card-title>
-                <mat-card-subtitle>{{Organisation.contactEmail}}</mat-card-subtitle>
-            </mat-card-header>
-        </mat-card>
-
-        <mat-card class="infoCard">
-            <mat-card-header>
-                <div mat-card-avatar>
-                        <mat-icon>language</mat-icon>
-                </div>
-                <mat-card-title>Website</mat-card-title>
-                <mat-card-subtitle><a href="{{Organisation.websiteUrl}}" target="_blank">{{Organisation.websiteUrl}}</a></mat-card-subtitle>
-            </mat-card-header>
-        </mat-card>
 
     </div>
 
-    <div fxLayout="column" fxFlexOrder="1" class="infoCardColumn2">
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" class="infoCardContainerRow">
 
-        <mat-card class="infoCard" style="height:270px;">
-            <mat-card-header>
-                <div mat-card-avatar>
-                        <mat-icon>place</mat-icon>
-                </div>
-                <mat-card-title>Where</mat-card-title>
-                <mat-card-subtitle>Some Address</mat-card-subtitle>
-            </mat-card-header>
-        </mat-card>
+        <div fxLayout="column" fxLayoutGap="20px" fxFlex="1 1 0" class="infoCardColumn1">
+
+            <mat-card class="infoCard">
+                <mat-card-header>
+                    <div mat-card-avatar>
+                        <mat-icon>alarm</mat-icon>
+                    </div>
+                    <mat-card-title>When</mat-card-title>
+                    <mat-card-subtitle>Ends {{Organisation.closingDate | date:'h:mm a, d LLLL y'}}</mat-card-subtitle>
+                </mat-card-header>
+            </mat-card>
+
+            <mat-card class="infoCard">
+                <mat-card-header>
+                    <div mat-card-avatar>
+                            <mat-icon>email</mat-icon>
+                    </div>
+                    <mat-card-title>Contact</mat-card-title>
+                    <mat-card-subtitle>{{Organisation.contactEmail}}</mat-card-subtitle>
+                </mat-card-header>
+            </mat-card>
+
+            <mat-card class="infoCard">
+                <mat-card-header>
+                    <div mat-card-avatar>
+                            <mat-icon>language</mat-icon>
+                    </div>
+                    <mat-card-title>Website</mat-card-title>
+                    <mat-card-subtitle><a href="{{Organisation.websiteUrl}}" target="_blank">{{Organisation.websiteUrl}}</a></mat-card-subtitle>
+                </mat-card-header>
+            </mat-card>
+
+        </div>
+
+        <div fxLayout="column" fxFlex="1 1 0" class="infoCardColumn2">
+
+            <mat-card class="infoCard" style="height:270px;">
+                <mat-card-header>
+                    <div mat-card-avatar>
+                            <mat-icon>place</mat-icon>
+                    </div>
+                    <mat-card-title>Where</mat-card-title>
+                    <mat-card-subtitle>Some Address</mat-card-subtitle>
+                </mat-card-header>
+            </mat-card>
+
+        </div>
 
     </div>
 
-</div>
+    <div class="descriptionContainer">
+        <div class="descriptionHtml" [innerHtml]="Organisation.descriptionHtml"></div>
+    </div>
 
-<div class="descriptionContainer">
-    <div class="descriptionHtml" [innerHtml]="Organisation.descriptionHtml"></div>
-</div>
+    <app-footer [colour]="Organisation.primaryColour"></app-footer>
 
-<app-footer [colour]="Organisation.primaryColour"></app-footer>
+</div>

@@ -2,23 +2,27 @@
 
 <div class="background"></div>
 
-<div class="pageHeader" [ngStyle]="{ 'background-color': Organisation.primaryColour}">
-    <span>Frequently Asked Questions</span>
+<div class="content">
+
+    <div class="pageHeader" [ngStyle]="{ 'background-color': Organisation.primaryColour}">
+        <span>Frequently Asked Questions</span>
+    </div>
+
+    <div class='accordionContainer'>
+
+        <mat-accordion>
+            <mat-expansion-panel *ngFor="let faq of Organisation.faqs">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{faq.question}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+                <div class="answerHTML" [innerHTML]="faq.answer"></div>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+    </div>
+
+    <app-footer [colour]="Organisation.primaryColour"></app-footer>
+
 </div>
-
-<div class='accordionContainer'>
-
-    <mat-accordion>
-        <mat-expansion-panel *ngFor="let faq of Organisation.faqs">
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                {{faq.question}}
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-            <div class="answerHTML" [innerHTML]="faq.answer"></div>
-        </mat-expansion-panel>
-    </mat-accordion>
-
-</div>
-
-<app-footer [colour]="Organisation.primaryColour"></app-footer>

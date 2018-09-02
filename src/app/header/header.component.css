@@ -1,6 +1,7 @@
 .app-toolbar {
-    position: sticky;
-    position: -webkit-sticky; 
+    /* position: sticky;
+    position: -webkit-sticky;  */
+    position: fixed;
     top: 0; 
     z-index: 1000;
     height:56px;
@@ -8,6 +9,12 @@
 
 .app-toolbar img{
     padding-top: 7px;
+}
+
+.app-toolbar button{
+    position: fixed;
+    right: 16px;
+    color:white;
 }
 
 .quicklinks-container {

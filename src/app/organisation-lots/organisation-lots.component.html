@@ -2,23 +2,35 @@
 
 <div class="background"></div>
 
-<mat-sidenav-container class="example-container">
+<mat-sidenav-container class="fullscreenContainer" fullscreen>
 
-    <mat-sidenav mode="side" opened class="sideNav">
-      <div class="nav">
+    <mat-sidenav mode="side" opened class="sideNav" #sidenav>
+    <div class="nav">
         <app-auction-nav [organisationId]="organisationId"></app-auction-nav>
-      </div>
+    </div>
     </mat-sidenav>
 
-    <mat-sidenav-content>
+    <mat-sidenav-content class="page-wrap">
+
         <h1 [ngStyle]="{ 'background-color': Organisation.primaryColour}">
+            <!-- <button type="button" mat-icon-button (click)="sidenav.open()" title="Open sidenav">
+                <mat-icon>menu</mat-icon>
+            </button> -->
             {{ Organisation.title }} Auction
         </h1>
-      <div class="lots">
-          <app-lot-list [organisationId]="organisationId"></app-lot-list>
-      </div>
+
+        <div class="lots">
+            <app-lot-list [organisationId]="organisationId"></app-lot-list>
+        </div>
+
+        <app-footer [colour]="Organisation.primaryColour"></app-footer>
+
     </mat-sidenav-content>
+
     
+
 </mat-sidenav-container>
 
-<app-footer [colour]="Organisation.primaryColour"></app-footer>
+
+
+

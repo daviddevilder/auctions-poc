@@ -1,25 +1,26 @@
 <div class="footer" [ngStyle]="{ 'background-color': colour }">
+  
+  <!-- lt-md = 'littler than - medium' or smaller than 959px -->
+  <div class="footerRow1" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-between flex-start" fxLayoutAlign.lt-md="center center">
 
-  <div class="footer-row">
-
-    <div class="footer-email">
-      <div>
+    <div class="contactDetails" fxFlexOrder.lt-md="3">
+      <div class="email">
         <a href="mailto:info@goinggone.io">
-          <i class="fa fa-envelope"></i>
-          info@goinggone.io
+          <mat-icon>email</mat-icon>
+          <span>info@goinggone.io</span>
         </a>
       </div>
 
       <div>
         <a href="http://goinggone.io">
-          <i class="fa fa-globe"></i>
-          www.goinggone.io
+          <mat-icon>language</mat-icon>
+          <span>www.goinggone.io</span>
         </a>
       </div>
     </div>
 
-    <div class="footer-logo">
-      <label>Powered by:</label>
+    <div class="logo" fxFlexOrder.lt-md="1">
+      <label fxHide.lt-md="true">Powered by:</label>
       <a routerLink="/home">
         <img src="../../assets/images/gg_small_logo.png"/>
       </a>
@@ -27,7 +28,7 @@
       <p>If you would like to use the Going Gone system at your next event, please don't hesitate to get in touch at info@goinggone.io.</p>
     </div>
 
-    <div class="footer-social">
+    <div class="social" fxFlexOrder.lt-md="2">
       <ul>
         <li>
           <a href="https://www.facebook.com/goinggonetechnology">
@@ -35,7 +36,7 @@
           </a>
         </li>
 
-        <li>
+        <li class="centerIcon">
           <a href="https://www.instagram.com/goinggonetechnology">
             <i class="fa fa-instagram"></i>
           </a>
@@ -51,20 +52,20 @@
 
   </div>
 
-  <div class="footer-row">
-    <div class="footer-terms">
+  <div class="footerRow2" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-between flex-start" fxLayoutAlign.lt-md="center center">
+    <div class="termsConditions">
       <a routerLink="/terms-and-conditions">
-        Terms &  Conditions
+        <span>Terms &  Conditions</span>
       </a>
     </div>
 
-    <div class="footer-version">
-      Version 2.0.0
+    <div class="version">
+      <span>Version 2.0.0</span>
     </div>
 
-    <div class="footer-copyright">
+    <div class="copyright">
       <div>
-        © Copyright 2018. Going Gone.
+        <span>© Copyright 2018. Going Gone.</span>
       </div>
     </div>
   </div>

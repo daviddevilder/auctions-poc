@@ -9,6 +9,11 @@
     z-index: -1;
 }
 
+.content{
+    position: relative;
+    top: 56px;
+}
+
 .headerSection {
     height: 350px;
     background-color: rgb(0, 43, 136);
@@ -89,23 +94,27 @@
     max-width: 980px;
     margin: 20px auto 20px !important;
     padding: 0px 10px 0px 10px;
-    flex-flow: row wrap;
+    /* flex-flow: row wrap; */
 }
 
 .infoCardColumn1 {
-    flex-grow: 1;
-    flex-basis: 0;    
+    /* flex-grow: 1; */
+    /* flex-basis: 0;     */
 }
 
 .infoCardColumn2 {
-    flex-grow: 1;
-    flex-basis: 0;
+    /* flex-grow: 1; */
+    /* flex-basis: 0; */
     
+}
+
+.infoCardCoumn2 .infoCard{
+    align-items: stretch;
 }
 
 mat-card.infoCard {
     padding: 10px !important;
-    min-width: 350px;
+    /* min-width: 350px; */
 }
 
 .infoCard mat-card-header  {

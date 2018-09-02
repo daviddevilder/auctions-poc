@@ -9,6 +9,11 @@
     z-index: -1;
 }
 
+.content{
+    position: relative;
+    top: 56px;
+}
+
 .pageHeader {
     color: white;
     margin: 0 0 0 0px;
@@ -20,6 +25,7 @@
     text-align: left;
     font-size: 20px;
     margin-bottom: 60px;
+
 }
 
 .pageHeader a {

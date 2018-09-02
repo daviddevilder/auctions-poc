@@ -1,140 +1,100 @@
 .footer {
     color: white;
-    padding-top: 30px;
-    padding-bottom: 0px;
+    padding: 0 16px 0 16px;
     z-index: 1000;
     font-weight: 200;
-    margin-top: 30px;
-    clear: both;
+    margin-top: 60px;
 }
 
-.footer-row {
-    margin: 0px auto;
-    width: 100%;
-    border-bottom: 1px white solid;
-    overflow: hidden;
+.footerRow1{
+    border-bottom: 1px white solid;      
 }
 
-.footer-email {
-    float: left;
-    text-align: center;
-    width: 33%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 140px;
+.contactDetails{
+    min-width: 150px; 
+    padding: 16px 0 16px 0;
 }
 
-.footer-email a {
+.contactDetails a{
     text-decoration: none;
     color: white;
     font-size: 14px;
-    margin: 0px 0px 20px 20px;
     display: block;
-    text-align: left;
+    text-align: center;  
 }
 
-.footer-email i {
-    margin: 0 12px;
+.contactDetails .email{
+    padding-bottom:10px
 }
 
-.footer-logo {
-    float: left;
-    text-align: center;
-    width: 34%;
-    height: 140px;
-}
-
-.footer-logo label {
-    font-size: 12px;
-    top: -18px;
+.contactDetails span{
     position: relative;
+    top: -6px;
+    padding-left: 5px;
 }
 
-.footer-logo img {
-    margin: 6px 10px;
-    width: auto;
-}
-
-.footer-logo p {
-    font-size: 12px;
-    line-height: 16px;
-}
-
-.footer-social {
+.logo{
     float: left;
     text-align: center;
-    width: 33%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 140px;
+    width: 300px;
+    padding: 16px 0 16px 0;
 }
 
-.footer-social ul {
+.logo label{
+    position: relative;
+    top: -13px;
+    padding-right: 10px;
+}
+
+.social{
+    min-width: 150px;
+    text-align: center; 
+    padding: 16px 0 16px 0;
+}
+
+.social ul {
     list-style: none;
-    text-align: right;
-    margin-right: 30px;
+    padding-left: 0px;
+    margin: 0px;
 }
 
-.footer-social ul li {
+.social ul li {
     display: inline-block;
-    width: 50px;
     font-size: 20px;
+    
 }
 
-.footer-social a {
+.social a {
     text-decoration: none;
     color: white;
 }
 
-.footer-address {
-    text-align: center;
-    font-size: 18px;
-    padding: 100px 0;
+.social .centerIcon{
+    padding: 0 20px 0 20px;
 }
 
-.footer-terms {
-    float: left;
+.termsConditions {
+    min-width: 150px;
     text-align: center;
-    width: 33%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 80px;
+    padding: 16px 0 16px 0;
 }
 
-.footer-terms a {
+.termsConditions a {
     color: white;
-    text-align: left;
     text-decoration: none;
     font-size: 12px;
-    margin-left: 30px;
 }
 
-.footer-version {
-    float: left;
+.version {
+    width: 300px;
     text-align: center;
-    width: 34%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 80px;
     font-size: 12px;
+    padding: 16px 0 16px 0;
 }
 
-.footer-copyright {
-    float: left;
+.copyright {
+    min-width:150px;
     text-align: center;
-    width: 33%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 80px;
     font-size: 12px;
-}
-
-.footer-copyright div {
-    text-align: right;
-    margin-right: 30px;
+    padding: 16px 0 16px 0;
 }
