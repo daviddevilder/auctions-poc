@@ -8,9 +8,9 @@
         <span>{{ lot.title }}</span>
     </div>
 
-    <div fxLayout="row" class="containerRow firstRow" fxLayoutGap="20px grid">
+    <div fxLayout="row" fxLayout.lt-md="column" class="containerRow firstRow" >
 
-        <div class="lotContentContainer">
+        <div class="lotContentContainer" fxFlex="1 1 40%" fxFlex.lt-md="1 1 50%">
             <mat-card class="lotDetailsCard">
                 <div class='lotPricing firstRow'>
                     <div class='label'>Reserve: </div>
@@ -24,15 +24,15 @@
             </mat-card>
         </div>
 
-        <div class="lotContentContainer">
+        <div class="lotContentContainer" fxFlex="1 1 60%" fxFlex.lt-md="1 1 50%">
             <mat-card class="lotDetailsCard inputCard" fxLayout="row wrap" fxLayoutGap="20px">
                     <mat-form-field>
                         <input matInput [(ngModel)]="amount" type="number" placeholder="My Bid (minimum £{{lot.reservePrice}})" autofocus>
                         <mat-hint>Currency: GBP</mat-hint>
                     </mat-form-field>
                     
-                    <button mat-raised-button class="bidButton" [disabled]="amount < lot.reservePrice || lot.winningBidId" (click)="openBidPopup()">
-                        <mat-icon>gavel</mat-icon><span>Place Bid</span>
+                    <button mat-raised-button class="bidButton" [disabled]="amount < lot.reservePrice" (click)="openBidPopup()" ngStyle.lt-sm="margin-top: 10px;" >
+                        <mat-icon>gavel</mat-icon><span>PLACE BID</span>
                     </button>
 
             </mat-card>
@@ -40,12 +40,12 @@
 
     </div>
 
-    <div fxLayout="row" class="containerRow secondRow" fxLayoutGap="20px grid">
-        <div class="lotContentContainer">
+    <div fxLayout="row" fxLayout.lt-md="column" class="containerRow secondRow">
+        <div class="lotContentContainer" fxFlex="1 1 40%" fxFlex.lt-md="1 1 50%" fxLayoutAlign="start start" fxLayoutAlign.lt-md="center start">
                 <img src="{{lot.imageUri}}"/>
         </div> 
         
-        <div class="lotContentContainer" [innerHTML]="lot.description">
+        <div class="lotContentContainer" fxFlex="1 1 60%" fxFlex.lt-md="1 1 50%" [innerHTML]="lot.description">
 
         </div>
     

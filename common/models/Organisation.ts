@@ -5,6 +5,7 @@ export class Organisation {
                 public subtitle: string,
                 public primaryColour: string,
                 public logoUrl: string,
+                public address: string,
                 public websiteUrl: string,
                 public contactEmail: string,
                 public contactPhone: string,

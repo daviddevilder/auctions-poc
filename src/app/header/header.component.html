@@ -7,7 +7,7 @@
     <div class="quicklinks-container" fxHide.xs="true">
         <ul>
             <li>
-                <a routerLink="/{{organisationId}}">Home</a>
+                <a routerLink="/{{organisationId}}">Overview</a>
             </li>
             <li>
                 <a routerLink="/{{organisationId}}/lots">Auction</a>
@@ -18,11 +18,14 @@
         </ul>
     </div>
 
-    <!-- <div class="hamburgerIcon" fxShow="false" fxShow.xs="true">
-        <mat-icon>menu</mat-icon>
-    </div> -->
-
-    <button type="button" mat-icon-button (click)="sidenav.open()" title="Open sidenav" fxShow="false" fxShow.xs="true">
+    <button type="button" mat-icon-button [matMenuTriggerFor]="menu" fxShow="false" fxShow.xs="true">
         <mat-icon>menu</mat-icon>
     </button>
+
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/{{organisationId}}">Overview</button>
+        <button mat-menu-item routerLink="/{{organisationId}}/lots">Auction</button>
+        <button mat-menu-item routerLink="/{{organisationId}}/faq">FAQ</button>
+    </mat-menu>
+
 </mat-toolbar>

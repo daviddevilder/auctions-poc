@@ -4,6 +4,7 @@ export interface IOrganisation {
     subtitle?: string;
     primaryColour?: string;
     logoUrl?: string;
+    address?: string;
     websiteUrl?: string;
     contactEmail?: string;
     contactPhone?: string;

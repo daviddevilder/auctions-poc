@@ -44,12 +44,13 @@ var Lot = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Organisation", function() { return Organisation; });
 var Organisation = /** @class */ (function () {
-    function Organisation(organisationId, title, subtitle, primaryColour, logoUrl, websiteUrl, contactEmail, contactPhone, closingDate, bannerUrl, bannerText, introText, descriptionHtml, faqs) {
+    function Organisation(organisationId, title, subtitle, primaryColour, logoUrl, address, websiteUrl, contactEmail, contactPhone, closingDate, bannerUrl, bannerText, introText, descriptionHtml, faqs) {
         this.organisationId = organisationId;
         this.title = title;
         this.subtitle = subtitle;
         this.primaryColour = primaryColour;
         this.logoUrl = logoUrl;
+        this.address = address;
         this.websiteUrl = websiteUrl;
         this.contactEmail = contactEmail;
         this.contactPhone = contactPhone;
@@ -152,7 +153,7 @@ var AdminLotComponent = /** @class */ (function () {
         this.lotId = '';
         this.organisationId = '';
         this.lot = new _common_models_Lot__WEBPACK_IMPORTED_MODULE_3__["Lot"]('', '', '', '', '', '', 0, 0, [], 0, 0, [], '');
-        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_2__["Organisation"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
+        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_2__["Organisation"]('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
         this.isAcceptInProgress = false;
         this.winningBid = null;
         this.route.params.subscribe(function (params) {
@@ -399,12 +400,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_expansion__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! @angular/material/expansion */ "./node_modules/@angular/material/esm5/expansion.es5.js");
 /* harmony import */ var _admin_admin_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./admin/admin.component */ "./src/app/admin/admin.component.ts");
 /* harmony import */ var _admin_admin_lot_admin_lot_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./admin/admin-lot/admin-lot.component */ "./src/app/admin/admin-lot/admin-lot.component.ts");
+/* harmony import */ var _angular_material_menu__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! @angular/material/menu */ "./node_modules/@angular/material/esm5/menu.es5.js");
+/* harmony import */ var _agm_core__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! @agm/core */ "./node_modules/@agm/core/index.js");
+/* harmony import */ var _map_viewer_map_viewer_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./map-viewer/map-viewer.component */ "./src/app/map-viewer/map-viewer.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
 
 
 
@@ -453,6 +460,7 @@ var AppModule = /** @class */ (function () {
                 _organisation_list_organisation_list_component__WEBPACK_IMPORTED_MODULE_11__["OrganisationListComponent"],
                 _home_home_component__WEBPACK_IMPORTED_MODULE_10__["HomeComponent"],
                 _organisation_organisation_component__WEBPACK_IMPORTED_MODULE_13__["OrganisationComponent"],
+                _map_viewer_map_viewer_component__WEBPACK_IMPORTED_MODULE_37__["MapViewerComponent"],
                 _lot_details_lot_details_component__WEBPACK_IMPORTED_MODULE_20__["LotDetailsComponent"],
                 _lot_list_lot_list_component__WEBPACK_IMPORTED_MODULE_14__["LotListComponent"],
                 _organisation_lots_organisation_lots_component__WEBPACK_IMPORTED_MODULE_18__["OrganisationLotsComponent"],
@@ -479,7 +487,11 @@ var AppModule = /** @class */ (function () {
                 _angular_material_icon__WEBPACK_IMPORTED_MODULE_27__["MatIconModule"],
                 _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_28__["MatSidenavModule"],
                 _angular_material_input__WEBPACK_IMPORTED_MODULE_31__["MatInputModule"],
-                _angular_material_expansion__WEBPACK_IMPORTED_MODULE_32__["MatExpansionModule"]
+                _angular_material_expansion__WEBPACK_IMPORTED_MODULE_32__["MatExpansionModule"],
+                _angular_material_menu__WEBPACK_IMPORTED_MODULE_35__["MatMenuModule"],
+                _agm_core__WEBPACK_IMPORTED_MODULE_36__["AgmCoreModule"].forRoot({
+                    apiKey: 'AIzaSyAJRYSde0Y5_YiQrUhUzHtWvrODL0Zv2jQ'
+                })
             ],
             providers: [_services_lot_service__WEBPACK_IMPORTED_MODULE_15__["LotService"], _services_organisation_service__WEBPACK_IMPORTED_MODULE_12__["OrganisationService"], { provide: _angular_common_locales_en__WEBPACK_IMPORTED_MODULE_1___default.a, useValue: 'en' }],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
@@ -574,7 +586,7 @@ var AuctionNavComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".form-group {\n    margin-top: 16px;\n}\n\ninput#email {\n    display: block;\n    font-size: 18px;\n    padding: 10px;\n    border-radius: 6px;\n    width: 95%;\n    margin: 16px auto 10px;\n}\n\n.validationErrorText {\n    color: red;\n    font-size: 12px;\n    font-style: italic;\n}\n\ninput#amount {\n    display: block;\n    border: none;\n    font-size: 26px;\n    padding: 10px;\n}\n\n.confirmButton {\n    background: #4dcc27;\n    color: #fff;\n}\n\n.StripeElement {\n    margin: 1rem 0 1rem;\n    background-color: white;\n    padding: 8px 12px;\n    border-radius: 4px;\n    border: 1px solid transparent;\n    box-shadow: 0 1px 3px 0 #e6ebf1;\n    transition: box-shadow 150ms ease;\n}\n\n.StripeElement--focus {\n    box-shadow: 0 1px 3px 0 #cfd7df;\n}\n\n.StripeElement--invalid {\n    border-color: #fa755a;\n}\n\n.StripeElement--webkit-autofill {\n    background-color: #fefde5 !important;\n}"
+module.exports = ".checkout mat-form-field {\r\n    font-size: 18px;\r\n    width: 100%;\r\n}\r\n\r\n.checkout .introduction{\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.form-group {\r\n    margin-top: 16px;\r\n}\r\n\r\n.confirmButton {\r\n    background: #4dcc27;\r\n    color: #fff;\r\n}\r\n\r\n.StripeElement {\r\n    margin: 1rem 0 1rem;\r\n    background-color: white;\r\n    padding: 8px 12px;\r\n    border-radius: 4px;\r\n    border: 1px solid transparent;\r\n    box-shadow: 0 1px 3px 0 #e6ebf1;\r\n    transition: box-shadow 150ms ease;\r\n}\r\n\r\n.StripeElement--focus {\r\n    box-shadow: 0 1px 3px 0 #cfd7df;\r\n}\r\n\r\n.StripeElement--invalid {\r\n    border-color: #fa755a;\r\n}\r\n\r\n.StripeElement--webkit-autofill {\r\n    background-color: #fefde5 !important;\r\n}"
 
 /***/ }),
 
@@ -585,7 +597,7 @@ module.exports = ".form-group {\n    margin-top: 16px;\n}\n\ninput#email {\n    
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <h2 mat-dialog-title>Confirm your bid</h2>\n    <hr>\n    <form #checkout=\"ngForm\" (ngSubmit)=\"onSubmit(checkout)\" class=\"checkout\">\n\n        <mat-dialog-content>\n            In order to confirm your bid, please enter your details below.\n            Your card will be pre-authorised and will ONLY be charged if you win the auction.\n\n            <div class=\"form-group\">\n                <label for=\"amount\">My Bid</label>\n                <input type=\"text\" class=\"form-control\" id=\"amount\" value=\"£{{data.amount}}\" readonly>\n            </div>\n\n            <div class=\"form-group\">\n                <label for=\"email\">Email Address*</label>\n                <input type=\"email\" class=\"form-control\" [(ngModel)]=\"emailAddress\" id=\"email\" name=\"email\"\n                       #email=\"ngModel\"\n                       required pattern=\"^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$\"/>\n                <div class=\"validationErrorText\" *ngIf=\"email.invalid && (email.dirty || email.touched)\">\n                    <div *ngIf=\"email.errors.required\">\n                        Email address is required\n                    </div>\n\n                    <div *ngIf=\"email.errors && email.errors.pattern\">\n                        Email address is invalid\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"form-group\">\n                <label for=\"card-info\">Card Info</label>\n                <div id=\"card-info\" #cardInfo></div>\n\n                <div id=\"card-errors\" class=\"validationErrorText\" role=\"alert\" *ngIf=\"error\">{{ error }}</div>\n            </div>\n        </mat-dialog-content>\n\n        <hr>\n\n        <mat-dialog-actions>\n            <button mat-raised-button (click)=\"onCloseCancel()\">CANCEL</button>&nbsp;\n            <button mat-raised-button class=\"confirmButton\" type=\"submit\"\n                    [disabled]=\"!checkout.valid || isBidInProgress\">Bid £{{data.amount}}\n            </button>\n        </mat-dialog-actions>\n\n    </form>\n\n\n</div>"
+module.exports = "<div>\r\n    <h2 mat-dialog-title>Confirm your bid</h2>\r\n\r\n    <form #checkout=\"ngForm\" (ngSubmit)=\"onSubmit(checkout)\" class=\"checkout\">\r\n\r\n        <mat-dialog-content>\r\n            <div class='introduction'>\r\n                <span>In order to confirm your bid, please enter your details below.\r\n                Your card will be pre-authorised and will ONLY be charged if you win the auction.</span>\r\n            </div>\r\n\r\n            <mat-form-field>\r\n                <input matInput placeholder=\"My Bid\" value=\"£{{data.amount}}\" readonly>\r\n            </mat-form-field>\r\n\r\n            <mat-form-field>\r\n                <input matInput placeholder=\"Full Name\">\r\n            </mat-form-field>\r\n\r\n            <mat-form-field>\r\n                <input matInput placeholder=\"Email\" [(ngModel)]=\"emailAddress\" >\r\n                <!-- <mat-error *ngIf=\"emailFormControl.hasError('email') && !emailFormControl.hasError('required')\">\r\n                    Please enter a valid email address\r\n                </mat-error> -->\r\n            </mat-form-field>\r\n\r\n            <mat-form-field>\r\n                <input matInput placeholder=\"Telephone\">\r\n            </mat-form-field>\r\n\r\n\r\n            <!-- <div class=\"form-group\">\r\n                <label for=\"amount\">My Bid</label>\r\n                <input type=\"text\" class=\"form-control\" id=\"amount\" value=\"£{{data.amount}}\" readonly>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n                <label for=\"email\">Email Address*</label>\r\n                <input type=\"email\" class=\"form-control\" [(ngModel)]=\"emailAddress\" id=\"email\" name=\"email\"\r\n                       #email=\"ngModel\"\r\n                       required pattern=\"^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$\"/>\r\n                <div class=\"validationErrorText\" *ngIf=\"email.invalid && (email.dirty || email.touched)\">\r\n                    <div *ngIf=\"email.errors.required\">\r\n                        Email address is required\r\n                    </div>\r\n\r\n                    <div *ngIf=\"email.errors && email.errors.pattern\">\r\n                        Email address is invalid\r\n                    </div>\r\n                </div>\r\n            </div> -->\r\n\r\n            <div class=\"form-group\">\r\n                <label for=\"card-info\">Card Details</label>\r\n                <div id=\"card-info\" #cardInfo></div>\r\n\r\n                <div id=\"card-errors\" class=\"validationErrorText\" role=\"alert\" *ngIf=\"error\">{{ error }}</div>\r\n            </div>\r\n        </mat-dialog-content>\r\n\r\n        <mat-dialog-actions align=\"end\">\r\n            <button mat-raised-button (click)=\"onCloseCancel()\">CANCEL</button>\r\n            <button mat-raised-button class=\"confirmButton\" type=\"submit\"\r\n                    [disabled]=\"!checkout.valid || isBidInProgress\">CONFIRM BID\r\n            </button>\r\n        </mat-dialog-actions>\r\n\r\n    </form>\r\n\r\n\r\n</div>"
 
 /***/ }),
 
@@ -816,7 +828,7 @@ module.exports = ".app-toolbar {\r\n    /* position: sticky;\r\n    position: -w
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar [ngStyle]=\"{ 'background-color': colour }\" class='app-toolbar mat-elevation-z4'>\r\n    <div class=\"logo-container\">\r\n        <a href=\"http://goinggone.io\">\r\n            <img src=\"../../assets/images/gg_small_logo.png\"/>\r\n        </a>\r\n    </div>\r\n    <div class=\"quicklinks-container\" fxHide.xs=\"true\">\r\n        <ul>\r\n            <li>\r\n                <a routerLink=\"/{{organisationId}}\">Home</a>\r\n            </li>\r\n            <li>\r\n                <a routerLink=\"/{{organisationId}}/lots\">Auction</a>\r\n            </li>\r\n            <li>\r\n                <a routerLink=\"/{{organisationId}}/faq\">FAQ</a>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n\r\n    <!-- <div class=\"hamburgerIcon\" fxShow=\"false\" fxShow.xs=\"true\">\r\n        <mat-icon>menu</mat-icon>\r\n    </div> -->\r\n\r\n    <button type=\"button\" mat-icon-button (click)=\"sidenav.open()\" title=\"Open sidenav\" fxShow=\"false\" fxShow.xs=\"true\">\r\n        <mat-icon>menu</mat-icon>\r\n    </button>\r\n</mat-toolbar>"
+module.exports = "<mat-toolbar [ngStyle]=\"{ 'background-color': colour }\" class='app-toolbar mat-elevation-z4'>\r\n    <div class=\"logo-container\">\r\n        <a href=\"http://goinggone.io\">\r\n            <img src=\"../../assets/images/gg_small_logo.png\"/>\r\n        </a>\r\n    </div>\r\n    <div class=\"quicklinks-container\" fxHide.xs=\"true\">\r\n        <ul>\r\n            <li>\r\n                <a routerLink=\"/{{organisationId}}\">Overview</a>\r\n            </li>\r\n            <li>\r\n                <a routerLink=\"/{{organisationId}}/lots\">Auction</a>\r\n            </li>\r\n            <li>\r\n                <a routerLink=\"/{{organisationId}}/faq\">FAQ</a>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n\r\n    <button type=\"button\" mat-icon-button [matMenuTriggerFor]=\"menu\" fxShow=\"false\" fxShow.xs=\"true\">\r\n        <mat-icon>menu</mat-icon>\r\n    </button>\r\n\r\n    <mat-menu #menu=\"matMenu\">\r\n        <button mat-menu-item routerLink=\"/{{organisationId}}\">Overview</button>\r\n        <button mat-menu-item routerLink=\"/{{organisationId}}/lots\">Auction</button>\r\n        <button mat-menu-item routerLink=\"/{{organisationId}}/faq\">FAQ</button>\r\n    </mat-menu>\r\n\r\n</mat-toolbar>"
 
 /***/ }),
 
@@ -939,7 +951,7 @@ var HomeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n    background-size: cover;\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: -1;\r\n}\r\n\r\n.content{\r\n    position: relative;\r\n    top: 56px;\r\n}\r\n\r\n.pageHeader {\r\n    color: white;\r\n    margin: 0 0 0 0px;\r\n    padding: 20px;\r\n    background-color: rgb(0, 43, 136);\r\n    opacity: 0.9;\r\n    width: auto;\r\n    font-weight: normal;\r\n    text-align: left;\r\n    font-size: 20px;\r\n    margin-bottom: 60px;\r\n\r\n}\r\n\r\n.pageHeader a {\r\n    color: white;\r\n}\r\n\r\n.pageHeader mat-icon {\r\n    padding-right: 10px;\r\n    position: relative;\r\n    top: 5px;\r\n    \r\n}\r\n\r\nmat-card.lotDetailsCard{\r\n    padding: 12px;\r\n}\r\n\r\nmat-card.lotDetailsCard.inputCard{\r\n    height: 100%;\r\n}\r\n\r\n.lotDetailsCard .lotPricing {\r\n    margin: 10px auto;\r\n    text-align: left;\r\n}\r\n\r\n.lotDetailsCard .lotPricing div {\r\n    display: inline-block;\r\n    width: 100px;\r\n    font-size: 18px;\r\n}\r\n\r\n.lotDetailsCard mat-form-field {\r\n    flex-grow: 1;\r\n}\r\n\r\n.lotDetailsCard button {\r\n    flex-grow: 1;\r\n}\r\n\r\n.containerRow{\r\n    max-width: 980px;\r\n    margin: 20px auto 20px !important;\r\n    padding: 0px 10px 0px 10px;\r\n    flex-flow: row wrap;\r\n    justify-content:center;\r\n}\r\n\r\n.containerRow.secondRow{\r\n    position: relative;\r\n    top: -20px;\r\n}\r\n\r\n.lotContentContainer{\r\n    flex: 1 0 0;\r\n    padding: 12px;\r\n    align-items: center;\r\n    min-width: 350px;\r\n}\r\n\r\n.lotContentContainer .lotDetailsCard{\r\n    align-items: center;\r\n}\r\n\r\n.lotContentContainer img {\r\n    width: 100%;\r\n}\r\n\r\n.bidButton {\r\n    background: #4dcc27;\r\n    color: #fff;\r\n    font-size: 18px;\r\n    padding: 5px;\r\n}\r\n\r\n.bidButton mat-icon {\r\n    padding-right: 8px;\r\n}"
+module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n    background-size: cover;\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: -1;\r\n}\r\n\r\n.content{\r\n    position: relative;\r\n    top: 56px;\r\n}\r\n\r\n.pageHeader {\r\n    color: white;\r\n    margin: 0 0 0 0px;\r\n    padding: 20px;\r\n    background-color: rgb(0, 43, 136);\r\n    opacity: 0.9;\r\n    width: auto;\r\n    font-weight: normal;\r\n    text-align: left;\r\n    font-size: 20px;\r\n    margin-bottom: 60px;\r\n\r\n}\r\n\r\n.pageHeader a {\r\n    color: white;\r\n}\r\n\r\n.pageHeader mat-icon {\r\n    padding-right: 10px;\r\n    position: relative;\r\n    top: 5px;\r\n    \r\n}\r\n\r\nmat-card.lotDetailsCard{\r\n    padding: 12px;\r\n}\r\n\r\nmat-card.lotDetailsCard.inputCard{\r\n    height: 100%;\r\n}\r\n\r\n.lotDetailsCard .lotPricing {\r\n    margin: 10px auto;\r\n    text-align: left;\r\n}\r\n\r\n.lotDetailsCard .lotPricing div {\r\n    display: inline-block;\r\n    width: 100px;\r\n    font-size: 18px;\r\n}\r\n\r\n.lotDetailsCard mat-form-field {\r\n    flex: 1;\r\n}\r\n\r\n.lotDetailsCard button {\r\n    flex: 1;\r\n    min-width: 150px;\r\n}\r\n\r\n.containerRow{\r\n    max-width: 980px;\r\n    margin: 20px auto 20px !important;\r\n    padding: 0px 10px 0px 10px;\r\n}\r\n\r\n.containerRow.secondRow{\r\n    position: relative;\r\n    top: -20px;\r\n}\r\n\r\n.lotContentContainer{\r\n    flex: 1 0 0;\r\n    padding: 12px;\r\n    align-items: center;\r\n    /* min-width: 350px; */\r\n}\r\n\r\n.lotContentContainer .lotDetailsCard{\r\n    align-items: center;\r\n}\r\n\r\n.lotContentContainer img {\r\n    width: 100%;\r\n    max-width: 600px;\r\n}\r\n\r\n.bidButton {\r\n    background: #4dcc27;\r\n    color: #fff;\r\n    font-size: 18px;\r\n    padding: 5px;\r\n}\r\n\r\n.bidButton mat-icon {\r\n    padding-right: 8px;\r\n}"
 
 /***/ }),
 
@@ -950,7 +962,7 @@ module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background\"></div>\r\n\r\n<app-header [organisationId]=\"organisationId\" [colour]=\"Organisation.primaryColour\"></app-header>\r\n\r\n<div class=\"content\">\r\n    <div class=\"pageHeader\" [ngStyle]=\"{ 'background-color': Organisation.primaryColour}\">\r\n        <a routerLink=\"/{{organisationId}}/lots\"><mat-icon>arrow_back</mat-icon></a>\r\n        <span>{{ lot.title }}</span>\r\n    </div>\r\n\r\n    <div fxLayout=\"row\" class=\"containerRow firstRow\" fxLayoutGap=\"20px grid\">\r\n\r\n        <div class=\"lotContentContainer\">\r\n            <mat-card class=\"lotDetailsCard\">\r\n                <div class='lotPricing firstRow'>\r\n                    <div class='label'>Reserve: </div>\r\n                    <div class='value'>£{{lot.reservePrice}}</div>\r\n                </div>  \r\n        \r\n                <div class='lotPricing'>\r\n                    <div class='label'>Estimate: </div>\r\n                    <div class='value'>£{{lot.estimate}}</div>\r\n                </div>\r\n            </mat-card>\r\n        </div>\r\n\r\n        <div class=\"lotContentContainer\">\r\n            <mat-card class=\"lotDetailsCard inputCard\" fxLayout=\"row wrap\" fxLayoutGap=\"20px\">\r\n                    <mat-form-field>\r\n                        <input matInput [(ngModel)]=\"amount\" type=\"number\" placeholder=\"My Bid (minimum £{{lot.reservePrice}})\" autofocus>\r\n                        <mat-hint>Currency: GBP</mat-hint>\r\n                    </mat-form-field>\r\n                    \r\n                    <button mat-raised-button class=\"bidButton\" [disabled]=\"amount < lot.reservePrice || lot.winningBidId\" (click)=\"openBidPopup()\">\r\n                        <mat-icon>gavel</mat-icon><span>Place Bid</span>\r\n                    </button>\r\n\r\n            </mat-card>\r\n        </div>\r\n\r\n    </div>\r\n\r\n    <div fxLayout=\"row\" class=\"containerRow secondRow\" fxLayoutGap=\"20px grid\">\r\n        <div class=\"lotContentContainer\">\r\n                <img src=\"{{lot.imageUri}}\"/>\r\n        </div> \r\n        \r\n        <div class=\"lotContentContainer\" [innerHTML]=\"lot.description\">\r\n\r\n        </div>\r\n    \r\n    </div>\r\n\r\n    <app-footer [colour]=\"Organisation.primaryColour\"></app-footer>\r\n\r\n</div>"
+module.exports = "<div class=\"background\"></div>\r\n\r\n<app-header [organisationId]=\"organisationId\" [colour]=\"Organisation.primaryColour\"></app-header>\r\n\r\n<div class=\"content\">\r\n    <div class=\"pageHeader\" [ngStyle]=\"{ 'background-color': Organisation.primaryColour}\">\r\n        <a routerLink=\"/{{organisationId}}/lots\"><mat-icon>arrow_back</mat-icon></a>\r\n        <span>{{ lot.title }}</span>\r\n    </div>\r\n\r\n    <div fxLayout=\"row\" fxLayout.lt-md=\"column\" class=\"containerRow firstRow\" >\r\n\r\n        <div class=\"lotContentContainer\" fxFlex=\"1 1 40%\" fxFlex.lt-md=\"1 1 50%\">\r\n            <mat-card class=\"lotDetailsCard\">\r\n                <div class='lotPricing firstRow'>\r\n                    <div class='label'>Reserve: </div>\r\n                    <div class='value'>£{{lot.reservePrice}}</div>\r\n                </div>  \r\n        \r\n                <div class='lotPricing'>\r\n                    <div class='label'>Estimate: </div>\r\n                    <div class='value'>£{{lot.estimate}}</div>\r\n                </div>\r\n            </mat-card>\r\n        </div>\r\n\r\n        <div class=\"lotContentContainer\" fxFlex=\"1 1 60%\" fxFlex.lt-md=\"1 1 50%\">\r\n            <mat-card class=\"lotDetailsCard inputCard\" fxLayout=\"row wrap\" fxLayoutGap=\"20px\">\r\n                    <mat-form-field>\r\n                        <input matInput [(ngModel)]=\"amount\" type=\"number\" placeholder=\"My Bid (minimum £{{lot.reservePrice}})\" autofocus>\r\n                        <mat-hint>Currency: GBP</mat-hint>\r\n                    </mat-form-field>\r\n                    \r\n                    <button mat-raised-button class=\"bidButton\" [disabled]=\"amount < lot.reservePrice\" (click)=\"openBidPopup()\" ngStyle.lt-sm=\"margin-top: 10px;\" >\r\n                        <mat-icon>gavel</mat-icon><span>PLACE BID</span>\r\n                    </button>\r\n\r\n            </mat-card>\r\n        </div>\r\n\r\n    </div>\r\n\r\n    <div fxLayout=\"row\" fxLayout.lt-md=\"column\" class=\"containerRow secondRow\">\r\n        <div class=\"lotContentContainer\" fxFlex=\"1 1 40%\" fxFlex.lt-md=\"1 1 50%\" fxLayoutAlign=\"start start\" fxLayoutAlign.lt-md=\"center start\">\r\n                <img src=\"{{lot.imageUri}}\"/>\r\n        </div> \r\n        \r\n        <div class=\"lotContentContainer\" fxFlex=\"1 1 60%\" fxFlex.lt-md=\"1 1 50%\" [innerHTML]=\"lot.description\">\r\n\r\n        </div>\r\n    \r\n    </div>\r\n\r\n    <app-footer [colour]=\"Organisation.primaryColour\"></app-footer>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -1001,7 +1013,7 @@ var LotDetailsComponent = /** @class */ (function () {
         this.lotId = '';
         this.organisationId = '';
         this.lot = new _common_models_Lot__WEBPACK_IMPORTED_MODULE_5__["Lot"]('', '', '', '', '', '', 0, 0, [], 0, 0, [], '');
-        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
+        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
         this.amount = '';
         this.route.params.subscribe(function (params) {
             _this.organisationId = params.organisationId;
@@ -1136,6 +1148,92 @@ var LotListComponent = /** @class */ (function () {
     ], LotListComponent);
     return LotListComponent;
 }());
+
+
+
+/***/ }),
+
+/***/ "./src/app/map-viewer/map-viewer.component.css":
+/*!*****************************************************!*\
+  !*** ./src/app/map-viewer/map-viewer.component.css ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "agm-map{\r\n    height: 200px;\r\n}\r\n\r\n#map {\r\n    height: 100%;\r\n}"
+
+/***/ }),
+
+/***/ "./src/app/map-viewer/map-viewer.component.html":
+/*!******************************************************!*\
+  !*** ./src/app/map-viewer/map-viewer.component.html ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<agm-map [zoom]=\"15\" [latitude]=\"latitude\" [longitude]=\"longitude\">\r\n    <agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\"></agm-marker>\r\n</agm-map>"
+
+/***/ }),
+
+/***/ "./src/app/map-viewer/map-viewer.component.ts":
+/*!****************************************************!*\
+  !*** ./src/app/map-viewer/map-viewer.component.ts ***!
+  \****************************************************/
+/*! exports provided: MapViewerComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MapViewerComponent", function() { return MapViewerComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _agm_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @agm/core */ "./node_modules/@agm/core/index.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var MapViewerComponent = /** @class */ (function (_super) {
+    __extends(MapViewerComponent, _super);
+    function MapViewerComponent(__loader, __zone) {
+        var _this = _super.call(this, __loader, __zone) || this;
+        _this.__loader = __loader;
+        _this.__zone = __zone;
+        return _this;
+    }
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Number)
+    ], MapViewerComponent.prototype, "latitude", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Number)
+    ], MapViewerComponent.prototype, "longitude", void 0);
+    MapViewerComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-map-viewer',
+            template: __webpack_require__(/*! ./map-viewer.component.html */ "./src/app/map-viewer/map-viewer.component.html"),
+            styles: [__webpack_require__(/*! ./map-viewer.component.css */ "./src/app/map-viewer/map-viewer.component.css")]
+        }),
+        __metadata("design:paramtypes", [_agm_core__WEBPACK_IMPORTED_MODULE_1__["MapsAPILoader"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]])
+    ], MapViewerComponent);
+    return MapViewerComponent;
+}(_agm_core__WEBPACK_IMPORTED_MODULE_1__["GoogleMapsAPIWrapper"]));
 
 
 
@@ -1312,7 +1410,7 @@ var OrganisationFaqComponent = /** @class */ (function () {
         this.lotService = lotService;
         this.route = route;
         this.organisationId = '';
-        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
+        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
         this.route.params.subscribe(function (params) {
             _this.organisationId = params.organisationId;
             organisationService.LoadOrganisationById(params.organisationId)
@@ -1465,7 +1563,7 @@ var OrganisationLotsComponent = /** @class */ (function () {
         this.lotService = lotService;
         this.route = route;
         this.organisationId = '';
-        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
+        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
         this.route.params.subscribe(function (params) {
             _this.organisationId = params.organisationId;
             organisationService.LoadOrganisationById(params.organisationId)
@@ -1496,7 +1594,7 @@ var OrganisationLotsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n    background-size: cover;\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: -1;\r\n}\r\n\r\n.content{\r\n    position: relative;\r\n    top: 56px;\r\n}\r\n\r\n.headerSection {\r\n    height: 350px;\r\n    background-color: rgb(0, 43, 136);\r\n    margin-bottom: 60px;\r\n    align-items: center;\r\n}\r\n\r\n.headerSection h1 {\r\n    color: white;\r\n    font-size: 24px;\r\n    font-weight: normal;\r\n    margin-bottom: 0px; \r\n    padding: 0px 10px 0px 10px;  \r\n}\r\n\r\n.headerSection h2 {\r\n    color: white;\r\n    font-size: 16px;\r\n    font-weight: normal;\r\n    padding: 0px 10px 0px 10px;\r\n    text-align: center;\r\n}\r\n\r\n.orgLogo {\r\n    height: 160px;\r\n    padding-top: 50px;\r\n}\r\n\r\n.orgLogo img {\r\n    height: 160px;\r\n}\r\n\r\n.bannerContainer {\r\n    padding: 0px 10px 0px 10px;\r\n}\r\n\r\n.banner {\r\n    padding: 40px;\r\n    background: center/cover no-repeat #789;\r\n    min-height: 160px;\r\n    max-width: 880px;\r\n    margin: 0 auto;\r\n}\r\n\r\n.bannerText {\r\n    font-size: 30px;\r\n    background: rgba(0,0,0,0.38);\r\n    text-transform: uppercase;\r\n    color: #fff;\r\n    padding: 0 10px;\r\n    -webkit-box-decoration-break: clone;\r\n    -ms-box-decoration-break: clone;\r\n    -o-box-decoration-break: clone;\r\n    box-decoration-break: clone;\r\n}\r\n\r\n.lotsButtonContainer {\r\n    margin-top: 40px;\r\n    text-align: center;\r\n}\r\n\r\n.lotsButton {\r\n    text-transform: uppercase;\r\n    font-size: 18px;\r\n    font-weight: bold;\r\n}\r\n\r\n.introductionContainer {\r\n    max-width: 980px;\r\n    margin: 35px auto 35px;\r\n    padding: 0px 10px 0px 10px;\r\n}\r\n\r\n.introductionText {\r\n    font-size: 15px;\r\n}\r\n\r\n.infoCardContainerRow{\r\n    max-width: 980px;\r\n    margin: 20px auto 20px !important;\r\n    padding: 0px 10px 0px 10px;\r\n    /* flex-flow: row wrap; */\r\n}\r\n\r\n.infoCardColumn1 {\r\n    /* flex-grow: 1; */\r\n    /* flex-basis: 0;     */\r\n}\r\n\r\n.infoCardColumn2 {\r\n    /* flex-grow: 1; */\r\n    /* flex-basis: 0; */\r\n    \r\n}\r\n\r\n.infoCardCoumn2 .infoCard{\r\n    align-items: stretch;\r\n}\r\n\r\nmat-card.infoCard {\r\n    padding: 10px !important;\r\n    /* min-width: 350px; */\r\n}\r\n\r\n.infoCard mat-card-header  {\r\n    margin: 7px!important;\r\n}\r\n\r\n.infoCard div.mat-card-avatar{\r\n    background: red;\r\n    height: 50px;\r\n    width: 50px;\r\n    font-size: 34px;\r\n    color: #fff;\r\n    vertical-align: middle;\r\n    text-align: center;\r\n    line-height: 50px;\r\n}\r\n\r\n.infoCard mat-card-title{\r\n    color: #6f6f6f;\r\n    font-size: 12px;\r\n    margin-bottom: 6px;\r\n    margin-top: 6px;\r\n}\r\n\r\n.infoCard mat-card-subtitle{\r\n    font-size: 14px;\r\n    color: #3d3d3d;\r\n    margin: -3px auto !important;    \r\n}\r\n\r\n.descriptionContainer {\r\n    max-width: 960px;\r\n    margin: 20px auto 60px;\r\n    padding: 0px 10px 0px 10px;\r\n}\r\n\r\n.descriptionHtml {\r\n    font-size: 15px;\r\n}\r\n\r\n"
+module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n    background-size: cover;\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: -1;\r\n}\r\n\r\n.content{\r\n    position: relative;\r\n    top: 56px;\r\n}\r\n\r\n.headerSection {\r\n    height: 350px;\r\n    background-color: rgb(0, 43, 136);\r\n    margin-bottom: 60px;\r\n    align-items: center;\r\n}\r\n\r\n.headerSection h1 {\r\n    color: white;\r\n    font-size: 24px;\r\n    font-weight: normal;\r\n    margin-bottom: 0px; \r\n    padding: 0px 10px 0px 10px;  \r\n}\r\n\r\n.headerSection h2 {\r\n    color: white;\r\n    font-size: 16px;\r\n    font-weight: normal;\r\n    padding: 0px 10px 0px 10px;\r\n    text-align: center;\r\n}\r\n\r\n.orgLogo {\r\n    height: 160px;\r\n    padding-top: 50px;\r\n}\r\n\r\n.orgLogo img {\r\n    height: 160px;\r\n}\r\n\r\n.bannerContainer {\r\n    padding: 0px 10px 0px 10px;\r\n}\r\n\r\n.banner {\r\n    padding: 40px;\r\n    background: center/cover no-repeat #789;\r\n    min-height: 160px;\r\n    max-width: 880px;\r\n    margin: 0 auto;\r\n}\r\n\r\n.bannerText {\r\n    font-size: 30px;\r\n    background: rgba(0,0,0,0.38);\r\n    text-transform: uppercase;\r\n    color: #fff;\r\n    padding: 0 10px;\r\n    -webkit-box-decoration-break: clone;\r\n    -ms-box-decoration-break: clone;\r\n    -o-box-decoration-break: clone;\r\n    box-decoration-break: clone;\r\n}\r\n\r\n.lotsButtonContainer {\r\n    margin-top: 40px;\r\n    text-align: center;\r\n}\r\n\r\n.lotsButton {\r\n    text-transform: uppercase;\r\n    font-size: 18px;\r\n    font-weight: bold;\r\n}\r\n\r\n.introductionContainer {\r\n    max-width: 980px;\r\n    margin: 35px auto 35px;\r\n    padding: 0px 10px 0px 10px;\r\n}\r\n\r\n.introductionText {\r\n    font-size: 15px;\r\n}\r\n\r\n.infoCardContainerRow{\r\n    max-width: 980px;\r\n    margin: 20px auto 20px !important;\r\n    padding: 0px 10px 0px 10px;\r\n    /* flex-flow: row wrap; */\r\n}\r\n\r\nmat-card.infoCard {\r\n    padding: 10px !important;\r\n    /* min-width: 350px; */\r\n}\r\n\r\n.infoCard mat-card-header  {\r\n    margin: 7px!important;\r\n}\r\n\r\n.infoCard div.mat-card-avatar{\r\n    background: red;\r\n    height: 50px;\r\n    width: 50px;\r\n    font-size: 34px;\r\n    color: #fff;\r\n    vertical-align: middle;\r\n    text-align: center;\r\n    line-height: 50px;\r\n}\r\n\r\n.infoCard mat-card-title{\r\n    color: #6f6f6f;\r\n    font-size: 12px;\r\n    margin-bottom: 6px;\r\n    margin-top: 6px;\r\n}\r\n\r\n.infoCard mat-card-subtitle{\r\n    font-size: 14px;\r\n    color: #3d3d3d;\r\n    margin: -3px auto !important;    \r\n}\r\n\r\n.descriptionContainer {\r\n    max-width: 960px;\r\n    margin: 20px auto 60px;\r\n    padding: 0px 10px 0px 10px;\r\n}\r\n\r\n.descriptionHtml {\r\n    font-size: 15px;\r\n}\r\n"
 
 /***/ }),
 
@@ -1507,7 +1605,7 @@ module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header [organisationId]=\"organisationId\" [colour]=\"Organisation.primaryColour\"></app-header>\r\n\r\n<div class=\"background\"></div>\r\n\r\n<div class=\"content\">\r\n\r\n    <div fxLayout=\"column\" class=\"headerSection\" [ngStyle]=\"{ 'background-color': Organisation.primaryColour}\">\r\n        <div class=\"orgLogo\">\r\n            <img src=\"{{Organisation.logoUrl}}\"/>\r\n        </div>\r\n\r\n        <h1>\r\n            {{title}}\r\n        </h1>\r\n\r\n        <h2>\r\n            {{Organisation.subtitle}}\r\n        </h2>\r\n    </div>\r\n    <div class=\"bannerContainer\">    \r\n        <div class=\"banner\" [ngStyle]=\"{ 'background-image': 'url(' + Organisation.bannerUrl + ')'}\">\r\n            <div class=\"bannerText\">\r\n                {{Organisation.bannerText}}\r\n            </div>\r\n            <div class=\"lotsButtonContainer\">\r\n                <button mat-raised-button class=\"lotsButton\" routerLink=\"/{{organisationId}}/lots\">\r\n                    View the auction lots\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n        \r\n\r\n    <div class=\"introductionContainer\" fxLayout=\"row\" fxLayoutGap=\"20px\">\r\n        <div class=\"introductionText\">\r\n            {{Organisation.introText}}\r\n        </div>\r\n\r\n\r\n    </div>\r\n\r\n    <div fxLayout=\"row\" fxLayout.xs=\"column\" fxLayoutGap=\"20px\" class=\"infoCardContainerRow\">\r\n\r\n        <div fxLayout=\"column\" fxLayoutGap=\"20px\" fxFlex=\"1 1 0\" class=\"infoCardColumn1\">\r\n\r\n            <mat-card class=\"infoCard\">\r\n                <mat-card-header>\r\n                    <div mat-card-avatar>\r\n                        <mat-icon>alarm</mat-icon>\r\n                    </div>\r\n                    <mat-card-title>When</mat-card-title>\r\n                    <mat-card-subtitle>Ends {{Organisation.closingDate | date:'h:mm a, d LLLL y'}}</mat-card-subtitle>\r\n                </mat-card-header>\r\n            </mat-card>\r\n\r\n            <mat-card class=\"infoCard\">\r\n                <mat-card-header>\r\n                    <div mat-card-avatar>\r\n                            <mat-icon>email</mat-icon>\r\n                    </div>\r\n                    <mat-card-title>Contact</mat-card-title>\r\n                    <mat-card-subtitle>{{Organisation.contactEmail}}</mat-card-subtitle>\r\n                </mat-card-header>\r\n            </mat-card>\r\n\r\n            <mat-card class=\"infoCard\">\r\n                <mat-card-header>\r\n                    <div mat-card-avatar>\r\n                            <mat-icon>language</mat-icon>\r\n                    </div>\r\n                    <mat-card-title>Website</mat-card-title>\r\n                    <mat-card-subtitle><a href=\"{{Organisation.websiteUrl}}\" target=\"_blank\">{{Organisation.websiteUrl}}</a></mat-card-subtitle>\r\n                </mat-card-header>\r\n            </mat-card>\r\n\r\n        </div>\r\n\r\n        <div fxLayout=\"column\" fxFlex=\"1 1 0\" class=\"infoCardColumn2\">\r\n\r\n            <mat-card class=\"infoCard\" style=\"height:270px;\">\r\n                <mat-card-header>\r\n                    <div mat-card-avatar>\r\n                            <mat-icon>place</mat-icon>\r\n                    </div>\r\n                    <mat-card-title>Where</mat-card-title>\r\n                    <mat-card-subtitle>Some Address</mat-card-subtitle>\r\n                </mat-card-header>\r\n            </mat-card>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"descriptionContainer\">\r\n        <div class=\"descriptionHtml\" [innerHtml]=\"Organisation.descriptionHtml\"></div>\r\n    </div>\r\n\r\n    <app-footer [colour]=\"Organisation.primaryColour\"></app-footer>\r\n\r\n</div>"
+module.exports = "<app-header [organisationId]=\"organisationId\" [colour]=\"Organisation.primaryColour\"></app-header>\r\n\r\n<div class=\"background\"></div>\r\n\r\n<div class=\"content\">\r\n\r\n    <div fxLayout=\"column\" class=\"headerSection\" [ngStyle]=\"{ 'background-color': Organisation.primaryColour}\">\r\n        <div class=\"orgLogo\">\r\n            <img src=\"{{Organisation.logoUrl}}\"/>\r\n        </div>\r\n\r\n        <h1>\r\n            {{title}}\r\n        </h1>\r\n\r\n        <h2>\r\n            {{Organisation.subtitle}}\r\n        </h2>\r\n    </div>\r\n    <div class=\"bannerContainer\">    \r\n        <div class=\"banner\" [ngStyle]=\"{ 'background-image': 'url(' + Organisation.bannerUrl + ')'}\">\r\n            <div class=\"bannerText\">\r\n                {{Organisation.bannerText}}\r\n            </div>\r\n            <div class=\"lotsButtonContainer\">\r\n                <button mat-raised-button class=\"lotsButton\" routerLink=\"/{{organisationId}}/lots\">\r\n                    View the auction lots\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n        \r\n\r\n    <div class=\"introductionContainer\" fxLayout=\"row\" fxLayoutGap=\"20px\">\r\n        <div class=\"introductionText\">\r\n            {{Organisation.introText}}\r\n        </div>\r\n\r\n\r\n    </div>\r\n\r\n    <div fxLayout=\"row\" fxLayout.xs=\"column\" fxLayoutGap=\"20px\" class=\"infoCardContainerRow\">\r\n\r\n        <div fxLayout=\"column\" fxLayoutGap=\"20px\" fxFlex=\"1 1 0\" class=\"infoCardColumn1\">\r\n\r\n            <mat-card class=\"infoCard\">\r\n                <mat-card-header>\r\n                    <div mat-card-avatar>\r\n                        <mat-icon>alarm</mat-icon>\r\n                    </div>\r\n                    <mat-card-title>When</mat-card-title>\r\n                    <mat-card-subtitle>Ends {{Organisation.closingDate | date:'h:mm a, d LLLL y'}}</mat-card-subtitle>\r\n                </mat-card-header>\r\n            </mat-card>\r\n\r\n            <mat-card class=\"infoCard\">\r\n                <mat-card-header>\r\n                    <div mat-card-avatar>\r\n                            <mat-icon>email</mat-icon>\r\n                    </div>\r\n                    <mat-card-title>Contact</mat-card-title>\r\n                    <mat-card-subtitle>{{Organisation.contactEmail}}</mat-card-subtitle>\r\n                </mat-card-header>\r\n            </mat-card>\r\n\r\n            <mat-card class=\"infoCard\">\r\n                <mat-card-header>\r\n                    <div mat-card-avatar>\r\n                            <mat-icon>language</mat-icon>\r\n                    </div>\r\n                    <mat-card-title>Website</mat-card-title>\r\n                    <mat-card-subtitle><a href=\"{{Organisation.websiteUrl}}\" target=\"_blank\">{{Organisation.websiteUrl}}</a></mat-card-subtitle>\r\n                </mat-card-header>\r\n            </mat-card>\r\n\r\n        </div>\r\n\r\n        <div fxLayout=\"column\" fxFlex=\"1 1 0\" class=\"infoCardColumn2\">\r\n\r\n            <mat-card class=\"infoCard\" style=\"height:270px;\">\r\n                <mat-card-header>\r\n                    <div mat-card-avatar>\r\n                            <mat-icon>place</mat-icon>\r\n                    </div>\r\n                    <mat-card-title>Where</mat-card-title>\r\n                    <mat-card-subtitle>Some Address</mat-card-subtitle>\r\n                </mat-card-header>\r\n                <mat-card-content *ngIf=\"latitude && longitude\">\r\n                    <app-map-viewer [latitude]=\"latitude\" [longitude]=\"longitude\"></app-map-viewer>\r\n                </mat-card-content>\r\n            </mat-card>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"descriptionContainer\">\r\n        <div class=\"descriptionHtml\" [innerHtml]=\"Organisation.descriptionHtml\"></div>\r\n    </div>\r\n\r\n    <app-footer [colour]=\"Organisation.primaryColour\"></app-footer>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -1525,6 +1623,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _services_organisation_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/organisation.service */ "./src/app/services/organisation.service.ts");
 /* harmony import */ var _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/models/Organisation */ "./common/models/Organisation.ts");
+/* harmony import */ var _agm_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @agm/core */ "./node_modules/@agm/core/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1538,32 +1648,62 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-var OrganisationComponent = /** @class */ (function () {
-    function OrganisationComponent(organisationService, route) {
-        var _this = this;
-        this.organisationService = organisationService;
-        this.route = route;
-        this.title = '';
-        this.organisationId = '';
-        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
-        this.route.params.subscribe(function (params) {
+
+
+var OrganisationComponent = /** @class */ (function (_super) {
+    __extends(OrganisationComponent, _super);
+    function OrganisationComponent(__loader, __zone, organisationService, route, changeDetectorRef) {
+        var _this = _super.call(this, __loader, __zone) || this;
+        _this.__loader = __loader;
+        _this.__zone = __zone;
+        _this.organisationService = organisationService;
+        _this.route = route;
+        _this.changeDetectorRef = changeDetectorRef;
+        _this.title = '';
+        _this.organisationId = '';
+        _this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
+        _this.route.params.subscribe(function (params) {
             _this.organisationId = params.organisationId;
             organisationService.LoadOrganisationById(params.organisationId).subscribe(function (organisation) {
                 _this.title = organisation.title;
                 _this.Organisation = organisation;
+                _this.getLatLong(_this.Organisation.address).subscribe(function (location) {
+                    _this.latitude = location.lat();
+                    _this.longitude = location.lng();
+                    _this.changeDetectorRef.detectChanges();
+                });
             });
         });
+        return _this;
     }
+    OrganisationComponent.prototype.getLatLong = function (address) {
+        console.log('Getting Address - ', address);
+        var geocoder = new google.maps.Geocoder();
+        return rxjs__WEBPACK_IMPORTED_MODULE_5__["Observable"].create(function (observer) {
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    observer.next(results[0].geometry.location);
+                    observer.complete();
+                }
+                else {
+                    console.log('Error - ', results, ' & Status - ', status);
+                    observer.next({});
+                    observer.complete();
+                }
+            });
+        });
+    };
     OrganisationComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-organisation',
             template: __webpack_require__(/*! ./organisation.component.html */ "./src/app/organisation/organisation.component.html"),
             styles: [__webpack_require__(/*! ./organisation.component.css */ "./src/app/organisation/organisation.component.css")]
         }),
-        __metadata("design:paramtypes", [_services_organisation_service__WEBPACK_IMPORTED_MODULE_2__["OrganisationService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
+        __metadata("design:paramtypes", [_agm_core__WEBPACK_IMPORTED_MODULE_4__["MapsAPILoader"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"], _services_organisation_service__WEBPACK_IMPORTED_MODULE_2__["OrganisationService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]])
     ], OrganisationComponent);
     return OrganisationComponent;
-}());
+}(_agm_core__WEBPACK_IMPORTED_MODULE_4__["GoogleMapsAPIWrapper"]));
 
 
 

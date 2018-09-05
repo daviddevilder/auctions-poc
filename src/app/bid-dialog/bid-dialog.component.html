@@ -1,13 +1,35 @@
 <div>
     <h2 mat-dialog-title>Confirm your bid</h2>
-    <hr>
+
     <form #checkout="ngForm" (ngSubmit)="onSubmit(checkout)" class="checkout">
 
         <mat-dialog-content>
-            In order to confirm your bid, please enter your details below.
-            Your card will be pre-authorised and will ONLY be charged if you win the auction.
+            <div class='introduction'>
+                <span>In order to confirm your bid, please enter your details below.
+                Your card will be pre-authorised and will ONLY be charged if you win the auction.</span>
+            </div>
 
-            <div class="form-group">
+            <mat-form-field>
+                <input matInput placeholder="My Bid" value="£{{data.amount}}" readonly>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Full Name">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Email" [(ngModel)]="emailAddress" >
+                <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                    Please enter a valid email address
+                </mat-error> -->
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Telephone">
+            </mat-form-field>
+
+
+            <!-- <div class="form-group">
                 <label for="amount">My Bid</label>
                 <input type="text" class="form-control" id="amount" value="£{{data.amount}}" readonly>
             </div>
@@ -26,22 +48,20 @@
                         Email address is invalid
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <div class="form-group">
-                <label for="card-info">Card Info</label>
+                <label for="card-info">Card Details</label>
                 <div id="card-info" #cardInfo></div>
 
                 <div id="card-errors" class="validationErrorText" role="alert" *ngIf="error">{{ error }}</div>
             </div>
         </mat-dialog-content>
 
-        <hr>
-
-        <mat-dialog-actions>
-            <button mat-raised-button (click)="onCloseCancel()">CANCEL</button>&nbsp;
+        <mat-dialog-actions align="end">
+            <button mat-raised-button (click)="onCloseCancel()">CANCEL</button>
             <button mat-raised-button class="confirmButton" type="submit"
-                    [disabled]="!checkout.valid || isBidInProgress">Bid £{{data.amount}}
+                    [disabled]="!checkout.valid || isBidInProgress">CONFIRM BID
             </button>
         </mat-dialog-actions>
 

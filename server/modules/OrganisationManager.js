@@ -47,7 +47,7 @@ var OrganisationManager;
                             try {
                                 var results_1 = [];
                                 organisations.forEach(function (organisation) {
-                                    results_1.push(new Organisation_1.Organisation(organisation.organisationId, organisation.title, organisation.subtitle, organisation.primaryColour, organisation.logoUrl, organisation.websiteUrl, organisation.contactEmail, organisation.contactPhone, organisation.closingDate, organisation.bannerUrl, organisation.bannerText, organisation.introText, organisation.descriptionHtml, organisation.faqs));
+                                    results_1.push(new Organisation_1.Organisation(organisation.organisationId, organisation.title, organisation.subtitle, organisation.primaryColour, organisation.logoUrl, organisation.address, organisation.websiteUrl, organisation.contactEmail, organisation.contactPhone, organisation.closingDate, organisation.bannerUrl, organisation.bannerText, organisation.introText, organisation.descriptionHtml, organisation.faqs));
                                 });
                                 resolve(results_1);
                             }
@@ -65,7 +65,7 @@ var OrganisationManager;
             return __generator(this, function (_a) {
                 return [2, new Promise(function (resolve, reject) {
                         Organisation_2.OrganisationModel.findOne({ organisationId: organisationId }, function (err, organisation) {
-                            resolve(new Organisation_1.Organisation(organisation.organisationId, organisation.title, organisation.subtitle, organisation.primaryColour, organisation.logoUrl, organisation.websiteUrl, organisation.contactEmail, organisation.contactPhone, organisation.closingDate, organisation.bannerUrl, organisation.bannerText, organisation.introText, organisation.descriptionHtml, organisation.faqs));
+                            resolve(new Organisation_1.Organisation(organisation.organisationId, organisation.title, organisation.subtitle, organisation.primaryColour, organisation.logoUrl, organisation.address, organisation.websiteUrl, organisation.contactEmail, organisation.contactPhone, organisation.closingDate, organisation.bannerUrl, organisation.bannerText, organisation.introText, organisation.descriptionHtml, organisation.faqs));
                         });
                     })];
             });

@@ -35,6 +35,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {AdminComponent} from './admin/admin.component';
 import {AdminLotComponent} from './admin/admin-lot/admin-lot.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {AgmCoreModule} from '@agm/core';
+import {MapViewerComponent} from './map-viewer/map-viewer.component';
 
 registerLocaleData(localeEn, 'en', localeEnExtra);
 
@@ -46,6 +49,7 @@ registerLocaleData(localeEn, 'en', localeEnExtra);
         OrganisationListComponent,
         HomeComponent,
         OrganisationComponent,
+        MapViewerComponent,
         LotDetailsComponent,
         LotListComponent,
         OrganisationLotsComponent,
@@ -72,7 +76,11 @@ registerLocaleData(localeEn, 'en', localeEnExtra);
         MatIconModule,
         MatSidenavModule,
         MatInputModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatMenuModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyAJRYSde0Y5_YiQrUhUzHtWvrODL0Zv2jQ'
+        })
     ],
     providers: [LotService, OrganisationService, { provide: localeEn, useValue: 'en' }],
     bootstrap: [AppComponent]

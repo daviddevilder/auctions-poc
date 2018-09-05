@@ -97,21 +97,6 @@
     /* flex-flow: row wrap; */
 }
 
-.infoCardColumn1 {
-    /* flex-grow: 1; */
-    /* flex-basis: 0;     */
-}
-
-.infoCardColumn2 {
-    /* flex-grow: 1; */
-    /* flex-basis: 0; */
-    
-}
-
-.infoCardCoumn2 .infoCard{
-    align-items: stretch;
-}
-
 mat-card.infoCard {
     padding: 10px !important;
     /* min-width: 350px; */
@@ -154,4 +139,3 @@ mat-card.infoCard {
 .descriptionHtml {
     font-size: 15px;
 }
-

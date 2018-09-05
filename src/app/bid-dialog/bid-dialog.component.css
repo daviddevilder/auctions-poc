@@ -1,27 +1,14 @@
+.checkout mat-form-field {
+    font-size: 18px;
+    width: 100%;
+}
+
+.checkout .introduction{
+    margin-bottom: 20px;
+}
+
 .form-group {
     margin-top: 16px;
-}
-
-input#email {
-    display: block;
-    font-size: 18px;
-    padding: 10px;
-    border-radius: 6px;
-    width: 95%;
-    margin: 16px auto 10px;
-}
-
-.validationErrorText {
-    color: red;
-    font-size: 12px;
-    font-style: italic;
-}
-
-input#amount {
-    display: block;
-    border: none;
-    font-size: 26px;
-    padding: 10px;
 }
 
 .confirmButton {

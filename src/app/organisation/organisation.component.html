@@ -85,6 +85,9 @@
                     <mat-card-title>Where</mat-card-title>
                     <mat-card-subtitle>Some Address</mat-card-subtitle>
                 </mat-card-header>
+                <mat-card-content *ngIf="latitude && longitude">
+                    <app-map-viewer [latitude]="latitude" [longitude]="longitude"></app-map-viewer>
+                </mat-card-content>
             </mat-card>
 
         </div>

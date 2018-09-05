@@ -7,6 +7,7 @@ export interface IOrganisationModel extends IOrganisation, Document {
     subtitle: string;
     primaryColour: string;
     logoUrl: string;
+    address: string;
     websiteUrl: string;
     contactEmail: string;
     contactPhone: string;
@@ -24,6 +25,7 @@ export const OrganisationSchema: Schema = new Schema({
     subtitle: String,
     primaryColour: String,
     logoUrl: String,
+    address: String,
     websiteUrl: String,
     contactEmail: String,
     contactPhone: String,

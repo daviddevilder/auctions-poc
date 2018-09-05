@@ -12,9 +12,9 @@ export namespace OrganisationManager {
                     organisations.forEach(function (organisation) {
                         results.push(
                             new Organisation(organisation.organisationId, organisation.title, organisation.subtitle,
-                                organisation.primaryColour, organisation.logoUrl, organisation.websiteUrl, organisation.contactEmail,
-                                organisation.contactPhone, organisation.closingDate, organisation.bannerUrl, organisation.bannerText,
-                                organisation.introText, organisation.descriptionHtml, organisation.faqs));
+                                organisation.primaryColour, organisation.logoUrl, organisation.address, organisation.websiteUrl,
+                                organisation.contactEmail, organisation.contactPhone, organisation.closingDate, organisation.bannerUrl,
+                                organisation.bannerText, organisation.introText, organisation.descriptionHtml, organisation.faqs));
                     });
 
                     resolve(results);
@@ -30,9 +30,9 @@ export namespace OrganisationManager {
             OrganisationModel.findOne({organisationId: organisationId}, function (err, organisation: Organisation) {
                 resolve(
                     new Organisation(organisation.organisationId, organisation.title, organisation.subtitle, organisation.primaryColour,
-                        organisation.logoUrl, organisation.websiteUrl, organisation.contactEmail, organisation.contactPhone,
-                        organisation.closingDate, organisation.bannerUrl, organisation.bannerText, organisation.introText,
-                        organisation.descriptionHtml, organisation.faqs));
+                        organisation.logoUrl, organisation.address, organisation.websiteUrl, organisation.contactEmail,
+                        organisation.contactPhone, organisation.closingDate, organisation.bannerUrl, organisation.bannerText,
+                        organisation.introText, organisation.descriptionHtml, organisation.faqs));
             });
         });
     }

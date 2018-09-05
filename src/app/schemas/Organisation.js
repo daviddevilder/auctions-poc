@@ -7,6 +7,7 @@ exports.OrganisationSchema = new mongoose_1.Schema({
     subtitle: String,
     primaryColour: String,
     logoUrl: String,
+    address: String,
     websiteUrl: String,
     contactEmail: String,
     contactPhone: String,
