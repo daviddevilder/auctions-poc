@@ -1512,7 +1512,7 @@ var OrganisationListComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n    background-size: cover;\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: -1;\r\n}\r\n\r\nh1 {\r\n    color: white;\r\n    padding: 20px;\r\n    background-color: rgb(0, 43, 136);\r\n    opacity: 0.9;\r\n    width: auto;\r\n    font-weight: normal;\r\n    text-align: left;\r\n    font-size: 20px;\r\n    margin: 56px 0 20px;\r\n}\r\n\r\n.sideNav {\r\n    position: fixed;\r\n    top: 56px;\r\n}\r\n\r\n.lots {\r\n    margin: 20px;\r\n    min-height: 350px;\r\n}\r\n\r\n.showSideNav {\r\n    text-decoration: underline;\r\n    margin-left: 10px;\r\n    cursor: pointer;\r\n}\r\n\r\n@media screen and (min-width: 600px) {\r\n    .showSideNav {\r\n        visibility: hidden;\r\n    }\r\n}\r\n\r\n"
+module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n    background-size: cover;\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: -1;\r\n}\r\n\r\nh1 {\r\n    color: white;\r\n    padding: 20px;\r\n    background-color: rgb(0, 43, 136);\r\n    opacity: 0.9;\r\n    width: auto;\r\n    font-weight: normal;\r\n    text-align: left;\r\n    font-size: 20px;\r\n    margin: 56px 0 20px;\r\n}\r\n\r\n.sideNav {\r\n    position: fixed;\r\n    top: 56px;\r\n}\r\n\r\n.lots {\r\n    margin: 20px;\r\n    min-height: 350px;\r\n}\r\n\r\n.showSideNav {\r\n    text-decoration: underline;\r\n    margin-left: 10px;\r\n    cursor: pointer;\r\n    width: -webkit-fit-content;\r\n    width: -moz-fit-content;\r\n    width: fit-content;\r\n}\r\n\r\n@media screen and (min-width: 600px) {\r\n    .showSideNav {\r\n        visibility: hidden;\r\n    }\r\n}\r\n\r\n"
 
 /***/ }),
 
@@ -1809,8 +1809,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var LotService = /** @class */ (function () {
     function LotService(http) {
         this.http = http;
-        this.host = 'http://localhost:3000';
-        // private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
+        // private readonly host: string = 'http://localhost:3000';
+        this.host = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
         this.Lots = [];
     }
     LotService.prototype.LoadTags = function (organisationId) {
@@ -1878,10 +1878,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var OrganisationService = /** @class */ (function () {
-    // private readonly host: string = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
     function OrganisationService(http) {
         this.http = http;
-        this.host = 'http://localhost:3000';
+        // private readonly host: string = 'http://localhost:3000';
+        this.host = 'http://ggv2test.eu-west-2.elasticbeanstalk.com';
     }
     OrganisationService.prototype.LoadOrganisations = function () {
         var url = this.host + '/api/organisations';
