@@ -4,7 +4,7 @@
 
 <mat-sidenav-container class="fullscreenContainer" fullscreen>
 
-    <mat-sidenav mode="side" opened class="sideNav" #sidenav>
+    <mat-sidenav mode="side" [opened]="screenWidth > 600" class="sideNav" #sidenav>
     <div class="nav">
         <app-auction-nav [organisationId]="organisationId"></app-auction-nav>
     </div>
@@ -18,6 +18,8 @@
             </button> -->
             {{ Organisation.title }} Auction
         </h1>
+
+        <div class="showSideNav" (click)="showNav()">Filter Results</div>
 
         <div class="lots">
             <app-lot-list [organisationId]="organisationId"></app-lot-list>

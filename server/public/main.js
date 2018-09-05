@@ -1512,7 +1512,7 @@ var OrganisationListComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n    background-size: cover;\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: -1;\r\n}\r\n\r\nh1 {\r\n    color: white;\r\n    margin: 56px 0 0 0;\r\n    padding: 20px;\r\n    background-color: rgb(0, 43, 136);\r\n    opacity: 0.9;\r\n    width: auto;\r\n    font-weight: normal;\r\n    text-align: left;\r\n    font-size: 20px;\r\n    margin-bottom: 60px;\r\n}\r\n\r\n.sideNav {\r\n    position: fixed;\r\n    top: 56px;\r\n}\r\n\r\n.lots {\r\n    margin: 20px;\r\n    min-height: 350px;\r\n}\r\n\r\n"
+module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n    background-size: cover;\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: -1;\r\n}\r\n\r\nh1 {\r\n    color: white;\r\n    padding: 20px;\r\n    background-color: rgb(0, 43, 136);\r\n    opacity: 0.9;\r\n    width: auto;\r\n    font-weight: normal;\r\n    text-align: left;\r\n    font-size: 20px;\r\n    margin: 56px 0 20px;\r\n}\r\n\r\n.sideNav {\r\n    position: fixed;\r\n    top: 56px;\r\n}\r\n\r\n.lots {\r\n    margin: 20px;\r\n    min-height: 350px;\r\n}\r\n\r\n.showSideNav {\r\n    text-decoration: underline;\r\n    margin-left: 10px;\r\n    cursor: pointer;\r\n}\r\n\r\n@media screen and (min-width: 600px) {\r\n    .showSideNav {\r\n        visibility: hidden;\r\n    }\r\n}\r\n\r\n"
 
 /***/ }),
 
@@ -1523,7 +1523,7 @@ module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header [organisationId]=\"organisationId\" [colour]=\"Organisation.primaryColour\"></app-header>\r\n\r\n<div class=\"background\"></div>\r\n\r\n<mat-sidenav-container class=\"fullscreenContainer\" fullscreen>\r\n\r\n    <mat-sidenav mode=\"side\" opened class=\"sideNav\" #sidenav>\r\n    <div class=\"nav\">\r\n        <app-auction-nav [organisationId]=\"organisationId\"></app-auction-nav>\r\n    </div>\r\n    </mat-sidenav>\r\n\r\n    <mat-sidenav-content class=\"page-wrap\">\r\n\r\n        <h1 [ngStyle]=\"{ 'background-color': Organisation.primaryColour}\">\r\n            <!-- <button type=\"button\" mat-icon-button (click)=\"sidenav.open()\" title=\"Open sidenav\">\r\n                <mat-icon>menu</mat-icon>\r\n            </button> -->\r\n            {{ Organisation.title }} Auction\r\n        </h1>\r\n\r\n        <div class=\"lots\">\r\n            <app-lot-list [organisationId]=\"organisationId\"></app-lot-list>\r\n        </div>\r\n\r\n        <app-footer [colour]=\"Organisation.primaryColour\"></app-footer>\r\n\r\n    </mat-sidenav-content>\r\n\r\n    \r\n\r\n</mat-sidenav-container>\r\n\r\n\r\n\r\n\r\n"
+module.exports = "<app-header [organisationId]=\"organisationId\" [colour]=\"Organisation.primaryColour\"></app-header>\r\n\r\n<div class=\"background\"></div>\r\n\r\n<mat-sidenav-container class=\"fullscreenContainer\" fullscreen>\r\n\r\n    <mat-sidenav mode=\"side\" [opened]=\"screenWidth > 600\" class=\"sideNav\" #sidenav>\r\n    <div class=\"nav\">\r\n        <app-auction-nav [organisationId]=\"organisationId\"></app-auction-nav>\r\n    </div>\r\n    </mat-sidenav>\r\n\r\n    <mat-sidenav-content class=\"page-wrap\">\r\n\r\n        <h1 [ngStyle]=\"{ 'background-color': Organisation.primaryColour}\">\r\n            <!-- <button type=\"button\" mat-icon-button (click)=\"sidenav.open()\" title=\"Open sidenav\">\r\n                <mat-icon>menu</mat-icon>\r\n            </button> -->\r\n            {{ Organisation.title }} Auction\r\n        </h1>\r\n\r\n        <div class=\"showSideNav\" (click)=\"showNav()\">Filter Results</div>\r\n\r\n        <div class=\"lots\">\r\n            <app-lot-list [organisationId]=\"organisationId\"></app-lot-list>\r\n        </div>\r\n\r\n        <app-footer [colour]=\"Organisation.primaryColour\"></app-footer>\r\n\r\n    </mat-sidenav-content>\r\n\r\n    \r\n\r\n</mat-sidenav-container>\r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -1542,6 +1542,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_organisation_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/organisation.service */ "./src/app/services/organisation.service.ts");
 /* harmony import */ var _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/models/Organisation */ "./common/models/Organisation.ts");
 /* harmony import */ var _services_lot_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/lot.service */ "./src/app/services/lot.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1556,6 +1557,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var OrganisationLotsComponent = /** @class */ (function () {
     function OrganisationLotsComponent(organisationService, lotService, route) {
         var _this = this;
@@ -1564,6 +1566,7 @@ var OrganisationLotsComponent = /** @class */ (function () {
         this.route = route;
         this.organisationId = '';
         this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
+        this.screenWidth = window.innerWidth;
         this.route.params.subscribe(function (params) {
             _this.organisationId = params.organisationId;
             organisationService.LoadOrganisationById(params.organisationId)
@@ -1572,6 +1575,35 @@ var OrganisationLotsComponent = /** @class */ (function () {
             });
         });
     }
+    OrganisationLotsComponent.prototype.onResize = function (event) {
+        this.checkShowHideSideNav(event.target.innerWidth);
+    };
+    OrganisationLotsComponent.prototype.checkShowHideSideNav = function (innerWidth) {
+        if (innerWidth < 600) {
+            this.sidenav.close();
+            this.sidenav.mode = 'over';
+            this.isSideNavHidden = true;
+        }
+        else {
+            this.sidenav.mode = 'side';
+            this.sidenav.open();
+            this.isSideNavHidden = false;
+        }
+    };
+    OrganisationLotsComponent.prototype.showNav = function () {
+        this.sidenav.open();
+        this.isSideNavHidden = false;
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('sidenav'),
+        __metadata("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSidenav"])
+    ], OrganisationLotsComponent.prototype, "sidenav", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])('window:resize', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], OrganisationLotsComponent.prototype, "onResize", null);
     OrganisationLotsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-organisation-lots',
@@ -1677,7 +1709,6 @@ var OrganisationComponent = /** @class */ (function (_super) {
         return _this;
     }
     OrganisationComponent.prototype.getLatLong = function (address) {
-        console.log('Getting Address - ', address);
         var geocoder = new google.maps.Geocoder();
         return rxjs__WEBPACK_IMPORTED_MODULE_5__["Observable"].create(function (observer) {
             geocoder.geocode({ 'address': address }, function (results, status) {
