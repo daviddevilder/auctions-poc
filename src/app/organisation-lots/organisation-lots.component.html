@@ -4,7 +4,7 @@
 
 <mat-sidenav-container class="fullscreenContainer" fullscreen>
 
-    <mat-sidenav mode="side" [opened]="screenWidth > 600" class="sideNav" #sidenav>
+    <mat-sidenav [mode]="(screenWidth > 600) ? 'side' : 'over'" [opened]="screenWidth > 600" class="sideNav" #sidenav>
     <div class="nav">
         <app-auction-nav [organisationId]="organisationId"></app-auction-nav>
     </div>
@@ -13,13 +13,13 @@
     <mat-sidenav-content class="page-wrap">
 
         <h1 [ngStyle]="{ 'background-color': Organisation.primaryColour}">
-            <!-- <button type="button" mat-icon-button (click)="sidenav.open()" title="Open sidenav">
+            <button type="button" mat-icon-button (click)="sidenav.toggle()" title="Filter results" class="menu"
+                    [ngStyle]="{'display' : (screenWidth > 600) ? 'none' : 'inline-block',
+                                'top' : '-3px'}">
                 <mat-icon>menu</mat-icon>
-            </button> -->
+            </button>
             {{ Organisation.title }} Auction
         </h1>
-
-        <div class="showSideNav" (click)="showNav()">Filter Results</div>
 
         <div class="lots">
             <app-lot-list [organisationId]="organisationId"></app-lot-list>
@@ -28,8 +28,6 @@
         <app-footer [colour]="Organisation.primaryColour"></app-footer>
 
     </mat-sidenav-content>
-
-    
 
 </mat-sidenav-container>
 

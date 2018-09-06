@@ -1512,7 +1512,7 @@ var OrganisationListComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n    background-size: cover;\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: -1;\r\n}\r\n\r\nh1 {\r\n    color: white;\r\n    padding: 20px;\r\n    background-color: rgb(0, 43, 136);\r\n    opacity: 0.9;\r\n    width: auto;\r\n    font-weight: normal;\r\n    text-align: left;\r\n    font-size: 20px;\r\n    margin: 56px 0 20px;\r\n}\r\n\r\n.sideNav {\r\n    position: fixed;\r\n    top: 56px;\r\n}\r\n\r\n.lots {\r\n    margin: 20px;\r\n    min-height: 350px;\r\n}\r\n\r\n.showSideNav {\r\n    text-decoration: underline;\r\n    margin-left: 10px;\r\n    cursor: pointer;\r\n    width: -webkit-fit-content;\r\n    width: -moz-fit-content;\r\n    width: fit-content;\r\n}\r\n\r\n@media screen and (min-width: 600px) {\r\n    .showSideNav {\r\n        visibility: hidden;\r\n    }\r\n}\r\n\r\n"
+module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n    background-size: cover;\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: -1;\r\n}\r\n\r\nh1 {\r\n    color: white;\r\n    padding: 20px;\r\n    background-color: rgb(0, 43, 136);\r\n    opacity: 0.9;\r\n    width: auto;\r\n    font-weight: normal;\r\n    text-align: left;\r\n    font-size: 20px;\r\n    margin: 56px 0 20px;\r\n}\r\n\r\nbutton .menu {\r\n    position: relative;\r\n    top: -3px;\r\n}\r\n\r\n.sideNav {\r\n    position: fixed;\r\n    top: 56px;\r\n}\r\n\r\n.lots {\r\n    margin: 20px;\r\n    min-height: 350px;\r\n}\r\n"
 
 /***/ }),
 
@@ -1523,7 +1523,7 @@ module.exports = ".background {\r\n    background-color: rgb(238, 238, 238);\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header [organisationId]=\"organisationId\" [colour]=\"Organisation.primaryColour\"></app-header>\r\n\r\n<div class=\"background\"></div>\r\n\r\n<mat-sidenav-container class=\"fullscreenContainer\" fullscreen>\r\n\r\n    <mat-sidenav mode=\"side\" [opened]=\"screenWidth > 600\" class=\"sideNav\" #sidenav>\r\n    <div class=\"nav\">\r\n        <app-auction-nav [organisationId]=\"organisationId\"></app-auction-nav>\r\n    </div>\r\n    </mat-sidenav>\r\n\r\n    <mat-sidenav-content class=\"page-wrap\">\r\n\r\n        <h1 [ngStyle]=\"{ 'background-color': Organisation.primaryColour}\">\r\n            <!-- <button type=\"button\" mat-icon-button (click)=\"sidenav.open()\" title=\"Open sidenav\">\r\n                <mat-icon>menu</mat-icon>\r\n            </button> -->\r\n            {{ Organisation.title }} Auction\r\n        </h1>\r\n\r\n        <div class=\"showSideNav\" (click)=\"showNav()\">Filter Results</div>\r\n\r\n        <div class=\"lots\">\r\n            <app-lot-list [organisationId]=\"organisationId\"></app-lot-list>\r\n        </div>\r\n\r\n        <app-footer [colour]=\"Organisation.primaryColour\"></app-footer>\r\n\r\n    </mat-sidenav-content>\r\n\r\n    \r\n\r\n</mat-sidenav-container>\r\n\r\n\r\n\r\n\r\n"
+module.exports = "<app-header [organisationId]=\"organisationId\" [colour]=\"Organisation.primaryColour\"></app-header>\r\n\r\n<div class=\"background\"></div>\r\n\r\n<mat-sidenav-container class=\"fullscreenContainer\" fullscreen>\r\n\r\n    <mat-sidenav [mode]=\"(screenWidth > 600) ? 'side' : 'over'\" [opened]=\"screenWidth > 600\" class=\"sideNav\" #sidenav>\r\n    <div class=\"nav\">\r\n        <app-auction-nav [organisationId]=\"organisationId\"></app-auction-nav>\r\n    </div>\r\n    </mat-sidenav>\r\n\r\n    <mat-sidenav-content class=\"page-wrap\">\r\n\r\n        <h1 [ngStyle]=\"{ 'background-color': Organisation.primaryColour}\">\r\n            <button type=\"button\" mat-icon-button (click)=\"sidenav.toggle()\" title=\"Filter results\" class=\"menu\"\r\n                    [ngStyle]=\"{'display' : (screenWidth > 600) ? 'none' : 'inline-block',\r\n                                'top' : '-3px'}\">\r\n                <mat-icon>menu</mat-icon>\r\n            </button>\r\n            {{ Organisation.title }} Auction\r\n        </h1>\r\n\r\n        <div class=\"lots\">\r\n            <app-lot-list [organisationId]=\"organisationId\"></app-lot-list>\r\n        </div>\r\n\r\n        <app-footer [colour]=\"Organisation.primaryColour\"></app-footer>\r\n\r\n    </mat-sidenav-content>\r\n\r\n</mat-sidenav-container>\r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -1576,23 +1576,7 @@ var OrganisationLotsComponent = /** @class */ (function () {
         });
     }
     OrganisationLotsComponent.prototype.onResize = function (event) {
-        this.checkShowHideSideNav(event.target.innerWidth);
-    };
-    OrganisationLotsComponent.prototype.checkShowHideSideNav = function (innerWidth) {
-        if (innerWidth < 600) {
-            this.sidenav.close();
-            this.sidenav.mode = 'over';
-            this.isSideNavHidden = true;
-        }
-        else {
-            this.sidenav.mode = 'side';
-            this.sidenav.open();
-            this.isSideNavHidden = false;
-        }
-    };
-    OrganisationLotsComponent.prototype.showNav = function () {
-        this.sidenav.open();
-        this.isSideNavHidden = false;
+        this.screenWidth = event.target.innerWidth;
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('sidenav'),

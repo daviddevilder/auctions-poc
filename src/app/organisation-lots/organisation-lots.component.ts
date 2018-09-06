@@ -17,7 +17,6 @@ export class OrganisationLotsComponent {
     public Organisation: Organisation = new Organisation('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
 
     screenWidth: Number;
-    isSideNavHidden: Boolean;
 
     constructor(private organisationService: OrganisationService, private lotService: LotService, private route: ActivatedRoute) {
         this.screenWidth = window.innerWidth;
@@ -34,23 +33,6 @@ export class OrganisationLotsComponent {
 
     @HostListener('window:resize', ['$event'])
     onResize(event) {
-        this.checkShowHideSideNav(event.target.innerWidth);
-    }
-
-    private checkShowHideSideNav(innerWidth: Number) {
-        if (innerWidth < 600) {
-            this.sidenav.close();
-            this.sidenav.mode = 'over';
-            this.isSideNavHidden = true;
-        } else {
-            this.sidenav.mode = 'side';
-            this.sidenav.open();
-            this.isSideNavHidden = false;
-        }
-    }
-
-    showNav() {
-        this.sidenav.open();
-        this.isSideNavHidden = false;
+        this.screenWidth = event.target.innerWidth;
     }
 }
