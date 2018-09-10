@@ -21,3 +21,24 @@
 .app-toolbar img{
     padding-top: 7px;
 }
+
+.content{
+    top:56px;
+}
+
+.pageHeader {
+    color: white;
+    background-color: #002B88;
+    margin: 0 0 0 0px;
+    padding: 20px;
+    opacity: 0.9;
+    width: auto;
+    font-weight: normal;
+    text-align: left;
+    font-size: 20px;
+}
+
+.terms {
+    margin: 0 auto;
+    padding: 0 20px;
+}
