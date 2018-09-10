@@ -3,7 +3,7 @@ import {Request, Response} from 'express';
 import * as mongoose from 'mongoose';
 
 // mongoose.connect('mongodb://localhost');
-mongoose.connect('mongodb://35.178.184.104:27017/admin');
+mongoose.connect('mongodb://dbadmin:aN0icePwd@35.178.184.104:27017/admin');
 
 const bodyParser = require('body-parser'),
     express = require('express'),
