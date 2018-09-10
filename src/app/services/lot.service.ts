@@ -33,10 +33,12 @@ export class LotService {
         return this.http.get(url);
     }
 
-    public PlaceBid(lotId: String, bidderId: String, amount: Number, stripeTokenId: String): Observable<any> {
+    public PlaceBid(lotId: String, name: String, bidderId: String, phone: String, amount: Number, stripeTokenId: String): Observable<any> {
         const url = this.host + '/api/lots/' + lotId + '/bid';
         const body = {
+            name: name,
             bidderId: bidderId,
+            phone: phone,
             value: amount,
             stripeTokenId: stripeTokenId
         };

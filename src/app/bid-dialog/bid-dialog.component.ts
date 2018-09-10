@@ -26,7 +26,9 @@ export class BidDialogComponent implements AfterViewInit, OnDestroy {
     error: string;
 
     isBidInProgress = false;
+    fullName: String;
     emailAddress: String;
+    phone: String;
 
     constructor(public thisDialogRef: MatDialogRef<BidDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any,
                 private lotService: LotService, private cd: ChangeDetectorRef) { }
@@ -61,7 +63,7 @@ export class BidDialogComponent implements AfterViewInit, OnDestroy {
         } else {
             console.log('Success!', token);
 
-            this.lotService.PlaceBid(this.data.lotId, this.emailAddress, this.data.amount, token.id)
+            this.lotService.PlaceBid(this.data.lotId, this.fullName, this.emailAddress, this.phone, this.data.amount, token.id)
                 .subscribe((result => {
                     this.isBidInProgress = false;
                     this.thisDialogRef.close(true);

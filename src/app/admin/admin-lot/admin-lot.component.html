@@ -27,13 +27,19 @@
 
 <table class="bids" *ngIf="!lot.winningBidId">
     <tr class="bidContainer" *ngFor="let bid of lot.bids">
-        <td class="bidDate">
+        <td>
             {{bid.createdAt | date:'d LLLL y h:mm a'}}
         </td>
-        <td class="bidderId">
+        <td>
+            {{bid.name}}
+        </td>
+        <td>
             {{bid.bidderId}}
         </td>
-        <td class="bidderId">
+        <td>
+            {{bid.phone}}
+        </td>
+        <td>
             £{{bid.value}}
         </td>
         <td>
@@ -49,13 +55,19 @@
     <h2>Winning Bid</h2>
     <table class="bids">
         <tr class="bidContainer">
-            <td class="bidDate">
+            <td>
                 {{winningBid.createdAt | date:'d LLLL y h:mm a'}}
             </td>
-            <td class="bidderId">
+            <td>
+                {{winningBid.name}}
+            </td>
+            <td>
                 {{winningBid.bidderId}}
             </td>
-            <td class="bidderId">
+            <td>
+                {{winningBid.phone}}
+            </td>
+            <td>
                 £{{winningBid.value}}
             </td>
         </tr>

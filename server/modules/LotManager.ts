@@ -91,7 +91,8 @@ export namespace LotManager {
         });
     }
 
-    export async function CreateBid(lotId: String, bidderId: String, value: Number, stripeTokenId: String): Promise<Lot[]> {
+    export async function CreateBid(lotId: String, name: String, bidderId: String, phone: String,
+                                    value: Number, stripeTokenId: String): Promise<Lot[]> {
 
         return new Promise((resolve: (result) => void, reject: (error: Error) => void) => {
 
@@ -104,7 +105,8 @@ export namespace LotManager {
             }).then((charge) => {
                 LotModel.findOneAndUpdate(
                     {lotId: lotId},
-                    {$push: {bids: {createdAt: new Date().toISOString(), bidderId: bidderId, value: value, chargeId: charge.id}}},
+                    {$push: {bids: {createdAt: new Date().toISOString(), name: name, bidderId: bidderId,
+                                            phone: phone, value: value, chargeId: charge.id}}},
                     function (err, doc) {
                         if (err) {
                             reject(err);

@@ -15,7 +15,8 @@ router.get('/:lotId', async (request: Request, response: Response) => {
 });
 
 router.post('/:lotId/bid', async (request: Request, response: Response) => {
-    const result = await LotManager.CreateBid(request.params.lotId, request.body.bidderId, request.body.value, request.body.stripeTokenId);
+    const result = await LotManager.CreateBid(request.params.lotId, request.body.name, request.body.bidderId,
+                                                request.body.phone, request.body.value, request.body.stripeTokenId);
     response.send(result);
 });
 

@@ -15,7 +15,9 @@ exports.LotSchema = new mongoose_1.Schema({
     isFeatured: Number,
     bids: [{
             createdAt: String,
+            name: String,
             bidderId: String,
+            phone: String,
             value: Number,
             chargeId: String
         }],

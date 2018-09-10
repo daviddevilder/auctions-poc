@@ -139,7 +139,7 @@ var LotManager;
         });
     }
     LotManager.GetLotById = GetLotById;
-    function CreateBid(lotId, bidderId, value, stripeTokenId) {
+    function CreateBid(lotId, name, bidderId, phone, value, stripeTokenId) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2, new Promise(function (resolve, reject) {
@@ -150,7 +150,8 @@ var LotManager;
                             source: stripeTokenId,
                             capture: false
                         }).then(function (charge) {
-                            Lot_1.LotModel.findOneAndUpdate({ lotId: lotId }, { $push: { bids: { createdAt: new Date().toISOString(), bidderId: bidderId, value: value, chargeId: charge.id } } }, function (err, doc) {
+                            Lot_1.LotModel.findOneAndUpdate({ lotId: lotId }, { $push: { bids: { createdAt: new Date().toISOString(), name: name, bidderId: bidderId,
+                                        phone: phone, value: value, chargeId: charge.id } } }, function (err, doc) {
                                 if (err) {
                                     reject(err);
                                 }
