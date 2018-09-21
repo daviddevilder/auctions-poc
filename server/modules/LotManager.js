@@ -143,15 +143,28 @@ var LotManager;
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2, new Promise(function (resolve, reject) {
-                        stripe.charges.create({
-                            amount: (parseInt(value.toString(), 0) * 100),
-                            currency: 'gbp',
-                            description: lotId + ' ' + bidderId,
-                            source: stripeTokenId,
-                            capture: false
-                        }).then(function (charge) {
+                        if (stripeTokenId) {
+                            stripe.charges.create({
+                                amount: (parseInt(value.toString(), 0) * 100),
+                                currency: 'gbp',
+                                description: lotId + ' ' + bidderId,
+                                source: stripeTokenId,
+                                capture: false
+                            }).then(function (charge) {
+                                Lot_1.LotModel.findOneAndUpdate({ lotId: lotId }, { $push: { bids: { createdAt: new Date().toISOString(), name: name, bidderId: bidderId,
+                                            phone: phone, value: value, chargeId: charge.id } } }, function (err, doc) {
+                                    if (err) {
+                                        reject(err);
+                                    }
+                                    else {
+                                        resolve(doc);
+                                    }
+                                });
+                            });
+                        }
+                        else {
                             Lot_1.LotModel.findOneAndUpdate({ lotId: lotId }, { $push: { bids: { createdAt: new Date().toISOString(), name: name, bidderId: bidderId,
-                                        phone: phone, value: value, chargeId: charge.id } } }, function (err, doc) {
+                                        phone: phone, value: value } } }, function (err, doc) {
                                 if (err) {
                                     reject(err);
                                 }
@@ -159,7 +172,7 @@ var LotManager;
                                     resolve(doc);
                                 }
                             });
-                        });
+                        }
                     })];
             });
         });

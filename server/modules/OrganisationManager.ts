@@ -14,7 +14,8 @@ export namespace OrganisationManager {
                             new Organisation(organisation.organisationId, organisation.title, organisation.subtitle,
                                 organisation.primaryColour, organisation.logoUrl, organisation.address, organisation.websiteUrl,
                                 organisation.contactEmail, organisation.contactPhone, organisation.closingDate, organisation.bannerUrl,
-                                organisation.bannerText, organisation.introText, organisation.descriptionHtml, organisation.faqs));
+                                organisation.bannerText, organisation.introText, organisation.descriptionHtml, organisation.faqs,
+                                organisation.stripeIntegration));
                     });
 
                     resolve(results);
@@ -32,7 +33,7 @@ export namespace OrganisationManager {
                     new Organisation(organisation.organisationId, organisation.title, organisation.subtitle, organisation.primaryColour,
                         organisation.logoUrl, organisation.address, organisation.websiteUrl, organisation.contactEmail,
                         organisation.contactPhone, organisation.closingDate, organisation.bannerUrl, organisation.bannerText,
-                        organisation.introText, organisation.descriptionHtml, organisation.faqs));
+                        organisation.introText, organisation.descriptionHtml, organisation.faqs, organisation.stripeIntegration));
             });
         });
     }

@@ -19,7 +19,8 @@ exports.OrganisationSchema = new mongoose_1.Schema({
     faqs: [{
             question: String,
             answer: String,
-        }]
+        }],
+    stripeIntegration: Boolean
 });
 exports.OrganisationModel = mongoose_1.model('Organisation', exports.OrganisationSchema);
 //# sourceMappingURL=Organisation.js.map

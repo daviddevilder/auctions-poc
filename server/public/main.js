@@ -44,7 +44,7 @@ var Lot = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Organisation", function() { return Organisation; });
 var Organisation = /** @class */ (function () {
-    function Organisation(organisationId, title, subtitle, primaryColour, logoUrl, address, websiteUrl, contactEmail, contactPhone, closingDate, bannerUrl, bannerText, introText, descriptionHtml, faqs) {
+    function Organisation(organisationId, title, subtitle, primaryColour, logoUrl, address, websiteUrl, contactEmail, contactPhone, closingDate, bannerUrl, bannerText, introText, descriptionHtml, faqs, stripeIntegration) {
         this.organisationId = organisationId;
         this.title = title;
         this.subtitle = subtitle;
@@ -60,6 +60,7 @@ var Organisation = /** @class */ (function () {
         this.introText = introText;
         this.descriptionHtml = descriptionHtml;
         this.faqs = faqs;
+        this.stripeIntegration = stripeIntegration;
     }
     return Organisation;
 }());
@@ -153,7 +154,7 @@ var AdminLotComponent = /** @class */ (function () {
         this.lotId = '';
         this.organisationId = '';
         this.lot = new _common_models_Lot__WEBPACK_IMPORTED_MODULE_3__["Lot"]('', '', '', '', '', '', 0, 0, [], 0, 0, [], '');
-        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_2__["Organisation"]('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
+        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_2__["Organisation"]('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', [], false);
         this.isAcceptInProgress = false;
         this.winningBid = null;
         this.route.params.subscribe(function (params) {
@@ -597,7 +598,7 @@ module.exports = ".checkout mat-form-field {\r\n    font-size: 18px;\r\n    widt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n    <h2 mat-dialog-title>Confirm your bid</h2>\r\n\r\n    <form #checkout=\"ngForm\" (ngSubmit)=\"onSubmit(checkout)\" class=\"checkout\">\r\n\r\n        <mat-dialog-content>\r\n            <div class='introduction'>\r\n                <span>In order to confirm your bid, please enter your details below.\r\n                Your card will be pre-authorised and will ONLY be charged if you win the auction.</span>\r\n            </div>\r\n\r\n            <mat-form-field>\r\n                <input matInput placeholder=\"My Bid\" value=\"£{{data.amount}}\" readonly>\r\n            </mat-form-field>\r\n\r\n            <mat-form-field>\r\n                <input matInput placeholder=\"Full Name\" required [(ngModel)]=\"fullName\" name=\"fullName\" #name=\"ngModel\"\r\n                       maxlength=\"40\">\r\n                <mat-error *ngIf=\"name.invalid && (name.dirty || name.touched)\">\r\n                    Please enter your full name\r\n                </mat-error>\r\n            </mat-form-field>\r\n\r\n            <mat-form-field>\r\n                <input matInput placeholder=\"Email\" [(ngModel)]=\"emailAddress\" id=\"email\" name=\"email\" #email=\"ngModel\"\r\n                       required pattern=\"^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$\" maxlength=\"50\">\r\n                 <mat-error *ngIf=\"email.invalid && (email.dirty || email.touched)\">\r\n                    Please enter a valid email address\r\n                </mat-error>\r\n            </mat-form-field>\r\n\r\n            <mat-form-field>\r\n                <input matInput placeholder=\"Phone\" type=\"tel\" [(ngModel)]=\"phone\" name=\"phone\" #phoneNum=\"ngModel\"\r\n                       pattern=\"^[0-9-+s()]*$\" required maxlength=\"20\">\r\n                <mat-error *ngIf=\"phoneNum.invalid && (phoneNum.dirty || phoneNum.touched)\">\r\n                    Please enter a valid phone number\r\n                </mat-error>\r\n            </mat-form-field>\r\n\r\n            <div class=\"form-group\">\r\n                <label for=\"card-info\">Card Details</label>\r\n                <div id=\"card-info\" #cardInfo></div>\r\n\r\n                <div id=\"card-errors\" class=\"validationErrorText\" role=\"alert\" *ngIf=\"error\">{{ error }}</div>\r\n            </div>\r\n        </mat-dialog-content>\r\n\r\n        <mat-dialog-actions align=\"end\">\r\n            <button mat-raised-button (click)=\"onCloseCancel()\">CANCEL</button>\r\n            <button mat-raised-button class=\"confirmButton\" type=\"submit\"\r\n                    [disabled]=\"!checkout.valid || isBidInProgress\">CONFIRM BID\r\n            </button>\r\n        </mat-dialog-actions>\r\n\r\n    </form>\r\n\r\n\r\n</div>"
+module.exports = "<div>\r\n    <h2 mat-dialog-title>Confirm your bid</h2>\r\n\r\n    <form #checkout=\"ngForm\" (ngSubmit)=\"onSubmit(checkout)\" class=\"checkout\">\r\n\r\n        <mat-dialog-content>\r\n            <div class='introduction'>\r\n                <span>In order to confirm your bid, please enter your details below.</span>\r\n                <span *ngIf=\"data.stripeIntegration\">Your card will be pre-authorised and will ONLY be charged if you win the auction.</span>\r\n            </div>\r\n\r\n            <mat-form-field>\r\n                <input matInput placeholder=\"My Bid\" value=\"£{{data.amount}}\" readonly>\r\n            </mat-form-field>\r\n\r\n            <mat-form-field>\r\n                <input matInput placeholder=\"Full Name\" required [(ngModel)]=\"fullName\" name=\"fullName\" #name=\"ngModel\"\r\n                       maxlength=\"40\">\r\n                <mat-error *ngIf=\"name.invalid && (name.dirty || name.touched)\">\r\n                    Please enter your full name\r\n                </mat-error>\r\n            </mat-form-field>\r\n\r\n            <mat-form-field>\r\n                <input matInput placeholder=\"Email\" [(ngModel)]=\"emailAddress\" id=\"email\" name=\"email\" #email=\"ngModel\"\r\n                       required pattern=\"^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$\" maxlength=\"50\">\r\n                 <mat-error *ngIf=\"email.invalid && (email.dirty || email.touched)\">\r\n                    Please enter a valid email address\r\n                </mat-error>\r\n            </mat-form-field>\r\n\r\n            <mat-form-field>\r\n                <input matInput placeholder=\"Phone\" type=\"tel\" [(ngModel)]=\"phone\" name=\"phone\" #phoneNum=\"ngModel\"\r\n                       pattern=\"^[0-9-+s()]*$\" required maxlength=\"20\">\r\n                <mat-error *ngIf=\"phoneNum.invalid && (phoneNum.dirty || phoneNum.touched)\">\r\n                    Please enter a valid phone number\r\n                </mat-error>\r\n            </mat-form-field>\r\n\r\n            <div class=\"form-group\" *ngIf=\"data.stripeIntegration\">\r\n                <label for=\"card-info\">Card Details</label>\r\n                <div id=\"card-info\" #cardInfo></div>\r\n\r\n                <div id=\"card-errors\" class=\"validationErrorText\" role=\"alert\" *ngIf=\"error\">{{ error }}</div>\r\n            </div>\r\n        </mat-dialog-content>\r\n\r\n        <mat-dialog-actions align=\"end\">\r\n            <button mat-raised-button type=\"button\" (click)=\"onCloseCancel()\">CANCEL</button>\r\n            <button mat-raised-button class=\"confirmButton\" type=\"submit\"\r\n                    [disabled]=\"!checkout.valid || isBidInProgress\">CONFIRM BID\r\n            </button>\r\n        </mat-dialog-actions>\r\n\r\n    </form>\r\n\r\n\r\n</div>"
 
 /***/ }),
 
@@ -675,8 +676,10 @@ var BidDialogComponent = /** @class */ (function () {
         this.isBidInProgress = false;
     }
     BidDialogComponent.prototype.ngOnDestroy = function () {
-        this.card.removeEventListener('change', this.cardHandler);
-        this.card.destroy();
+        if (this.data.stripeIntegration) {
+            this.card.removeEventListener('change', this.cardHandler);
+            this.card.destroy();
+        }
     };
     BidDialogComponent.prototype.onChange = function (_a) {
         var error = _a.error;
@@ -689,9 +692,11 @@ var BidDialogComponent = /** @class */ (function () {
         this.cd.detectChanges();
     };
     BidDialogComponent.prototype.ngAfterViewInit = function () {
-        this.card = elements.create('card');
-        this.card.mount(this.cardInfo.nativeElement);
-        this.card.addEventListener('change', this.cardHandler);
+        if (this.data.stripeIntegration) {
+            this.card = elements.create('card');
+            this.card.mount(this.cardInfo.nativeElement);
+            this.card.addEventListener('change', this.cardHandler);
+        }
     };
     BidDialogComponent.prototype.onSubmit = function (form) {
         return __awaiter(this, void 0, void 0, function () {
@@ -701,11 +706,13 @@ var BidDialogComponent = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         this.isBidInProgress = true;
+                        if (!this.data.stripeIntegration) return [3 /*break*/, 2];
                         return [4 /*yield*/, stripe.createToken(this.card)];
                     case 1:
                         _a = _b.sent(), token = _a.token, error = _a.error;
                         if (error) {
                             console.log('Something is wrong:', error);
+                            this.isBidInProgress = false;
                         }
                         else {
                             console.log('Success!', token);
@@ -715,13 +722,21 @@ var BidDialogComponent = /** @class */ (function () {
                                 _this.thisDialogRef.close(true);
                             }));
                         }
-                        return [2 /*return*/];
+                        return [3 /*break*/, 3];
+                    case 2:
+                        this.lotService.PlaceBid(this.data.lotId, this.fullName, this.emailAddress, this.phone, this.data.amount, null)
+                            .subscribe((function (result) {
+                            _this.isBidInProgress = false;
+                            _this.thisDialogRef.close(true);
+                        }));
+                        _b.label = 3;
+                    case 3: return [2 /*return*/];
                 }
             });
         });
     };
     BidDialogComponent.prototype.onCloseCancel = function () {
-        this.thisDialogRef.close(false);
+        this.thisDialogRef.close();
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ViewChild"])('cardInfo'),
@@ -1013,7 +1028,7 @@ var LotDetailsComponent = /** @class */ (function () {
         this.lotId = '';
         this.organisationId = '';
         this.lot = new _common_models_Lot__WEBPACK_IMPORTED_MODULE_5__["Lot"]('', '', '', '', '', '', 0, 0, [], 0, 0, [], '');
-        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
+        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', [], false);
         this.amount = '';
         this.route.params.subscribe(function (params) {
             _this.organisationId = params.organisationId;
@@ -1033,7 +1048,8 @@ var LotDetailsComponent = /** @class */ (function () {
             disableClose: true,
             data: {
                 lotId: this.lotId,
-                amount: this.amount
+                amount: this.amount,
+                stripeIntegration: this.Organisation.stripeIntegration
             }
         });
         dialogRef.afterClosed().subscribe(function (success) {
@@ -1410,7 +1426,7 @@ var OrganisationFaqComponent = /** @class */ (function () {
         this.lotService = lotService;
         this.route = route;
         this.organisationId = '';
-        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
+        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', [], false);
         this.route.params.subscribe(function (params) {
             _this.organisationId = params.organisationId;
             organisationService.LoadOrganisationById(params.organisationId)
@@ -1565,7 +1581,7 @@ var OrganisationLotsComponent = /** @class */ (function () {
         this.lotService = lotService;
         this.route = route;
         this.organisationId = '';
-        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
+        this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', [], false);
         this.screenWidth = window.innerWidth;
         this.route.params.subscribe(function (params) {
             _this.organisationId = params.organisationId;
@@ -1677,7 +1693,7 @@ var OrganisationComponent = /** @class */ (function (_super) {
         _this.changeDetectorRef = changeDetectorRef;
         _this.title = '';
         _this.organisationId = '';
-        _this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
+        _this.Organisation = new _common_models_Organisation__WEBPACK_IMPORTED_MODULE_3__["Organisation"]('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', [], false);
         _this.route.params.subscribe(function (params) {
             _this.organisationId = params.organisationId;
             organisationService.LoadOrganisationById(params.organisationId).subscribe(function (organisation) {

@@ -14,7 +14,7 @@ export class OrganisationLotsComponent {
     @ViewChild('sidenav') sidenav: MatSidenav;
 
     public organisationId: String = '';
-    public Organisation: Organisation = new Organisation('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
+    public Organisation: Organisation = new Organisation('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', [], false);
 
     screenWidth: Number;
 

@@ -14,4 +14,5 @@ export interface IOrganisation {
     introText?: string;
     descriptionHtml?: string;
     faqs?: object[];
+    stripeIntegration?: boolean;
 }

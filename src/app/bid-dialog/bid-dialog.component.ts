@@ -34,8 +34,10 @@ export class BidDialogComponent implements AfterViewInit, OnDestroy {
                 private lotService: LotService, private cd: ChangeDetectorRef) { }
 
     ngOnDestroy() {
-        this.card.removeEventListener('change', this.cardHandler);
-        this.card.destroy();
+        if (this.data.stripeIntegration) {
+            this.card.removeEventListener('change', this.cardHandler);
+            this.card.destroy();
+        }
     }
 
     onChange({ error }) {
@@ -48,22 +50,34 @@ export class BidDialogComponent implements AfterViewInit, OnDestroy {
     }
 
     ngAfterViewInit() {
-        this.card = elements.create('card');
-        this.card.mount(this.cardInfo.nativeElement);
+        if (this.data.stripeIntegration) {
+            this.card = elements.create('card');
+            this.card.mount(this.cardInfo.nativeElement);
 
-        this.card.addEventListener('change', this.cardHandler);
+            this.card.addEventListener('change', this.cardHandler);
+        }
     }
 
     async onSubmit(form: NgForm) {
         this.isBidInProgress = true;
-        const { token, error } = await stripe.createToken(this.card);
 
-        if (error) {
-            console.log('Something is wrong:', error);
+        if (this.data.stripeIntegration) {
+            const { token, error } = await stripe.createToken(this.card);
+
+            if (error) {
+                console.log('Something is wrong:', error);
+                this.isBidInProgress = false;
+            } else {
+                console.log('Success!', token);
+
+                this.lotService.PlaceBid(this.data.lotId, this.fullName, this.emailAddress, this.phone, this.data.amount, token.id)
+                    .subscribe((result => {
+                        this.isBidInProgress = false;
+                        this.thisDialogRef.close(true);
+                    }));
+            }
         } else {
-            console.log('Success!', token);
-
-            this.lotService.PlaceBid(this.data.lotId, this.fullName, this.emailAddress, this.phone, this.data.amount, token.id)
+            this.lotService.PlaceBid(this.data.lotId, this.fullName, this.emailAddress, this.phone, this.data.amount, null)
                 .subscribe((result => {
                     this.isBidInProgress = false;
                     this.thisDialogRef.close(true);
@@ -72,7 +86,7 @@ export class BidDialogComponent implements AfterViewInit, OnDestroy {
     }
 
     onCloseCancel() {
-        this.thisDialogRef.close(false);
+        this.thisDialogRef.close();
     }
 
 }

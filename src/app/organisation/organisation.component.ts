@@ -17,7 +17,7 @@ export class OrganisationComponent extends GoogleMapsAPIWrapper {
     public title: String = '';
     public organisationId: String = '';
 
-    public Organisation: Organisation = new Organisation('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
+    public Organisation: Organisation = new Organisation('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', [], false);
 
     public latitude: Number;
     public longitude: Number;

@@ -96,17 +96,32 @@ export namespace LotManager {
 
         return new Promise((resolve: (result) => void, reject: (error: Error) => void) => {
 
-            stripe.charges.create({
-                amount: (parseInt(value.toString(), 0) * 100),
-                currency: 'gbp',
-                description: lotId + ' ' + bidderId,
-                source: stripeTokenId,
-                capture: false
-            }).then((charge) => {
+            if (stripeTokenId) {
+                stripe.charges.create({
+                    amount: (parseInt(value.toString(), 0) * 100),
+                    currency: 'gbp',
+                    description: lotId + ' ' + bidderId,
+                    source: stripeTokenId,
+                    capture: false
+                }).then((charge) => {
+                    LotModel.findOneAndUpdate(
+                        {lotId: lotId},
+                        {$push: {bids: {createdAt: new Date().toISOString(), name: name, bidderId: bidderId,
+                                    phone: phone, value: value, chargeId: charge.id}}},
+                        function (err, doc) {
+                            if (err) {
+                                reject(err);
+                            } else {
+                                resolve(doc);
+                            }
+                        }
+                    );
+                });
+            } else {
                 LotModel.findOneAndUpdate(
                     {lotId: lotId},
                     {$push: {bids: {createdAt: new Date().toISOString(), name: name, bidderId: bidderId,
-                                            phone: phone, value: value, chargeId: charge.id}}},
+                                phone: phone, value: value}}},
                     function (err, doc) {
                         if (err) {
                             reject(err);
@@ -115,7 +130,7 @@ export namespace LotManager {
                         }
                     }
                 );
-            });
+            }
         });
     }
 

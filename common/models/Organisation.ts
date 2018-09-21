@@ -14,6 +14,7 @@ export class Organisation {
                 public bannerText: string,
                 public introText: string,
                 public descriptionHtml: string,
-                public faqs: object[]) {
+                public faqs: object[],
+                public stripeIntegration: boolean) {
     }
 }

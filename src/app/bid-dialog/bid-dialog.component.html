@@ -5,8 +5,8 @@
 
         <mat-dialog-content>
             <div class='introduction'>
-                <span>In order to confirm your bid, please enter your details below.
-                Your card will be pre-authorised and will ONLY be charged if you win the auction.</span>
+                <span>In order to confirm your bid, please enter your details below.</span>
+                <span *ngIf="data.stripeIntegration">Your card will be pre-authorised and will ONLY be charged if you win the auction.</span>
             </div>
 
             <mat-form-field>
@@ -37,7 +37,7 @@
                 </mat-error>
             </mat-form-field>
 
-            <div class="form-group">
+            <div class="form-group" *ngIf="data.stripeIntegration">
                 <label for="card-info">Card Details</label>
                 <div id="card-info" #cardInfo></div>
 
@@ -46,7 +46,7 @@
         </mat-dialog-content>
 
         <mat-dialog-actions align="end">
-            <button mat-raised-button (click)="onCloseCancel()">CANCEL</button>
+            <button mat-raised-button type="button" (click)="onCloseCancel()">CANCEL</button>
             <button mat-raised-button class="confirmButton" type="submit"
                     [disabled]="!checkout.valid || isBidInProgress">CONFIRM BID
             </button>

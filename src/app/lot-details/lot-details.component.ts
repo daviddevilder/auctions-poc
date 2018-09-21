@@ -18,7 +18,7 @@ export class LotDetailsComponent {
     public organisationId: String = '';
 
     public lot: Lot = new Lot('', '', '', '', '', '', 0, 0, [], 0, 0, [], '');
-    public Organisation: Organisation = new Organisation('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', []);
+    public Organisation: Organisation = new Organisation('', '', '', '', '', '', '', '', '', new Date(), '', '', '', '', [], false);
 
     public amount: String = '';
 
@@ -44,7 +44,8 @@ export class LotDetailsComponent {
             disableClose: true,
             data: {
                 lotId: this.lotId,
-                amount: this.amount
+                amount: this.amount,
+                stripeIntegration: this.Organisation.stripeIntegration
             }
         });
 

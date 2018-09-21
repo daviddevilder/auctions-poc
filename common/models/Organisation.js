@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Organisation = (function () {
-    function Organisation(organisationId, title, subtitle, primaryColour, logoUrl, address, websiteUrl, contactEmail, contactPhone, closingDate, bannerUrl, bannerText, introText, descriptionHtml, faqs) {
+    function Organisation(organisationId, title, subtitle, primaryColour, logoUrl, address, websiteUrl, contactEmail, contactPhone, closingDate, bannerUrl, bannerText, introText, descriptionHtml, faqs, stripeIntegration) {
         this.organisationId = organisationId;
         this.title = title;
         this.subtitle = subtitle;
@@ -17,6 +17,7 @@ var Organisation = (function () {
         this.introText = introText;
         this.descriptionHtml = descriptionHtml;
         this.faqs = faqs;
+        this.stripeIntegration = stripeIntegration;
     }
     return Organisation;
 }());

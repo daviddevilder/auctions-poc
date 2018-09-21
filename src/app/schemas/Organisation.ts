@@ -17,6 +17,7 @@ export interface IOrganisationModel extends IOrganisation, Document {
     introText: string;
     descriptionHtml: string;
     faqs: object[];
+    stripeIntegration: boolean;
 }
 
 export const OrganisationSchema: Schema = new Schema({
@@ -37,7 +38,8 @@ export const OrganisationSchema: Schema = new Schema({
     faqs: [{
         question: String,
         answer: String,
-    }]
+    }],
+    stripeIntegration: Boolean
 });
 
 export const OrganisationModel: Model<IOrganisationModel> = model<IOrganisationModel>('Organisation', OrganisationSchema);
